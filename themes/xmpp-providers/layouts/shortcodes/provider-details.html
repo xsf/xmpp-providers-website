@@ -297,7 +297,7 @@
                                 {{ if .chatSupport }}
                                     {{ range $lang, $address := .chatSupport }}
                                         {{ range $address }}
-                                            <a href="mailto:{{ . }}">{{ upper $lang }}</a>&nbsp;
+                                            <a href="xmpp:{{ . }}">{{ upper $lang }}</a>&nbsp;
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
@@ -313,7 +313,7 @@
                                 {{ if .groupChatSupport }}
                                     {{ range $lang, $address := .groupChatSupport }}
                                         {{ range $address }}
-                                            <a href="mailto:{{ . }}">{{ upper $lang }}</a>&nbsp;
+                                            <a href="xmpp:{{ . }}?join">{{ upper $lang }}</a>&nbsp;
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
