@@ -29,8 +29,10 @@ View at `http://localhost:1313`
 
 ## Deployment
 
+```bash
 docker build -t xmpp-providers -f ./Dockerfile .
 docker run -p 80:80 -t -i xmpp-providers
+```
 
 ## Theme development
 
