@@ -1,5 +1,6 @@
 '''Download / prepare / process xmpp providers data'''
 from datetime import date
+from pathlib import Path
 import os
 import shutil
 import sys
@@ -7,10 +8,10 @@ import zipfile
 
 import requests
 
-DOWNLOAD_PATH = './downloads'
-DATA_PATH = './data'
-PROVIDERS_JSON_PATH = './data/results'
-PROVIDERS_PAGES_PATH = './content/provider'
+DOWNLOAD_PATH = Path('downloads')
+DATA_PATH = Path('data')
+PROVIDERS_JSON_PATH = DATA_PATH / 'results'
+PROVIDERS_PAGES_PATH = Path('content/provider')
 PROVIDERS_DATA_URL = 'https://invent.kde.org/melvo/xmpp-providers/' \
     '-/jobs/artifacts/master/download/?job=filtered-provider-lists'
 MD_FRONTMATTER = '''---\ntitle: %s\ndate: %s\n---\n
@@ -27,11 +28,17 @@ def status_ok(status_code: int) -> bool:
 
 def download_data_files() -> None:
     '''Download and prepare provider data files'''
-    shutil.rmtree(DOWNLOAD_PATH)
-    os.mkdir(DOWNLOAD_PATH)
+    if DOWNLOAD_PATH.exists() and DOWNLOAD_PATH.is_dir():
+        shutil.rmtree(DOWNLOAD_PATH)
+        os.mkdir(DOWNLOAD_PATH)
+    else:
+        os.mkdir(DOWNLOAD_PATH)
 
-    shutil.rmtree(DATA_PATH)
-    os.mkdir(DATA_PATH)
+    if DATA_PATH.exists() and DATA_PATH.is_dir():
+        shutil.rmtree(DATA_PATH)
+        os.mkdir(DATA_PATH)
+    else:
+        os.mkdir(DATA_PATH)
 
     data_request = requests.get(PROVIDERS_DATA_URL)
     if not status_ok(data_request.status_code):
@@ -49,8 +56,11 @@ def download_data_files() -> None:
 
 def create_provider_pages() -> None:
     '''Creates a .md page per provider'''
-    shutil.rmtree(PROVIDERS_PAGES_PATH)
-    os.mkdir(PROVIDERS_PAGES_PATH)
+    if PROVIDERS_PAGES_PATH.exists() and PROVIDERS_PAGES_PATH.is_dir():
+        shutil.rmtree(PROVIDERS_PAGES_PATH)
+        os.mkdir(PROVIDERS_PAGES_PATH)
+    else:
+        os.mkdir(PROVIDERS_PAGES_PATH)
 
     today = date.today()
     date_formatted = today.strftime('%Y-%m-%d')
