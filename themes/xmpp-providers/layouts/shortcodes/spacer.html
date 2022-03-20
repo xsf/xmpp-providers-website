@@ -1,0 +1,8 @@
+{{ $size := .Get "size" }}
+{{ $number := 5 }}
+{{ if eq $size "small" }}
+    {{ $number = 2 }}
+{{ else if eq $size "middle" }}
+    {{ $number = 3 }}
+{{ end }}
+<div class="py-{{ $number }}"></div>

@@ -1,0 +1,8 @@
+[[main]]
+    name = "FAQ"
+    url = "/faq"
+    weight = 1
+[[main]]
+    name = "About"
+    url = "/about"
+    weight = 2

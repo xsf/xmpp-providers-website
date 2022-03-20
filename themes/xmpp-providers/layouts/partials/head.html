@@ -1,0 +1,27 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{- with $bootstrap := resources.Get "css/bootstrap.min.css" }}
+    {{- with $secureBootstrap := $bootstrap | resources.Fingerprint "sha256" }}
+    <link rel="stylesheet" type="text/css" href="{{ $bootstrap.Permalink}}" integrity="{{$secureBootstrap.Data.Integrity}}">
+    {{- end }}
+    {{- end }}
+    {{- with $style := resources.Get "css/style.css" | resources.Minify }}
+    {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
+    <link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" integrity="{{$secureStyle.Data.Integrity}}">
+    {{- end }}
+    {{- end }}
+    {{- with $style := resources.Get "fontawesome/css/all.min.css" }}
+    {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
+    <link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" integrity="{{$secureStyle.Data.Integrity}}">
+    {{- end }}
+    {{- end }}
+    <link rel="canonical" href="{{ .Permalink }}">
+    <title>
+      {{- if .IsHome }}
+      {{- printf "%s" .Site.Title }}
+      {{- else }}
+      {{- printf "%s | %s" .Site.Title .Title }}
+      {{- end }}
+    </title>
+</head>

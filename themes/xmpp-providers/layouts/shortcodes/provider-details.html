@@ -1,0 +1,454 @@
+{{ $provider_name := .Get "provider" }}
+{{ $providers_data := .Site.Data.providersC }}
+{{ $provider := where $providers_data ".jid" "==" $provider_name }}
+
+{{ $category_criteria := "" }}
+{{ range $index, $data := .Site.Data.results }}
+    {{ if eq $index $provider_name }}
+        {{ $category_criteria = . }}
+    {{ end }}
+{{ end }}
+
+<div class="row justify-content-center pb-4">
+    <div class="col-sm-10 pt-3 text-center">
+        <h1>{{ $provider_name }}</h1>
+        {{ range $provider }}
+            <span class="text-muted">
+                since 
+                {{ if .onlineSince }}
+                    {{ .onlineSince | dateFormat "Jan 2, 2006" }}
+                {{ else }}
+                    ?
+                {{ end }}
+            </span>
+            &nbsp;&middot;&nbsp;
+            <i class="fa-solid fa-globe text-muted"></i>
+            <span class="text-muted">Website:</span>
+            {{ if .website }}
+                {{ range $lang, $address := .website }}
+                    <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>&nbsp;
+                {{ end }}
+            {{ else }}
+                ?
+            {{ end }}
+        {{ end }}
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-sm-10">
+        {{ range $provider }}
+            <h2>Service</h2>
+            <table class="mb-4">
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-dollar-sign px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        {{ if .freeOfCharge }}
+                            Free of charge
+                        {{ else }}
+                            Paid
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-location-dot px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        Server location:
+                        {{ if .serverLocations }}
+                            {{ range .serverLocations }}
+                                {{ upper . }}&nbsp;
+                            {{ end }}
+                        {{ else }}
+                            unknown
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-scale-balanced px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        {{ if .legalNotice }}
+                            Legal notice:
+                            {{ range $lang, $address := .legalNotice }}
+                                <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                            {{ end }}
+                        {{ else }}
+                            <span class="text-danger text-opacity-75">No legal notice available</span>
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-people-group px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        <a href="/faq#bus-factor" class="abbr">Bus factor</a>:
+                        {{ if eq (string .busFactor) "-1" }}
+                            ?
+                        {{ else }}
+                            {{ .busFactor }} person(s)
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-database px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        {{ if .professionalHosting }}
+                            <i class="fa-regular fa-circle-check pe-1"></i>
+                        {{ else }}
+                            <i class="fa-regular fa-circle-xmark pe-1"></i>
+                        {{ end }}
+                        Hosted in a data center with regular backups
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa-regular fa-building px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        {{ if .company }}
+                            <i class="fa-regular fa-circle-check pe-1"></i>
+                        {{ else }}
+                            <i class="fa-regular fa-circle-xmark pe-1"></i>
+                        {{ end }}
+                        Run by a company
+                    </td>
+                </tr>
+            </table>
+
+            <h2>Account</h2>
+            <table class="mb-4">
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-pen px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        {{ if .inBandRegistration }}
+                            You can register with this provider directly from your device (<a href="/faq#in-band-registration" class="abbr">IBR</a>)
+                        {{ else }}
+                            You have to register with this provider using your web browser.
+                            {{ if .registrationWebPage }}
+                                <br>Online registration:
+                                {{ range $lang, $address := .registrationWebPage }}
+                                    <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>&nbsp;
+                                {{ end }}
+                            {{ end }}
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-key px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        {{ if .passwordReset }}
+                            You can reset your password online:
+                            {{ range $lang, $address := .passwordReset }}
+                                <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>&nbsp;
+                            {{ end }}
+                        {{ else }}
+                            You <em>cannot</em> reset your password online
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-clock-rotate-left px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
+                            Message storage duration is unknown
+                        {{ else if eq (string .maximumMessageArchiveManagementStorageTime) "0" }}
+                            Unlimited message storage
+                        {{ else }}
+                            Messages are stored for {{ .maximumMessageArchiveManagementStorageTime }} days
+                        {{ end }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="row pt-3">
+        <div class="col-sm-6 pb-4">
+            <div class="card">
+                <div class="card-header">
+                    Compatibility
+                </div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td>
+                                Compliance Tester
+                            </td>
+                            <td class="ps-3">
+                                <a href="https://compliance.conversations.im/server/{{ .jid }}/" class="badge bg-secondary text-light" target="_blank">{{ .ratingXmppComplianceTester }}</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                IM Observatory (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>)
+                            </td>
+                            <td class="ps-3">
+                                <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=client" class="badge bg-secondary text-light" target="_blank">{{ .ratingImObservatoryClientToServer }}</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                IM Observatory (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>)
+                            </td>
+                            <td class="ps-3">
+                                <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=server" class="badge bg-secondary text-light" target="_blank">{{ .ratingImObservatoryServerToServer }}</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 pb-4">
+            <div class="card">
+                <div class="card-header">
+                    File Transfer (<a href="/faq#http-upload" class="abbr">HTTP Upload</a>)
+                </div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td>
+                                Size per file (max)
+                            </td>
+                            <td class="ps-3">
+                                {{ if eq (string .maximumHttpFileUploadFileSize) "-1" }}
+                                    ?
+                                {{ else if eq (string .maximumHttpFileUploadFileSize) "0" }}
+                                    no limit
+                                {{ else }}
+                                    {{ .maximumHttpFileUploadFileSize }} MB
+                                {{ end }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Total storage (max)
+                            </td>
+                            <td class="ps-3">
+                                {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
+                                    ?
+                                {{ else if eq (string .maximumHttpFileUploadTotalSize) "0" }}
+                                    no limit
+                                {{ else }}
+                                    {{ .maximumHttpFileUploadTotalSize }} MB
+                                {{ end }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                File retention time
+                            </td>
+                            <td class="ps-3">
+                                {{ if eq (string .maximumHttpFileUploadStorageTime) "-1" }}
+                                    ?
+                                {{ else if eq (string .maximumHttpFileUploadStorageTime) "0" }}
+                                    no limit
+                                {{ else }}
+                                    {{ .maximumHttpFileUploadStorageTime }} days
+                                {{ end }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 pb-4">
+            <div class="card">
+                <div class="card-header">
+                    Support Addresses
+                </div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td>
+                                Email
+                            </td>
+                            <td class="ps-3">
+                                {{ if .emailSupport }}
+                                    {{ range $lang, $address := .emailSupport }}
+                                        {{ range $address }}
+                                            <a href="mailto:{{ . }}">{{ upper $lang }}</a>&nbsp;
+                                        {{ end }}
+                                    {{ end }}
+                                {{ else }}
+                                    -
+                                {{ end }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Chat
+                            </td>
+                            <td class="ps-3">
+                                {{ if .chatSupport }}
+                                    {{ range $lang, $address := .chatSupport }}
+                                        {{ range $address }}
+                                            <a href="mailto:{{ . }}">{{ upper $lang }}</a>&nbsp;
+                                        {{ end }}
+                                    {{ end }}
+                                {{ else }}
+                                    -
+                                {{ end }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Group chat
+                            </td>
+                            <td class="ps-3">
+                                {{ if .groupChatSupport }}
+                                    {{ range $lang, $address := .groupChatSupport }}
+                                        {{ range $address }}
+                                            <a href="mailto:{{ . }}">{{ upper $lang }}</a>&nbsp;
+                                        {{ end }}
+                                    {{ end }}
+                                {{ else }}
+                                    -
+                                {{ end }}
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center pb-3">
+        <div class="col-sm-10 p-4 bg-light rounded shadow">
+            <div class="row pb-3 text-center">
+                <h3>Provider Category</h3>
+                <h2><span class="badge bg-{{ if eq .category "A" }}success{{ else if eq .category "B" }}warning{{ else }}danger{{ end }}">{{ .category }}</span></h2>
+                <a href="/faq#category" class="abbr small text-muted">Categories explained</a>
+            </div>
+            {{ if ne .category "A" }}
+                <div class="row justify-content-center">
+                    <div class="col-sm-10">
+                        <b>Why not category "A"?</b>
+                        {{ range $category, $data := $category_criteria }}
+                            {{ if eq $category "A" }}
+                                <ul>
+                                    {{ if .inBandRegistration }}
+                                        <li>
+                                            In Band Registration ((<a href="/faq#in-band-registration" class="abbr">IBR</a>) is not available
+                                        </li>
+                                    {{ end }}
+                                    {{ if .ratingXmppComplianceTester }}
+                                        <li>
+                                            Compliance Tester result is {{ .ratingXmppComplianceTester }}
+                                        </li>
+                                    {{ end }}
+                                    {{ if .ratingImObservatoryClientToServer }}
+                                        <li>
+                                            IM Observatory (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>) result is {{ .ratingImObservatoryClientToServer }}
+                                        </li>
+                                    {{ end }}
+                                    {{ if .ratingImObservatoryServerToServer }}
+                                        <li>
+                                            IM Observatory (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>) result is {{ .ratingImObservatoryServerToServer }}
+                                        </li>
+                                    {{ end }}
+                                    {{ if .maximumHttpFileUploadFileSize }}
+                                        <li>
+                                            {{ if eq (string .maximumHttpFileUploadFileSize) "-1" }}
+                                                File size limit is unknown
+                                            {{ else }}
+                                                File size is limited to {{ .maximumHttpFileUploadFileSize }} MB
+                                            {{ end }}
+                                        </li>
+                                    {{ end }}
+                                    {{ if .maximumHttpFileUploadTotalSize }}
+                                        <li>
+                                            {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
+                                                Total file storage limit is unknown
+                                            {{ else }}
+                                                Total file storage is limited to {{ .maximumHttpFileUploadTotalSize }} MB
+                                            {{ end }}
+                                        </li>
+                                    {{ end }}
+                                    {{ if .maximumHttpFileUploadStorageTime }}
+                                        <li>
+                                            {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
+                                                File retention time limit is unknown
+                                            {{ else }}
+                                                File retention time is limited to {{ .maximumHttpFileUploadStorageTime }} days
+                                            {{ end }}
+                                        </li>
+                                    {{ end }}
+                                    {{ if .maximumMessageArchiveManagementStorageTime }}
+                                        <li>
+                                            {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
+                                                Message storage limit is unknown
+                                            {{ else }}
+                                                Message storage is limited to {{ .maximumMessageArchiveManagementStorageTime }} days
+                                            {{ end }}
+                                        </li>
+                                    {{ end }}
+                                    {{ if .professionalHosting }}
+                                        <li>
+                                            No professional hosting
+                                        </li>
+                                    {{ end }}
+                                    {{ if .freeOfCharge }}
+                                        <li>
+                                            Not free of change
+                                        </li>
+                                    {{ end }}
+                                    {{ if .legalNotice }}
+                                        <li>
+                                            Legal notice is missing
+                                        </li>
+                                    {{ end }}
+                                    {{ if .serverLocations }}
+                                        <li>
+                                            Server location is unknown
+                                        </li>
+                                    {{ end }}
+                                    {{ if .emailSupport }}
+                                        <li>
+                                            Email support address missing
+                                        </li>
+                                    {{ end }}
+                                    {{ if .chatSupport }}
+                                        <li>
+                                            Chat support address missing
+                                        </li>
+                                    {{ end }}
+                                    {{ if .groupChatSupport }}
+                                        <li>
+                                            Group chat support address missing
+                                        </li>
+                                    {{ end }}
+                                    {{ if .onlineSince }}
+                                        <li>
+                                            {{ if eq (string .onlineSince) "-1" }}
+                                                Foundation date is unknown
+                                            {{ else }}
+                                                Provider is only online since {{ .onlineSince }} days
+                                            {{ end }}
+                                        </li>
+                                    {{ end }}
+                                </ul>
+                            {{ end }}
+                        {{ end }}
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+    </div>
+    <div class="row pt-3">
+        <p class="text-center text-muted small">Last check: {{ .lastCheck | dateFormat "Jan 2, 2006" }}&nbsp;&middot;&nbsp;<a href="#" target="_blank">Something&nbsp;changed?</a></p>
+    </div>
+{{ end }}

@@ -1,0 +1,6 @@
+.abbr {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+    cursor: help;
+    color: var(--bs-body-color);
+}

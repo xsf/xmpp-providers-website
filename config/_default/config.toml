@@ -1,0 +1,18 @@
+baseURL = "https://providers.xmpp.net/"
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+title = "XMPP Providers"
+canonifyurls = true
+disableHugoGeneratorInject = true
+Paginate = 10
+
+defaultContentLanguage = "en"
+languageCode = "en-us"
+theme = "xmpp-providers"
+enableEmoji = true
+
+[Params]
+  subtitle = "Subtitle"
+  hideAuthor = false
+  dateFormat = "January 2, 2006"
