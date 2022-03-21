@@ -15,8 +15,8 @@
         {{ range $provider }}
             <span class="text-muted">
                 since 
-                {{ if .onlineSince }}
-                    {{ .onlineSince | dateFormat "Jan 2, 2006" }}
+                {{ if .since }}
+                    {{ .since | dateFormat "Jan 2, 2006" }}
                 {{ else }}
                     ?
                 {{ end }}
@@ -429,12 +429,12 @@
                                             Group chat support address missing
                                         </li>
                                     {{ end }}
-                                    {{ if .onlineSince }}
+                                    {{ if .since }}
                                         <li>
-                                            {{ if eq (string .onlineSince) "-1" }}
+                                            {{ if eq (string .since) "-1" }}
                                                 Foundation date is unknown
                                             {{ else }}
-                                                Provider is only online since {{ .onlineSince }} days
+                                                Provider is only online since {{ .since }} days
                                             {{ end }}
                                         </li>
                                     {{ end }}
