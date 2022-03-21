@@ -61,6 +61,21 @@
                                         <table>
                                             <tr>
                                                 <td>
+                                                    <i class="fa-solid fa-globe px-2 text-muted"></i>
+                                                </td>
+                                                <td>
+                                                    Website:
+                                                    {{ if .website }}
+                                                        {{ range $lang, $address := .website }}
+                                                            <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>&nbsp;
+                                                        {{ end }}
+                                                    {{ else }}
+                                                        ?
+                                                    {{ end }}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
                                                     <i class="fa-solid fa-dollar-sign px-2 text-muted"></i>
                                                 </td>
                                                 <td>
