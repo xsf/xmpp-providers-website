@@ -4,3 +4,6 @@
     cursor: help;
     color: var(--bs-body-color);
 }
+.badge-rating:hover {
+    box-shadow: 0 0 0 0.15rem rgb(108 117 125 / 50%)
+}
