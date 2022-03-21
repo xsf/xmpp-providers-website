@@ -146,12 +146,12 @@
                     </td>
                     <td>
                         {{ if .passwordReset }}
-                            You can reset your password online:
+                            You can reset your password:
                             {{ range $lang, $address := .passwordReset }}
                                 <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>&nbsp;
                             {{ end }}
                         {{ else }}
-                            You <em>cannot</em> reset your password online
+                            You <em>cannot</em> reset your password
                         {{ end }}
                     </td>
                 </tr>
