@@ -1,6 +1,7 @@
 {{ $provider_name := .Get "provider" }}
 {{ $providers_data := .Site.Data.providersC }}
 {{ $provider := where $providers_data ".jid" "==" $provider_name }}
+{{ $permalink := .Page.Permalink }}
 
 {{ $category_criteria := "" }}
 {{ range $index, $data := .Site.Data.results }}
@@ -88,7 +89,7 @@
                     <td>
                         <a href="/faq#bus-factor" class="abbr">Bus factor</a>:
                         {{ if eq (string .busFactor) "-1" }}
-                            ?
+                            unknown
                         {{ else }}
                             {{ .busFactor }} person(s)
                         {{ end }}
@@ -334,116 +335,127 @@
             {{ if ne .category "A" }}
                 <div class="row justify-content-center">
                     <div class="col-sm-10">
-                        <b>Why not category "A"?</b>
+                        <b>Why not category "A"</b>
                         {{ range $category, $data := $category_criteria }}
                             {{ if eq $category "A" }}
                                 <ul>
-                                    {{ if .inBandRegistration }}
+                                {{ range $key, $value := $data }}
+                                    {{ if eq $key "inBandRegistration" }}
                                         <li>
                                             In Band Registration (<a href="/faq#in-band-registration" class="abbr">IBR</a>) is not available
                                         </li>
                                     {{ end }}
-                                    {{ if .ratingXmppComplianceTester }}
+                                    {{ if eq $key "ratingXmppComplianceTester" }}
                                         <li>
-                                            Compliance Tester result is {{ .ratingXmppComplianceTester }}
+                                            Compliance Tester result is {{ $value }}
                                         </li>
                                     {{ end }}
-                                    {{ if .ratingImObservatoryClientToServer }}
+                                    {{ if eq $key "ratingImObservatoryClientToServer" }}
                                         <li>
-                                            IM Observatory (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>) result is {{ .ratingImObservatoryClientToServer }}
+                                            IM Observatory (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>) result is {{ $value }}
                                         </li>
                                     {{ end }}
-                                    {{ if .ratingImObservatoryServerToServer }}
+                                    {{ if eq $key "ratingImObservatoryServerToServer" }}
                                         <li>
-                                            IM Observatory (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>) result is {{ .ratingImObservatoryServerToServer }}
+                                            IM Observatory (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>) result is {{ $value }}
                                         </li>
                                     {{ end }}
-                                    {{ if .maximumHttpFileUploadFileSize }}
+                                    {{ if eq $key "maximumHttpFileUploadFileSize" }}
                                         <li>
-                                            {{ if eq (string .maximumHttpFileUploadFileSize) "-1" }}
+                                            {{ if eq (string $value) "-1" }}
                                                 File size limit is unknown
                                             {{ else }}
-                                                File size is limited to {{ .maximumHttpFileUploadFileSize }} MB
+                                                File size is limited to {{ $value }} MB
                                             {{ end }}
                                         </li>
                                     {{ end }}
-                                    {{ if .maximumHttpFileUploadTotalSize }}
+                                    {{ if eq $key "maximumHttpFileUploadTotalSize" }}
                                         <li>
-                                            {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
+                                            {{ if eq (string $value) "-1" }}
                                                 Total file storage limit is unknown
                                             {{ else }}
-                                                Total file storage is limited to {{ .maximumHttpFileUploadTotalSize }} MB
+                                                Total file storage is limited to {{ $value }} MB
                                             {{ end }}
                                         </li>
                                     {{ end }}
-                                    {{ if .maximumHttpFileUploadStorageTime }}
+                                    {{ if eq $key "maximumHttpFileUploadStorageTime" }}
                                         <li>
-                                            {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
+                                            {{ if eq (string $value) "-1" }}
                                                 File retention time limit is unknown
                                             {{ else }}
-                                                File retention time is limited to {{ .maximumHttpFileUploadStorageTime }} days
+                                                File retention time is limited to {{ $value }} days
                                             {{ end }}
                                         </li>
                                     {{ end }}
-                                    {{ if .maximumMessageArchiveManagementStorageTime }}
+                                    {{ if eq $key "maximumMessageArchiveManagementStorageTime" }}
                                         <li>
-                                            {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
+                                            {{ if eq (string $value) "-1" }}
                                                 Message storage limit is unknown
                                             {{ else }}
-                                                Message storage is limited to {{ .maximumMessageArchiveManagementStorageTime }} days
+                                                Message storage is limited to {{ $value }} days
                                             {{ end }}
                                         </li>
                                     {{ end }}
-                                    {{ if .professionalHosting }}
+                                    {{ if eq $key "professionalHosting" }}
                                         <li>
                                             No professional hosting
                                         </li>
                                     {{ end }}
-                                    {{ if .freeOfCharge }}
+                                    {{ if eq $key "freeOfCharge" }}
                                         <li>
                                             Not free of change
                                         </li>
                                     {{ end }}
-                                    {{ if .legalNotice }}
+                                    {{ if eq $key "legalNotice" }}
                                         <li>
                                             Legal notice is missing
                                         </li>
                                     {{ end }}
-                                    {{ if .serverLocations }}
+                                    {{ if eq $key "serverLocations" }}
                                         <li>
                                             Server location is unknown
                                         </li>
                                     {{ end }}
-                                    {{ if .emailSupport }}
+                                    {{ if eq $key "emailSupport" }}
                                         <li>
                                             Email support address missing
                                         </li>
                                     {{ end }}
-                                    {{ if .chatSupport }}
+                                    {{ if eq $key "chatSupport" }}
                                         <li>
                                             Chat support address missing
                                         </li>
                                     {{ end }}
-                                    {{ if .groupChatSupport }}
+                                    {{ if eq $key "groupChatSupport" }}
                                         <li>
                                             Group chat support address missing
                                         </li>
                                     {{ end }}
-                                    {{ if .since }}
+                                    {{ if eq $key "since" }}
                                         <li>
-                                            {{ if eq (string .since) "-1" }}
+                                            {{ if eq (string $value) "-1" }}
                                                 Foundation date is unknown
                                             {{ else }}
-                                                Provider is only online since {{ .since }} days
+                                                Provider is only online since {{ $value }} days
                                             {{ end }}
                                         </li>
                                     {{ end }}
+                                {{ end }}
                                 </ul>
                             {{ end }}
                         {{ end }}
                     </div>
                 </div>
             {{ end }}
+        </div>
+    </div>
+    <div class="row justify-content-center pt-3">
+        <div class="col-sm-10 text-center">
+            <a href="{{ .Permalink }}"><img src="/badges/{{ $provider_name }}.svg"></a>
+            <div class="input-group my-3">
+                <span class="input-group-text" id="copy-button">Badge URL</span>
+                <input type="text" class="form-control" aria-label="Badge URL" aria-describedby="copy-button" value='<a href="{{ $permalink }}"><img src="/badges/{{ $provider_name }}.svg"></a>'>
+            </div>
         </div>
     </div>
     <div class="row pt-3">

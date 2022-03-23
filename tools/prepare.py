@@ -10,57 +10,78 @@ import requests
 
 DOWNLOAD_PATH = Path('downloads')
 DATA_PATH = Path('data')
+BADGES_PATH = Path('static/badges')
 PROVIDERS_JSON_PATH = DATA_PATH / 'results'
 PROVIDERS_PAGES_PATH = Path('content/provider')
 PROVIDERS_DATA_URL = 'https://invent.kde.org/melvo/xmpp-providers/' \
     '-/jobs/artifacts/master/download/?job=filtered-provider-lists'
+BADGES_DATA_URL = 'https://invent.kde.org/melvo/xmpp-providers/' \
+    '-/jobs/artifacts/master/download/?job=badges'
 MD_FRONTMATTER = '''---\ntitle: %s\ndate: %s\n---\n
 {{< provider-details provider="%s">}}
 '''
 
 def status_ok(status_code: int) -> bool:
-    '''Check if HTTP status code is in 200/300 region'''
-    # Status codes ranging from 200 (OK) to 300 (redirects) are okay
-    if 200 >= status_code < 400:
-        return True
-    return False
+    '''
+    Check if HTTP status code is ok (i.e. in 200/300 region)
+    '''
+    return 200 >= status_code < 400
+
+
+def prepare_directory(path: Path) -> None:
+    '''
+    Remove path and containing files if it exists, then recreate path
+    '''
+    if path.exists() and path.is_dir():
+        shutil.rmtree(path)
+        os.mkdir(path)
+    else:
+        os.mkdir(path)
 
 
 def download_data_files() -> None:
-    '''Download and prepare provider data files'''
-    if DOWNLOAD_PATH.exists() and DOWNLOAD_PATH.is_dir():
-        shutil.rmtree(DOWNLOAD_PATH)
-        os.mkdir(DOWNLOAD_PATH)
-    else:
-        os.mkdir(DOWNLOAD_PATH)
-
-    if DATA_PATH.exists() and DATA_PATH.is_dir():
-        shutil.rmtree(DATA_PATH)
-        os.mkdir(DATA_PATH)
-    else:
-        os.mkdir(DATA_PATH)
+    '''
+    Download and prepare provider data files
+    '''
+    prepare_directory(DOWNLOAD_PATH)
+    prepare_directory(DATA_PATH)
 
     data_request = requests.get(PROVIDERS_DATA_URL)
     if not status_ok(data_request.status_code):
         sys.exit(f'Error while trying to download from {PROVIDERS_DATA_URL}')
 
-    with open(f'{DOWNLOAD_PATH}/providers_data.zip', 'wb') as providers_data_zip:
+    with open(f'{DOWNLOAD_PATH}/providers_data.zip',
+              'wb') as providers_data_zip:
         providers_data_zip.write(data_request.content)
 
-    with zipfile.ZipFile(f'{DOWNLOAD_PATH}/providers_data.zip', 'r') as zip_file:
-        zip_file.extractall(f'{DOWNLOAD_PATH}/extract')
+    with zipfile.ZipFile(f'{DOWNLOAD_PATH}/providers_data.zip',
+                        'r') as zip_file:
+        zip_file.extractall(f'{DOWNLOAD_PATH}/providers_data')
 
-    shutil.copyfile(f'{DOWNLOAD_PATH}/extract/providers-C.json', f'{DATA_PATH}/providersC.json')
-    shutil.copytree(f'{DOWNLOAD_PATH}/extract/results', f'{DATA_PATH}/results')
+    shutil.copyfile(f'{DOWNLOAD_PATH}/providers_data/providers-C.json',
+                    f'{DATA_PATH}/providersC.json')
+    shutil.copytree(f'{DOWNLOAD_PATH}/providers_data/results',
+                    f'{DATA_PATH}/results')
+
+    badge_request = requests.get(BADGES_DATA_URL)
+    if not status_ok(badge_request.status_code):
+        sys.exit(f'Error while trying to download from {BADGES_DATA_URL}')
+
+    with open(f'{DOWNLOAD_PATH}/badges_data.zip',
+              'wb') as badge_data_zip:
+        badge_data_zip.write(badge_request.content)
+
+    with zipfile.ZipFile(f'{DOWNLOAD_PATH}/badges_data.zip', 'r') as zip_file:
+        zip_file.extractall(f'{DOWNLOAD_PATH}/badges_data')
+
+    shutil.copytree(f'{DOWNLOAD_PATH}/badges_data/badges', f'{BADGES_PATH}')
 
 
 def create_provider_pages() -> None:
-    '''Creates a .md page per provider'''
-    if PROVIDERS_PAGES_PATH.exists() and PROVIDERS_PAGES_PATH.is_dir():
-        shutil.rmtree(PROVIDERS_PAGES_PATH)
-        os.mkdir(PROVIDERS_PAGES_PATH)
-    else:
-        os.mkdir(PROVIDERS_PAGES_PATH)
+    '''
+    Create a .md page per provider
+    '''
+    prepare_directory(PROVIDERS_PAGES_PATH)
 
     today = date.today()
     date_formatted = today.strftime('%Y-%m-%d')
@@ -71,8 +92,10 @@ def create_provider_pages() -> None:
         with open(f'{PROVIDERS_PAGES_PATH}/{filename}.md',
                   'w',
                   encoding='utf8') as md_file:
-            md_file.write(MD_FRONTMATTER % (filename, date_formatted, filename))
+            md_file.write(
+                MD_FRONTMATTER % (filename, date_formatted, filename))
 
 
-download_data_files()
-create_provider_pages()
+if __name__ == '__main__':
+    download_data_files()
+    create_provider_pages()
