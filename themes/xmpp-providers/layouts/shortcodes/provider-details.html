@@ -381,6 +381,7 @@
                         {{ range $category, $data := $category_criteria }}
                             {{ if eq $category "A" }}
                                 <ul>
+                                {{ $support_address_listed := false }}
                                 {{ range $key, $value := $data }}
                                     {{ if eq $key "inBandRegistration" }}
                                         <li>
@@ -458,20 +459,13 @@
                                             Server location is unknown
                                         </li>
                                     {{ end }}
-                                    {{ if eq $key "emailSupport" }}
-                                        <li>
-                                            Email support address missing
-                                        </li>
-                                    {{ end }}
-                                    {{ if eq $key "chatSupport" }}
-                                        <li>
-                                            Chat support address missing
-                                        </li>
-                                    {{ end }}
-                                    {{ if eq $key "groupChatSupport" }}
-                                        <li>
-                                            Group chat support address missing
-                                        </li>
+                                    {{ if or (eq $key "emailSupport") (eq $key "chatSupport") (eq $key "groupChatSupport") }}
+                                        {{ if not $support_address_listed }}
+                                            <li>
+                                                At least one support address is required
+                                            </li>
+                                            {{ $support_address_listed = true }}
+                                        {{ end }}
                                     {{ end }}
                                     {{ if eq $key "since" }}
                                         <li>
