@@ -1,3 +1,6 @@
+a {
+    text-decoration: none;
+}
 .abbr {
     -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted #6c757d;
