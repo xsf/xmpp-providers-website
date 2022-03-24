@@ -1,4 +1,6 @@
-# providers.xmpp.net
+# XMPP Providers Website
+
+[providers.xmpp.net](https://providers.xmpp.net) is a website generated based on data from the [XMPP Providers project](https://invent.kde.org/melvo/xmpp-providers/-/tree/master).
 
 ## Software Requirements
 
@@ -14,9 +16,9 @@ Hugo’s [quickstart](https://gohugo.io/getting-started/quick-start/) page is a 
 To run a development server on your local computer, follow these basic steps:
 
 ```bash
-git clone (add repo here)
+git clone https://github.com/xsf/xmpp-providers-website.git
 # install Hugo
-cd repo
+cd xmpp-providers-website
 ```
 
 Running the server in development mode (reloads whenever a file is changed):
