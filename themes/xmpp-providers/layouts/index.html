@@ -66,8 +66,14 @@
                                                 <td>
                                                     Website:
                                                     {{ if .website }}
+                                                        {{ $len := (len .website) }}
+                                                        {{ $count := 0 }}
                                                         {{ range $lang, $address := .website }}
-                                                            <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>&nbsp;
+                                                            <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                                                            {{ $count = add $count 1 }}
+                                                            {{ if ne $count $len }}
+                                                                |
+                                                            {{ end }}
                                                         {{ end }}
                                                     {{ else }}
                                                         ?
@@ -91,10 +97,16 @@
                                                     <i class="fa-solid fa-location-dot px-2 text-muted"></i>
                                                 </td>
                                                 <td>
-                                                    Server location:
+                                                    Server location(s):
                                                     {{ if .serverLocations }}
-                                                        {{ range .serverLocations }}
-                                                            {{ upper . }}&nbsp;
+                                                        {{ $len := (len .serverLocations) }}
+                                                        {{ $count := 0 }}
+                                                        {{ range $index, $location := .serverLocations }}
+                                                            {{ upper $location }}
+                                                            {{ $count = add $count 1 }}
+                                                            {{ if ne $count $len }}
+                                                                |
+                                                            {{ end }}
                                                         {{ end }}
                                                     {{ else }}
                                                         unknown

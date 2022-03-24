@@ -26,8 +26,14 @@
             <i class="fa-solid fa-globe text-muted"></i>
             <span class="text-muted">Website:</span>
             {{ if .website }}
+                {{ $len := (len .website) }}
+                {{ $count := 0 }}
                 {{ range $lang, $address := .website }}
-                    <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>&nbsp;
+                    <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                    {{ $count = add $count 1 }}
+                    {{ if ne $count $len }}
+                        |
+                    {{ end }}
                 {{ end }}
             {{ else }}
                 ?
@@ -57,10 +63,16 @@
                         <i class="fa-solid fa-location-dot px-2 text-muted"></i>
                     </td>
                     <td>
-                        Server location:
+                        Server location(s):
                         {{ if .serverLocations }}
-                            {{ range .serverLocations }}
-                                {{ upper . }}&nbsp;
+                            {{ $len := (len .serverLocations) }}
+                            {{ $count := 0 }}
+                            {{ range $index, $location := .serverLocations }}
+                                {{ upper $location }}
+                                {{ $count = add $count 1 }}
+                                {{ if ne $count $len }}
+                                    |
+                                {{ end }}
                             {{ end }}
                         {{ else }}
                             unknown
@@ -74,8 +86,14 @@
                     <td>
                         {{ if .legalNotice }}
                             Legal notice:
+                            {{ $len := (len .legalNotice) }}
+                            {{ $count := 0 }}
                             {{ range $lang, $address := .legalNotice }}
                                 <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                                {{ $count = add $count 1 }}
+                                {{ if ne $count $len }}
+                                    |
+                                {{ end }}
                             {{ end }}
                         {{ else }}
                             <span class="text-danger text-opacity-75">No legal notice available</span>
@@ -134,8 +152,14 @@
                             You can only register with this provider using your web browser.
                             {{ if .registrationWebPage }}
                                 <br>Online registration:
+                                {{ $len := (len .registrationWebPage) }}
+                                {{ $count := 0 }}
                                 {{ range $lang, $address := .registrationWebPage }}
-                                    <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>&nbsp;
+                                    <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                                    {{ $count = add $count 1 }}
+                                    {{ if ne $count $len }}
+                                        |
+                                    {{ end }}
                                 {{ end }}
                             {{ end }}
                         {{ end }}
@@ -148,8 +172,14 @@
                     <td>
                         {{ if .passwordReset }}
                             You can reset your password:
+                            {{ $len := (len .passwordReset) }}
+                            {{ $count := 0 }}
                             {{ range $lang, $address := .passwordReset }}
-                                <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>&nbsp;
+                                <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                                {{ $count = add $count 1 }}
+                                {{ if ne $count $len }}
+                                    |
+                                {{ end }}
                             {{ end }}
                         {{ else }}
                             You <em>cannot</em> reset your password
@@ -278,9 +308,13 @@
                             </td>
                             <td class="ps-3">
                                 {{ if .emailSupport }}
+                                    {{ $len := (len .emailSupport) }}
+                                    {{ $count := 0 }}
                                     {{ range $lang, $address := .emailSupport }}
-                                        {{ range $address }}
-                                            <a href="mailto:{{ . }}">{{ upper $lang }}</a>&nbsp;
+                                        <a href="mailto:{{ . }}">{{ upper $lang }}</a>
+                                        {{ $count = add $count 1 }}
+                                        {{ if ne $count $len }}
+                                            |
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
@@ -294,9 +328,13 @@
                             </td>
                             <td class="ps-3">
                                 {{ if .chatSupport }}
+                                    {{ $len := (len .chatSupport) }}
+                                    {{ $count := 0 }}
                                     {{ range $lang, $address := .chatSupport }}
-                                        {{ range $address }}
-                                            <a href="xmpp:{{ . }}">{{ upper $lang }}</a>&nbsp;
+                                        <a href="xmpp:{{ . }}">{{ upper $lang }}</a>
+                                        {{ $count = add $count 1 }}
+                                        {{ if ne $count $len }}
+                                            |
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
@@ -310,9 +348,13 @@
                             </td>
                             <td class="ps-3">
                                 {{ if .groupChatSupport }}
+                                    {{ $len := (len .groupChatSupport) }}
+                                    {{ $count := 0 }}
                                     {{ range $lang, $address := .groupChatSupport }}
-                                        {{ range $address }}
-                                            <a href="xmpp:{{ . }}?join">{{ upper $lang }}</a>&nbsp;
+                                        <a href="xmpp:{{ . }}?join">{{ upper $lang }}</a>
+                                        {{ $count = add $count 1 }}
+                                        {{ if ne $count $len }}
+                                            |
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
