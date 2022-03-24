@@ -1,0 +1,42 @@
+{{ $clients_data := .Site.Data.clients }}
+
+{{ range $client, $data := $clients_data}}
+    <div class="card my-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="/logos/{{ lower $client }}.png" class="img-fluid rounded-start p-4" alt="{{ $client }} logo">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h4 class="card-title">{{ $client }}</h4>
+                    <p class="card-text">
+                        {{ range $key, $value := $data }}
+                            {{ if eq $key "website" }}
+                                <li>
+                                    Website: 
+                                    {{ $len := (len $value.content) }}
+                                    {{ $count := 0 }}
+                                    {{ range $lang, $address := $value.content }}
+                                        <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                                        {{ $count = add $count 1 }}
+                                        {{ if ne $count $len }}
+                                            |
+                                        {{ end }}
+                                    {{ end }}
+                                </li>
+                            {{ end }}
+                            {{ if eq $key "since" }}
+                                <li>
+                                    since version {{ $value.content }}
+                                </li>
+                            {{ end }}
+                        {{ end }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{{ end }}
+</ul>

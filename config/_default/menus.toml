@@ -3,6 +3,10 @@
     url = "/faq"
     weight = 1
 [[main]]
+    name = "Integration"
+    url = "/Integration"
+    weight = 2
+[[main]]
     name = "About"
     url = "/about"
-    weight = 2
+    weight = 3
