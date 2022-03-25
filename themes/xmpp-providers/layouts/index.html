@@ -20,7 +20,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-{{ $index }}">
                             <button class="accordion-button {{ if ne $index 0 }}collapsed{{ end }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $index }}" aria-expanded="{{ if eq $index 0 }}true{{ else }}false{{ end }}" aria-controls="collapse-{{ $index }}">
-                                <span class="badge bg-{{ if eq .category "A" }}success{{ else if eq .category "B" }}warning{{ else }}danger{{ end }}">{{ .category }}</span>
+                                <span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else }}category-c{{ end }}">{{ .category }}</span>
                                 <span class="text-body">&nbsp;&nbsp;{{ .jid }}</span>
                             </button>
                         </h2>

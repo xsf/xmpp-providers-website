@@ -10,3 +10,12 @@ a {
 .badge-rating:hover {
     box-shadow: 0 0 0 0.15rem rgb(108 117 125 / 50%)
 }
+.category-a {
+    background-color: rgb(8, 140, 72);
+}
+.category-b {
+    background-color: rgb(95, 186, 113);
+}
+.category-c {
+    background-color: rgb(191, 154, 31);
+}
