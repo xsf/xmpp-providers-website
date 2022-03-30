@@ -64,8 +64,8 @@ def download_data_files() -> None:
                         'r') as zip_file:
         zip_file.extractall(f'{DOWNLOAD_PATH}/providers_data')
 
-    shutil.copyfile(f'{DOWNLOAD_PATH}/providers_data/providers-C.json',
-                    f'{DATA_PATH}/providersC.json')
+    shutil.copyfile(f'{DOWNLOAD_PATH}/providers_data/providers-D.json',
+                    f'{DATA_PATH}/providers.json')
     shutil.copytree(f'{DOWNLOAD_PATH}/providers_data/results',
                     f'{DATA_PATH}/results')
 

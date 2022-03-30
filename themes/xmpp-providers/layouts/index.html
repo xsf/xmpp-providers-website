@@ -16,11 +16,11 @@
             </div>
             <a id="providers"><h2 class="pb-2">Providers</h2></a>
             <div class="accordion" id="providers-accordion">
-                {{ range $index, $content := sort .Site.Data.providersC ".category" }}
+                {{ range $index, $content := sort .Site.Data.providers ".category" }}
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-{{ $index }}">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $index }}" aria-expanded="false" aria-controls="collapse-{{ $index }}">
-                                <span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else }}category-c{{ end }}">{{ .category }}</span>
+                                <span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span>
                                 <span class="text-body">&nbsp;&nbsp;{{ .jid }}</span>
                             </button>
                         </h2>

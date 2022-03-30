@@ -11,11 +11,14 @@ a {
     box-shadow: 0 0 0 0.15rem rgb(108 117 125 / 50%)
 }
 .category-a {
-    background-color: rgb(8, 140, 72);
+    background-color: rgb(67, 150, 57);
 }
 .category-b {
-    background-color: rgb(95, 186, 113);
+    background-color: rgb(160, 206, 103);
 }
 .category-c {
-    background-color: rgb(191, 154, 31);
+    background-color: rgb(233, 109, 31);
+}
+.category-d {
+    background-color: rgb(217, 16, 30);
 }
