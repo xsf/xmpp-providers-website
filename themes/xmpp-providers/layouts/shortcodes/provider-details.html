@@ -1,5 +1,5 @@
 {{ $provider_name := .Get "provider" }}
-{{ $providers_data := .Site.Data.providersC }}
+{{ $providers_data := .Site.Data.providers }}
 {{ $provider := where $providers_data ".jid" "==" $provider_name }}
 {{ $permalink := .Page.Permalink }}
 
@@ -371,7 +371,7 @@
         <div class="col-sm-10 p-4 bg-light rounded shadow">
             <div class="row pb-3 text-center">
                 <h3>Provider Category</h3>
-                <h2><span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else }}category-c{{ end }}">{{ .category }}</span></h2>
+                <h2><span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span></h2>
                 <a href="/faq#category" class="abbr small text-muted">Categories explained</a>
             </div>
             {{ if ne .category "A" }}
