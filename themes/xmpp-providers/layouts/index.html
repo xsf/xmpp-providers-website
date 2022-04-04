@@ -19,12 +19,12 @@
                 {{ range $index, $content := sort .Site.Data.providersC ".category" }}
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-{{ $index }}">
-                            <button class="accordion-button {{ if ne $index 0 }}collapsed{{ end }}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $index }}" aria-expanded="{{ if eq $index 0 }}true{{ else }}false{{ end }}" aria-controls="collapse-{{ $index }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $index }}" aria-expanded="false" aria-controls="collapse-{{ $index }}">
                                 <span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else }}category-c{{ end }}">{{ .category }}</span>
                                 <span class="text-body">&nbsp;&nbsp;{{ .jid }}</span>
                             </button>
                         </h2>
-                        <div id="collapse-{{ $index }}" class="accordion-collapse collapse {{ if eq $index 0 }}show{{ end }}" aria-labelledby="heading-{{ $index }}" data-bs-parent="#providers-accordion">
+                        <div id="collapse-{{ $index }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ $index }}" data-bs-parent="#providers-accordion">
                             <div class="accordion-body bg-light">
                                 <div class="row">
                                     <div class="col-sm-6">
