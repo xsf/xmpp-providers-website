@@ -2,7 +2,7 @@
 title: FAQ
 ---
 
-## Frequently Asked Questions
+# Frequently Asked Questions
 
 ### Category
 
