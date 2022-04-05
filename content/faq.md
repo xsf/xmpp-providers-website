@@ -4,9 +4,9 @@ title: FAQ
 
 # Frequently Asked Questions
 
-### Category
+#### How are categories determined?
 
-Read more about {{< external-link text="how categories are determined" url="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/README.md#categories">}}.
+Categories are determined by using a catalog of various parameters {{< external-link text="explained in the XMPP Providers project" url="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/README.md#categories">}}.
 
 {{< spacer size="middle" >}}
 
@@ -20,11 +20,11 @@ The term _bus factor_ describes the minimum number of people that have to leave 
 
 #### Client to Server
 
-Client to Server (C2S) explanation
+The Client to Server (C2S) connection is used for communication between your app and your provider’s server.
 
 #### HTTP Upload
 
-{{< external-link text="XEP-0363 HTTP File Upload" url="https://xmpp.org/extensions/xep-0363.html" >}} explanation
+{{< external-link text="XEP-0363 HTTP File Upload" url="https://xmpp.org/extensions/xep-0363.html" >}} is a standard for transferring files between you and others.
 
 #### In Band Registration
 
@@ -32,4 +32,4 @@ Client to Server (C2S) explanation
 
 #### Server to Server
 
-Server to Server (S2S) explanation
+Server to Server (S2S) connections are used for communication between your provider’s server and servers of your contacts for example.
