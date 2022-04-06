@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2022 XMPP Providers Team
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 '''Download / prepare / process xmpp providers data'''
 from datetime import date
 from pathlib import Path
