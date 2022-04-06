@@ -35,7 +35,7 @@
                                                     Compliance Tester
                                                 </td>
                                                 <td class="ps-3">
-                                                    <a href="https://compliance.conversations.im/server/{{ .jid }}/" class="badge badge-rating text-light text-decoration-none {{ if eq (string .ratingXmppComplianceTester) "100" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingXmppComplianceTester }}</a>
+                                                    <a href="https://compliance.conversations.im/server/{{ .jid }}/" class="badge badge-rating text-light text-decoration-none {{ if gt .ratingXmppComplianceTester 99 }}category-a{{ else if gt .ratingXmppComplianceTester 89 }}category-c{{ else }}category-d{{ end }}" target="_blank">{{ .ratingXmppComplianceTester }}</a>
                                                 </td>
                                             </tr>
                                             <tr>
