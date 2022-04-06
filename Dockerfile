@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2022 XMPP Providers Team
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Dockerfile to build a docker image for xmpp-providers
 
 FROM debian:bullseye
