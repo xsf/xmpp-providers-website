@@ -192,7 +192,7 @@
                     </td>
                     <td>
                         {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
-                            Message storage duration is unknown
+                            Message storage duration is unknown or lower than 1 day
                         {{ else if eq (string .maximumMessageArchiveManagementStorageTime) "0" }}
                             Unlimited message storage
                         {{ else }}
@@ -253,7 +253,7 @@
                             </td>
                             <td class="ps-3">
                                 {{ if eq (string .maximumHttpFileUploadFileSize) "-1" }}
-                                    ?
+                                    unknown or &lt; 1 MB
                                 {{ else if eq (string .maximumHttpFileUploadFileSize) "0" }}
                                     no limit
                                 {{ else }}
@@ -267,7 +267,7 @@
                             </td>
                             <td class="ps-3">
                                 {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
-                                    ?
+                                    unknown or &lt; 1 MB
                                 {{ else if eq (string .maximumHttpFileUploadTotalSize) "0" }}
                                     no limit
                                 {{ else }}
@@ -281,7 +281,7 @@
                             </td>
                             <td class="ps-3">
                                 {{ if eq (string .maximumHttpFileUploadStorageTime) "-1" }}
-                                    ?
+                                    unknown or &lt; 1 day
                                 {{ else if eq (string .maximumHttpFileUploadStorageTime) "0" }}
                                     no limit
                                 {{ else }}
@@ -406,7 +406,7 @@
                                     {{ if eq $key "maximumHttpFileUploadFileSize" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                File size limit is unknown
+                                                File size limit is unknown or lower than 1 MB
                                             {{ else }}
                                                 File size is limited to {{ $value }} MB
                                             {{ end }}
@@ -415,7 +415,7 @@
                                     {{ if eq $key "maximumHttpFileUploadTotalSize" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Total file storage limit is unknown
+                                                Total file storage limit is unknown or lower than 1 MB
                                             {{ else }}
                                                 Total file storage is limited to {{ $value }} MB
                                             {{ end }}
@@ -424,7 +424,7 @@
                                     {{ if eq $key "maximumHttpFileUploadStorageTime" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                File retention time limit is unknown
+                                                File retention time limit is unknown or lower than 1 day
                                             {{ else }}
                                                 File retention time is limited to {{ $value }} days
                                             {{ end }}
@@ -433,7 +433,7 @@
                                     {{ if eq $key "maximumMessageArchiveManagementStorageTime" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Message storage limit is unknown
+                                                Message storage limit is unknown or lower than 1 day
                                             {{ else }}
                                                 Message storage is limited to {{ $value }} days
                                             {{ end }}
