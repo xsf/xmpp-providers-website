@@ -35,3 +35,6 @@ a {
     color: var(--bs-body-color);
     filter: brightness(3.0);
 }
+.navbar-brand:hover {
+    color:rgb(100, 100, 100) !important;
+}
