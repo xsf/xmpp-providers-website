@@ -472,7 +472,10 @@
                                             {{ if eq (string $value) "-1" }}
                                                 Foundation date is unknown
                                             {{ else }}
-                                                Provider is only online since {{ $value }} days
+                                                Provider is only online since
+                                                {{ $diff := now.Sub ($value | time) }}
+                                                {{ math.Round (div $diff.Hours 24) }}
+                                                days
                                             {{ end }}
                                         </li>
                                     {{ end }}
