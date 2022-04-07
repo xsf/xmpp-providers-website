@@ -28,3 +28,10 @@ a {
 .category-d {
     background-color: rgb(217, 16, 30);
 }
+.footer-link {
+    color: var(--bs-body-color);
+}
+.footer-link:hover {
+    color: var(--bs-body-color);
+    filter: brightness(3.0);
+}
