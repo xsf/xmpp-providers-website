@@ -462,7 +462,7 @@
                                     {{ if or (eq $key "emailSupport") (eq $key "chatSupport") (eq $key "groupChatSupport") }}
                                         {{ if not $support_address_listed }}
                                             <li>
-                                                At least one support address is required
+                                                No support address
                                             </li>
                                             {{ $support_address_listed = true }}
                                         {{ end }}
