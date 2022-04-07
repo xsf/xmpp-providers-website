@@ -1,0 +1,109 @@
+{{ range $index, $content := . }}
+    <div class="accordion-item" data-provider="{{ .jid }}" data-category="{{ .category }}">
+        <h2 class="accordion-header" id="heading-{{ $index }}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $index }}" aria-expanded="false" aria-controls="collapse-{{ $index }}">
+                <span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span>
+                <span class="text-body">&nbsp;&nbsp;{{ .jid }}</span>
+            </button>
+        </h2>
+        <div id="collapse-{{ $index }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ $index }}" data-bs-parent="#providers-accordion">
+            <div class="accordion-body bg-light">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <b>Compatibility / Security</b>
+                        <table>
+                            <tr>
+                                <td>
+                                    Compliance Tester
+                                </td>
+                                <td class="ps-3">
+                                    <a href="https://compliance.conversations.im/server/{{ .jid }}/" class="badge badge-rating text-light text-decoration-none {{ if gt .ratingXmppComplianceTester 99 }}category-a{{ else if gt .ratingXmppComplianceTester 89 }}category-c{{ else }}category-d{{ end }}" target="_blank">{{ .ratingXmppComplianceTester }}</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    IM Observatory (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>)
+                                </td>
+                                <td class="ps-3">
+                                    <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=client" class="badge badge-rating text-light text-decoration-none {{ if eq .ratingImObservatoryClientToServer "A" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingImObservatoryClientToServer }}</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    IM Observatory (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>)
+                                </td>
+                                <td class="ps-3">
+                                    <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=server" class="badge badge-rating text-light text-decoration-none {{ if eq .ratingImObservatoryServerToServer "A" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingImObservatoryServerToServer }}</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-sm-6">
+                        <b>Service</b>
+                        <table>
+                            <tr>
+                                <td class="text-center">
+                                    <i class="fa-solid fa-globe px-2 text-muted"></i>
+                                </td>
+                                <td>
+                                    Website:
+                                    {{ if .website }}
+                                        {{ $len := (len .website) }}
+                                        {{ $count := 0 }}
+                                        {{ range $lang, $address := .website }}
+                                            <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                                            {{ $count = add $count 1 }}
+                                            {{ if ne $count $len }}
+                                                |
+                                            {{ end }}
+                                        {{ end }}
+                                    {{ else }}
+                                        ?
+                                    {{ end }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <i class="fa-solid fa-dollar-sign px-2 text-muted"></i>
+                                </td>
+                                <td>
+                                    {{ if .freeOfCharge }}
+                                        Free of charge
+                                    {{ else }}
+                                        Paid
+                                    {{ end }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    <i class="fa-solid fa-location-dot px-2 text-muted"></i>
+                                </td>
+                                <td>
+                                    Server location(s):
+                                    {{ if .serverLocations }}
+                                        {{ $len := (len .serverLocations) }}
+                                        {{ $count := 0 }}
+                                        {{ range $index, $location := .serverLocations }}
+                                            {{ upper $location }}
+                                            {{ $count = add $count 1 }}
+                                            {{ if ne $count $len }}
+                                                |
+                                            {{ end }}
+                                        {{ end }}
+                                    {{ else }}
+                                        unknown
+                                    {{ end }}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="row justify-content-center pt-3">
+                    <div class="col-sm-6 d-grid text-center">
+                        <a class="btn btn-outline-secondary btn-sm" href="/provider/{{ .jid }}" role="button">Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{ end }}
