@@ -32,7 +32,7 @@
                     <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
                     {{ $count = add $count 1 }}
                     {{ if ne $count $len }}
-                        |
+                        <span class="text-muted">|</span>
                     {{ end }}
                 {{ end }}
             {{ else }}
@@ -71,7 +71,7 @@
                                 {{ upper $location }}
                                 {{ $count = add $count 1 }}
                                 {{ if ne $count $len }}
-                                    |
+                                    <span class="text-muted">|</span>
                                 {{ end }}
                             {{ end }}
                         {{ else }}
@@ -92,7 +92,7 @@
                                 <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
                                 {{ $count = add $count 1 }}
                                 {{ if ne $count $len }}
-                                    |
+                                    <span class="text-muted">|</span>
                                 {{ end }}
                             {{ end }}
                         {{ else }}
@@ -158,7 +158,7 @@
                                     <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
                                     {{ $count = add $count 1 }}
                                     {{ if ne $count $len }}
-                                        |
+                                        <span class="text-muted">|</span>
                                     {{ end }}
                                 {{ end }}
                             {{ end }}
@@ -178,7 +178,7 @@
                                 <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
                                 {{ $count = add $count 1 }}
                                 {{ if ne $count $len }}
-                                    |
+                                    <span class="text-muted">|</span>
                                 {{ end }}
                             {{ end }}
                         {{ else }}
@@ -314,7 +314,7 @@
                                         <a href="mailto:{{ . }}">{{ upper $lang }}</a>
                                         {{ $count = add $count 1 }}
                                         {{ if ne $count $len }}
-                                            |
+                                            <span class="text-muted">|</span>
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
@@ -334,7 +334,7 @@
                                         <a href="xmpp:{{ . }}">{{ upper $lang }}</a>
                                         {{ $count = add $count 1 }}
                                         {{ if ne $count $len }}
-                                            |
+                                            <span class="text-muted">|</span>
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
@@ -354,7 +354,7 @@
                                         <a href="xmpp:{{ . }}?join">{{ upper $lang }}</a>
                                         {{ $count = add $count 1 }}
                                         {{ if ne $count $len }}
-                                            |
+                                            <span class="text-muted">|</span>
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
