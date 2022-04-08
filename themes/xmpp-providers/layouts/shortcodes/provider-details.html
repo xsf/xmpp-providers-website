@@ -469,14 +469,7 @@
                                     {{ end }}
                                     {{ if eq $key "since" }}
                                         <li>
-                                            {{ if eq (string $value) "-1" }}
-                                                Foundation date is unknown
-                                            {{ else }}
-                                                Provider is only online or listed since
-                                                {{ $diff := now.Sub ($value | time) }}
-                                                {{ math.Round (div $diff.Hours 24) }}
-                                                days
-                                            {{ end }}
+                                            Provider is too young or not listed long enough
                                         </li>
                                     {{ end }}
                                 {{ end }}
