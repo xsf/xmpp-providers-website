@@ -483,10 +483,10 @@
     </div>
     <div class="row justify-content-center pt-3">
         <div class="col-sm-10 text-center">
-            <a href="{{ .Permalink }}"><img src="/badges/{{ $provider_name }}.svg"></a>
+            <a href="{{ .Permalink }}"><img src="/badge/{{ $provider_name }}.svg"></a>
             <div class="input-group my-3">
                 <span class="input-group-text" id="badge-desc">Link</span>
-                <input id="badge_link_input" autocomplete="off" type="text" class="form-control form-control-sm" aria-label="Badge URL" aria-describedby="badge-desc" value='<a href="{{ $permalink }}"><img src="/badges/{{ $provider_name }}.svg"></a>'>
+                <input id="badge_link_input" autocomplete="off" type="text" class="form-control form-control-sm" aria-label="Badge URL" aria-describedby="badge-desc" value='<a href="{{ $permalink }}"><img src="/badge/{{ $provider_name }}.svg"></a>'>
                 <button class="btn btn-outline-secondary" type="button" id="badge_link_copy" title="Copy"><i class="fa-solid fa-copy"></i></button>
             </div>
         </div>

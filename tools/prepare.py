@@ -14,7 +14,7 @@ import requests
 
 DOWNLOAD_PATH = Path('downloads')
 DATA_PATH = Path('data')
-BADGES_PATH = Path('static/badges')
+BADGES_PATH = Path('static/badge')
 PROVIDERS_JSON_PATH = DATA_PATH / 'results'
 PROVIDERS_PAGES_PATH = Path('content/provider')
 
@@ -85,7 +85,7 @@ def download_data_files() -> None:
     with zipfile.ZipFile(f'{DOWNLOAD_PATH}/badges_data.zip', 'r') as zip_file:
         zip_file.extractall(f'{DOWNLOAD_PATH}/badges_data')
 
-    shutil.copytree(f'{DOWNLOAD_PATH}/badges_data/badges', 
+    shutil.copytree(f'{DOWNLOAD_PATH}/badges_data/badges',
                     BADGES_PATH,
                     dirs_exist_ok=True)
 
