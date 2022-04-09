@@ -63,7 +63,7 @@
                         <i class="fa-solid fa-location-dot px-2 text-muted"></i>
                     </td>
                     <td>
-                        Server location(s):
+                        Server / Data location(s):
                         {{ if .serverLocations }}
                             {{ $len := (len .serverLocations) }}
                             {{ $count := 0 }}
@@ -138,7 +138,6 @@
                     </td>
                 </tr>
             </table>
-
             <h2>Account</h2>
             <table class="mb-4">
                 <tr>
@@ -148,17 +147,21 @@
                     <td>
                         {{ if .inBandRegistration }}
                             You can register on this provider directly via your XMPP app
-                        {{ else if .registrationWebPage }}
-                            You can register on this provider only via a web browser:
+                        {{ end }}
+                        {{ if .registrationWebPage }}
+                            {{ if .inBandRegistration }}
+                                <br>
+                            {{ end }}
+                            You can register on this provider via a web browser:
                             {{ $len := (len .registrationWebPage) }}
-                                {{ $count := 0 }}
-                                {{ range $lang, $address := .registrationWebPage }}
-                                    <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
-                                    {{ $count = add $count 1 }}
-                                    {{ if ne $count $len }}
-                                        <span class="text-muted">|</span>
-                                    {{ end }}
+                            {{ $count := 0 }}
+                            {{ range $lang, $address := .registrationWebPage }}
+                                <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                                {{ $count = add $count 1 }}
+                                {{ if ne $count $len }}
+                                    <span class="text-muted">|</span>
                                 {{ end }}
+                            {{ end }}
                         {{ else }}
                             You cannot register on this provider
                         {{ end }}
@@ -191,18 +194,65 @@
                     </td>
                     <td>
                         {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
-                            Message storage duration is unknown or lower than 1 day
+                            Messages are stored for an unknown time or less than 1 day
                         {{ else if eq (string .maximumMessageArchiveManagementStorageTime) "0" }}
-                            Unlimited message storage
+                            Messages are stored for an unlimited time
                         {{ else }}
                             Messages are stored for {{ .maximumMessageArchiveManagementStorageTime }} days
                         {{ end }}
                     </td>
                 </tr>
             </table>
+            <h2>File Sharing (<a href="/faq#http-upload" class="abbr">HTTP Upload</a>)</h2>
+            <table class="mb-4">
+                <tr>
+                    <td class="text-center">
+                        <i class="fa-solid fa-cloud-arrow-up px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        Allows to share files up to
+                        {{ if eq (string .maximumHttpFileUploadFileSize) "-1" }}
+                            an unknown size or less than 1 MB
+                        {{ else if eq (string .maximumHttpFileUploadFileSize) "0" }}
+                            an unlimited size
+                        {{ else }}
+                            {{ .maximumHttpFileUploadFileSize }} MB
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <i class="fa-solid fa-cloud-arrow-down px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        Shared files are stored up to
+                        {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
+                            an unknown size or less than 1 MB
+                        {{ else if eq (string .maximumHttpFileUploadTotalSize) "0" }}
+                            an unlimited size
+                        {{ else }}
+                            {{ .maximumHttpFileUploadTotalSize }} MB
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <i class="fa-solid fa-clock-rotate-left px-2 text-muted"></i>
+                    </td>
+                    <td>
+                        Stores files for
+                        {{ if eq (string .maximumHttpFileUploadStorageTime) "-1" }}
+                            an unknown time or less than 1 day
+                        {{ else if eq (string .maximumHttpFileUploadStorageTime) "0" }}
+                            an unlimited time
+                        {{ else }}
+                            {{ .maximumHttpFileUploadStorageTime }} days
+                        {{ end }}
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
-
     <div class="row pt-3">
         <div class="col-sm-6 pb-4">
             <div class="card">
@@ -242,62 +292,7 @@
         <div class="col-sm-6 pb-4">
             <div class="card">
                 <div class="card-header">
-                    File Transfer (<a href="/faq#http-upload" class="abbr">HTTP Upload</a>)
-                </div>
-                <div class="card-body">
-                    <table>
-                        <tr>
-                            <td>
-                                Size per file (max)
-                            </td>
-                            <td class="ps-3">
-                                {{ if eq (string .maximumHttpFileUploadFileSize) "-1" }}
-                                    unknown or &lt; 1 MB
-                                {{ else if eq (string .maximumHttpFileUploadFileSize) "0" }}
-                                    no limit
-                                {{ else }}
-                                    {{ .maximumHttpFileUploadFileSize }} MB
-                                {{ end }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Total storage (max)
-                            </td>
-                            <td class="ps-3">
-                                {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
-                                    unknown or &lt; 1 MB
-                                {{ else if eq (string .maximumHttpFileUploadTotalSize) "0" }}
-                                    no limit
-                                {{ else }}
-                                    {{ .maximumHttpFileUploadTotalSize }} MB
-                                {{ end }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                File retention time
-                            </td>
-                            <td class="ps-3">
-                                {{ if eq (string .maximumHttpFileUploadStorageTime) "-1" }}
-                                    unknown or &lt; 1 day
-                                {{ else if eq (string .maximumHttpFileUploadStorageTime) "0" }}
-                                    no limit
-                                {{ else }}
-                                    {{ .maximumHttpFileUploadStorageTime }} days
-                                {{ end }}
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6 pb-4">
-            <div class="card">
-                <div class="card-header">
-                    Support Addresses
+                    Support
                 </div>
                 <div class="card-body">
                     <table>
@@ -389,52 +384,52 @@
                                     {{ end }}
                                     {{ if eq $key "ratingXmppComplianceTester" }}
                                         <li>
-                                            Compliance Tester result is {{ $value }}
+                                            Compliance Tester result is too bad
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "ratingImObservatoryClientToServer" }}
                                         <li>
-                                            IM Observatory (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>) result is {{ $value }}
+                                            IM Observatory (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>) result is too  bad
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "ratingImObservatoryServerToServer" }}
                                         <li>
-                                            IM Observatory (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>) result is {{ $value }}
+                                            IM Observatory (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>) result is too bad
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "maximumHttpFileUploadFileSize" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                File size limit is unknown or lower than 1 MB
+                                                Sharing files is allowed up to an unknown size or less than 1 MB
                                             {{ else }}
-                                                File size is limited to {{ $value }} MB
+                                                Sharing files is not allowed up to a size that is large enough
                                             {{ end }}
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "maximumHttpFileUploadTotalSize" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Total file storage limit is unknown or lower than 1 MB
+                                                Shared files are stored up to an unknown size or less than 1 MB
                                             {{ else }}
-                                                Total file storage is limited to {{ $value }} MB
+                                                Shared files are not stored up to a size that is large enough
                                             {{ end }}
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "maximumHttpFileUploadStorageTime" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                File retention time limit is unknown or lower than 1 day
+                                                Shared files are stored for an unknown time or less than 1 day
                                             {{ else }}
-                                                File retention time is limited to {{ $value }} days
+                                                Shared files are not stored long enough
                                             {{ end }}
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "maximumMessageArchiveManagementStorageTime" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Message storage limit is unknown or lower than 1 day
+                                                Messages are stored for an unknown time or less than 1 day
                                             {{ else }}
-                                                Message storage is limited to {{ $value }} days
+                                                Messages are not stored long enough
                                             {{ end }}
                                         </li>
                                     {{ end }}
@@ -461,7 +456,7 @@
                                     {{ if or (eq $key "emailSupport") (eq $key "chatSupport") (eq $key "groupChatSupport") }}
                                         {{ if not $support_address_listed }}
                                             <li>
-                                                No support address
+                                                No support
                                             </li>
                                             {{ $support_address_listed = true }}
                                         {{ end }}
@@ -484,7 +479,7 @@
         <div class="col-sm-10 text-center">
             <a href="{{ .Permalink }}"><img src="/badge/{{ $provider_name }}.svg"></a>
             <div class="input-group my-3">
-                <span class="input-group-text" id="badge-desc">Link</span>
+                <span class="input-group-text" id="badge-desc">Embed badge</span>
                 <input id="badge_link_input" autocomplete="off" type="text" class="form-control form-control-sm" aria-label="Badge URL" aria-describedby="badge-desc" value='<a href="{{ $permalink }}"><img src="/badge/{{ $provider_name }}.svg"></a>'>
                 <button class="btn btn-secondary" type="button" id="badge_link_copy" title="Copy"><i class="fa-solid fa-copy"></i></button>
             </div>
