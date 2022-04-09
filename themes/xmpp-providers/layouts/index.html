@@ -15,6 +15,24 @@
                 </div>
             </div>
             <a id="providers"><h2 class="pb-2">Providers</h2></a>
+            <button class="btn btn-sm btn-outline-secondary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#filters-collapse" aria-expanded="false" aria-controls="filerts-collapse">
+                Filter List&nbsp;&nbsp;<i class="fa-solid fa-angle-down"></i>
+            </button>
+            <div class="collapse" id="filters-collapse">
+                <div class="card card-body pb-1 mb-2">
+                    <b>Filters</b>
+                    <form action="#">
+                        <div id="status-selector" class="pb-2">
+                            <div class="d-flex flex-wrap pb-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="free" name="free">
+                                    <label class="form-check-label" for="free">Free only</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <div class="accordion" id="providers-accordion">
                 {{ partial "provider-list-items.html" (where .Site.Data.providers ".category" "==" "A") }}
                 {{ partial "provider-list-items.html" (where .Site.Data.providers ".category" "==" "B") }}
