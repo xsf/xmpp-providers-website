@@ -147,12 +147,10 @@
                     </td>
                     <td>
                         {{ if .inBandRegistration }}
-                            You can register with this provider directly from your device (<a href="/faq#in-band-registration" class="abbr">IBR</a>)
-                        {{ else }}
-                            You can only register with this provider using your web browser.
-                            {{ if .registrationWebPage }}
-                                <br>Online registration:
-                                {{ $len := (len .registrationWebPage) }}
+                            You can register on this provider directly via your XMPP app
+                        {{ else if .registrationWebPage }}
+                            You can register on this provider only via a web browser:
+                            {{ $len := (len .registrationWebPage) }}
                                 {{ $count := 0 }}
                                 {{ range $lang, $address := .registrationWebPage }}
                                     <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
@@ -161,7 +159,8 @@
                                         <span class="text-muted">|</span>
                                     {{ end }}
                                 {{ end }}
-                            {{ end }}
+                        {{ else }}
+                            You cannot register on this provider
                         {{ end }}
                     </td>
                 </tr>
@@ -385,7 +384,7 @@
                                 {{ range $key, $value := $data }}
                                     {{ if eq $key "inBandRegistration" }}
                                         <li>
-                                            In Band Registration (<a href="/faq#in-band-registration" class="abbr">IBR</a>) is not available
+                                            Registration via XMPP apps is not supported
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "ratingXmppComplianceTester" }}
