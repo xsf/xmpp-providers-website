@@ -1,10 +1,10 @@
 [[main]]
-    name = "FAQ"
-    url = "/faq"
-    weight = 1
-[[main]]
     name = "Apps"
     url = "/apps"
+    weight = 1
+[[main]]
+    name = "FAQ"
+    url = "/faq"
     weight = 2
 [[main]]
     name = "About"
