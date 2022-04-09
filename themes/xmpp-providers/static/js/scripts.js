@@ -19,6 +19,12 @@ window.addEventListener("load", function() {
           provider.hidden = checkbox.checked;
         });
       };
+      if (property == "professional-hosting") {
+        const relevant_providers = document.querySelectorAll("[data-property-professional-hosting=false]");
+        relevant_providers.forEach(function(provider) {
+          provider.hidden = checkbox.checked;
+        });
+      };
       checkbox.addEventListener("click", function(event) {
         show_hide(event.target);
       });
