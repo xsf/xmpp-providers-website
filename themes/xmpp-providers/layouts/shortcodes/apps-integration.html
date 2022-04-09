@@ -20,7 +20,7 @@
                                         <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
                                         {{ $count = add $count 1 }}
                                         {{ if ne $count $len }}
-                                            |
+                                            <span class="text-muted">|</span>
                                         {{ end }}
                                     {{ end }}
                                 </li>
