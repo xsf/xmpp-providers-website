@@ -16,7 +16,7 @@ After some hours of investigation, we found out that the provider did simply not
 
 There were similar situations each time we wanted to help people using XMPP.
 Thus, we decided to collect all data we could find about several providers.
-We categorized them to quickly find providers with properties users would expect nowadays.
+We [categorized](#how-are-categories-determined) them to quickly find providers with properties users would expect nowadays.
 
 XMPP Providers is a project made to simplify the users' onboardings.
 Therefore, the criteria we use for the categorization are from a user's perspective.
@@ -33,8 +33,8 @@ The account registration via an app has to work without complications.
 For properties such as the web registration or the website language versions, there must be links.
 And there have to be statements e.g. about the service price or the support channels on the provider's website.
 
-If properties are not verifiable, they are seen as not available which often results in a bad category.
-Verifiable properties must meet specific criteria we decided on for a good user experience.
+If properties are not verifiable, they are seen as not available which often results in a bad [category](#in-which-categories-can-providers-be).
+Verifiable properties must meet specific {{< external-link text="criteria" url="https://invent.kde.org/melvo/xmpp-providers#criteria" >}} we decided on for a good user experience.
 
 The criteria are used to answer different questions.
 Here are some of them:
@@ -47,6 +47,7 @@ If a provider meets all criteria of a category, it is part of the providers in t
 ## In which categories can providers be?
 
 Here are all categories from best to worst.
+If you want to integrate XMPP Providers in your app, have a look at the {{< external-link text="category details" url="https://invent.kde.org/melvo/xmpp-providers#categories" >}}.
 
 ### Category A
 
