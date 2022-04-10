@@ -162,7 +162,8 @@
                                     <span class="text-muted">|</span>
                                 {{ end }}
                             {{ end }}
-                        {{ else }}
+                        {{ end }}
+                        {{ if and (not .inBandRegistration) (not .registrationWebPage) }}
                             You cannot register on this provider
                         {{ end }}
                     </td>
