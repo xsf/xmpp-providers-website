@@ -1,6 +1,6 @@
 {{ $clients_data := .Site.Data.clients }}
 
-{{ range $client, $data := $clients_data}}
+{{ range $client, $data := $clients_data }}
     <div class="card my-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
@@ -36,7 +36,4 @@
             </div>
         </div>
     </div>
-
-
 {{ end }}
-</ul>
