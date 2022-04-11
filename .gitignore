@@ -16,7 +16,9 @@
 .hugo_build.lock
 .project
 content/provider/
-data/
+data/results/
+data/clients.json
+data/providers.json
 downloads/
 public/
 resources/

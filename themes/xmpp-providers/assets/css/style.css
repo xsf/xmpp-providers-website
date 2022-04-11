@@ -39,6 +39,9 @@ h4:hover .heading-anchor {
 .category-d {
     background-color: rgb(217, 16, 30);
 }
+.address-input {
+    border: none;
+}
 .footer-link {
     color: var(--bs-body-color);
 }

@@ -57,9 +57,11 @@ def prepare_data_files() -> None:
     '''
     initialize_directory(DOWNLOAD_PATH)
 
-    # Temporarily move 'logo' folder in order to clean up directories
+    # Temporarily move 'logo' folder and recommended_clients.json
+    # in order to clean up directories
     shutil.copytree(STATIC_PATH / 'logo', DOWNLOAD_PATH  / 'logo')
-
+    shutil.copyfile(DATA_PATH / 'recommended_clients.json',
+                    DOWNLOAD_PATH / 'recommended_clients.json')
     initialize_directory(STATIC_PATH)
     initialize_directory(DATA_PATH)
 
@@ -68,6 +70,8 @@ def prepare_data_files() -> None:
     get_clients_data()
 
     shutil.copytree(DOWNLOAD_PATH / 'logo', STATIC_PATH  / 'logo')
+    shutil.copyfile(DOWNLOAD_PATH / 'recommended_clients.json',
+                    DATA_PATH / 'recommended_clients.json')
 
 def get_providers_data() -> None:
     '''
