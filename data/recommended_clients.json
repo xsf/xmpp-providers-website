@@ -1,0 +1,57 @@
+{
+    "Windows": [
+        {
+            "name": "Gajim",
+            "website": "https://gajim.org",
+            "text": "Fully-featured"
+        },
+        {
+            "name": "UWPX",
+            "website": "https://uwpx.org/",
+            "text": "UWP app for your Windows devices"
+        }
+    ],
+    "Linux": [
+        {
+            "name": "Dino",
+            "website": "https://dino.im",
+            "text": "Modern, clean and GNOME integrated"
+        },
+        {
+            "name": "Gajim",
+            "website": "https://gajim.org",
+            "text": "Fully-featured"
+        }
+    ],
+    "MacOS": [
+        {
+            "name": "Monal",
+            "website": "https://itunes.apple.com/us/app/monal-free-xmpp-chat/id317711500",
+            "text": "For iOS and macOS"
+        },
+        {
+            "name": "Beagle IM",
+            "website": "https://apps.apple.com/us/app/beagleim-by-tigase-inc/id1445349494",
+            "text": "Lightweight and powerful"
+        }
+    ],
+    "iPhone": [
+        {
+            "name": "Monal",
+            "website": "https://itunes.apple.com/us/app/monal-free-xmpp-chat/id317711500",
+            "text": "For iOS and macOS"
+        },
+        {
+            "name": "Siskin IM",
+            "website": "https://apps.apple.com/us/app/tigase-messenger/id1153516838",
+            "text": "Lightweight and powerful"
+        }
+    ],
+    "Android": [
+        {
+            "name": "Conversations",
+            "website": "https://play.google.com/store/apps/details?id=eu.siacs.conversations",
+            "text": "Modern and featureful"
+        }
+    ]
+}

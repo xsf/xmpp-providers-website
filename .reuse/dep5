@@ -11,6 +11,10 @@ Files: content/*
 Copyright: 2022 XMPP Providers Team
 License: CC-BY-SA-4.0
 
+Files: data/*
+Copyright: 2022 XMPP Providers Team
+License: AGPL-3.0-or-later
+
 Files: themes/xmpp-providers/layouts/*
 Copyright: 2022 XMPP Providers Team
 License: AGPL-3.0-or-later

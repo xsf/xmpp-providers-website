@@ -30,4 +30,21 @@ window.addEventListener("load", function() {
       });
     };
     checkboxes.forEach(show_hide);
+
+    const recommended_clients_list = document.getElementById("recommended_clients_list");
+    const filter_clients = function(os_name) {
+      for (const client of recommended_clients_list.children) {
+        client.hidden = os_name != client.getAttribute("data-os");
+      };
+    };
+    if (navigator.userAgent.indexOf("Android") >= 0) {
+      filter_clients("Android");
+    } else if (navigator.userAgent.indexOf("Linux") >= 0)  {
+      filter_clients("Linux");
+    } else if (navigator.userAgent.indexOf("iPhone") >= 0)  {
+      filter_clients("iPhone");
+    } else {
+      filter_clients("Windows");
+    }
+
 });
