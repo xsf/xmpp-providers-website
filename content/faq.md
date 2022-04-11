@@ -49,24 +49,24 @@ If a provider meets all criteria of a category, it is part of the providers in t
 Here are all categories from best to worst.
 If you want to integrate XMPP Providers in your app, have a look at the {{< external-link text="category details" url="https://invent.kde.org/melvo/xmpp-providers#categories" >}}.
 
-### Category A
+{{< category-heading category="A" >}}
 
 Providers in this category can be used for a registration without user interaction.
 Users can simply confirm to register on a randomly chosen provider and start to chat right away.
 Those providers must have the best properties and support registrations via XMPP apps.
 
-### Category B
+{{< category-heading category="B" >}}
 
 Providers in this category can be used for registration with user interaction.
 Users can select a provider based on individual preferences (e.g., the provider's name).
 Those providers must have the best properties but do only need to support registrations via a web page.
 
-### Category C
+{{< category-heading category="C" >}}
 
 Providers in this category can be used for web registrations but do only need to have average properties.
 Those providers should only be offered to users if there is a certain reason for it.
 
-### Category D
+{{< category-heading category="D" >}}
 
 Providers in this category cannot, if no registration is supported, or should not, because of bad properties, be used for registrations.
 Those providers should only be used for autocomplete (e.g., while adding a contact).
