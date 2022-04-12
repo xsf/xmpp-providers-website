@@ -15,6 +15,7 @@
                 </div>
             </div>
             <a id="providers"><h2 class="pb-2">Providers</h2></a>
+            <p>Categories describe how well a provider is suited for registration and usage. Providers of categories A and B provide a good chat experience, while C provides an average, and D the least good chat experience.</p>
             <button class="btn btn-sm btn-outline-secondary mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#filters-collapse" aria-expanded="false" aria-controls="filerts-collapse">
                 Filter List&nbsp;&nbsp;<i class="fa-solid fa-angle-down"></i>
             </button>
@@ -36,10 +37,54 @@
                     </form>
                 </div>
             </div>
-            <div class="accordion" id="providers-accordion">
+            <h3 id="category-a" class="pt-4">
+                Category&nbsp;
+                <span class="badge category-a">A</span>
+                <a class="heading-anchor" href="#category-a"><i class="fa-solid fa-link fa-xs"></i></a>
+            </h3>
+            <p class="text-muted">
+                Providers in this category can be used for a registration without user interaction.
+                Users can simply confirm to register on a randomly chosen provider and start to chat right away.
+                Those providers must have the best properties and support registrations via XMPP apps.
+            </p>
+            <div class="accordion pb-5" id="providers-accordion-a">
                 {{ partial "provider-list-items.html" (where .Site.Data.providers ".category" "==" "A") }}
+            </div>
+            <h3 id="category-b">
+                Category&nbsp;
+                <span class="badge category-b">B</span>
+                <a class="heading-anchor" href="#category-b"><i class="fa-solid fa-link fa-xs"></i></a>
+            </h3>
+            <p class="text-muted">
+                Providers in this category can be used for registration with user interaction.
+                Users can select a provider based on individual preferences (e.g., the provider's name).
+                Those providers must have the best properties but do only need to support registrations via a web page.
+            </p>
+            <div class="accordion pb-5" id="providers-accordion-b">
                 {{ partial "provider-list-items.html" (where .Site.Data.providers ".category" "==" "B") }}
+            </div>
+            <h3 id="category-c">
+                Category&nbsp;
+                <span class="badge category-c">C</span>
+                <a class="heading-anchor" href="#category-c"><i class="fa-solid fa-link fa-xs"></i></a>
+            </h3>
+            <p class="text-muted">
+                Providers in this category can be used for web registrations but do only need to have average properties.
+                Those providers should only be offered to users if there is a certain reason for it.
+            </p>
+            <div class="accordion pb-5" id="providers-accordion-c">
                 {{ partial "provider-list-items.html" (where .Site.Data.providers ".category" "==" "C") }}
+            </div>
+            <h3 id="category-d">
+                Category&nbsp;
+                <span class="badge category-d">D</span>
+                <a class="heading-anchor" href="#category-d"><i class="fa-solid fa-link fa-xs"></i></a>
+            </h3>
+            <p class="text-muted">
+                Providers in this category cannot, if no registration is supported, or should not, because of bad properties, be used for registrations.
+                Those providers should only be used for autocomplete (e.g., while adding a contact).
+            </p>
+            <div class="accordion pb-5" id="providers-accordion-d">
                 {{ partial "provider-list-items.html" (where .Site.Data.providers ".category" "==" "D") }}
             </div>
         </div>

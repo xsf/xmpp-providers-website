@@ -7,7 +7,7 @@
                 <span class="text-body">&nbsp;&nbsp;{{ .jid }}</span>
             </button>
         </h2>
-        <div id="collapse-{{ $provider_id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ $provider_id }}" data-bs-parent="#providers-accordion">
+        <div id="collapse-{{ $provider_id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ $provider_id }}" data-bs-parent="#providers-accordion-{{ .category }}">
             <div class="accordion-body bg-light">
                 <div class="row">
                     <div class="col-sm-6">
