@@ -51,19 +51,21 @@ If you want to integrate XMPP Providers in your app, have a look at the {{< exte
 
 {{< category-heading category="A" >}}
 
-Providers in this category can be used for a registration without user interaction.
+Providers in this category can be used for registrations without user interaction.
 Users can simply confirm to register on a randomly chosen provider and start to chat right away.
-Those providers must have the best properties and support registrations via XMPP apps.
+Those providers must have the best properties.
+They have to support registrations via XMPP apps and be free of charge.
 
 {{< category-heading category="B" >}}
 
-Providers in this category can be used for registration with user interaction.
+Providers in this category can be used for registrations with user interaction.
 Users can select a provider based on individual preferences (e.g., the provider's name).
-Those providers must have the best properties but do only need to support registrations via a web page.
+Those providers must have the best properties.
+But they only need to support registrations via a web page and their service does not need to be free of charge.
 
 {{< category-heading category="C" >}}
 
-Providers in this category can be used for web registrations but do only need to have average properties.
+Providers in this category can be used for registrations with user interaction but provide only average properties.
 Those providers should only be offered to users if there is a certain reason for it.
 
 {{< category-heading category="D" >}}
