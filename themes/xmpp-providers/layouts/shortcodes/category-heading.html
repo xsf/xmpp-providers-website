@@ -1,5 +1,5 @@
 {{ $category := .Get "category" }}
-<h3 id="category-b">
+<h3 id="category-{{ $category | lower }}">
     Category&nbsp;
     <span class="badge category-{{ $category | lower }}">{{ $category }}</span>
     <a class="heading-anchor" href="#category-{{ $category | lower }}"><i class="fa-solid fa-link fa-xs"></i></a>
