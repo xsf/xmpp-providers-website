@@ -80,7 +80,12 @@
                                     <i class="fa-solid fa-location-dot px-2 text-muted"></i>
                                 </td>
                                 <td>
-                                    Server location(s):
+                                    Server / Data
+                                    {{ if lt (len .serverLocations) 2 }}
+                                        location:
+                                    {{ else }}
+                                        locations:
+                                    {{ end }}
                                     {{ if .serverLocations }}
                                         {{ $len := (len .serverLocations) }}
                                         {{ $count := 0 }}
