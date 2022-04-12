@@ -174,7 +174,7 @@
                             {{ end }}
                         {{ end }}
                         {{ if and (not .inBandRegistration) (not .registrationWebPage) }}
-                            You cannot register on this provider
+                            You cannot register on this provider (at any time)
                         {{ end }}
                     </td>
                 </tr>
@@ -390,7 +390,7 @@
                                 {{ range $key, $value := $data }}
                                     {{ if eq $key "inBandRegistration" }}
                                         <li>
-                                            Registration via XMPP apps is not supported
+                                            Registration via XMPP apps is not supported (at any time)
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "ratingXmppComplianceTester" }}
