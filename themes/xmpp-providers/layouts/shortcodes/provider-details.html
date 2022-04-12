@@ -64,7 +64,7 @@
                     </td>
                     <td>
                         Server / Data
-                        {{ if and .serverLocations (eq (len .serverLocations) 1) }}
+                        {{ if lt (len .serverLocations) 2 }}
                             location:
                         {{ else }}
                             locations:
