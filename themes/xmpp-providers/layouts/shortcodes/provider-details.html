@@ -63,7 +63,12 @@
                         <i class="fa-solid fa-location-dot px-2 text-muted"></i>
                     </td>
                     <td>
-                        Server / Data location(s):
+                        Server / Data
+                        {{ if and .serverLocations (eq (len .serverLocations) 1) }}
+                            location:
+                        {{ else }}
+                            locations:
+                        {{ end }}
                         {{ if .serverLocations }}
                             {{ $len := (len .serverLocations) }}
                             {{ $count := 0 }}
@@ -106,10 +111,15 @@
                     </td>
                     <td>
                         <a href="/faq#bus-factor" class="abbr">Bus factor</a>:
-                        {{ if eq (string .busFactor) "-1" }}
+                        {{ if eq (int .busFactor) -1 }}
                             unknown
                         {{ else }}
-                            {{ .busFactor }} person(s)
+                            {{ .busFactor }}
+                            {{ if eq (int .busFactor) 1 }}
+                                person
+                            {{ else }}
+                                persons
+                            {{ end }}
                         {{ end }}
                     </td>
                 </tr>
