@@ -274,7 +274,7 @@
                     <table>
                         <tr>
                             <td>
-                                Compliance Tester
+                                Compatibility
                             </td>
                             <td class="ps-3">
                                 <a href="https://compliance.conversations.im/server/{{ .jid }}/" class="badge badge-rating text-light text-decoration-none {{ if gt .ratingXmppComplianceTester 99 }}category-a{{ else if gt .ratingXmppComplianceTester 89 }}category-c{{ else }}category-d{{ end }}" target="_blank">{{ .ratingXmppComplianceTester }}</a>
@@ -282,7 +282,7 @@
                         </tr>
                         <tr>
                             <td>
-                                IM Observatory (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>)
+                                Security (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>)
                             </td>
                             <td class="ps-3">
                                 <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=client" class="badge badge-rating text-light text-decoration-none {{ if eq .ratingImObservatoryClientToServer "A" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingImObservatoryClientToServer }}</a>
@@ -290,7 +290,7 @@
                         </tr>
                         <tr>
                             <td>
-                                IM Observatory (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>)
+                                Security (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>)
                             </td>
                             <td class="ps-3">
                                 <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=server" class="badge badge-rating text-light text-decoration-none {{ if eq .ratingImObservatoryServerToServer "A" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingImObservatoryServerToServer }}</a>
@@ -395,17 +395,17 @@
                                     {{ end }}
                                     {{ if eq $key "ratingXmppComplianceTester" }}
                                         <li>
-                                            Compliance Tester result is too bad
+                                            Compatibility is too low
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "ratingImObservatoryClientToServer" }}
                                         <li>
-                                            IM Observatory (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>) result is too  bad
+                                            Security (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>) is too low
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "ratingImObservatoryServerToServer" }}
                                         <li>
-                                            IM Observatory (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>) result is too bad
+                                            Security (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>) is too low
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "maximumHttpFileUploadFileSize" }}
