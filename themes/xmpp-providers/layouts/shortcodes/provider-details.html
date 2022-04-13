@@ -467,7 +467,7 @@
                                     {{ if or (eq $key "emailSupport") (eq $key "chatSupport") (eq $key "groupChatSupport") }}
                                         {{ if not $support_address_listed }}
                                             <li>
-                                                No support
+                                                No support via XMPP chat or email
                                             </li>
                                             {{ $support_address_listed = true }}
                                         {{ end }}
