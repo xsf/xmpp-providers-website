@@ -316,7 +316,9 @@
                                     {{ $len := (len .emailSupport) }}
                                     {{ $count := 0 }}
                                     {{ range $lang, $address := .emailSupport }}
-                                        <a href="mailto:{{ . }}">{{ upper $lang }}</a>
+                                        {{ range $address }}
+                                            <a href="mailto:{{ . }}">{{ upper $lang }}</a>
+                                        {{ end }}
                                         {{ $count = add $count 1 }}
                                         {{ if ne $count $len }}
                                             <span class="text-muted">|</span>
@@ -336,7 +338,9 @@
                                     {{ $len := (len .chatSupport) }}
                                     {{ $count := 0 }}
                                     {{ range $lang, $address := .chatSupport }}
-                                        <a href="xmpp:{{ . }}">{{ upper $lang }}</a>
+                                        {{ range $address }}
+                                            <a href="xmpp:{{ . }}">{{ upper $lang }}</a>
+                                        {{ end }}
                                         {{ $count = add $count 1 }}
                                         {{ if ne $count $len }}
                                             <span class="text-muted">|</span>
@@ -356,7 +360,9 @@
                                     {{ $len := (len .groupChatSupport) }}
                                     {{ $count := 0 }}
                                     {{ range $lang, $address := .groupChatSupport }}
-                                        <a href="xmpp:{{ . }}?join">{{ upper $lang }}</a>
+                                        {{ range $address }}
+                                            <a href="xmpp:{{ . }}?join">{{ upper $lang }}</a>
+                                        {{ end }}
                                         {{ $count = add $count 1 }}
                                         {{ if ne $count $len }}
                                             <span class="text-muted">|</span>
