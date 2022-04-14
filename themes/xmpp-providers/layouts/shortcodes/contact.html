@@ -1,6 +1,6 @@
 {{ $clients_data := .Site.Data.recommended_clients }}
 <h2>Contact</h2>
-<p>Want to discuss? Just click the button to join our chat!</p>
+<p>Do you have questions or suggestions? Just click the button to join our chat!</p>
 <div class="row justify-content-center pt-4">
     <div class="col text-center">
         <a class="btn btn-primary mb-2" href="xmpp:providers@muc.xmpp.net?join" role="button">Join XMPP Providers Chat</a>
@@ -8,16 +8,18 @@
     </div>
 </div>
 <div class="row justify-content-center pt-3">
-    <p>If this link does not work, you need to install and configure an XMPP app, and visit this page again afterwards.</p>
-    <p>For your platform we recommend one of the following apps.</p>
-    <ul id="recommended_clients_list">
-        {{ range $os, $clients := $clients_data }}
-            {{ range $clients }}
-                <li data-os="{{ $os }}">
-                    <b><a href="{{ .website }}" target="_blank">{{ .name }}</a></b> - {{ .text }}
-                </li>
+    <div class="col">
+        <p>If this link does not work, you need to install and configure an XMPP app, and visit this page again afterwards.</p>
+        <p>For your platform, we recommend one of the following apps.</p>
+        <ul id="recommended_clients_list">
+            {{ range $os, $clients := $clients_data }}
+                {{ range $clients }}
+                    <li data-os="{{ $os }}">
+                        <b><a href="{{ .website }}" target="_blank">{{ .name }}</a></b> - {{ .text }}
+                    </li>
+                {{ end }}
             {{ end }}
-        {{ end }}
-    </ul>
-    <p>Check the <a href="https://xmpp.org/software/clients.html" target="_blank">full list of XMPP apps</a> for other platforms.</p>
+        </ul>
+        <p>Check the <a href="https://xmpp.org/software/clients.html" target="_blank">full list of XMPP apps</a> for other platforms.</p>
+    </div>
 </div>
