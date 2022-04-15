@@ -28,9 +28,9 @@ That should help more people to find their way to free communication via XMPP.
 The category of a provider is determined by its properties.
 Those properties must be verifiable.
 
-In case of the compliance or security ratings, that means that there have to be results for the providers.
+In case of the compatibility or security ratings, that means that there have to be results for the providers.
 The account registration via an app has to work without complications.
-For properties such as the web registration or the website language versions, there must be links.
+For properties such as the web registration or the website language alternatives, there must be links.
 And there have to be statements e.g. about the service price or the support channels on the provider's website.
 
 If properties are not verifiable, they are seen as not available which often results in a bad [category](#in-which-categories-can-providers-be).
@@ -73,24 +73,40 @@ Those providers should only be offered to users if there is a certain reason for
 Providers in this category cannot, if no registration is supported, or should not, because of bad properties, be used for registrations.
 Those providers should only be used for autocomplete (e.g., while adding a contact).
 
+## Where do we have the providers' properties from?
+
+For each property, there must be a corresponding source.
+That is needed for transparency and maintainability of the data.
+In most cases, that is a statement on a provider's website or the result page of a rating service.
+The source of a property can also be the property itself.
+That is the case when the property is a web page (e.g., a web registration page).
+
+All sources are stored in the {{< external-link text="providers file" url="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/providers.json" >}}.
+That file is the data source of all provider properties.
+This website's provider listings and details are based on it.
+
 {{< spacer size="middle" >}}
 
 ## Glossary
 
 Unfamiliar terms are explained here.
 
-#### Bus Factor
+### Unknown
 
-The term _bus factor_ describes the minimum number of people that have to leave before the provider becomes inoperable.
+A property is called *unknown* if no [source](#where-do-we-have-the-providers-properties-from) is available.
 
-#### Client to Server
+### Bus Factor
 
-The Client to Server (C2S) connection is used for communication between your app and your provider’s server.
+The term *bus factor* describes the minimum number of people that have to leave before the provider becomes inoperable.
 
-#### HTTP Upload
+### Client-to-Server
 
-{{< external-link text="XEP-0363 HTTP File Upload" url="https://xmpp.org/extensions/xep-0363.html" >}} is a standard for transferring files between you and others.
+The client-to-server (C2S) connection is used for the communication between your app and your provider.
 
-#### Server to Server
+### HTTP Upload
 
-Server to Server (S2S) connections are used for communication between your provider’s server and servers of your contacts for example.
+{{< external-link text="XEP-0363 HTTP File Upload" url="https://xmpp.org/extensions/xep-0363.html" >}} is a standard for sharing files between you and others.
+
+### Server to Server
+
+Server-to-server (S2S) connections are used for the communication between your provider and the provider of your contact.
