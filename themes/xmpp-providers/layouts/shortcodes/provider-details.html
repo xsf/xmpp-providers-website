@@ -80,7 +80,7 @@
                                 {{ end }}
                             {{ end }}
                         {{ else }}
-                            unknown
+                            <a href="/faq#unknown" class="abbr">unknown</a>
                         {{ end }}
                     </td>
                 </tr>
@@ -112,7 +112,7 @@
                     <td>
                         <a href="/faq#bus-factor" class="abbr">Bus factor</a>:
                         {{ if eq (int .busFactor) -1 }}
-                            unknown
+                            <a href="/faq#unknown" class="abbr">unknown</a>
                         {{ else }}
                             {{ .busFactor }}
                             {{ if eq (int .busFactor) 1 }}
@@ -205,7 +205,7 @@
                     </td>
                     <td>
                         {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
-                            Messages are stored for an unknown time or less than 1 day
+                            Messages are stored for an <a href="/faq#unknown" class="abbr">unknown</a> time or less than 1 day
                         {{ else if eq (string .maximumMessageArchiveManagementStorageTime) "0" }}
                             Messages are stored for an unlimited time
                         {{ else }}
@@ -223,7 +223,7 @@
                     <td>
                         Allows to share files up to
                         {{ if eq (string .maximumHttpFileUploadFileSize) "-1" }}
-                            an unknown size or less than 1 MB
+                            an <a href="/faq#unknown" class="abbr">unknown</a> size or less than 1 MB
                         {{ else if eq (string .maximumHttpFileUploadFileSize) "0" }}
                             an unlimited size
                         {{ else }}
@@ -238,7 +238,7 @@
                     <td>
                         Shared files are stored up to
                         {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
-                            an unknown size or less than 1 MB
+                            an <a href="/faq#unknown" class="abbr">unknown</a> size or less than 1 MB
                         {{ else if eq (string .maximumHttpFileUploadTotalSize) "0" }}
                             an unlimited size
                         {{ else }}
@@ -253,7 +253,7 @@
                     <td>
                         Stores files for
                         {{ if eq (string .maximumHttpFileUploadStorageTime) "-1" }}
-                            an unknown time or less than 1 day
+                            an <a href="/faq#unknown" class="abbr">unknown</a> time or less than 1 day
                         {{ else if eq (string .maximumHttpFileUploadStorageTime) "0" }}
                             an unlimited time
                         {{ else }}
@@ -417,7 +417,7 @@
                                     {{ if eq $key "maximumHttpFileUploadFileSize" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Sharing files is allowed up to an unknown size or less than 1 MB
+                                                Sharing files is allowed up to an <a href="/faq#unknown" class="abbr">unknown</a> size or less than 1 MB
                                             {{ else }}
                                                 Sharing files is not allowed up to a size that is large enough
                                             {{ end }}
@@ -426,7 +426,7 @@
                                     {{ if eq $key "maximumHttpFileUploadTotalSize" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Shared files are stored up to an unknown size or less than 1 MB
+                                                Shared files are stored up to an <a href="/faq#unknown" class="abbr">unknown</a> size or less than 1 MB
                                             {{ else }}
                                                 Shared files are not stored up to a size that is large enough
                                             {{ end }}
@@ -435,7 +435,7 @@
                                     {{ if eq $key "maximumHttpFileUploadStorageTime" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Shared files are stored for an unknown time or less than 1 day
+                                                Shared files are stored for an <a href="/faq#unknown" class="abbr">unknown</a> time or less than 1 day
                                             {{ else }}
                                                 Shared files are not stored long enough
                                             {{ end }}
@@ -444,7 +444,7 @@
                                     {{ if eq $key "maximumMessageArchiveManagementStorageTime" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Messages are stored for an unknown time or less than 1 day
+                                                Messages are stored for an <a href="/faq#unknown" class="abbr">unknown</a> time or less than 1 day
                                             {{ else }}
                                                 Messages are not stored long enough
                                             {{ end }}
@@ -467,7 +467,7 @@
                                     {{ end }}
                                     {{ if eq $key "serverLocations" }}
                                         <li>
-                                            Server location is unknown
+                                            Server location is <a href="/faq#unknown" class="abbr">unknown</a>
                                         </li>
                                     {{ end }}
                                     {{ if or (eq $key "emailSupport") (eq $key "chatSupport") (eq $key "groupChatSupport") }}
