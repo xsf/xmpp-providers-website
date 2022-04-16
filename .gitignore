@@ -17,7 +17,7 @@
 .project
 content/provider/
 data/results/
-data/clients.json
+data/implementing_clients.json
 data/providers.json
 downloads/
 public/

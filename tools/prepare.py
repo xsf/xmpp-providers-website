@@ -3,14 +3,20 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 '''
-Download / prepare / process xmpp providers data
+Download / prepare / process XMPP Providers data
 '''
+from typing import Optional
+from typing import Union
+
 from datetime import date
 from pathlib import Path
+import json
+import logging
 import os
 import shutil
 import sys
 import zipfile
+from xml.etree import ElementTree as ET
 
 import requests
 
@@ -27,17 +33,16 @@ BADGES_DATA_URL = 'https://invent.kde.org/melvo/xmpp-providers/' \
     '-/jobs/artifacts/master/download/?job=badges'
 CLIENTS_DATA_URL = 'https://invent.kde.org/melvo/xmpp-providers/' \
     '-/raw/master/clients.json'
+XSF_CLIENTS_LIST_URL = 'https://raw.githubusercontent.com/xsf/xmpp.org/master/' \
+    'data/clients.json'
+
+DOAP_NS = 'http://usefulinc.com/ns/doap#'
+DOAP_NAME = f'.//{{{DOAP_NS}}}name'
+DOAP_OS = f'.//{{{DOAP_NS}}}os'
 
 MD_FRONTMATTER = '''---\ntitle: %s\ndate: %s\n---\n
 {{< provider-details provider="%s">}}
 '''
-
-
-def status_ok(status_code: int) -> bool:
-    '''
-    Check if HTTP status code is ok (i.e. in 200/300 region)
-    '''
-    return 200 >= status_code < 400
 
 
 def initialize_directory(path: Path) -> None:
@@ -51,39 +56,51 @@ def initialize_directory(path: Path) -> None:
         os.mkdir(path)
 
 
-def prepare_data_files() -> None:
+def prepare_provider_data_files() -> None:
     '''
     Download and prepare provider data files
     '''
     initialize_directory(DOWNLOAD_PATH)
 
-    # Temporarily move 'logo' folder and recommended_clients.json
+    # Temporarily move 'logo' folder and 'recommended_clients.json'
     # in order to clean up directories
     shutil.copytree(STATIC_PATH / 'logo', DOWNLOAD_PATH  / 'logo')
     shutil.copyfile(DATA_PATH / 'recommended_clients.json',
                     DOWNLOAD_PATH / 'recommended_clients.json')
+
     initialize_directory(STATIC_PATH)
     initialize_directory(DATA_PATH)
 
     get_providers_data()
     get_badges()
-    get_clients_data()
 
     shutil.copytree(DOWNLOAD_PATH / 'logo', STATIC_PATH  / 'logo')
     shutil.copyfile(DOWNLOAD_PATH / 'recommended_clients.json',
                     DATA_PATH / 'recommended_clients.json')
 
+
+def download_file(url: str, path: Path) -> bool:
+    '''
+    Downloads file from url and stores it in /downloads/path
+    returns success
+    '''
+    file_request = requests.get(url)
+    if not 200 >= file_request.status_code < 400:
+        logging.error('Error while trying to download from %s', url)
+        return False
+
+    with open(DOWNLOAD_PATH / path, 'wb') as file_data:
+        file_data.write(file_request.content)
+    return True
+
+
 def get_providers_data() -> None:
     '''
     Download, extract, and move providers data
     '''
-    providers_request = requests.get(PROVIDERS_DATA_URL)
-    if not status_ok(providers_request.status_code):
+    success = download_file(PROVIDERS_DATA_URL, Path('providers_data.zip'))
+    if not success:
         sys.exit(f'Error while trying to download from {PROVIDERS_DATA_URL}')
-
-    with open(DOWNLOAD_PATH / 'providers_data.zip',
-              'wb') as providers_data_zip:
-        providers_data_zip.write(providers_request.content)
 
     with zipfile.ZipFile(DOWNLOAD_PATH / 'providers_data.zip',
                         'r') as zip_file:
@@ -99,13 +116,9 @@ def get_badges() -> None:
     '''
     Download, extract, and move badges
     '''
-    badge_request = requests.get(BADGES_DATA_URL)
-    if not status_ok(badge_request.status_code):
+    success = download_file(BADGES_DATA_URL, Path('badges_data.zip'))
+    if not success:
         sys.exit(f'Error while trying to download from {BADGES_DATA_URL}')
-
-    with open(DOWNLOAD_PATH / 'badges_data.zip',
-              'wb') as badge_data_zip:
-        badge_data_zip.write(badge_request.content)
 
     with zipfile.ZipFile(DOWNLOAD_PATH / 'badges_data.zip', 'r') as zip_file:
         zip_file.extractall(DOWNLOAD_PATH / 'badges_data')
@@ -113,23 +126,6 @@ def get_badges() -> None:
     shutil.copytree(DOWNLOAD_PATH / 'badges_data' / 'badges',
                     BADGES_PATH,
                     dirs_exist_ok=True)
-
-
-def get_clients_data() -> None:
-    '''
-    Download, extract, and move clients data
-    '''
-    clients_request = requests.get(CLIENTS_DATA_URL)
-    if not status_ok(clients_request.status_code):
-        sys.exit(f'Error while trying to download from {CLIENTS_DATA_URL}')
-
-    os.mkdir(DOWNLOAD_PATH / 'clients_data')
-    with open(DOWNLOAD_PATH / 'clients_data' / 'clients.json',
-              'wb') as clients_data_zip:
-        clients_data_zip.write(clients_request.content)
-
-    shutil.copyfile(DOWNLOAD_PATH / 'clients_data' / 'clients.json',
-                    DATA_PATH / 'clients.json')
 
 
 def create_provider_pages() -> None:
@@ -151,6 +147,80 @@ def create_provider_pages() -> None:
                 MD_FRONTMATTER % (filename, date_formatted, filename))
 
 
+def parse_doap_infos(doap_file: str) -> Optional[dict[str, list[str]]]:
+    '''Parse DOAP file and return infos'''
+    try:
+        doap = ET.parse(
+            DOWNLOAD_PATH / f'clients_data/doap_files/{doap_file}.doap')
+    except FileNotFoundError:
+        return None
+
+    info: dict[str, Union[str, list[str]]] = {}
+    doap_name = doap.find(DOAP_NAME)
+    if doap_name is not None:
+        info['name'] = doap_name.text
+    info['os'] = []
+    for entry in doap.findall(DOAP_OS):
+        info['os'].append(entry.text)
+    return info
+
+
+def prepare_client_data_file() -> None:
+    '''
+    Download and prepare clients data
+    '''
+    Path(DOWNLOAD_PATH / 'clients_data/doap_files').mkdir(parents=True)
+
+    success = download_file(
+        CLIENTS_DATA_URL, Path('clients_data/providers_clients_list.json'))
+    if not success:
+        sys.exit(f'Error while trying to download from {CLIENTS_DATA_URL}')
+
+    success = download_file(
+        XSF_CLIENTS_LIST_URL, Path('clients_data/xsf_clients_list.json'))
+    if not success:
+        sys.exit(f'Error while trying to download from {XSF_CLIENTS_LIST_URL}')
+
+    # Use xsf_clients_list.json and providers_clients_list.json
+    # to generate clients.json, which features infos from both files
+    with open(DOWNLOAD_PATH / 'clients_data' / 'providers_clients_list.json',
+              'rb') as json_file:
+        providers_clients_list = json.load(json_file)
+    with open(DOWNLOAD_PATH / 'clients_data' / 'xsf_clients_list.json',
+              'rb') as json_file:
+        xsf_clients_list = json.load(json_file)
+
+    client_names: list[str] = []
+    for client in providers_clients_list:
+        client_names.append(client)
+
+    client_infos: list[dict[str, Optional[str]]] = []
+    for client in xsf_clients_list:
+        if client['name'] in client_names:
+            provider_infos = providers_clients_list[client['name']]
+            if client['doap'] is not None:
+                download_file(
+                    client['doap'],
+                    Path(f'clients_data/doap_files/{client["name"]}.doap'))
+            parsed_infos = parse_doap_infos(client['name'])
+
+            supported_os = None
+            if parsed_infos is not None:
+                supported_os = parsed_infos['os']
+            client_infos.append({
+                'name': client['name'],
+                'os': supported_os,
+                'since': provider_infos['since']['content'],
+                'website': provider_infos['website']['content']
+            })
+
+    with open(DATA_PATH / 'implementing_clients.json',
+              'w',
+              encoding='utf-8') as client_data_file:
+        json.dump(client_infos, client_data_file, indent=4)
+
+
 if __name__ == '__main__':
-    prepare_data_files()
+    prepare_provider_data_files()
     create_provider_pages()
+    prepare_client_data_file()
