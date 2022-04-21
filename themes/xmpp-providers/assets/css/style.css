@@ -18,6 +18,16 @@ h3:hover .heading-anchor,
 h4:hover .heading-anchor {
     visibility: visible;
 }
+h2::before,
+h3::before,
+h4::before {
+    display: block;
+    content: " ";
+    margin-top: -75px;
+    height: 75px;
+    visibility: hidden;
+    pointer-events: none;
+}
 .abbr {
     -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted #6c757d;
