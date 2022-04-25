@@ -80,7 +80,7 @@
                                 {{ end }}
                             {{ end }}
                         {{ else }}
-                            <a href="/faq#unknown" class="abbr">unknown</a>
+                            <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ end }}
                     </td>
                 </tr>
@@ -110,9 +110,9 @@
                         <i class="fa-solid fa-people-group px-2 text-muted"></i>
                     </td>
                     <td>
-                        <a href="/faq#bus-factor" class="abbr">Bus factor</a>:
+                        <a href="/faq/#bus-factor" class="abbr">Bus factor</a>:
                         {{ if eq (int .busFactor) -1 }}
-                            <a href="/faq#unknown" class="abbr">unknown</a>
+                            <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ else }}
                             {{ .busFactor }}
                             {{ if eq (int .busFactor) 1 }}
@@ -224,7 +224,7 @@
                     </td>
                 </tr>
             </table>
-            <h2>File Sharing (<a href="/faq#http-upload" class="abbr">HTTP Upload</a>)</h2>
+            <h2>File Sharing (<a href="/faq/#http-upload" class="abbr">HTTP Upload</a>)</h2>
             <table class="mb-4">
                 <tr>
                     <td class="text-center">
@@ -233,7 +233,7 @@
                     <td>
                         Allows to share files up to
                         {{ if eq (string .maximumHttpFileUploadFileSize) "-1" }}
-                            an <a href="/faq#unknown" class="abbr">unknown</a> size or less than 1 MB
+                            an <a href="/faq/#unknown" class="abbr">unknown</a> size or less than 1 MB
                         {{ else if eq (string .maximumHttpFileUploadFileSize) "0" }}
                             an unlimited size
                         {{ else }}
@@ -248,7 +248,7 @@
                     <td>
                         Shared files are stored up to
                         {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
-                            an <a href="/faq#unknown" class="abbr">unknown</a> size or less than 1 MB
+                            an <a href="/faq/#unknown" class="abbr">unknown</a> size or less than 1 MB
                         {{ else if eq (string .maximumHttpFileUploadTotalSize) "0" }}
                             an unlimited size
                         {{ else }}
@@ -263,7 +263,7 @@
                     <td>
                         Stores files for
                         {{ if eq (string .maximumHttpFileUploadStorageTime) "-1" }}
-                            an <a href="/faq#unknown" class="abbr">unknown</a> time or less than 1 day
+                            an <a href="/faq/#unknown" class="abbr">unknown</a> time or less than 1 day
                         {{ else if eq (string .maximumHttpFileUploadStorageTime) "0" }}
                             an unlimited time
                         {{ else }}
@@ -292,7 +292,7 @@
                         </tr>
                         <tr>
                             <td>
-                                Security (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>)
+                                Security (<a href="/faq/#client-to-server" title="Client to Server" class="abbr">C2S</a>)
                             </td>
                             <td class="ps-3">
                                 <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=client" class="badge badge-rating text-light text-decoration-none {{ if eq .ratingImObservatoryClientToServer "A" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingImObservatoryClientToServer }}</a>
@@ -300,7 +300,7 @@
                         </tr>
                         <tr>
                             <td>
-                                Security (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>)
+                                Security (<a href="/faq/#server-to-server" title="Server to Server" class="abbr">S2S</a>)
                             </td>
                             <td class="ps-3">
                                 <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=server" class="badge badge-rating text-light text-decoration-none {{ if eq .ratingImObservatoryServerToServer "A" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingImObservatoryServerToServer }}</a>
@@ -393,7 +393,7 @@
             <div class="row pb-3 text-center">
                 <h3>Provider Category</h3>
                 <h2><span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span></h2>
-                <a href="/faq#how-are-categories-determined" class="abbr small text-muted">Categories explained</a>
+                <a href="/faq/#how-are-categories-determined" class="abbr small text-muted">Categories explained</a>
             </div>
             {{ if ne .category "A" }}
                 <div class="row justify-content-center">
@@ -416,18 +416,18 @@
                                     {{ end }}
                                     {{ if eq $key "ratingImObservatoryClientToServer" }}
                                         <li>
-                                            Security (<a href="/faq#client-to-server" title="Client to Server" class="abbr">C2S</a>) is insufficient
+                                            Security (<a href="/faq/#client-to-server" title="Client to Server" class="abbr">C2S</a>) is insufficient
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "ratingImObservatoryServerToServer" }}
                                         <li>
-                                            Security (<a href="/faq#server-to-server" title="Server to Server" class="abbr">S2S</a>) is insufficient
+                                            Security (<a href="/faq/#server-to-server" title="Server to Server" class="abbr">S2S</a>) is insufficient
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "maximumHttpFileUploadFileSize" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Sharing files is allowed up to an <a href="/faq#unknown" class="abbr">unknown</a> size or less than 1 MB
+                                                Sharing files is allowed up to an <a href="/faq/#unknown" class="abbr">unknown</a> size or less than 1 MB
                                             {{ else }}
                                                 Sharing files is not allowed up to a size that is large enough
                                             {{ end }}
@@ -436,7 +436,7 @@
                                     {{ if eq $key "maximumHttpFileUploadTotalSize" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Shared files are stored up to an <a href="/faq#unknown" class="abbr">unknown</a> size or less than 1 MB
+                                                Shared files are stored up to an <a href="/faq/#unknown" class="abbr">unknown</a> size or less than 1 MB
                                             {{ else }}
                                                 Shared files are not stored up to a size that is large enough
                                             {{ end }}
@@ -445,7 +445,7 @@
                                     {{ if eq $key "maximumHttpFileUploadStorageTime" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Shared files are stored for an <a href="/faq#unknown" class="abbr">unknown</a> time or less than 1 day
+                                                Shared files are stored for an <a href="/faq/#unknown" class="abbr">unknown</a> time or less than 1 day
                                             {{ else }}
                                                 Shared files are not stored long enough
                                             {{ end }}
@@ -454,7 +454,7 @@
                                     {{ if eq $key "maximumMessageArchiveManagementStorageTime" }}
                                         <li>
                                             {{ if eq (string $value) "-1" }}
-                                                Messages are stored for an <a href="/faq#unknown" class="abbr">unknown</a> time or less than 1 day
+                                                Messages are stored for an <a href="/faq/#unknown" class="abbr">unknown</a> time or less than 1 day
                                             {{ else }}
                                                 Messages are not stored long enough
                                             {{ end }}
@@ -477,7 +477,7 @@
                                     {{ end }}
                                     {{ if eq $key "serverLocations" }}
                                         <li>
-                                            Server location is <a href="/faq#unknown" class="abbr">unknown</a>
+                                            Server location is <a href="/faq/#unknown" class="abbr">unknown</a>
                                         </li>
                                     {{ end }}
                                     {{ if or (eq $key "emailSupport") (eq $key "chatSupport") (eq $key "groupChatSupport") }}
