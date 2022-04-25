@@ -28,6 +28,10 @@ h4:not(.accordion-header)::before {
     visibility: hidden;
     pointer-events: none;
 }
+article h2 {
+    margin-top: 0.8em;
+    font-weight: 200;
+}
 .abbr {
     -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted #6c757d;

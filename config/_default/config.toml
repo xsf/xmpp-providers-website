@@ -12,6 +12,9 @@ languageCode = "en-us"
 theme = "xmpp-providers"
 enableEmoji = true
 
+[author]
+name = "XMPP Providers Team"
+
 [Params]
   subtitle = "Subtitle"
   hideAuthor = false

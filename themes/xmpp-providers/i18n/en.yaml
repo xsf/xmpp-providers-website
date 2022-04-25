@@ -1,0 +1,27 @@
+# Content
+- id: dateFormat
+  translation: "January 2, 2006"
+- id: shortdateFormat
+  translation: "Jan 2, 2006 15:04:05"
+- id: postedOnDate
+  translation: "Posted on {{ . }}"
+- id: translationsLabel
+  translation: "Other languages"
+- id: translationsSeparator
+  translation: ", "
+- id: readMore
+  translation: "Read More"
+- id: olderPosts
+  translation: "Older Posts"
+- id: newerPosts
+  translation: "Newer Posts"
+- id: previousPost
+  translation: "Previous Post"
+- id: nextPost
+  translation: "Next Post"
+- id: readTime
+  translation: "minutes"
+- id: words
+  translation: "words"
+- id: translationHint
+  translation: "Translations are submitted by volunteers, and may at times not reflect the English original."
