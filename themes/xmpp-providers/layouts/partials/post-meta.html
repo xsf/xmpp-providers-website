@@ -1,0 +1,13 @@
+<span class="text-muted">
+    {{ $lastmodstr := default (i18n "dateFormat") .Site.Params.dateformat | .Lastmod.Format }}
+    {{ $datestr := default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format }}
+    <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
+    {{ if ne $datestr $lastmodstr }}
+        &nbsp;{{ $lastmodstr }}
+    {{ end }}
+    {{ if .Params.author }}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
+    {{ else }}
+        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Author.name | safeHTML }}
+    {{ end }}
+</span>

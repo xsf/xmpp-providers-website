@@ -10,3 +10,7 @@
     name = "About"
     url = "/about/"
     weight = 3
+[[main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 4
