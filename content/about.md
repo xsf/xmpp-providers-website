@@ -2,8 +2,6 @@
 title: About
 ---
 
-# About
-
 XMPP (E**x**tensible **M**essaging and **P**resence **P**rotocol) is like a common language both your and your chat partner's app speak to each other.
 Similar to email, there is a service provider managing your account and messages.
 That provider speaks XMPP too.

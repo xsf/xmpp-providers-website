@@ -1,8 +1,6 @@
 ---
-title: FAQ
+title: Frequently Asked Questions (FAQ)
 ---
-
-# Frequently Asked Questions
 
 ## Why do we collect and categorize providers?
 

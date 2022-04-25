@@ -2,8 +2,6 @@
 title: Apps
 ---
 
-# Apps
-
 This website offers a curated list of XMPP providers.
 Users can choose one and register on it by using their web browsers.
 But some XMPP apps went a step further and integrated this list in their registration process.
