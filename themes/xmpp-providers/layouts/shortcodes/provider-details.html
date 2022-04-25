@@ -156,7 +156,7 @@
                     </td>
                     <td>
                         {{ if .inBandRegistration }}
-                            You can register on this provider directly via your XMPP app
+                            You can register on this provider directly via a <a href="/apps/">supported app</a> or <a href="xmpp:{{ $provider_name }}?register">your app</a> (if supported)
                         {{ end }}
                         {{ if .registrationWebPage }}
                             {{ if .inBandRegistration }}
