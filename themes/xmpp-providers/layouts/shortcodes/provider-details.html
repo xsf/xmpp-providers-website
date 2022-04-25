@@ -162,15 +162,25 @@
                             {{ if .inBandRegistration }}
                                 <br>
                             {{ end }}
-                            You can register on this provider via a web browser:
-                            {{ $len := (len .registrationWebPage) }}
-                            {{ $count := 0 }}
-                            {{ range $lang, $address := .registrationWebPage }}
-                                <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
-                                {{ $count = add $count 1 }}
-                                {{ if ne $count $len }}
-                                    <span class="text-muted">|</span>
+                            You can register on this provider via a web browser&nbsp;
+                            {{ if eq (len .registrationWebPage) 1 }}
+                                <br>
+                                {{ range $lang, $address := .registrationWebPage }}
+                                    <a class="btn btn-secondary btn-sm" href="{{ $address }}" target="_blank">
+                                        Register ({{ upper $lang }})…
+                                    </a>
                                 {{ end }}
+                            {{ else if gt (len .registrationWebPage) 1 }}
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="registerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Register…
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="registerDropdown">
+                                        {{ range $lang, $address := .registrationWebPage }}
+                                            <li><a class="dropdown-item" href="{{ $address }}" target="_blank">Register ({{ upper $lang }})…</a></li>
+                                        {{ end }}
+                                    </ul>
+                                </div>
                             {{ end }}
                         {{ end }}
                         {{ if and (not .inBandRegistration) (not .registrationWebPage) }}
