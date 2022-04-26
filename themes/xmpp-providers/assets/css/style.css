@@ -59,3 +59,10 @@ article h2 {
 .navbar-brand:hover {
     color:rgb(100, 100, 100) !important;
 }
+.provider-overview {
+    white-space: nowrap;
+}
+table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
+    content: " \25B4\25BE";
+    color: #aaa;
+}
