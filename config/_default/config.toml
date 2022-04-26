@@ -16,6 +16,6 @@ enableEmoji = true
 name = "XMPP Providers Team"
 
 [Params]
-  subtitle = "Subtitle"
-  hideAuthor = false
-  dateFormat = "January 2, 2006"
+subtitle = "Subtitle"
+hideAuthor = false
+dateFormat = "January 2, 2006"
