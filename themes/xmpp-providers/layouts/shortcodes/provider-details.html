@@ -72,7 +72,11 @@
                             {{ $len := (len .serverLocations) }}
                             {{ $count := 0 }}
                             {{ range $index, $location := .serverLocations }}
-                                {{ upper $location }}
+                                <span title="{{ upper $location }}">
+                                    {{ range split (upper $location) "" }}
+                                        {{- printf "%c" (delimit . "" | int | add 127397) -}}
+                                    {{ end }}
+                                </span>
                                 {{ $count = add $count 1 }}
                                 {{ if ne $count $len }}
                                     <span class="text-muted">|</span>
