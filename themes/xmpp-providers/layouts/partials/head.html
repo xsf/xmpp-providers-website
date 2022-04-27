@@ -25,6 +25,56 @@
     {{- end }}
     <link rel="alternate" type="application/atom" href="/index.xml" title="XMPP Providers" />
     <link rel="canonical" href="{{ .Permalink }}">
+    <!--  Make website accessible without JavaScript. -->
+    <noscript>
+        <style>
+            /* Expand all (usually collapsed) elements. */
+            .collapse:not(.show) {
+                display: block;
+            }
+            /* Arrange the navigation entries in a row. */
+            .navbar-nav {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            /* Remove the navigation button. */
+            .navbar-toggler {
+                display: none;
+            }
+            /* Remove the provider filter button. */
+            #filter-button {
+                display: none;
+            }
+            /* Remove the provider filter options. */
+            #filters-collapse {
+                display: none;
+            }
+            /* Display accordion buttons (such as the collapsible provider entry headers) as open. */
+            .accordion-button {
+                background-color: #e7f1ff;
+                box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
+                cursor: unset !important;
+            }
+            /* Remove the accordion buttons. */
+            .accordion-button::after {
+                display: none;
+            }
+            /* Remove the button for opening registration language alternatives. */
+            #register-dropdown-button {
+                display: none;
+            }
+            /* Display the registration language alternatives. */
+            #register-dropdown-menu {
+                display: contents;
+                padding: 0;
+                border-radius: 0;
+            }
+            /* Remove the button for copying a provider badge. */
+            #badge_link_copy {
+                display: none;
+            }
+        </style>
+    </noscript>
     <title>
       {{- if .IsHome }}
       {{- printf "%s" .Site.Title }}
