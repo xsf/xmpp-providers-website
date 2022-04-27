@@ -105,6 +105,6 @@ The client-to-server (C2S) connection is used for the communication between your
 
 {{< external-link text="XEP-0363 HTTP File Upload" url="https://xmpp.org/extensions/xep-0363.html" >}} is a standard for sharing files between you and others.
 
-### Server to Server
+### Server-to-Server
 
 Server-to-server (S2S) connections are used for the communication between your provider and the provider of your contact.
