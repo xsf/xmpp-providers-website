@@ -175,10 +175,10 @@
                                 {{ end }}
                             {{ else if gt (len .registrationWebPage) 1 }}
                                 <div class="dropdown">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="registerDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button id="register-dropdown-button" class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Register
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="registerDropdown">
+                                    <ul id="register-dropdown-menu" class="dropdown-menu" aria-labelledby="register-dropdown-button">
                                         {{ range $lang, $address := .registrationWebPage }}
                                             <li><a class="dropdown-item" href="{{ $address }}" target="_blank">Register ({{ upper $lang }})</a></li>
                                         {{ end }}
