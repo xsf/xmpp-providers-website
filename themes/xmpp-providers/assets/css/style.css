@@ -4,6 +4,9 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  */
 
+html {
+    scroll-padding-top: 75px;
+}
 a {
     text-decoration: none;
 }
@@ -17,16 +20,6 @@ h2:hover .heading-anchor,
 h3:hover .heading-anchor,
 h4:hover .heading-anchor {
     visibility: visible;
-}
-h2:not(.accordion-header)::before,
-h3:not(.accordion-header)::before,
-h4:not(.accordion-header)::before {
-    display: block;
-    content: " ";
-    margin-top: -75px;
-    height: 75px;
-    visibility: hidden;
-    pointer-events: none;
 }
 article h2 {
     margin-top: 0.8em;
