@@ -1,3 +1,5 @@
 ---
 title: Blog
 ---
+
+{{< feed >}}
