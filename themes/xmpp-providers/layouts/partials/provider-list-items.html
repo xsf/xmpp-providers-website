@@ -4,11 +4,11 @@
         <h2 class="accordion-header" id="heading-{{ $provider_id }}">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $provider_id }}" aria-expanded="false" aria-controls="collapse-{{ $provider_id }}">
                 <span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span>
-                <span class="text-body">&nbsp;&nbsp;{{ .jid }}</span>
+                <span class="">&nbsp;&nbsp;{{ .jid }}</span>
             </button>
         </h2>
         <div id="collapse-{{ $provider_id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ $provider_id }}" data-bs-parent="#providers-accordion-{{ .category }}">
-            <div class="accordion-body bg-light">
+            <div class="accordion-body">
                 <div class="row">
                     <div class="col-sm-6">
                         <b>Compatibility / Security</b>
