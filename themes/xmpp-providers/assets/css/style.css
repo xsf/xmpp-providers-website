@@ -84,6 +84,9 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
     content: " \25B4\25BE";
     color: #aaa;
 }
+table.sortable th:hover {
+    cursor: pointer;
+}
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
