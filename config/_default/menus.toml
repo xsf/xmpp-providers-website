@@ -18,3 +18,7 @@
     name = "About"
     url = "/about/"
     weight = 5
+[[main]]
+    name = "API"
+    url = "https://invent.kde.org/melvo/xmpp-providers#usage"
+    weight = 6
