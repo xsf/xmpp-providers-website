@@ -25,7 +25,7 @@
                 {{ else }}
                   {{ $url := urls.Parse .URL }}
                   <li class="nav-item">
-                      <a class="nav-link" href="{{ .URL | relLangURL }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ .Name }}{{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}</a>
+                      <a class="nav-link {{ if ne $url.Host $baseurl.Host }}nav-link-external{{ end }}" href="{{ .URL | relLangURL }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ .Name }}{{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}</a>
                   </li>
                 {{ end }}
             {{ end }}
