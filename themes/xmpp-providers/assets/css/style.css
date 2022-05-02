@@ -89,6 +89,7 @@ table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sor
 }
 table.sortable th:hover {
     cursor: pointer;
+    filter: opacity(0.7);
 }
 
 /* Dark theme */
