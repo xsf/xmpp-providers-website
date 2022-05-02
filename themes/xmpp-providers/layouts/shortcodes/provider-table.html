@@ -183,7 +183,7 @@
                             {{ if .inBandRegistration }}
                                 <span class="text-muted">|</span>
                             {{ end }}
-                            {{ $len := (len .legalNotice) }}
+                            {{ $len := (len .registrationWebPage) }}
                             {{ $count := 0 }}
                             {{- range $lang, $address := .registrationWebPage -}}
                                 <a href="{{ $address }}" target="_blank">{{- upper $lang -}}</a>
