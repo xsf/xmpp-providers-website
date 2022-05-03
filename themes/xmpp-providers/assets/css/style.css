@@ -101,6 +101,12 @@ table.sortable th:hover {
     h1, h2, h3, h4, h5, h6 {
         color: rgb(197, 206, 209);
     }
+    a {
+        color:#518fb9;
+    }
+    a:hover {
+        color:#56a7dd;
+    }
     footer {
         background-color: #2a2e31;
     }
@@ -139,7 +145,13 @@ table.sortable th:hover {
         color: #ddd !important;
     }
     .nav-link {
-        filter: invert(1) !important;
+        color: #aaa !important;
+    }
+    .nav-link-external {
+        color: #518fb9 !important;
+    }
+    .nav-link-external:hover {
+        color: #56a7dd !important;
     }
     .navbar-toggler {
         filter: invert(1);
