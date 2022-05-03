@@ -1,22 +1,22 @@
 [[main]]
-    name = "Overview"
-    url = "/overview/"
-    weight = 1
-[[main]]
     name = "Apps"
     url = "/apps/"
+    weight = 1
+[[main]]
+    name = "About"
+    url = "/about/"
     weight = 2
 [[main]]
     name = "FAQ"
     url = "/faq/"
     weight = 3
 [[main]]
-    name = "Blog"
-    url = "/blog/"
+    name = "Overview"
+    url = "/overview/"
     weight = 4
 [[main]]
-    name = "About"
-    url = "/about/"
+    name = "Blog"
+    url = "/blog/"
     weight = 5
 [[main]]
     name = "API"
