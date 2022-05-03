@@ -71,6 +71,9 @@
                 <th>
                     Support (Group Chat)
                 </th>
+                <th>
+                    Provider
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -99,9 +102,9 @@
                             {{- range $lang, $address := .website -}}
                                 <a href="{{ $address }}" target="_blank">{{- upper $lang -}}</a>
                                 {{- $count = add $count 1 -}}
-                                {{- if ne $count $len -}}
+                                {{ if ne $count $len }}
                                     <span class="text-muted">|</span>
-                                {{- end -}}
+                                {{ end }}
                             {{- end -}}
                         {{ else }}
                             ?
@@ -125,9 +128,9 @@
                                     {{ end }}
                                 </span>
                                 {{- $count = add $count 1 -}}
-                                {{- if ne $count $len -}}
+                                {{ if ne $count $len }}
                                     <span class="text-muted">|</span>
-                                {{- end -}}
+                                {{ end }}
                             {{ end }}
                         {{ else }}
                             <a href="/faq/#unknown" class="abbr">unknown</a>
@@ -140,9 +143,9 @@
                             {{- range $lang, $address := .legalNotice -}}
                                 <a href="{{ $address }}" target="_blank">{{- upper $lang -}}</a>
                                 {{- $count = add $count 1 -}}
-                                {{- if ne $count $len -}}
+                                {{ if ne $count $len }}
                                     <span class="text-muted">|</span>
-                                {{- end -}}
+                                {{ end }}
                             {{- end -}}
                         {{ else }}
                             <span class="text-danger text-opacity-75">No</span>
@@ -188,9 +191,9 @@
                             {{- range $lang, $address := .registrationWebPage -}}
                                 <a href="{{ $address }}" target="_blank">{{- upper $lang -}}</a>
                                 {{- $count = add $count 1 -}}
-                                {{- if ne $count $len -}}
+                                {{ if ne $count $len }}
                                     <span class="text-muted">|</span>
-                                {{- end -}}
+                                {{ end }}
                             {{- end -}}
                         {{ end }}
                         {{ if and (not .inBandRegistration) (not .registrationWebPage) }}
@@ -204,9 +207,9 @@
                             {{- range $lang, $address := .passwordReset -}}
                                 <a href="{{ $address }}" target="_blank">{{- upper $lang -}}</a>
                                 {{- $count = add $count 1 -}}
-                                {{- if ne $count $len -}}
+                                {{ if ne $count $len }}
                                     <span class="text-muted">|</span>
-                                {{- end -}}
+                                {{ end }}
                             {{- end -}}
                         {{ else }}
                             No
@@ -267,14 +270,14 @@
                                 {{- range $address -}}
                                     <a href="mailto:{{ . }}">{{- upper $lang -}}</a>
                                     {{- $countAddress = add $countAddress 1 -}}
-                                    {{- if ne $countAddress $lenAddresses -}}
-                                        <span class="text-muted">|</span>
-                                    {{- end -}}
+                                    {{ if ne $countAddress $lenAddresses }}
+                                        <span class="text-muted">/</span>
+                                    {{ end }}
                                 {{- end -}}
                                 {{- $count = add $count 1 -}}
-                                {{- if ne $count $len -}}
+                                {{ if ne $count $len }}
                                     <span class="text-muted">|</span>
-                                {{- end -}}
+                                {{ end }}
                             {{ end }}
                         {{ else }}
                             -
@@ -290,14 +293,14 @@
                                 {{- range $address -}}
                                     <a href="xmpp:{{ . }}">{{- upper $lang -}}</a>
                                     {{- $countAddress = add $countAddress 1 -}}
-                                    {{- if ne $countAddress $lenAddresses -}}
-                                        <span class="text-muted">|</span>
-                                    {{- end -}}
+                                    {{ if ne $countAddress $lenAddresses }}
+                                        <span class="text-muted">/</span>
+                                    {{ end }}
                                 {{- end -}}
                                 {{- $count = add $count 1 -}}
-                                {{- if ne $count $len -}}
+                                {{ if ne $count $len }}
                                     <span class="text-muted">|</span>
-                                {{- end -}}
+                                {{ end }}
                             {{- end -}}
                         {{ else }}
                             -
@@ -313,18 +316,21 @@
                                 {{- range $address -}}
                                     <a href="xmpp:{{ . }}?join">{{- upper $lang -}}</a>
                                     {{- $countAddress = add $countAddress 1 -}}
-                                    {{- if ne $countAddress $lenAddresses -}}
-                                        <span class="text-muted">|</span>
-                                    {{- end -}}
+                                    {{ if ne $countAddress $lenAddresses }}
+                                        <span class="text-muted">/</span>
+                                    {{ end }}
                                 {{- end -}}
                                 {{- $count = add $count 1 -}}
-                                {{- if ne $count $len -}}
+                                {{ if ne $count $len }}
                                     <span class="text-muted">|</span>
-                                {{- end -}}
+                                {{ end }}
                             {{- end -}}
                         {{ else }}
                             -
                         {{ end }}
+                    </td>
+                    <td>
+                        <a href="/provider/{{ .jid }}/">{{ .jid }}</a>
                     </td>
                 </tr>
             {{ end }}
