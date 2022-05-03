@@ -110,6 +110,25 @@ table.sortable th:hover {
     .footer-link:hover {
         color: #aaa;
     }
+    .table {
+        color: #aaa;
+        background-color: #363e46;
+    }
+    .table >tbody>tr:hover>* {
+        color: #ccc;
+        background-color: #323f47;
+    }
+    .table tbody, td, tfoot, th, thead, tr {
+        border-color: #585858;
+    }
+    .table-striped>tbody>tr:nth-of-type(odd):hover>* {
+        color: #ccc;
+        background-color: #323f47;
+    }
+    .table-striped>tbody>tr:nth-of-type(odd)>* {
+        color: #aaa;
+        background-color: #2d3238
+    }
     .navbar {
         background-color: #323f47;
     }

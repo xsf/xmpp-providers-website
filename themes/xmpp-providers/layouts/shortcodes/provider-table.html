@@ -1,7 +1,7 @@
 <div class="table-responsive">
-    <table class="table table-sm table-striped provider-overview sortable">
-        <thead class="table-light">
-            <tr class="small">
+    <table class="table table-sm table-striped table-hover provider-overview sortable">
+        <thead>
+            <tr class="small align-top">
                 <th>
                     Provider
                 </th>
@@ -21,7 +21,7 @@
                     Free of Charge
                 </th>
                 <th>
-                    Server/Data Location(s)
+                    Server/Data<br>Location(s)
                 </th>
                 <th>
                     Legal Notice
@@ -30,7 +30,7 @@
                     Bus Factor
                 </th>
                 <th>
-                    Professional Hosting
+                    Professional<br>Hosting
                 </th>
                 <th>
                     Company
@@ -39,28 +39,28 @@
                     Registration
                 </th>
                 <th>
-                    Password Reset
+                    Password<br>Reset
                 </th>
                 <th class="sorttable_numeric">
-                    Message Storage Duration
+                    Message Storage<br>Duration
                 </th>
                 <th class="sorttable_numeric">
-                    Maximum File Size
+                    Maximum File<br>Size
                 </th>
                 <th class="sorttable_numeric">
-                    Maximum Total File Size
+                    Maximum Total<br>File Size
                 </th>
                 <th class="sorttable_numeric">
-                    File Storage Duration
+                    File Storage<br>Duration
                 </th>
                 <th>
                     Compatibility
                 </th>
                 <th>
-                    Security (C2S)
+                    Security<br>(C2S)
                 </th>
                 <th>
-                    Security (S2S)
+                    Security<br>(S2S)
                 </th>
                 <th>
                     Support (Email)
@@ -100,7 +100,7 @@
                                 <a href="{{ $address }}" target="_blank">{{- upper $lang -}}</a>
                                 {{- $count = add $count 1 -}}
                                 {{- if ne $count $len -}}
-                                    <span class="text-muted">,&nbsp;</span>
+                                    <span class="text-muted">|&nbsp;</span>
                                 {{- end -}}
                             {{- end -}}
                         {{ else }}
@@ -141,7 +141,7 @@
                                 <a href="{{ $address }}" target="_blank">{{- upper $lang -}}</a>
                                 {{- $count = add $count 1 -}}
                                 {{- if ne $count $len -}}
-                                    <span class="text-muted">,&nbsp;</span>
+                                    <span class="text-muted">|&nbsp;</span>
                                 {{- end -}}
                             {{- end -}}
                         {{ else }}
@@ -189,7 +189,7 @@
                                 <a href="{{ $address }}" target="_blank">{{- upper $lang -}}</a>
                                 {{- $count = add $count 1 -}}
                                 {{- if ne $count $len -}}
-                                    <span class="text-muted">,&nbsp;</span>
+                                    <span class="text-muted">|&nbsp;</span>
                                 {{- end -}}
                             {{- end -}}
                         {{ end }}
@@ -205,7 +205,7 @@
                                 <a href="{{ $address }}" target="_blank">{{- upper $lang -}}</a>
                                 {{- $count = add $count 1 -}}
                                 {{- if ne $count $len -}}
-                                    <span class="text-muted">,&nbsp;</span>
+                                    <span class="text-muted">|&nbsp;</span>
                                 {{- end -}}
                             {{- end -}}
                         {{ else }}
@@ -268,12 +268,12 @@
                                     <a href="mailto:{{ . }}">{{- upper $lang -}}</a>
                                     {{- $countAddress = add $countAddress 1 -}}
                                     {{- if ne $countAddress $lenAddresses -}}
-                                        <span class="text-muted">,&nbsp;</span>
+                                        <span class="text-muted">|&nbsp;</span>
                                     {{- end -}}
                                 {{- end -}}
                                 {{- $count = add $count 1 -}}
                                 {{- if ne $count $len -}}
-                                    <span class="text-muted">,&nbsp;</span>
+                                    <span class="text-muted">|&nbsp;</span>
                                 {{- end -}}
                             {{ end }}
                         {{ else }}
@@ -291,12 +291,12 @@
                                     <a href="xmpp:{{ . }}">{{- upper $lang -}}</a>
                                     {{- $countAddress = add $countAddress 1 -}}
                                     {{- if ne $countAddress $lenAddresses -}}
-                                        <span class="text-muted">,&nbsp;</span>
+                                        <span class="text-muted">|&nbsp;</span>
                                     {{- end -}}
                                 {{- end -}}
                                 {{- $count = add $count 1 -}}
                                 {{- if ne $count $len -}}
-                                    <span class="text-muted">,&nbsp;</span>
+                                    <span class="text-muted">|&nbsp;</span>
                                 {{- end -}}
                             {{- end -}}
                         {{ else }}
@@ -314,12 +314,12 @@
                                     <a href="xmpp:{{ . }}?join">{{- upper $lang -}}</a>
                                     {{- $countAddress = add $countAddress 1 -}}
                                     {{- if ne $countAddress $lenAddresses -}}
-                                        <span class="text-muted">,&nbsp;</span>
+                                        <span class="text-muted">|&nbsp;</span>
                                     {{- end -}}
                                 {{- end -}}
                                 {{- $count = add $count 1 -}}
                                 {{- if ne $count $len -}}
-                                    <span class="text-muted">,&nbsp;</span>
+                                    <span class="text-muted">|&nbsp;</span>
                                 {{- end -}}
                             {{- end -}}
                         {{ else }}
