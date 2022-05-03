@@ -148,7 +148,7 @@
                             <span class="text-danger text-opacity-75">No</span>
                         {{ end }}
                     </td>
-                    <td>
+                    <td class="text-end">
                         {{ if eq (int .busFactor) -1 }}
                             <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ else }}
@@ -212,7 +212,7 @@
                             No
                         {{ end }}
                     </td>
-                    <td>
+                    <td class="text-end">
                         {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
                             <a href="/faq#unknown" class="abbr">unknown</a>
                         {{ else if eq (string .maximumMessageArchiveManagementStorageTime) "0" }}
@@ -221,7 +221,7 @@
                             {{ .maximumMessageArchiveManagementStorageTime }} days
                         {{ end }}
                     </td>
-                    <td>
+                    <td class="text-end">
                         {{ if eq (string .maximumHttpFileUploadFileSize) "-1" }}
                             <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ else if eq (string .maximumHttpFileUploadFileSize) "0" }}
@@ -230,7 +230,7 @@
                             {{ .maximumHttpFileUploadFileSize }} MB
                         {{ end }}
                     </td>
-                    <td>
+                    <td class="text-end">
                         {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
                             <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ else if eq (string .maximumHttpFileUploadTotalSize) "0" }}
@@ -239,7 +239,7 @@
                             {{ .maximumHttpFileUploadTotalSize }} MB
                         {{ end }}
                     </td>
-                    <td>
+                    <td class="text-end">
                         {{ if eq (string .maximumHttpFileUploadStorageTime) "-1" }}
                             <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ else if eq (string .maximumHttpFileUploadStorageTime) "0" }}
