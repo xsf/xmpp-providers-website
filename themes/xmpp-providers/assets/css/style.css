@@ -50,7 +50,7 @@ article h2 {
     color: #2a2e31;
 }
 .badge-rating:hover {
-    box-shadow: 0 0 0 0.15rem rgb(108 117 125 / 50%)
+    filter: opacity(0.8);
 }
 .category-a {
     background-color: rgb(67, 150, 57);
