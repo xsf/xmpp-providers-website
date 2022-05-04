@@ -147,6 +147,9 @@ table.sortable th:hover {
     .nav-link {
         color: #aaa !important;
     }
+    .nav-link:hover {
+        color: #ccc !important;
+    }
     .nav-link-external {
         color: #518fb9 !important;
     }
