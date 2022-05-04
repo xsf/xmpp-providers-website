@@ -97,6 +97,11 @@ A property is called *unknown* if no [source](#where-do-we-have-the-providers-pr
 
 The term *bus factor* describes the minimum number of people that have to leave before the provider becomes inoperable.
 
+### Professional Hosting
+
+A provider's service is seen as *professionally hosted* if it has a good internet connection speed, an uninterruptible power supply, access protection and regular backups.
+That is usually the case if the service is hosted in a data center.
+
 ### Client-to-Server
 
 The client-to-server (C2S) connection is used for the communication between your app and your provider.
