@@ -12,7 +12,7 @@ Some provide more space for sharing media than others or store them longer than 
 The curated list of XMPP providers on this website makes it easy for you to find a suitable provider.
 
 This website uses data from {{< external-link url="https://invent.kde.org/melvo/xmpp-providers" text="XMPP Providers" >}}.
-All properties of the included providers have references to the providers' web pages in order to verify and maintain them.
+Many properties of the included providers have references to the providers' web pages in order to verify and maintain them.
 Therefore, it is important that the providers add corresponding statements to their websites.
 As soon as that is done, the corresponding provider entry can be updated.
 Help us to make _free communication_ possible and {{< external-link url="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md" text="contribute to XMPP Providers" >}} or {{< external-link url="https://github.com/xsf/xmpp-providers-website" text="improve this website" >}}!
