@@ -104,7 +104,7 @@ That is usually the case if the service is hosted in a data center.
 
 ### Client-to-Server
 
-The client-to-server (C2S) connection is used for the communication between your app and your provider.
+The *client-to-server (C2S)* connection is used for the communication between your app and your provider.
 
 ### HTTP Upload
 
@@ -112,4 +112,4 @@ The client-to-server (C2S) connection is used for the communication between your
 
 ### Server-to-Server
 
-Server-to-server (S2S) connections are used for the communication between your provider and the provider of your contact.
+*Server-to-server (S2S)* connections are used for the communication between your provider and the provider of your contact.
