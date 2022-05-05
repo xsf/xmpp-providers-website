@@ -30,6 +30,22 @@ article h2 {
 }
 .navbar {
     background-color: #f6f8fa;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+}
+.navbar-brand {
+    border-radius: 4px;
+    margin-left: -0.6rem;
+    padding: 5px;
+    font-size: var(--bs-body-font-size);
+}
+.navbar-brand:hover{
+    background-color: var(--bs-gray-400);
+    color: var(--bs-gray-700) !important;
+}
+.navbar-brand img {
+    min-width: 50px;
+    width: 2.5em;
 }
 .nav-link-external {
     color: #5f859e !important;
@@ -37,11 +53,13 @@ article h2 {
 .nav-link-external:hover {
     color: #45657a !important;
 }
-.providers-logo {
+.logo {
+    background-color: var(--bs-gray-300);
+    color: var(--bs-gray-700) !important;
+}
+.logo-index {
     border-radius: 10px;
     padding: 10px;
-    background-color: inherit;
-    box-shadow: none;
 }
 .abbr {
     -webkit-text-decoration: underline dotted;
@@ -76,9 +94,6 @@ article h2 {
 .footer-link:hover {
     color: var(--bs-body-color);
     filter: brightness(3.0);
-}
-.navbar-brand:hover {
-    color:rgb(100, 100, 100) !important;
 }
 .provider-overview {
     white-space: nowrap;
@@ -139,10 +154,11 @@ table.sortable th:hover {
         background-color: #323f47;
     }
     .navbar-brand {
-        color: #ccc !important;
+        color: var(--bs-gray-700) !important;
     }
     .navbar-brand:hover {
-        color: #ddd !important;
+        background-color: var(--bs-gray-300);
+        color: var(--bs-gray-700) !important;
     }
     .nav-link {
         color: #aaa !important;
@@ -159,9 +175,8 @@ table.sortable th:hover {
     .navbar-toggler {
         filter: invert(1);
     }
-    .providers-logo {
-        background-color: #30383c;
-        box-shadow: 0 0 10px 10px #232323;
+    .logo {
+        background-color: var(--bs-gray-400);
     }
     .accordion-item {
         border-color: #4a5660;
