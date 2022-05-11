@@ -3,6 +3,7 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 PY=python3
+PIP=pip3
 HUGO=hugo
 
 BASEDIR=$(CURDIR)
@@ -23,11 +24,13 @@ clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 
 serve:
+	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
 	$(PY) $(TOOLSDIR)/prepare.py
 	$(HUGO) version
 	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
 
 publish:
+	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
 	$(PY) $(TOOLSDIR)/prepare.py
 	$(HUGO) version
 	$(HUGO)

@@ -11,13 +11,13 @@ from typing import Union
 from datetime import date
 from pathlib import Path
 import json
-import logging
 import os
 import shutil
 import sys
 import zipfile
-from xml.etree import ElementTree as ET
 
+from defusedxml.ElementTree import parse
+from defusedxml.ElementTree import ParseError
 import requests
 
 DOWNLOAD_PATH = Path('downloads')
@@ -86,11 +86,21 @@ def download_file(url: str, path: Path) -> bool:
     '''
     file_request = requests.get(url)
     if not 200 >= file_request.status_code < 400:
-        logging.error('Error while trying to download from %s', url)
+        print('Error while trying to download from ',
+              url,
+              file_request.status_code)
         return False
 
-    with open(DOWNLOAD_PATH / path, 'wb') as file_data:
-        file_data.write(file_request.content)
+    with open(DOWNLOAD_PATH / path, 'wb') as data_file:
+        max_size = 1024 * 1024 * 10  # 10 MiB
+        size = 0
+        for chunk in file_request.iter_content(chunk_size=8192):
+            data_file.write(chunk)
+            size += len(chunk)
+            if size > max_size:
+                file_request.close()
+                print('File size exceeds 10 MiB:', path)
+                return False
     return True
 
 
@@ -150,9 +160,9 @@ def create_provider_pages() -> None:
 def parse_doap_infos(doap_file: str) -> Optional[dict[str, list[str]]]:
     '''Parse DOAP file and return infos'''
     try:
-        doap = ET.parse(
+        doap = parse(
             DOWNLOAD_PATH / f'clients_data/doap_files/{doap_file}.doap')
-    except FileNotFoundError:
+    except (FileNotFoundError, ParseError):
         return None
 
     info: dict[str, Union[str, list[str]]] = {}
