@@ -6,6 +6,8 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 # XMPP Providers Website
 
+[![Website Build](https://github.com/xsf/xmpp-providers-website/actions/workflows/build-website.yml/badge.svg)](https://github.com/xsf/xmpp-providers-website/actions/workflows/build-website.yml) [![REUSE Compliance Check](https://github.com/xsf/xmpp-providers-website/actions/workflows/reuse.yml/badge.svg)](https://github.com/xsf/xmpp-providers-website/actions/workflows/reuse.yml)
+
 [providers.xmpp.net](https://providers.xmpp.net) is a website generated based on data from the [XMPP Providers project](https://invent.kde.org/melvo/xmpp-providers).
 
 ## Software Requirements
