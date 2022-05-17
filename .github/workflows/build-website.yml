@@ -1,0 +1,46 @@
+name: Build Website
+
+on:
+  push:
+    branches: [ master ]
+
+  # Allows to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ARCHIVE: providers-xmpp-net-master.tar.gz
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+
+      - name: Install Python packages
+        run: pip install -r tools/requirements.txt
+
+      - name: Prepare provider list
+        run: python tools/prepare.py
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.80.0'
+
+      - name: Build website
+        run: hugo
+
+      - name: Create build archive
+        run: tar -czf ${{ env.ARCHIVE }} "./public"
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: providers-xmpp-net-master
+          path: ${{ env.ARCHIVE }}
