@@ -95,7 +95,7 @@ A property is called *unknown* if no [source](#where-do-we-have-the-providers-pr
 
 ### Bus Factor
 
-The term *bus factor* describes the minimum number of people that have to leave before the provider becomes inoperable.
+The term {{< external-link text="bus factor" url="https://en.wikipedia.org/wiki/Bus_factor" >}} describes the minimum number of team members that the service could not survive losing.
 
 ### Professional Hosting
 
