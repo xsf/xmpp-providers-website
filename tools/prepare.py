@@ -33,8 +33,8 @@ BADGES_DATA_URL = 'https://invent.kde.org/melvo/xmpp-providers/' \
     '-/jobs/artifacts/master/download/?job=badges'
 CLIENTS_DATA_URL = 'https://invent.kde.org/melvo/xmpp-providers/' \
     '-/raw/master/clients.json'
-XSF_CLIENTS_LIST_URL = 'https://raw.githubusercontent.com/xsf/xmpp.org/master/' \
-    'data/clients.json'
+XSF_CLIENTS_LIST_URL = 'https://raw.githubusercontent.com/xsf/' \
+    'xmpp.org/master/data/clients.json'
 
 DOAP_NS = 'http://usefulinc.com/ns/doap#'
 DOAP_NAME = f'.//{{{DOAP_NS}}}name'
@@ -64,7 +64,8 @@ def prepare_provider_data_files() -> None:
 
     # Temporarily move 'logo' folder and 'recommended_clients.json'
     # in order to clean up directories
-    shutil.copytree(STATIC_PATH / 'logo', DOWNLOAD_PATH  / 'logo')
+    shutil.copytree(STATIC_PATH / 'logo', DOWNLOAD_PATH / 'logo')
+    shutil.copytree(STATIC_PATH / 'images', DOWNLOAD_PATH / 'images')
     shutil.copyfile(DATA_PATH / 'recommended_clients.json',
                     DOWNLOAD_PATH / 'recommended_clients.json')
 
@@ -74,7 +75,8 @@ def prepare_provider_data_files() -> None:
     get_providers_data()
     get_badges()
 
-    shutil.copytree(DOWNLOAD_PATH / 'logo', STATIC_PATH  / 'logo')
+    shutil.copytree(DOWNLOAD_PATH / 'logo', STATIC_PATH / 'logo')
+    shutil.copytree(DOWNLOAD_PATH / 'images', STATIC_PATH / 'images')
     shutil.copyfile(DOWNLOAD_PATH / 'recommended_clients.json',
                     DATA_PATH / 'recommended_clients.json')
 
@@ -113,7 +115,7 @@ def get_providers_data() -> None:
         sys.exit(f'Error while trying to download from {PROVIDERS_DATA_URL}')
 
     with zipfile.ZipFile(DOWNLOAD_PATH / 'providers_data.zip',
-                        'r') as zip_file:
+                         'r') as zip_file:
         zip_file.extractall(DOWNLOAD_PATH / 'providers_data')
 
     shutil.copyfile(DOWNLOAD_PATH / 'providers_data' / 'providers-D.json',
