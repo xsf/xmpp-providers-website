@@ -14,7 +14,6 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-ge
 
 # Install dependencies.
 RUN apt-get install -y hugo python3 python3-pip
-RUN pip3 install requests
 
 # Build and copy in place.
 WORKDIR /var/tmp/src/xmpp-providers
