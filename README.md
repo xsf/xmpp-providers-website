@@ -48,5 +48,5 @@ docker run -p 80:80 -t -i xmpp-providers
 
 This theme makes use of:
 
-* [Bootstrap 5.1](https://getbootstrap.com/docs/5.1/)
+* [Bootstrap 5.2](https://getbootstrap.com/docs/5.2/)
 * [FontAwesome 6](https://fontawesome.com/v6/docs/)
