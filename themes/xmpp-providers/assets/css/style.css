@@ -184,6 +184,9 @@ table.sortable th:hover {
         background-color: var(--bs-gray-400);
     }
     .accordion-item {
+        color: #ccc;
+    }
+    .accordion-item {
         border-color: #4a5660;
         background-color: #4c4c4c;
     }
