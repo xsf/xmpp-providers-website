@@ -49,7 +49,7 @@ docker run -p 80:80 -t -i xmpp-providers
 There are several steps needed in order to see changes of the [provider data](https://invent.kde.org/melvo/xmpp-providers) on the [website](https://providers.xmpp.net):
 
 1. The filtered lists are provided by https://invent.kde.org/melvo/xmpp-providers
-1. The lists are fetched and the website is built by https://github.com/xsf/xmpp-providers-website
+1. The lists are fetched and the website is built by https://github.com/xsf/xmpp-providers-website (every 12 hours)
 1. The built website is deployed by the server on xmpp.net
 
 ## Theme development
