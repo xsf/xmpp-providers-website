@@ -44,6 +44,15 @@ docker build -t xmpp-providers -f ./Dockerfile .
 docker run -p 80:80 -t -i xmpp-providers
 ```
 
+## Update Process
+
+Changes of the [provider data](https://invent.kde.org/melvo/xmpp-providers) may take a while to become visible on the [website](https://providers.xmpp.net).
+This is due to some delay in building and deploying.
+
+1. The filtered lists are provided by https://invent.kde.org/melvo/xmpp-providers
+1. The lists are fetched and the website is built by https://github.com/xsf/xmpp-providers-website (every 12 hours)
+1. The website is deployed by the server on xmpp.net (every 24 hours)
+
 ## Theme development
 
 This theme makes use of:
