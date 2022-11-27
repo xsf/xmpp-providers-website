@@ -14,6 +14,7 @@ import json
 import os
 import shutil
 import sys
+from urllib.parse import quote
 import zipfile
 
 from defusedxml.ElementTree import parse
@@ -122,6 +123,28 @@ def get_providers_data() -> None:
                     DATA_PATH / 'providers.json')
     shutil.copytree(DOWNLOAD_PATH / 'providers_data' / 'results',
                     DATA_PATH / 'results')
+
+
+def url_escape_support_addresses() -> None:
+    with open(DATA_PATH / 'providers.json',
+              'rb') as json_file:
+        providers = json.load(json_file)
+
+    support_categories = [
+        'emailSupport',
+        'chatSupport',
+        'groupChatSupport'
+    ]
+    for provider in providers:
+        for category in support_categories:
+            for _lang, addresses in provider[category].items():
+                for index, address in enumerate(addresses):
+                    addresses[index] = quote(address)
+
+    with open(DATA_PATH / 'providers.json',
+              'w',
+              encoding='utf-8') as esc_providers:
+        json.dump(providers, esc_providers, indent=4)
 
 
 def get_badges() -> None:
@@ -234,5 +257,6 @@ def prepare_client_data_file() -> None:
 
 if __name__ == '__main__':
     prepare_provider_data_files()
+    url_escape_support_addresses()
     create_provider_pages()
     prepare_client_data_file()
