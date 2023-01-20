@@ -8,20 +8,20 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    {{- with $bootstrap := resources.Get "css/bootstrap.min.css" }}
-    {{- with $secureBootstrap := $bootstrap | resources.Fingerprint "sha256" }}
-    <link rel="stylesheet" type="text/css" href="{{ $bootstrap.Permalink}}" integrity="{{$secureBootstrap.Data.Integrity}}">
-    {{- end }}
+    {{- with $style := resources.Get "css/bootstrap.min.css" }}
+        {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
+            <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink}}" integrity="{{$secureStyle.Data.Integrity}}">
+        {{- end }}
     {{- end }}
     {{- with $style := resources.Get "css/style.css" | resources.Minify }}
-    {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
-    <link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" integrity="{{$secureStyle.Data.Integrity}}">
-    {{- end }}
+        {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
+            <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
+        {{- end }}
     {{- end }}
     {{- with $style := resources.Get "fontawesome/css/all.min.css" }}
-    {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
-    <link rel="stylesheet" type="text/css" href="{{ $style.Permalink }}" integrity="{{$secureStyle.Data.Integrity}}">
-    {{- end }}
+        {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
+            <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
+        {{- end }}
     {{- end }}
     <link rel="alternate" type="application/atom" href="/index.xml" title="XMPP Providers" />
     <link rel="canonical" href="{{ .Permalink }}">

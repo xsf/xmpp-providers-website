@@ -20,6 +20,20 @@
         </div>
     </div>
 </footer>
-<script src="{{ "js/bootstrap.bundle.min.js" | absURL }}"></script>
-<script src="{{ "js/sorttable.js" | absURL }}"></script>
-<script src="{{ "js/scripts.js" | absURL }}"></script>
+{{- with $script := resources.Get "js/bootstrap.bundle.min.js" }}
+    {{- with $secureScript := $script | resources.Fingerprint "sha256" }}
+        <script href="{{ $script.RelPermalink }}" integrity="{{ $secureScript.Data.Integrity }}"></script>
+    {{- end }}
+{{- end }}
+
+{{- with $script := resources.Get "js/sorttable.js" | resources.Minify }}
+    {{- with $secureScript := $script | resources.Fingerprint "sha256" }}
+        <script href="{{ $script.RelPermalink }}" integrity="{{ $secureScript.Data.Integrity }}"></script>
+    {{- end }}
+{{- end }}
+
+{{- with $script := resources.Get "js/scripts.js" | resources.Minify }}
+    {{- with $secureScript := $script | resources.Fingerprint "sha256" }}
+        <script href="{{ $script.RelPermalink }}" integrity="{{ $secureScript.Data.Integrity }}"></script>
+    {{- end }}
+{{- end }}
