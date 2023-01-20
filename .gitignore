@@ -20,6 +20,7 @@ data/results/
 data/implementing_clients.json
 data/providers.json
 downloads/
+downloads-docker/
 public/
 resources/
 static/badge/

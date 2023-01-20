@@ -22,6 +22,7 @@ from defusedxml.ElementTree import ParseError
 import requests
 
 DOWNLOAD_PATH = Path('downloads')
+DOCKER_DOWNLOAD_PATH = Path('downloads-docker')
 DATA_PATH = Path('data')
 STATIC_PATH = Path('static')
 BADGES_PATH = STATIC_PATH / 'badge'
@@ -109,11 +110,19 @@ def download_file(url: str, path: Path) -> bool:
 
 def get_providers_data() -> None:
     '''
-    Download, extract, and move providers data
+    Download, extract, and move providers data.
+    Use downloaded file from docker build, if it exists.
+    Docker builds need to download providers_data.zip directly in order to
+    correctly apply caching.
     '''
-    success = download_file(PROVIDERS_DATA_URL, Path('providers_data.zip'))
-    if not success:
-        sys.exit(f'Error while trying to download from {PROVIDERS_DATA_URL}')
+
+    providers_docker_path = Path(DOCKER_DOWNLOAD_PATH / 'providers_data.zip')
+    if providers_docker_path.exists():
+        shutil.copyfile(providers_docker_path, DOWNLOAD_PATH / 'providers_data.zip')
+    else:
+        success = download_file(PROVIDERS_DATA_URL, Path('providers_data.zip'))
+        if not success:
+            sys.exit(f'Error while trying to download from {PROVIDERS_DATA_URL}')
 
     with zipfile.ZipFile(DOWNLOAD_PATH / 'providers_data.zip',
                          'r') as zip_file:
@@ -150,10 +159,18 @@ def url_escape_support_addresses() -> None:
 def get_badges() -> None:
     '''
     Download, extract, and move badges
+    Use downloaded file from docker build, if it exists.
+    Docker builds need to download badges_data.zip directly in order to
+    correctly apply caching.
     '''
-    success = download_file(BADGES_DATA_URL, Path('badges_data.zip'))
-    if not success:
-        sys.exit(f'Error while trying to download from {BADGES_DATA_URL}')
+
+    badges_docker_path = Path(DOCKER_DOWNLOAD_PATH / 'badges_data.zip')
+    if badges_docker_path.exists():
+        shutil.copyfile(badges_docker_path, DOWNLOAD_PATH / 'badges_data.zip')
+    else:
+        success = download_file(BADGES_DATA_URL, Path('badges_data.zip'))
+        if not success:
+            sys.exit(f'Error while trying to download from {BADGES_DATA_URL}')
 
     with zipfile.ZipFile(DOWNLOAD_PATH / 'badges_data.zip', 'r') as zip_file:
         zip_file.extractall(DOWNLOAD_PATH / 'badges_data')
