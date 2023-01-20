@@ -44,6 +44,12 @@ docker build -t xmpp-providers -f ./Dockerfile .
 docker run -p 80:80 -t -i xmpp-providers
 ```
 
+If you want to change Hugo’s baseURL for the generated website, build the image with `--build-arg BASEURL=http://yoururl/` set, for example with `http://localhost/`:
+
+```bash
+docker build -t xmpp-providers --build-arg BASEURL=http://localhost/ -f ./Dockerfile .
+```
+
 ## Deployment
 
 Changes of the [provider data](https://invent.kde.org/melvo/xmpp-providers) may take a while to become visible on the [website](https://providers.xmpp.net).

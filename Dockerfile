@@ -15,10 +15,12 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-ge
 # Install dependencies.
 RUN apt-get install -y hugo python3 python3-pip
 
+ARG BASEURL=https://providers.xmpp.net/
+
 # Build and copy in place.
 WORKDIR /var/tmp/src/xmpp-providers
 COPY . /var/tmp/src/xmpp-providers
-RUN cd /var/tmp/src/xmpp-providers && make publish
+RUN cd /var/tmp/src/xmpp-providers && make publish BASEURL=$BASEURL
 
 FROM nginx
 COPY deploy/xmpp-providers.conf /etc/nginx/conf.d/default.conf

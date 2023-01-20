@@ -10,6 +10,7 @@ BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/public
 TOOLSDIR=$(BASEDIR)/tools
+BASEURL=https://providers.xmpp.net/
 
 help:
 	@echo 'Makefile for a hugo website                                            '
@@ -38,6 +39,6 @@ publish:
 	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
 	$(PY) $(TOOLSDIR)/prepare.py
 	$(HUGO) version
-	$(HUGO)
+	$(HUGO) --baseURL=$(BASEURL)
 
 .PHONY: help clean serve serve-no-pip publish
