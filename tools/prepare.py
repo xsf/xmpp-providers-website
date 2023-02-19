@@ -35,8 +35,8 @@ BADGES_DATA_URL = 'https://invent.kde.org/melvo/xmpp-providers/' \
     '-/jobs/artifacts/master/download/?job=badges'
 CLIENTS_DATA_URL = 'https://invent.kde.org/melvo/xmpp-providers/' \
     '-/raw/master/clients.json'
-XSF_CLIENTS_LIST_URL = 'https://raw.githubusercontent.com/xsf/' \
-    'xmpp.org/master/data/clients.json'
+XSF_SOFTWARE_LIST_URL = 'https://raw.githubusercontent.com/xsf/' \
+    'xmpp.org/master/data/software.json'
 
 DOAP_NS = 'http://usefulinc.com/ns/doap#'
 DOAP_NAME = f'.//{{{DOAP_NS}}}name'
@@ -229,38 +229,41 @@ def prepare_client_data_file() -> None:
         sys.exit(f'Error while trying to download from {CLIENTS_DATA_URL}')
 
     success = download_file(
-        XSF_CLIENTS_LIST_URL, Path('clients_data/xsf_clients_list.json'))
+        XSF_SOFTWARE_LIST_URL, Path('clients_data/xsf_software_list.json'))
     if not success:
-        sys.exit(f'Error while trying to download from {XSF_CLIENTS_LIST_URL}')
+        sys.exit(f'Error while trying to download from {XSF_SOFTWARE_LIST_URL}')
 
-    # Use xsf_clients_list.json and providers_clients_list.json
+    # Use xsf_software_list.json and providers_clients_list.json
     # to generate clients.json, which features infos from both files
     with open(DOWNLOAD_PATH / 'clients_data' / 'providers_clients_list.json',
               'rb') as json_file:
         providers_clients_list = json.load(json_file)
-    with open(DOWNLOAD_PATH / 'clients_data' / 'xsf_clients_list.json',
+    with open(DOWNLOAD_PATH / 'clients_data' / 'xsf_software_list.json',
               'rb') as json_file:
-        xsf_clients_list = json.load(json_file)
+        xsf_software_list = json.load(json_file)
 
     client_names: list[str] = []
     for client in providers_clients_list:
         client_names.append(client)
 
     client_infos: list[dict[str, Optional[str]]] = []
-    for client in xsf_clients_list:
-        if client['name'] in client_names:
-            provider_infos = providers_clients_list[client['name']]
-            if client['doap'] is not None:
+    for package in xsf_software_list:
+        if 'client' not in package['categories']:
+            continue
+
+        if package['name'] in client_names:
+            provider_infos = providers_clients_list[package['name']]
+            if package['doap'] is not None:
                 download_file(
-                    client['doap'],
-                    Path(f'clients_data/doap_files/{client["name"]}.doap'))
-            parsed_infos = parse_doap_infos(client['name'])
+                    package['doap'],
+                    Path(f'clients_data/doap_files/{package["name"]}.doap'))
+            parsed_infos = parse_doap_infos(package['name'])
 
             supported_os = None
             if parsed_infos is not None:
                 supported_os = parsed_infos['os']
             client_infos.append({
-                'name': client['name'],
+                'name': package['name'],
                 'os': supported_os,
                 'since': provider_infos['since']['content'],
                 'website': provider_infos['website']['content']
