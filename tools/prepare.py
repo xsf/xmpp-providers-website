@@ -88,7 +88,14 @@ def download_file(url: str, path: Path) -> bool:
     Downloads file from url and stores it in /downloads/path
     returns success
     '''
-    file_request = requests.get(url)
+    try:
+        file_request = requests.get(url, timeout=5)
+    except Exception as err:
+        print('Error while trying to download from ',
+              url,
+              err)
+        return False
+
     if not 200 >= file_request.status_code < 400:
         print('Error while trying to download from ',
               url,
