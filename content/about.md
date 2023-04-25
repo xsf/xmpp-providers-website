@@ -35,4 +35,4 @@ Thus, we created a list containing all properties of providers relevant to the u
 When we saw that our approach worked out for Kaidan, we decided to spin it off as an independent project.
 That way, other apps could use our list as well.
 Since then, we added more providers, filtering, results, badges and [apps that integrate XMPP Providers](/apps).
-Finally, {{< external-link url="https://github.com/wurstsalat3000" text="Daniel Brötzmann" >}} created this wonderful website.
+Finally, {{< external-link url="https://github.com/cal0pteryx" text="Daniel Brötzmann" >}} created this wonderful website.
