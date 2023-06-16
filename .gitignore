@@ -15,6 +15,7 @@
 .DS_Store
 .hugo_build.lock
 .project
+.vscode
 content/provider/
 data/results/
 data/implementing_clients.json
