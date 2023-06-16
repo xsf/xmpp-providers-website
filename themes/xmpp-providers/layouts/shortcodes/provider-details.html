@@ -13,7 +13,7 @@
 <div class="row justify-content-center pb-4">
     <div class="col-sm-10 pt-3 text-center">
         {{ range $provider }}
-            <span class="text-muted">
+            <span class="text-body-secondary">
                 since 
                 {{ if .since }}
                     {{ .since | dateFormat "Jan 2, 2006" }}
@@ -22,8 +22,8 @@
                 {{ end }}
             </span>
             &nbsp;&middot;&nbsp;
-            <i class="fa-solid fa-globe text-muted"></i>
-            <span class="text-muted">Website:</span>
+            <i class="fa-solid fa-globe text-body-secondary"></i>
+            <span class="text-body-secondary">Website:</span>
             {{ if .website }}
                 {{ $len := (len .website) }}
                 {{ $count := 0 }}
@@ -31,7 +31,7 @@
                     <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
                     {{ $count = add $count 1 }}
                     {{ if ne $count $len }}
-                        <span class="text-muted">|</span>
+                        <span class="text-body-secondary">|</span>
                     {{ end }}
                 {{ end }}
             {{ else }}
@@ -47,7 +47,7 @@
             <table class="mb-4">
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-dollar-sign px-2 text-muted"></i>
+                        <i class="fa-solid fa-dollar-sign px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         {{ if .freeOfCharge }}
@@ -59,7 +59,7 @@
                 </tr>
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-location-dot px-2 text-muted"></i>
+                        <i class="fa-solid fa-location-dot px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         Server / Data
@@ -79,7 +79,7 @@
                                 </span>
                                 {{ $count = add $count 1 }}
                                 {{ if ne $count $len }}
-                                    <span class="text-muted">|</span>
+                                    <span class="text-body-secondary">|</span>
                                 {{ end }}
                             {{ end }}
                         {{ else }}
@@ -89,7 +89,7 @@
                 </tr>
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-scale-balanced px-2 text-muted"></i>
+                        <i class="fa-solid fa-scale-balanced px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         {{ if .legalNotice }}
@@ -100,7 +100,7 @@
                                 <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
                                 {{ $count = add $count 1 }}
                                 {{ if ne $count $len }}
-                                    <span class="text-muted">|</span>
+                                    <span class="text-body-secondary">|</span>
                                 {{ end }}
                             {{ end }}
                         {{ else }}
@@ -110,7 +110,7 @@
                 </tr>
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-people-group px-2 text-muted"></i>
+                        <i class="fa-solid fa-people-group px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         <a href="/faq/#bus-factor" class="abbr">Bus factor</a>:
@@ -128,7 +128,7 @@
                 </tr>
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-database px-2 text-muted"></i>
+                        <i class="fa-solid fa-database px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         {{ if .professionalHosting }}
@@ -140,7 +140,7 @@
                 </tr>
                 <tr>
                     <td class="text-center">
-                        <i class="fa-regular fa-building px-2 text-muted"></i>
+                        <i class="fa-regular fa-building px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         {{ if .company }}
@@ -155,7 +155,7 @@
             <table class="mb-4">
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-pen px-2 text-muted"></i>
+                        <i class="fa-solid fa-pen px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         {{ if .inBandRegistration }}
@@ -193,7 +193,7 @@
                 </tr>
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-key px-2 text-muted"></i>
+                        <i class="fa-solid fa-key px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         {{ if .passwordReset }}
@@ -204,7 +204,7 @@
                                 <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
                                 {{ $count = add $count 1 }}
                                 {{ if ne $count $len }}
-                                    <span class="text-muted">|</span>
+                                    <span class="text-body-secondary">|</span>
                                 {{ end }}
                             {{ end }}
                         {{ else }}
@@ -214,7 +214,7 @@
                 </tr>
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-clock-rotate-left px-2 text-muted"></i>
+                        <i class="fa-solid fa-clock-rotate-left px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
@@ -231,7 +231,7 @@
             <table class="mb-4">
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-cloud-arrow-up px-2 text-muted"></i>
+                        <i class="fa-solid fa-cloud-arrow-up px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         Allows to share files up to
@@ -246,7 +246,7 @@
                 </tr>
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-cloud-arrow-down px-2 text-muted"></i>
+                        <i class="fa-solid fa-cloud-arrow-down px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         Shared files are stored up to
@@ -261,7 +261,7 @@
                 </tr>
                 <tr>
                     <td class="text-center">
-                        <i class="fa-solid fa-clock-rotate-left px-2 text-muted"></i>
+                        <i class="fa-solid fa-clock-rotate-left px-2 text-body-secondary"></i>
                     </td>
                     <td>
                         Stores files for
@@ -334,7 +334,7 @@
                                         {{ end }}
                                         {{ $count = add $count 1 }}
                                         {{ if ne $count $len }}
-                                            <span class="text-muted">|</span>
+                                            <span class="text-body-secondary">|</span>
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
@@ -356,7 +356,7 @@
                                         {{ end }}
                                         {{ $count = add $count 1 }}
                                         {{ if ne $count $len }}
-                                            <span class="text-muted">|</span>
+                                            <span class="text-body-secondary">|</span>
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
@@ -378,7 +378,7 @@
                                         {{ end }}
                                         {{ $count = add $count 1 }}
                                         {{ if ne $count $len }}
-                                            <span class="text-muted">|</span>
+                                            <span class="text-body-secondary">|</span>
                                         {{ end }}
                                     {{ end }}
                                 {{ else }}
@@ -396,7 +396,7 @@
             <div class="row pb-3 text-center">
                 <h3>Provider Category</h3>
                 <h2><span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span></h2>
-                <a href="/faq/#how-are-categories-determined" class="abbr small text-muted">Categories explained</a>
+                <a href="/faq/#how-are-categories-determined" class="abbr small text-body-secondary">Categories explained</a>
             </div>
             {{ if ne .category "A" }}
                 <div class="row justify-content-center">
@@ -516,6 +516,6 @@
         </div>
     </div>
     <div class="row pt-3">
-        <p class="text-center text-muted small">Last check: {{ .lastCheck | dateFormat "Jan 2, 2006" }}&nbsp;&middot;&nbsp;<a href="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md" target="_blank">Something&nbsp;changed?</a></p>
+        <p class="text-center text-body-secondary small">Last check: {{ .lastCheck | dateFormat "Jan 2, 2006" }}&nbsp;&middot;&nbsp;<a href="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md" target="_blank">Something&nbsp;changed?</a></p>
     </div>
 {{ end }}

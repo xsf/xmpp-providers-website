@@ -7,9 +7,6 @@
 html {
     scroll-padding-top: 75px;
 }
-footer {
-    background-color: #f0f0f0;
-}
 a {
     text-decoration: none;
 }
@@ -29,7 +26,6 @@ article h2 {
     font-weight: 200;
 }
 .navbar {
-    background-color: #f6f8fa;
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
 }
@@ -114,10 +110,6 @@ table.sortable th:hover {
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
-    body {
-        background-color: #161616;
-        color: #ccc;
-    }
     h1, h2, h3, h4, h5, h6 {
         color: rgb(197, 206, 209);
     }
@@ -126,15 +118,6 @@ table.sortable th:hover {
     }
     a:hover {
         color:#56a7dd;
-    }
-    footer {
-        background-color: #2a2e31;
-    }
-    .footer-link {
-        color:#ccc;
-    }
-    .footer-link:hover {
-        color: #aaa;
     }
     .table {
         color: #aaa;
@@ -155,9 +138,6 @@ table.sortable th:hover {
         color: #aaa;
         background-color: #2d3238
     }
-    .navbar {
-        background-color: #323f47;
-    }
     .navbar-brand {
         color: var(--bs-gray-700) !important;
     }
@@ -165,20 +145,11 @@ table.sortable th:hover {
         background-color: var(--bs-gray-300);
         color: var(--bs-gray-700) !important;
     }
-    .nav-link {
-        color: #aaa !important;
-    }
-    .nav-link:hover {
-        color: #ccc !important;
-    }
     .nav-link-external {
         color: #518fb9 !important;
     }
     .nav-link-external:hover {
         color: #56a7dd !important;
-    }
-    .navbar-toggler {
-        filter: invert(1);
     }
     .logo {
         background-color: var(--bs-gray-400);
@@ -211,19 +182,5 @@ table.sortable th:hover {
     }
     .provider-category-bg {
         background-color: #2d3439;
-    }
-    .form-control {
-        color: #ffffff;
-        background-color: #363e46;
-        border: 1px solid #474f58;
-    }
-    .form-control:focus {
-        color: #ffffff;
-        background-color: #363e46;
-    }
-    .input-group-text {
-        color: #ccc;
-        background-color: #2a2e31;
-        border-color: #323f47;
     }
 }

@@ -62,5 +62,5 @@ This is due to some delay in building and deploying.
 
 This theme makes use of:
 
-* [Bootstrap 5.2](https://getbootstrap.com/docs/5.2/)
+* [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/)
 * [FontAwesome 6](https://fontawesome.com/v6/docs/)
