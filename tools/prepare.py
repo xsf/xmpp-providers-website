@@ -5,16 +5,13 @@
 '''
 Download / prepare / process XMPP Providers data
 '''
-from typing import Optional
-from typing import Union
-
 from datetime import date
 from pathlib import Path
+from urllib.parse import quote
 import json
 import os
 import shutil
 import sys
-from urllib.parse import quote
 import zipfile
 
 from defusedxml.ElementTree import parse
@@ -206,7 +203,7 @@ def create_provider_pages() -> None:
                 MD_FRONTMATTER % (filename, date_formatted, filename))
 
 
-def parse_doap_infos(doap_file: str) -> Optional[dict[str, list[str]]]:
+def parse_doap_infos(doap_file: str) -> dict[str, list[str]] | None:
     '''Parse DOAP file and return infos'''
     try:
         doap = parse(
@@ -214,7 +211,7 @@ def parse_doap_infos(doap_file: str) -> Optional[dict[str, list[str]]]:
     except (FileNotFoundError, ParseError):
         return None
 
-    info: dict[str, Union[str, list[str]]] = {}
+    info = {}
     doap_name = doap.find(DOAP_NAME)
     if doap_name is not None:
         info['name'] = doap_name.text
@@ -253,7 +250,7 @@ def prepare_client_data_file() -> None:
     for client in providers_clients_list:
         client_names.append(client)
 
-    client_infos: list[dict[str, Optional[str]]] = []
+    client_infos: list[dict[str, str | list[str] | None]] = []
     for package in xsf_software_list:
         if 'client' not in package['categories']:
             continue

@@ -13,7 +13,7 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 ## Software Requirements
 
 * hugo
-* python3
+* python >=3.10
 
 ## Introduction to Hugo
 
