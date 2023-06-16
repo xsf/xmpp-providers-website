@@ -4,7 +4,7 @@
 
 # Dockerfile to build a docker image for xmpp-providers
 
-FROM debian:bullseye
+FROM python:3.11-slim-bookworm
 
 # Set environment variables
 ENV DEBIAN_FRONTEND noninteractive
@@ -12,12 +12,12 @@ ENV DEBIAN_FRONTEND noninteractive
 # Update system
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
-# Install dependencies.
-RUN apt-get install -y hugo python3 python3-pip
+# Install dependencies
+RUN apt-get install -y make hugo
 
 ARG BASEURL=https://providers.xmpp.net/
 
-# Build and copy in place.
+# Build and copy in place
 WORKDIR /var/tmp/src/xmpp-providers
 COPY . /var/tmp/src/xmpp-providers
 ADD https://invent.kde.org/melvo/xmpp-providers/-/jobs/artifacts/master/download/?job=filtered-provider-lists /var/tmp/src/xmpp-providers/downloads-docker/providers_data.zip
