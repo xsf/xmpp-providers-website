@@ -409,7 +409,21 @@
                                 {{ range $key, $value := $data }}
                                     {{ if eq $key "inBandRegistration" }}
                                         <li>
-                                            Registration via XMPP apps is not supported (at any time)
+                                            {{ $registration_web_page_available := true }}
+                                            {{ range $category, $data := $category_criteria }}
+                                                {{ if eq $category "B" }}
+                                                    {{ range $key, $value := $data }}
+                                                        {{ if eq $key "registrationWebPage" }}
+                                                            {{ $registration_web_page_available = false }}
+                                                        {{ end }}
+                                                    {{ end }}
+                                                {{ end }}
+                                            {{ end }}
+                                            {{ if not $registration_web_page_available }}
+                                                Registration is not available
+                                            {{ else }}
+                                                Registration via XMPP apps is not supported (at any time)
+                                            {{ end }}
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "ratingXmppComplianceTester" }}
