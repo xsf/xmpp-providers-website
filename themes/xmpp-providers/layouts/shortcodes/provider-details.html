@@ -134,7 +134,19 @@
                         {{ if .professionalHosting }}
                             <a href="/faq/#professional-hosting" class="abbr">Professional hosting</a>
                         {{ else }}
-                            No professional hosting
+                            No <a href="/faq/#professional-hosting" class="abbr">professional hosting</a>
+                        {{ end }}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">
+                        <i class="fa-solid fa-leaf px-2 text-body-secondary"></i>
+                    </td>
+                    <td>
+                        {{ if .ratingGreenWebCheck }}
+                            <a href="/faq/#green-hosting" class="abbr">Green hosting</a>
+                        {{ else }}
+                            No <a href="/faq/#green-hosting" class="abbr">green hosting</a>
                         {{ end }}
                     </td>
                 </tr>

@@ -102,6 +102,10 @@ The term {{< external-link text="bus factor" url="https://en.wikipedia.org/wiki/
 A provider's service is seen as *professionally hosted* if it has a good internet connection speed, an uninterruptible power supply, access protection and regular backups.
 That is usually the case if the service is hosted in a data center.
 
+### Green Hosting
+
+[thegreenwebfoundation.org](https://www.thegreenwebfoundation.org/) offers a [Green Web Check](https://www.thegreenwebfoundation.org/green-web-check/) which enables you to check if your provider's servers run on green energy. Please note that we use the provider's XMPP host for checking, which might differ from the provider's public internet address.
+
 ### Client-to-Server
 
 The *client-to-server (C2S)* connection is used for the communication between your app and your provider.
@@ -113,3 +117,9 @@ The *client-to-server (C2S)* connection is used for the communication between yo
 ### Server-to-Server
 
 *Server-to-server (S2S)* connections are used for the communication between your provider and the provider of your contact.
+
+{{< spacer size="large" >}}
+{{< spacer size="large" >}}
+{{< spacer size="large" >}}
+{{< spacer size="large" >}}
+{{< spacer size="large" >}}

@@ -4,5 +4,7 @@
     {{ $number = 2 }}
 {{ else if eq $size "middle" }}
     {{ $number = 3 }}
+{{ else if eq $size "large" }}
+    {{ $number = 5 }}
 {{ end }}
 <div class="py-{{ $number }}"></div>
