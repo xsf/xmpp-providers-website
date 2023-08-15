@@ -16,6 +16,9 @@
 .hugo_build.lock
 .project
 .vscode
+
+.venv
+
 content/provider/
 data/results/
 data/implementing_clients.json
