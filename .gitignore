@@ -21,6 +21,7 @@
 
 content/provider/
 data/results/
+data/filtered_providers.json
 data/implementing_clients.json
 data/providers.json
 downloads/

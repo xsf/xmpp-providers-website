@@ -26,7 +26,7 @@ BADGES_PATH = STATIC_PATH / "badge"
 PROVIDERS_JSON_PATH = DATA_PATH / "results"
 PROVIDERS_PAGES_PATH = Path("content/provider")
 
-PROVIDERS_DATA_URL = (
+FILTERED_PROVIDERS_DATA_URL = (
     "https://invent.kde.org/melvo/xmpp-providers/"
     "-/jobs/artifacts/master/download/?job=filtered-provider-lists"
 )
@@ -35,10 +35,11 @@ BADGES_DATA_URL = (
     "-/jobs/artifacts/master/download/?job=badges"
 )
 CLIENTS_DATA_URL = (
-    "https://invent.kde.org/melvo/xmpp-providers/" "-/raw/master/clients.json"
+    "https://invent.kde.org/melvo/xmpp-providers/-/raw/master/clients.json"
 )
+PROVIDERS_FILE_URL = "https://data.xmpp.net/providers/v1/providers.json"
 XSF_SOFTWARE_LIST_URL = (
-    "https://raw.githubusercontent.com/xsf/" "xmpp.org/master/data/software.json"
+    "https://raw.githubusercontent.com/xsf/xmpp.org/master/data/software.json"
 )
 
 DOAP_NS = "http://usefulinc.com/ns/doap#"
@@ -56,9 +57,8 @@ def initialize_directory(path: Path) -> None:
     """
     if path.exists() and path.is_dir():
         shutil.rmtree(path)
-        os.mkdir(path)
-    else:
-        os.mkdir(path)
+
+    os.mkdir(path)
 
 
 def prepare_provider_data_files() -> None:
@@ -79,8 +79,9 @@ def prepare_provider_data_files() -> None:
     initialize_directory(STATIC_PATH)
     initialize_directory(DATA_PATH)
 
-    get_providers_data()
+    get_filtered_providers_data()
     get_badges()
+    get_providers_file()
 
     shutil.copytree(DOWNLOAD_PATH / "logo", STATIC_PATH / "logo")
     shutil.copytree(DOWNLOAD_PATH / "images", STATIC_PATH / "images")
@@ -118,7 +119,7 @@ def download_file(url: str, path: Path) -> bool:
     return True
 
 
-def get_providers_data() -> None:
+def get_filtered_providers_data() -> None:
     """
     Download, extract, and move providers data.
     Use downloaded file from docker build, if it exists.
@@ -129,16 +130,16 @@ def get_providers_data() -> None:
     if providers_docker_path.exists():
         shutil.copyfile(providers_docker_path, DOWNLOAD_PATH / "providers_data.zip")
     else:
-        success = download_file(PROVIDERS_DATA_URL, Path("providers_data.zip"))
+        success = download_file(FILTERED_PROVIDERS_DATA_URL, Path("providers_data.zip"))
         if not success:
-            sys.exit(f"Error while trying to download from {PROVIDERS_DATA_URL}")
+            sys.exit(f"Error while trying to download from {FILTERED_PROVIDERS_DATA_URL}")
 
     with zipfile.ZipFile(DOWNLOAD_PATH / "providers_data.zip", "r") as zip_file:
         zip_file.extractall(DOWNLOAD_PATH / "providers_data")
 
     shutil.copyfile(
         DOWNLOAD_PATH / "providers_data" / "providers-D.json",
-        DATA_PATH / "providers.json",
+        DATA_PATH / "filtered_providers.json",
     )
     shutil.copytree(DOWNLOAD_PATH / "providers_data" / "results", DATA_PATH / "results")
 
@@ -146,7 +147,7 @@ def get_providers_data() -> None:
 def url_escape_support_addresses() -> None:
     """Escaoe support addresses in order to display them correctly
     in browsers."""
-    with open(DATA_PATH / "providers.json", "rb") as json_file:
+    with open(DATA_PATH / "filtered_providers.json", "rb") as json_file:
         providers = json.load(json_file)
 
     support_categories = ["emailSupport", "chatSupport", "groupChatSupport"]
@@ -156,7 +157,7 @@ def url_escape_support_addresses() -> None:
                 for index, address in enumerate(addresses):
                     addresses[index] = quote(address)
 
-    with open(DATA_PATH / "providers.json", "w", encoding="utf-8") as esc_providers:
+    with open(DATA_PATH / "filtered_providers.json", "w", encoding="utf-8") as esc_providers:
         json.dump(providers, esc_providers, indent=4)
 
 
@@ -180,6 +181,26 @@ def get_badges() -> None:
 
     shutil.copytree(
         DOWNLOAD_PATH / "badges_data" / "badges", BADGES_PATH, dirs_exist_ok=True
+    )
+
+
+def get_providers_file() -> None:
+    """
+    Download providers.json from https://data.xmpp.net/ API endpoint.
+    Use downloaded file from docker build, if it exists.
+    Docker builds need to download providers.json directly in order to
+    correctly apply caching.
+    """
+    providers_docker_path = Path(DOCKER_DOWNLOAD_PATH / "providers.json")
+    if providers_docker_path.exists():
+        shutil.copyfile(providers_docker_path, DOWNLOAD_PATH / "providers.json")
+    else:
+        success = download_file(PROVIDERS_FILE_URL, Path("providers.json"))
+        if not success:
+            sys.exit(f"Error while trying to download from {PROVIDERS_FILE_URL}")
+    shutil.copyfile(
+        DOWNLOAD_PATH / "providers.json",
+        DATA_PATH / "providers.json",
     )
 
 

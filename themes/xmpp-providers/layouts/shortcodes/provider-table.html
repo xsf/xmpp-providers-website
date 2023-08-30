@@ -77,7 +77,7 @@
             </tr>
         </thead>
         <tbody>
-            {{ range sort .Site.Data.providers "category" }}
+            {{ range sort .Site.Data.filtered_providers "category" }}
                 <tr>
                     <td>
                         <a href="/provider/{{ .jid }}/">{{ .jid }}</a>

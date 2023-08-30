@@ -1,6 +1,9 @@
 {{ $provider_name := .Get "provider" }}
-{{ $providers_data := .Site.Data.providers }}
-{{ $provider := where $providers_data ".jid" "==" $provider_name }}
+{{ $filtered_providers_data := .Site.Data.filtered_providers }}
+{{ $provider := where $filtered_providers_data ".jid" "==" $provider_name }}
+
+{{ $providers_data := index .Site.Data.providers $provider_name }}
+
 {{ $permalink := .Page.Permalink }}
 
 {{ $category_criteria := "" }}
@@ -144,7 +147,8 @@
                     </td>
                     <td>
                         {{ if .ratingGreenWebCheck }}
-                            <a href="/faq/#green-hosting" class="abbr">Green hosting</a>
+                            {{ $url := replace $providers_data.ratingGreenWebCheck.source "https://admin.thegreenwebfoundation.org/greencheck/" "" }}
+                            <a href="https://www.thegreenwebfoundation.org/green-web-check/?url={{ $url }}" target="_blank">Green hosting</a>
                         {{ else }}
                             No <a href="/faq/#green-hosting" class="abbr">green hosting</a>
                         {{ end }}
