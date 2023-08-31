@@ -549,3 +549,12 @@
         <p class="text-center text-body-secondary small">Last check: {{ .lastCheck | dateFormat "Jan 2, 2006" }}&nbsp;&middot;&nbsp;<a href="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md" target="_blank">Something&nbsp;changed?</a></p>
     </div>
 {{ end }}
+
+<div id="copy_toast" class="toast align-items-center text-bg-success border-0 bottom-0 end-0 m-5 z-3 position-fixed" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="d-flex">
+        <div class="toast-body">
+            Badge copied!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+</div>

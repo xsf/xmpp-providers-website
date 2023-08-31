@@ -49,6 +49,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
   if (badge_link_copy) {
     badge_link_copy.addEventListener("click", function() {
       navigator.clipboard.writeText(document.getElementById("badge_link_input").value);
+
+      // Notifications
+      const copy_toast = document.getElementById("copy_toast")
+      const toast_alert = bootstrap.Toast.getOrCreateInstance(copy_toast)
+      toast_alert.show()
     });
   }
 
