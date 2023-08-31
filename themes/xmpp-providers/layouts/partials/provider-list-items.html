@@ -1,6 +1,6 @@
 {{ range $index, $content := . }}
     {{ $provider_id := replace .jid "." "-" }}
-    <div class="accordion-item" data-provider="{{ .jid }}" data-category="{{ .category }}" data-property-free="{{ .freeOfCharge }}" data-property-professional-hosting="{{ .professionalHosting }}" data-property-ibr="{{ .inBandRegistration }}" data-property-password-reset="{{ ne (len .passwordReset) 0 }}">
+    <div class="accordion-item" data-provider="{{ .jid }}" data-category="{{ .category }}" data-property-free="{{ .freeOfCharge }}" data-property-professional-hosting="{{ .professionalHosting }}" data-property-rating-green-web-check="{{ .ratingGreenWebCheck }}" data-property-ibr="{{ .inBandRegistration }}" data-property-password-reset="{{ ne (len .passwordReset) 0 }}">
         <h2 class="accordion-header" id="heading-{{ $provider_id }}">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $provider_id }}" aria-expanded="false" aria-controls="collapse-{{ $provider_id }}">
                 <span class="badge rounded-1 {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span>

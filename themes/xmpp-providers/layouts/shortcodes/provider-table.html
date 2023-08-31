@@ -33,6 +33,9 @@
                     Professional<br>Hosting
                 </th>
                 <th>
+                    Green<br>Hosting
+                </th>
+                <th>
                     Run by a<br>Company
                 </th>
                 <th>
@@ -78,6 +81,7 @@
         </thead>
         <tbody>
             {{ range sort .Site.Data.filtered_providers "category" }}
+                {{ $providers_data := index $.Site.Data.providers .jid }}
                 <tr>
                     <td>
                         <a href="/provider/{{ .jid }}/">{{ .jid }}</a>
@@ -169,6 +173,14 @@
                             Yes
                         {{ else }}
                             No
+                        {{ end }}
+                    </td>
+                    <td>
+                        {{ if .ratingGreenWebCheck }}
+                            {{ $url := replace $providers_data.ratingGreenWebCheck.source "https://admin.thegreenwebfoundation.org/greencheck/" "" }}
+                            <a href="https://www.thegreenwebfoundation.org/green-web-check/?url={{ $url }}" target="_blank">Yes</a>
+                        {{ else }}
+                            <a href="/faq/#green-hosting" class="abbr">No</a>
                         {{ end }}
                     </td>
                     <td>

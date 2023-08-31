@@ -2,7 +2,8 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-window.addEventListener("load", function() {
+document.addEventListener("DOMContentLoaded", (event) => {
+
   // Provider filtering in overview
   const checkboxes = document.querySelectorAll("#status-selector input");
   const show_hide = function(checkbox) {
@@ -15,6 +16,12 @@ window.addEventListener("load", function() {
     };
     if (property == "professional-hosting") {
       const relevant_providers = document.querySelectorAll("[data-property-professional-hosting=false]");
+      relevant_providers.forEach(function(provider) {
+        provider.hidden = checkbox.checked;
+      });
+    };
+    if (property == "rating-green-web-check") {
+      const relevant_providers = document.querySelectorAll("[data-property-rating-green-web-check=false]");
       relevant_providers.forEach(function(provider) {
         provider.hidden = checkbox.checked;
       });
@@ -41,7 +48,7 @@ window.addEventListener("load", function() {
   const badge_link_copy = document.getElementById("badge_link_copy");
   if (badge_link_copy) {
     badge_link_copy.addEventListener("click", function() {
-        navigator.clipboard.writeText(document.getElementById("badge_link_input").value);
+      navigator.clipboard.writeText(document.getElementById("badge_link_input").value);
     });
   }
 
