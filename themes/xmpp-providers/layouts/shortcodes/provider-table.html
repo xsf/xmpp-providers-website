@@ -39,6 +39,9 @@
                     Run by a<br>Company
                 </th>
                 <th>
+                    Server<br>Software
+                </th>
+                <th>
                     Registration
                 </th>
                 <th>
@@ -188,6 +191,13 @@
                             Yes
                         {{ else }}
                             No
+                        {{ end }}
+                    </td>
+                    <td>
+                        {{ if .serverSoftwareName }}
+                            <span class="d-block text-truncate" title="{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}" style="max-width: 12rem;">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
+                        {{ else }}
+                            Unknown
                         {{ end }}
                     </td>
                     <td>

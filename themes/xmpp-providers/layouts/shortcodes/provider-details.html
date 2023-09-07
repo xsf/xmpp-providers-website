@@ -166,6 +166,18 @@
                         {{ end }}
                     </td>
                 </tr>
+                <tr>
+                    <td class="text-center">
+                        <i class="fa-solid fa-terminal px-2 text-body-secondary"></i>
+                    </td>
+                    <td>
+                        {{ if .serverSoftwareName }}
+                            <span class="d-block text-truncate" title="{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}" style="max-width: 20rem;">Server software: {{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
+                        {{ else }}
+                            Unknown
+                        {{ end }}
+                    </td>
+                </tr>
             </table>
             <h2>Account</h2>
             <table class="mb-4">
