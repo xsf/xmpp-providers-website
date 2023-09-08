@@ -75,7 +75,7 @@
                             {{ $len := (len .serverLocations) }}
                             {{ $count := 0 }}
                             {{ range $index, $location := .serverLocations }}
-                                <span title="{{ upper $location }}">
+                                <span title="{{ upper $location }}" data-bs-toggle="tooltip">
                                     {{ range split (upper $location) "" }}
                                         {{- printf "%c" (delimit . "" | int | add 127397) -}}
                                     {{ end }}
@@ -172,7 +172,7 @@
                     </td>
                     <td>
                         {{ if .serverSoftwareName }}
-                            <span class="d-block text-truncate" title="{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}" style="max-width: 20rem;">Server software: {{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
+                            Server software:&nbsp;<span class="d-block text-truncate" data-bs-toggle="tooltip" title="{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}" style="max-width: 14rem;">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
                         {{ else }}
                             Unknown
                         {{ end }}
@@ -323,7 +323,7 @@
                         </tr>
                         <tr>
                             <td>
-                                Security (<a href="/faq/#client-to-server" title="Client-to-Server" class="abbr">C2S</a>)
+                                Security (<a href="/faq/#client-to-server" title="Client-to-Server" data-bs-toggle="tooltip" class="abbr">C2S</a>)
                             </td>
                             <td class="ps-3">
                                 <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=client" class="badge badge-rating text-light text-decoration-none {{ if eq .ratingImObservatoryClientToServer "A" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingImObservatoryClientToServer }}</a>
@@ -331,7 +331,7 @@
                         </tr>
                         <tr>
                             <td>
-                                Security (<a href="/faq/#server-to-server" title="Server-to-Server" class="abbr">S2S</a>)
+                                Security (<a href="/faq/#server-to-server" title="Server-to-Server" data-bs-toggle="tooltip" class="abbr">S2S</a>)
                             </td>
                             <td class="ps-3">
                                 <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=server" class="badge badge-rating text-light text-decoration-none {{ if eq .ratingImObservatoryServerToServer "A" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingImObservatoryServerToServer }}</a>
@@ -461,12 +461,12 @@
                                     {{ end }}
                                     {{ if eq $key "ratingImObservatoryClientToServer" }}
                                         <li>
-                                            Security (<a href="/faq/#client-to-server" title="Client-to-Server" class="abbr">C2S</a>) is insufficient
+                                            Security (<a href="/faq/#client-to-server" title="Client-to-Server" data-bs-toggle="tooltip" class="abbr">C2S</a>) is insufficient
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "ratingImObservatoryServerToServer" }}
                                         <li>
-                                            Security (<a href="/faq/#server-to-server" title="Server-to-Server" class="abbr">S2S</a>) is insufficient
+                                            Security (<a href="/faq/#server-to-server" title="Server-to-Server" data-bs-toggle="tooltip" class="abbr">S2S</a>) is insufficient
                                         </li>
                                     {{ end }}
                                     {{ if eq $key "maximumHttpFileUploadFileSize" }}
@@ -553,7 +553,7 @@
             <div class="input-group my-3">
                 <span class="input-group-text" id="badge-desc">Embed badge</span>
                 <input id="badge_link_input" autocomplete="off" type="text" class="form-control form-control-sm font-monospace" aria-label="Badge URL" aria-describedby="badge-desc" value='<a href="{{ $permalink }}"><img alt="{{ $provider_name }} badge" src="/badge/{{ $provider_name }}.svg"></a>'>
-                <button class="btn btn-secondary" type="button" id="badge_link_copy" title="Copy"><i class="fa-solid fa-copy"></i></button>
+                <button class="btn btn-secondary" type="button" id="badge_link_copy" title="Copy" data-bs-toggle="tooltip"><i class="fa-solid fa-copy"></i></button>
             </div>
         </div>
     </div>

@@ -4,6 +4,10 @@
 
 document.addEventListener("DOMContentLoaded", (event) => {
 
+  // Initialize Bootstrap tooltips
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
   // Provider filtering in overview
   const checkboxes = document.querySelectorAll("#status-selector input");
   const show_hide = function(checkbox) {
