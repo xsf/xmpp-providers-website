@@ -195,7 +195,7 @@
                     </td>
                     <td>
                         {{ if .serverSoftwareName }}
-                            <span class="d-block text-truncate" data-bs-toggle="tooltip" title="{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}" style="max-width: 12rem;">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
+                            <span class="small">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
                         {{ else }}
                             Unknown
                         {{ end }}
