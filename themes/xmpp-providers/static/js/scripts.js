@@ -58,6 +58,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
       const copy_toast = document.getElementById("copy_toast")
       const toast_alert = bootstrap.Toast.getOrCreateInstance(copy_toast)
       toast_alert.show()
+      const tooltip = bootstrap.Tooltip.getInstance("#badge_link_copy")
+      tooltip.hide()
     });
   }
 

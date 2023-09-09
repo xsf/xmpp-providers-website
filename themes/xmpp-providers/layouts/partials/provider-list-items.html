@@ -55,7 +55,7 @@
                                         {{ $len := (len .website) }}
                                         {{ $count := 0 }}
                                         {{ range $lang, $address := .website }}
-                                            <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                                            <a href="{{ $address }}" target="_blank">{{ upper $lang }} <i class="fas fa-xs fa-external-link-alt"></i></a>
                                             {{ $count = add $count 1 }}
                                             {{ if ne $count $len }}
                                                 <span class="text-body-secondary">|</span>

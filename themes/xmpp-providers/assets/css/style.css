@@ -83,7 +83,7 @@ article h2 {
 .category-d {
     background-color: rgb(217, 16, 30);
 }
-.provider-category-bg {
+.provider-details-bg {
     background-color: #fafafa;
 }
 .address-input {
@@ -185,7 +185,7 @@ table.sortable th:hover {
     .card {
         background-color:#2d3439;
     }
-    .provider-category-bg {
+    .provider-details-bg {
         background-color: #2d3439;
     }
 }

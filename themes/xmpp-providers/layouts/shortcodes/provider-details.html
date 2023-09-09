@@ -32,7 +32,7 @@
             {{ $len := (len .website) }}
             {{ $count := 0 }}
             {{ range $lang, $address := .website }}
-                <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                <a href="{{ $address }}" target="_blank">{{ upper $lang }} <i class="fas fa-xs fa-external-link-alt"></i></a>
                 {{ $count = add $count 1 }}
                 {{ if ne $count $len }}
                     <span class="text-body-secondary">|</span>
@@ -44,141 +44,163 @@
     </div>
 </div>
 <div class="row justify-content-center">
-    <div class="col">
-        <h2>Service</h2>
-        <table class="mb-4">
-            <tr>
-                <td class="text-center">
-                    <i class="fa-solid fa-dollar-sign px-2 text-body-secondary"></i>
-                </td>
-                <td>
-                    {{ if .freeOfCharge }}
-                        Free of charge
-                    {{ else }}
-                        Paid
-                    {{ end }}
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center">
-                    <i class="fa-solid fa-location-dot px-2 text-body-secondary"></i>
-                </td>
-                <td>
-                    Server / Data
-                    {{ if lt (len .serverLocations) 2 }}
-                        location:
-                    {{ else }}
-                        locations:
-                    {{ end }}
-                    {{ if .serverLocations }}
-                        {{ $len := (len .serverLocations) }}
-                        {{ $count := 0 }}
-                        {{ range $index, $location := .serverLocations }}
-                            <span title="{{ upper $location }}" data-bs-toggle="tooltip">
-                                {{ range split (upper $location) "" }}
-                                    {{- printf "%c" (delimit . "" | int | add 127397) -}}
+    <div class="col-md-6 pb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <i class="fa-solid fa-hands-holding-circle text-muted"></i> Service
+            </div>
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td class="text-center">
+                            <i class="fa-solid fa-dollar-sign px-2 text-body-secondary"></i>
+                        </td>
+                        <td>
+                            {{ if .freeOfCharge }}
+                                Free of charge
+                            {{ else }}
+                                Paid
+                            {{ end }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <i class="fa-solid fa-scale-balanced px-2 text-body-secondary"></i>
+                        </td>
+                        <td>
+                            {{ if .legalNotice }}
+                                Legal notice:
+                                {{ $len := (len .legalNotice) }}
+                                {{ $count := 0 }}
+                                {{ range $lang, $address := .legalNotice }}
+                                    <a href="{{ $address }}" target="_blank">{{ upper $lang }} <i class="fas fa-xs fa-external-link-alt"></i></a>
+                                    {{ $count = add $count 1 }}
+                                    {{ if ne $count $len }}
+                                        <span class="text-body-secondary">|</span>
+                                    {{ end }}
                                 {{ end }}
-                            </span>
-                            {{ $count = add $count 1 }}
-                            {{ if ne $count $len }}
-                                <span class="text-body-secondary">|</span>
+                            {{ else }}
+                                <span class="text-danger text-opacity-75">No legal notice available</span>
                             {{ end }}
-                        {{ end }}
-                    {{ else }}
-                        <a href="/faq/#unknown" class="abbr">unknown</a>
-                    {{ end }}
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center">
-                    <i class="fa-solid fa-scale-balanced px-2 text-body-secondary"></i>
-                </td>
-                <td>
-                    {{ if .legalNotice }}
-                        Legal notice:
-                        {{ $len := (len .legalNotice) }}
-                        {{ $count := 0 }}
-                        {{ range $lang, $address := .legalNotice }}
-                            <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
-                            {{ $count = add $count 1 }}
-                            {{ if ne $count $len }}
-                                <span class="text-body-secondary">|</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <i class="fa-solid fa-people-group px-2 text-body-secondary"></i>
+                        </td>
+                        <td>
+                            <a href="/faq/#bus-factor" class="abbr">Bus factor</a>:
+                            {{ if eq (int .busFactor) -1 }}
+                                <a href="/faq/#unknown" class="abbr">unknown</a>
+                            {{ else }}
+                                {{ .busFactor }}
+                                {{ if eq (int .busFactor) 1 }}
+                                    person
+                                {{ else }}
+                                    persons
+                                {{ end }}
                             {{ end }}
-                        {{ end }}
-                    {{ else }}
-                        <span class="text-danger text-opacity-75">No legal notice available</span>
-                    {{ end }}
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center">
-                    <i class="fa-solid fa-people-group px-2 text-body-secondary"></i>
-                </td>
-                <td>
-                    <a href="/faq/#bus-factor" class="abbr">Bus factor</a>:
-                    {{ if eq (int .busFactor) -1 }}
-                        <a href="/faq/#unknown" class="abbr">unknown</a>
-                    {{ else }}
-                        {{ .busFactor }}
-                        {{ if eq (int .busFactor) 1 }}
-                            person
-                        {{ else }}
-                            persons
-                        {{ end }}
-                    {{ end }}
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center">
-                    <i class="fa-solid fa-database px-2 text-body-secondary"></i>
-                </td>
-                <td>
-                    {{ if .professionalHosting }}
-                        <a href="/faq/#professional-hosting" class="abbr">Professional hosting</a>
-                    {{ else }}
-                        No <a href="/faq/#professional-hosting" class="abbr">professional hosting</a>
-                    {{ end }}
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center">
-                    <i class="fa-solid fa-leaf px-2 text-body-secondary"></i>
-                </td>
-                <td>
-                    {{ if .ratingGreenWebCheck }}
-                        {{ $url := replace $providers_data.ratingGreenWebCheck.source "https://admin.thegreenwebfoundation.org/greencheck/" "" }}
-                        <a href="https://www.thegreenwebfoundation.org/green-web-check/?url={{ $url }}" target="_blank">Green hosting</a>
-                    {{ else }}
-                        No <a href="/faq/#green-hosting" class="abbr">green hosting</a>
-                    {{ end }}
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center">
-                    <i class="fa-regular fa-building px-2 text-body-secondary"></i>
-                </td>
-                <td>
-                    {{ if .company }}
-                        Run by a company
-                    {{ else }}
-                        Not run by a company
-                    {{ end }}
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center">
-                    <i class="fa-solid fa-terminal px-2 text-body-secondary"></i>
-                </td>
-                <td>
-                    {{ if .serverSoftwareName }}
-                        Server software:&nbsp;<span class="d-block small text-wrap" style="max-width: 14rem;">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
-                    {{ else }}
-                        Unknown
-                    {{ end }}
-                </td>
-            </tr>
-        </table>
-        <h2>Account</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <i class="fa-regular fa-building px-2 text-body-secondary"></i>
+                        </td>
+                        <td>
+                            {{ if .company }}
+                                Run by a company
+                            {{ else }}
+                                Not run by a company
+                            {{ end }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 pb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <i class="fa-solid fa-server text-muted"></i> Server
+            </div>
+            <div class="card-body">
+                <table>
+                    <tr>
+                        <td class="text-center">
+                            <i class="fa-solid fa-location-dot px-2 text-body-secondary"></i>
+                        </td>
+                        <td>
+                            Server / Data
+                            {{ if lt (len .serverLocations) 2 }}
+                                location:
+                            {{ else }}
+                                locations:
+                            {{ end }}
+                            {{ if .serverLocations }}
+                                {{ $len := (len .serverLocations) }}
+                                {{ $count := 0 }}
+                                {{ range $index, $location := .serverLocations }}
+                                    <span title="{{ upper $location }}" data-bs-toggle="tooltip">
+                                        {{ range split (upper $location) "" }}
+                                            {{- printf "%c" (delimit . "" | int | add 127397) -}}
+                                        {{ end }}
+                                    </span>
+                                    {{ $count = add $count 1 }}
+                                    {{ if ne $count $len }}
+                                        <span class="text-body-secondary">|</span>
+                                    {{ end }}
+                                {{ end }}
+                            {{ else }}
+                                <a href="/faq/#unknown" class="abbr">unknown</a>
+                            {{ end }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <i class="fa-solid fa-database px-2 text-body-secondary"></i>
+                        </td>
+                        <td>
+                            {{ if .professionalHosting }}
+                                <a href="/faq/#professional-hosting" class="abbr">Professional hosting</a>
+                            {{ else }}
+                                No <a href="/faq/#professional-hosting" class="abbr">professional hosting</a>
+                            {{ end }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <i class="fa-solid fa-leaf px-2 text-body-secondary"></i>
+                        </td>
+                        <td>
+                            {{ if .ratingGreenWebCheck }}
+                                {{ $url := replace $providers_data.ratingGreenWebCheck.source "https://admin.thegreenwebfoundation.org/greencheck/" "" }}
+                                <a href="https://www.thegreenwebfoundation.org/green-web-check/?url={{ $url }}" target="_blank">Green hosting <i class="fas fa-xs fa-external-link-alt"></i></a>
+                            {{ else }}
+                                No <a href="/faq/#green-hosting" class="abbr">green hosting</a>
+                            {{ end }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">
+                            <i class="fa-solid fa-terminal px-2 text-body-secondary"></i>
+                        </td>
+                        <td>
+                            {{ if .serverSoftwareName }}
+                                Server software:&nbsp;<span class="d-block text-wrap" style="max-width: 14rem;">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
+                            {{ else }}
+                                Unknown
+                            {{ end }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-12 col-md-10 p-4 mb-4 rounded shadow provider-details-bg">
+        <h4>Account</h4>
         <table class="mb-4">
             <tr>
                 <td class="text-center">
@@ -186,18 +208,23 @@
                 </td>
                 <td>
                     {{ if .inBandRegistration }}
-                        You can register on this provider directly via a <a href="/apps/">supported app</a> or <a href="xmpp:{{ $provider_name }}?register">your app</a> (if supported)
+                        You can register on this provider directly via:
+                        <ul class="mb-1">
+                            <li>
+                                <a href="/apps/">a supported app</a>
+                            </li>
+                            <li>
+                                <a href="xmpp:{{ $provider_name }}?register">your app</a> (if supported)
+                            </li>
+                        </ul>
                     {{ end }}
                     {{ if .registrationWebPage }}
-                        {{ if .inBandRegistration }}
-                            <br>
-                        {{ end }}
                         You can register on this provider via a web browser&nbsp;
                         {{ if eq (len .registrationWebPage) 1 }}
                             <br>
                             {{ range $lang, $address := .registrationWebPage }}
                                 <a class="btn btn-secondary btn-sm" href="{{ $address }}" target="_blank">
-                                    Register ({{ upper $lang }})
+                                    Register ({{ upper $lang }}) <i class="fas fa-xs fa-external-link-alt"></i>
                                 </a>
                             {{ end }}
                         {{ else if gt (len .registrationWebPage) 1 }}
@@ -207,7 +234,7 @@
                                 </button>
                                 <ul id="register-dropdown-menu" class="dropdown-menu" aria-labelledby="register-dropdown-button">
                                     {{ range $lang, $address := .registrationWebPage }}
-                                        <li><a class="dropdown-item" href="{{ $address }}" target="_blank">Register ({{ upper $lang }})</a></li>
+                                        <li><a class="dropdown-item" href="{{ $address }}" target="_blank">Register ({{ upper $lang }}) <i class="fas fa-xs fa-external-link-alt"></i></a></li>
                                     {{ end }}
                                 </ul>
                             </div>
@@ -228,7 +255,7 @@
                         {{ $len := (len .passwordReset) }}
                         {{ $count := 0 }}
                         {{ range $lang, $address := .passwordReset }}
-                            <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
+                            <a href="{{ $address }}" target="_blank">{{ upper $lang }} <i class="fas fa-xs fa-external-link-alt"></i></a>
                             {{ $count = add $count 1 }}
                             {{ if ne $count $len }}
                                 <span class="text-body-secondary">|</span>
@@ -254,8 +281,8 @@
                 </td>
             </tr>
         </table>
-        <h2>File Sharing (<a href="/faq/#http-upload" class="abbr">HTTP Upload</a>)</h2>
-        <table class="mb-4">
+        <h4>File Sharing (<a href="/faq/#http-upload" class="abbr">HTTP Upload</a>)</h4>
+        <table>
             <tr>
                 <td class="text-center">
                     <i class="fa-solid fa-cloud-arrow-up px-2 text-body-secondary"></i>
@@ -305,10 +332,10 @@
     </div>
 </div>
 <div class="row pt-3">
-    <div class="col-sm-6 pb-4">
-        <div class="card">
+    <div class="col-md-6 pb-4">
+        <div class="card h-100">
             <div class="card-header">
-                Compatibility / Security
+                <i class="fa-solid fa-shield-halved text-muted"></i> Compatibility / Security
             </div>
             <div class="card-body">
                 <table>
@@ -340,10 +367,10 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6 pb-4">
-        <div class="card">
+    <div class="col-md-6 pb-4">
+        <div class="card h-100">
             <div class="card-header">
-                Contact
+                <i class="fa-solid fa-address-card text-muted"></i> Contact
             </div>
             <div class="card-body">
                 <table>
@@ -419,7 +446,7 @@
     </div>
 </div>
 <div class="row justify-content-center pb-3">
-    <div class="col-sm-10 p-4 rounded shadow provider-category-bg">
+    <div class="col-sm-10 p-4 rounded shadow provider-details-bg">
         <div class="row pb-3 text-center">
             <h3>Provider Category</h3>
             <h2><span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span></h2>
