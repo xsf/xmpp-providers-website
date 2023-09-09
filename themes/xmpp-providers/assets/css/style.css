@@ -63,6 +63,11 @@ article h2 {
     cursor: help;
     color: #2a2e31;
 }
+
+#copy_toast {
+    margin-top: 6rem;
+}
+
 .badge-rating:hover {
     filter: brightness(0.9);
 }
