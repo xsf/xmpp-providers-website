@@ -7,9 +7,9 @@
                 {{ . }}
             {{ end }}
             {{ range .Paginator.Pages }}
-                <article>
+                <article class="py-3">
                     <a href="{{ .Permalink }}">
-                        <h2>{{ .Title }}</h2>
+                        <h2 class="h2 fw-bold text-body-secondary">{{ .Title }}</h2>
                         {{ if .Params.subtitle }}
                             <h3>
                                 {{ .Params.subtitle }}
@@ -22,7 +22,7 @@
                     <div>
                         <p>
                             {{ if .Truncated }}
-                                {{ .Summary | plainify | htmlUnescape }}
+                                {{ .Summary | plainify | htmlUnescape }}<br>
                                 <a href="{{ .Permalink }}">[{{ i18n "readMore" }}]</a>
                             {{ else }}
                                 {{ .Content }}

@@ -10,7 +10,7 @@ It provides an easy onboarding.
 Passwords are generated automatically and XMPP providers are suggested.
 Those suggestions are based on our curated list of XMPP providers.
 
-{{< figure src="/images/blabber-im-registration.png" alt="blabber.im registration integrating XMPP Providers" height="500" >}}
+{{< figure src="/images/blabber-im-registration.png" caption="blabber.im registration integrating XMPP Providers" height="500" >}}
 
 ## More Apps Supporting XMPP Providers
 
