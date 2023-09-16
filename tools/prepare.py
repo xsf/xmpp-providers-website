@@ -12,7 +12,6 @@ import sys
 import zipfile
 from datetime import date
 from pathlib import Path
-from urllib.parse import quote
 
 import requests
 from defusedxml.ElementTree import parse
@@ -132,7 +131,9 @@ def get_filtered_providers_data() -> None:
     else:
         success = download_file(FILTERED_PROVIDERS_DATA_URL, Path("providers_data.zip"))
         if not success:
-            sys.exit(f"Error while trying to download from {FILTERED_PROVIDERS_DATA_URL}")
+            sys.exit(
+                f"Error while trying to download from {FILTERED_PROVIDERS_DATA_URL}"
+            )
 
     with zipfile.ZipFile(DOWNLOAD_PATH / "providers_data.zip", "r") as zip_file:
         zip_file.extractall(DOWNLOAD_PATH / "providers_data")
@@ -142,23 +143,6 @@ def get_filtered_providers_data() -> None:
         DATA_PATH / "filtered_providers.json",
     )
     shutil.copytree(DOWNLOAD_PATH / "providers_data" / "results", DATA_PATH / "results")
-
-
-def url_escape_support_addresses() -> None:
-    """Escaoe support addresses in order to display them correctly
-    in browsers."""
-    with open(DATA_PATH / "filtered_providers.json", "rb") as json_file:
-        providers = json.load(json_file)
-
-    support_categories = ["emailSupport", "chatSupport", "groupChatSupport"]
-    for provider in providers:
-        for category in support_categories:
-            for _lang, addresses in provider[category].items():
-                for index, address in enumerate(addresses):
-                    addresses[index] = quote(address)
-
-    with open(DATA_PATH / "filtered_providers.json", "w", encoding="utf-8") as esc_providers:
-        json.dump(providers, esc_providers, indent=4)
 
 
 def get_badges() -> None:
@@ -306,6 +290,5 @@ def prepare_client_data_file() -> None:
 
 if __name__ == "__main__":
     prepare_provider_data_files()
-    url_escape_support_addresses()
     create_provider_pages()
     prepare_client_data_file()
