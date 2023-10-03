@@ -11,6 +11,8 @@ Here you can find all known apps with XMPP Providers support.
 
 {{< apps-integration >}}
 
+In general, you can find more XMPP Apps on [xmpp.org](https://xmpp.org/software/).
+
 ## For Developers
 
 Would you like to {{< external-link url="https://invent.kde.org/melvo/xmpp-providers" text="integrate XMPP Providers in your app" >}}?
