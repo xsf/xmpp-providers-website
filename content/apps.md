@@ -13,6 +13,13 @@ Here you can find all known apps with XMPP Providers support.
 
 In general, you can find more XMPP Apps on [xmpp.org](https://xmpp.org/software/).
 
+### Archive
+
+These apps are not developed anymore but support the XMPP Providers lists.
+
+- [Blabber.im](https://codeberg.org/kriztan/blabber.im)
+- [UWPX](https://uwpx.org/)
+
 ## For Developers
 
 Would you like to {{< external-link url="https://invent.kde.org/melvo/xmpp-providers" text="integrate XMPP Providers in your app" >}}?
