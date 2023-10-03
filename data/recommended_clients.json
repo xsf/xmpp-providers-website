@@ -4,11 +4,6 @@
             "name": "Gajim",
             "website": "https://gajim.org",
             "text": "Fully-featured"
-        },
-        {
-            "name": "UWPX",
-            "website": "https://uwpx.org/",
-            "text": "UWP app for your Windows devices"
         }
     ],
     "Linux": [
