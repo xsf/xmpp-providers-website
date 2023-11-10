@@ -256,7 +256,7 @@ def prepare_client_data_file() -> None:
     for client in providers_clients_list:
         client_names.append(client)
 
-    client_infos: list[dict[str, str | list[str] | None]] = []
+    client_infos: list[dict[str, str | bool | list[str] | None]] = []
     for package in xsf_software_list:
         if "client" not in package["categories"]:
             continue
@@ -279,6 +279,9 @@ def prepare_client_data_file() -> None:
                     "os": supported_os,
                     "since": provider_infos["since"]["content"],
                     "website": provider_infos["website"]["content"],
+                    # FIXME: Temporary fix for unmaintained clients
+                    "maintained": bool(
+                        package["name"] not in ("blabber.im", "UWPX"))
                 }
             )
 

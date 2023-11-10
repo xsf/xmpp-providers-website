@@ -1,49 +1,51 @@
 {{ $clients_data := .Site.Data.implementing_clients }}
 
 {{ range $clients_data }}
-    <div class="card my-3 shadow-sm" style="max-width: 540px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <img src="/logo/{{ lower .name }}.png" class="img-fluid rounded-start p-4" alt="{{ .name }} logo">
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <h4 class="card-title">{{ .name }}</h4>
-                    <p class="card-text">
-                        <ul>
-                            <li>
-                                {{ $len := (len .website) }}
-                                {{ $count := 0 }}
-                                Website:
-                                {{ range $lang, $address := .website }}
-                                    <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
-                                    {{ $count = add $count 1 }}
-                                    {{ if ne $count $len }}
-                                        <span class="text-body-secondary">|</span>
-                                    {{ end }}
-                                {{ end }}
-                            </li>
-                            <li>
-                                Support since version {{ .since }}
-                            </li>
-                            {{ if .os }}
+    {{ if .maintained }}
+        <div class="card my-3 shadow-sm" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="/logo/{{ lower .name }}.png" class="img-fluid rounded-start p-4" alt="{{ .name }} logo">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ .name }}</h4>
+                        <p class="card-text">
+                            <ul>
                                 <li>
-                                    {{ $len := (len .os) }}
+                                    {{ $len := (len .website) }}
                                     {{ $count := 0 }}
-                                    Runs on:
-                                    {{ range .os }}
-                                        {{- . -}}
+                                    Website:
+                                    {{ range $lang, $address := .website }}
+                                        <a href="{{ $address }}" target="_blank">{{ upper $lang }}</a>
                                         {{ $count = add $count 1 }}
-                                        {{- if ne $count $len -}}
-                                            <span>, </span>
-                                        {{- end -}}
+                                        {{ if ne $count $len }}
+                                            <span class="text-body-secondary">|</span>
+                                        {{ end }}
                                     {{ end }}
                                 </li>
-                            {{ end }}
-                        </ul>
-                    </p>
+                                <li>
+                                    Support since version {{ .since }}
+                                </li>
+                                {{ if .os }}
+                                    <li>
+                                        {{ $len := (len .os) }}
+                                        {{ $count := 0 }}
+                                        Runs on:
+                                        {{ range .os }}
+                                            {{- . -}}
+                                            {{ $count = add $count 1 }}
+                                            {{- if ne $count $len -}}
+                                                <span>, </span>
+                                            {{- end -}}
+                                        {{ end }}
+                                    </li>
+                                {{ end }}
+                            </ul>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    {{ end }}
 {{ end }}
