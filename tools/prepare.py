@@ -279,9 +279,7 @@ def prepare_client_data_file() -> None:
                     "os": supported_os,
                     "since": provider_infos["since"]["content"],
                     "website": provider_infos["website"]["content"],
-                    # FIXME: Temporary fix for unmaintained clients
-                    "maintained": bool(
-                        package["name"] not in ("blabber.im", "UWPX"))
+                    "maintained": provider_infos["maintained"]["content"],
                 }
             )
 
