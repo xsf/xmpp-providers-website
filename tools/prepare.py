@@ -27,14 +27,14 @@ PROVIDERS_PAGES_PATH = Path("content/provider")
 
 FILTERED_PROVIDERS_DATA_URL = (
     "https://invent.kde.org/melvo/xmpp-providers/"
-    "-/jobs/artifacts/master/download/?job=filtered-provider-lists"
+    "-/jobs/artifacts/stable/v1/download/?job=filtered-provider-lists"
 )
 BADGES_DATA_URL = (
     "https://invent.kde.org/melvo/xmpp-providers/"
-    "-/jobs/artifacts/master/download/?job=badges"
+    "-/jobs/artifacts/stable/v1/download/?job=badges"
 )
 CLIENTS_DATA_URL = (
-    "https://invent.kde.org/melvo/xmpp-providers/-/raw/master/clients.json"
+    "https://invent.kde.org/melvo/xmpp-providers/-/raw/stable/v1/clients.json"
 )
 PROVIDERS_FILE_URL = "https://data.xmpp.net/providers/v1/providers.json"
 XSF_SOFTWARE_LIST_URL = (
