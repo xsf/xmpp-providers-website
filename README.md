@@ -10,16 +10,20 @@ SPDX-License-Identifier: AGPL-3.0-or-later
 
 [providers.xmpp.net](https://providers.xmpp.net) is a website generated based on data from the [XMPP Providers project](https://invent.kde.org/melvo/xmpp-providers).
 
+Changes of the [provider data](https://invent.kde.org/melvo/xmpp-providers) may take a while to become visible on the [website](https://providers.xmpp.net).
+This is due to some delay in building and deploying.
+
+1. The filtered lists are provided by `https://invent.kde.org/melvo/xmpp-providers`
+1. The website is deployed by the server on xmpp.net (every hour)
+
 ## Software Requirements
 
 * hugo
 * python >=3.11
 
-## Introduction to Hugo
+## Development
 
-Hugo’s [quickstart](https://gohugo.io/getting-started/quick-start/) page is a good place to learn about the basics of Hugo (installation, project skeleton, development cycle, etc.).
-
-## Installation instructions
+### Building the Website
 
 To run a development server on your local computer, follow these basic steps:
 
@@ -37,7 +41,7 @@ make serve
 
 View at `http://localhost:1313`
 
-## Run via Docker
+### Run via Docker
 
 ```bash
 docker build -t xmpp-providers -f ./Dockerfile .
@@ -50,17 +54,19 @@ If you want to change Hugo’s baseURL for the generated website, build the imag
 docker build -t xmpp-providers --build-arg BASEURL=http://localhost/ -f ./Dockerfile .
 ```
 
-## Deployment
+### Hugo Static Site Generator
 
-Changes of the [provider data](https://invent.kde.org/melvo/xmpp-providers) may take a while to become visible on the [website](https://providers.xmpp.net).
-This is due to some delay in building and deploying.
+Hugo’s [quickstart](https://gohugo.io/getting-started/quick-start/) page is a good place to learn about the basics of Hugo (installation, project skeleton, development cycle, etc.).
 
-1. The filtered lists are provided by `https://invent.kde.org/melvo/xmpp-providers`
-1. The website is deployed by the server on xmpp.net (every hour)
+### Theme
 
-## Theme development
-
-This theme makes use of:
+This website makes use of:
 
 * [Bootstrap 5.3](https://getbootstrap.com/docs/5.3/)
 * [FontAwesome 6](https://fontawesome.com/v6/docs/)
+
+### API Levels
+
+Currently, this website is based on the [v1 version](https://invent.kde.org/melvo/xmpp-providers/-/tree/stable/v1) of the Providers API.
+
+When moving to another API version, URLs have to be changed in both `Dockerfile` and `tools/prepare.py`.
