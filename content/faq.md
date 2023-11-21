@@ -79,11 +79,63 @@ In most cases, that is a statement on a provider's website or the result page of
 The source of a property can also be the property itself.
 That is the case when the property is a web page (e.g., a web registration page).
 
+Furthermore, several properties are updated automatically on a daily basis.
+E.g., our web bot retrieves ratings while our XMPP bot retrieves registration support and upload limits directly from the providers' XMPP server.
+
 All sources are stored in the {{< external-link text="providers file" url="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/providers.json" >}}.
 That file is the data source of all provider properties.
 This website's provider listings and details are based on it.
 
 {{< spacer size="middle" >}}
+
+## How can server operators provide properties via XMPP?
+
+Our XMPP bot requests many properties via XMPP from the providers' servers.
+Here are some hints on how to configure the server to provide the properties.
+
+### Account Creation via XMPP Apps
+
+For determining whether a server supports the creation of accounts via XMPP apps, [XEP-0077: In-Band Registration](https://xmpp.org/extensions/xep-0077.html) is used.
+
+Please enable that feature to simplify the onboarding process for new users:
+* ejabberd: [mod_register](https://docs.ejabberd.im/admin/configuration/modules/#mod-register)
+* Prosody: [mod_register_ibr](https://prosody.im/doc/modules/mod_register_ibr)
+
+### Account Creation via Web Page
+
+For retrieving a web page that can be used to create accounts, [XEP-0077: In-Band Registration - Redirection](https://xmpp.org/extensions/xep-0077.html#redirect) is used.
+
+Please use that feature to either provide an alternative way for users to create an account or if your server does not support account creation via XMPP apps:
+* ejabberd: [mod_register](https://docs.ejabberd.im/admin/configuration/modules/#mod-register) - `redirect_url`
+* Prosody (alternative modules):
+    * [mod_register_redirect](https://modules.prosody.im/mod_register_redirect.html) - `registration_url` 
+    * [mod_register_oob_url](https://modules.prosody.im/mod_register_oob_url.html) - `register_oob_url`
+
+### Server Software
+
+For determining which software (including its version) a server runs, [XEP-0092: Software Version](https://xmpp.org/extensions/xep-0092.html) is used.
+
+Please enable that feature for checking whether your server runs the software desired by the user and whether it is up-to-date:
+* ejabberd: [mod_version](https://docs.ejabberd.im/admin/configuration/modules/#mod-version)
+* Prosody: [mod_version](https://prosody.im/doc/modules/mod_version)
+
+### Support Addresses
+
+For retrieving the support addresses of a provider, [XEP-0157: Contact Addresses for XMPP Services](https://xmpp.org/extensions/xep-0157.html) is used.
+
+Please provide those addresses to enable users and our upcoming support bots to reach you (**Important: Append `?join` to group chat addresses**):
+* ejabberd: [mod_disco](https://docs.ejabberd.im/admin/configuration/modules/#mod-disco) - `server_info`, entry with `name: support-addresses`
+* Prosody: [mod_server_contact_info](https://prosody.im/doc/modules/mod_server_contact_info) - `support`
+
+### Upload Limits and Storage Durations
+
+For determining how much users can upload to a server and how long those files are stored, [XEP-0363: HTTP File Upload - Discovering Support](https://xmpp.org/extensions/xep-0363.html#disco) is used.
+
+Please set those limits as high as possible to enable users to share large files (such as videos) over a long period of time (e.g., if the recipient is offline on vacation):
+* ejabberd:
+    * [mod_http_upload](https://docs.ejabberd.im/admin/configuration/modules/#mod-http-upload) - `max_size`
+    * [mod_http_upload_quota](https://docs.ejabberd.im/admin/configuration/modules/#mod-http-upload-quota) - `access_hard_quota`, `access_soft_quota`, `max_days`
+* Prosody: [mod_http_file_share](https://prosody.im/doc/modules/mod_http_file_share) - `http_file_share_size_limit`, `http_file_share_daily_quota`, `http_file_share_global_quota`, `http_file_share_expires_after`
 
 ## Glossary
 
