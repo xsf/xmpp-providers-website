@@ -1,6 +1,6 @@
 ---
 title: XMPP Providers Automation
-date: 2023-11-21
+date: 2023-11-23
 ---
 
 ## Automating the Automatable
