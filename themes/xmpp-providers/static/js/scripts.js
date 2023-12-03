@@ -3,11 +3,16 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 document.addEventListener("DOMContentLoaded", (event) => {
-
   // Initialize Bootstrap tooltips
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
+  initialize_provider_filters()
+  initialize_copy_badge_button()
+  initialize_contact_page_clients()
+});
+
+function initialize_provider_filters() {
   // Provider filtering in overview
   const checkboxes = document.querySelectorAll("#status-selector input");
   const show_hide = function(checkbox) {
@@ -47,7 +52,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
   };
   checkboxes.forEach(show_hide);
+}
 
+function initialize_copy_badge_button() {
   // Copy badge embed link to clipboard
   const badge_link_copy = document.getElementById("badge_link_copy");
   if (badge_link_copy) {
@@ -62,7 +69,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
       tooltip.hide()
     });
   }
+}
 
+function initialize_contact_page_clients() {
   // Recommended clients list filtering on /contact page
   const recommended_clients_list = document.getElementById("recommended_clients_list");
   if (recommended_clients_list) {
@@ -81,4 +90,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
       filter_clients("Windows");
     }
   }
-});
+}
