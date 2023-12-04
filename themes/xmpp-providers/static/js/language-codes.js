@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2023 XMPP Providers Team
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 const language_codes = [
     {
         "code": "ab",
