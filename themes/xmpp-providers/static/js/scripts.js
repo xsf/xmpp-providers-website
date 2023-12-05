@@ -4,6 +4,13 @@
 
 const providers_data_form_properties = [
   {
+    name: "website",
+    type: "dictionary-language-website",
+    title: "Website",
+    dataDescription:
+      "Provider website (per language). Language codes are two-letter (639-1).",
+  },
+  {
     name: "busFactor",
     type: "integer",
     title: "Bus Factor",
@@ -15,6 +22,41 @@ const providers_data_form_properties = [
     type: "boolean",
     title: "Company",
     dataDescription: "True if company, otherwise false.",
+  },
+  {
+    name: "passwordReset",
+    type: "dictionary-language-website",
+    title: "Password Reset",
+    dataDescription:
+      "Password reset website (per language). Language codes are two-letter (639-1). Website should contain infos about automatic password reset (e.g., via email) / web page describing how to manually reset password (e.g., by contacting the provider).",
+  },
+  {
+    name: "maximumHttpFileUploadTotalSize",
+    type: "integer",
+    title: "Maximum HTTP File Upload Total Size",
+    dataDescription:
+      "Number in megabytes (MB), 0 for no limit or -1 for less than 1 MB.",
+  },
+  {
+    name: "maximumHttpFileUploadStorageTime",
+    type: "integer",
+    title: "Maximum HTTP File Upload Storage Time",
+    dataDescription:
+      "Number in days, 0 for no limit or -1 for less than 1 day.",
+  },
+  {
+    name: "maximumMessageArchiveManagementStorageTime",
+    type: "integer",
+    title: "Maximum Message Archive Management Storage Time",
+    dataDescription:
+      "Number in days, 0 for no limit or -1 for less than 1 day.",
+  },
+  {
+    name: "professionalHosting",
+    type: "boolean",
+    title: "Professional Hosting",
+    dataDescription:
+      "True if hosted with good internet connection speed, uninterruptible power supply, access protection and regular backups, otherwise false.",
   },
   {
     name: "freeOfCharge",
@@ -30,41 +72,6 @@ const providers_data_form_properties = [
       "Legal notice website (per language). Language codes are two-letter (639-1).",
   },
   {
-    name: "maximumHttpFileUploadStorageTime",
-    type: "integer",
-    title: "Maximum HTTP File Upload Storage Time",
-    dataDescription:
-      "Number in days, 0 for no limit or -1 for less than 1 day.",
-  },
-  {
-    name: "maximumHttpFileUploadTotalSize",
-    type: "integer",
-    title: "Maximum HTTP File Upload Total Size",
-    dataDescription:
-      "Number in megabytes (MB), 0 for no limit or -1 for less than 1 MB.",
-  },
-  {
-    name: "maximumMessageArchiveManagementStorageTime",
-    type: "integer",
-    title: "Maximum Message Archive Management Storage Time",
-    dataDescription:
-      "Number in days, 0 for no limit or -1 for less than 1 day.",
-  },
-  {
-    name: "passwordReset",
-    type: "dictionary-language-website",
-    title: "Password Reset",
-    dataDescription:
-      "Password reset website (per language). Language codes are two-letter (639-1). Website should contain infos about automatic password reset (e.g., via email) / web page describing how to manually reset password (e.g., by contacting the provider).",
-  },
-  {
-    name: "professionalHosting",
-    type: "boolean",
-    title: "Professional Hosting",
-    dataDescription:
-      "True if hosted with good internet connection speed, uninterruptible power supply, access protection and regular backups, otherwise false.",
-  },
-  {
     name: "serverLocations",
     type: "list-language-string",
     title: "Server Locations",
@@ -75,13 +82,6 @@ const providers_data_form_properties = [
     type: "string-date",
     title: "Since",
     dataDescription: "Date since the provider is available or listed for.",
-  },
-  {
-    name: "website",
-    type: "dictionary-language-website",
-    title: "Website",
-    dataDescription:
-      "Provider website (per language). Language codes are two-letter (639-1).",
   },
 ];
 
@@ -206,7 +206,7 @@ function _on_add_language_entry_clicked(event) {
 
 function _add_language_entry(property_name) {
   const input_row = document.createElement("div");
-  input_row.classList.add("row", "align-items-end", "mb-3");
+  input_row.classList.add("row", "g-2", "align-items-end", "mb-3");
 
   const language_col = document.createElement("div");
   language_col.classList.add("col-4");
@@ -219,7 +219,7 @@ function _add_language_entry(property_name) {
 
   const language_select = document.createElement("select");
   language_select.id = `property-language-${property_name}-${language_select_id}`;
-  language_select.classList.add("form-select");
+  language_select.classList.add("form-select", "form-select-sm");
 
   const default_option = document.createElement("option");
   default_option.value = "placeholder";
@@ -248,7 +248,7 @@ function _add_language_entry(property_name) {
 
   const website_input = document.createElement("input");
   website_input.id = `property-website-${property_name}-${website_input_id}`;
-  website_input.classList.add("form-control");
+  website_input.classList.add("form-control", "form-control-sm");
   website_input.placeholder = "https://example.org/page";
   website_input.type = "url";
   website_input.pattern = "https://.*";
@@ -262,7 +262,7 @@ function _add_language_entry(property_name) {
   const remove_button = document.createElement("button");
   const random_id = _get_random_id();
   remove_button.id = `remove_button_${random_id}`;
-  remove_button.classList.add("btn", "btn-secondary");
+  remove_button.classList.add("btn", "btn-sm", "btn-secondary");
   remove_button.title = "Remove Entry";
   remove_button.setAttribute("data-bs-toggle", "tooltip");
   remove_button.addEventListener("click", _remove_language_entry);
@@ -386,38 +386,37 @@ function initialize_provider_data_form() {
   const container = document.getElementById(
     "provider_file_generator_container"
   );
-  const list_group = document.createElement("ul");
-  list_group.classList.add("list-group", "pb-3");
-  container.append(list_group);
 
   for (const property of providers_data_form_properties) {
-    const list_group_item = document.createElement("li");
-    list_group_item.classList.add(
-      "list-group-item",
-      "pt-3",
-      "pb-4",
-      "list-group-item-light"
-    );
-    list_group.append(list_group_item);
+    const card = document.createElement("div")
+    card.classList.add("card", "mb-3")
 
-    const heading = document.createElement("b");
-    heading.classList.add("me-3");
-    heading.innerHTML = property.title;
-    list_group_item.append(heading);
+    const card_header = document.createElement("div")
+    card_header.classList.add("card-header")
+    const heading = document.createElement("b")
+    heading.innerHTML = property.title
+    card_header.append(heading)
+    card.append(card_header)
+
+    const card_body = document.createElement("div")
+    card_body.classList.add("card-body")
+    card.append(card_body)
+
+    container.append(card)
 
     const property_name = document.createElement("code");
     property_name.innerHTML = property.name;
-    list_group_item.append(property_name);
+    card_body.append(property_name);
 
     const data_description = document.createElement("p");
     data_description.classList.add("text-muted", "small");
     data_description.innerHTML = property.dataDescription;
-    list_group_item.append(data_description);
+    card_body.append(data_description);
 
     const outer_div = document.createElement("div");
     outer_div.id = `container-${property.name}`;
     outer_div.classList.add("mb-3");
-    list_group_item.append(outer_div);
+    card_body.append(outer_div);
 
     if (property.type === "boolean") {
       const div = document.createElement("div");
@@ -455,7 +454,7 @@ function initialize_provider_data_form() {
       input.classList.add("form-control");
       input.placeholder = "1";
       input.type = "number";
-      input.min = "1";
+      input.min = "-1";
 
       outer_div.append(label);
       outer_div.append(input);
@@ -493,9 +492,7 @@ function initialize_provider_data_form() {
     }
 
     if (property.type === "dictionary-language-website") {
-      const inner_div = document.createElement("div");
       _add_language_entry(property.name);
-      outer_div.append(inner_div);
 
       // "Add Entry" button
       const button_row = document.createElement("div");
@@ -519,7 +516,7 @@ function initialize_provider_data_form() {
   }
 
   const generate_button = document.createElement("button");
-  generate_button.innerHTML = "Generate JSON File";
+  generate_button.innerHTML = "Generate Provider File";
   generate_button.classList.add("btn", "btn-primary");
   generate_button.addEventListener("click", _on_generate_json_file_clicked);
   container.append(generate_button);
