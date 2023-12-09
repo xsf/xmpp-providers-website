@@ -8,7 +8,7 @@ const providers_data_form_properties = [
     type: "dictionary-language-website",
     title: "Website",
     dataDescription:
-      "Provider website (per language). Language codes are two-letter (639-1).",
+      "Provider website (per language).",
   },
   {
     name: "busFactor",
@@ -21,67 +21,67 @@ const providers_data_form_properties = [
     name: "company",
     type: "boolean",
     title: "Company",
-    dataDescription: "True if company, otherwise false.",
+    dataDescription: "Whether the provider is a company.",
   },
   {
     name: "passwordReset",
     type: "dictionary-language-website",
     title: "Password Reset",
     dataDescription:
-      "Password reset website (per language). Language codes are two-letter (639-1). Website should contain infos about automatic password reset (e.g., via email) / web page describing how to manually reset password (e.g., by contacting the provider).",
+      "Password reset website (per language). Website should contain infos about automatic password reset (e.g., via email) / web page describing how to manually reset password (e.g., by contacting the provider).",
   },
   {
     name: "maximumHttpFileUploadTotalSize",
     type: "integer",
     title: "Maximum HTTP File Upload Total Size",
     dataDescription:
-      "Number in megabytes (MB), 0 for no limit or -1 for less than 1 MB.",
+      "Maximum size of all shared file in total (number in megabytes (MB), 0 for no limit or -1 for less than 1 MB).",
   },
   {
     name: "maximumHttpFileUploadStorageTime",
     type: "integer",
     title: "Maximum HTTP File Upload Storage Time",
     dataDescription:
-      "Number in days, 0 for no limit or -1 for less than 1 day.",
+      "Maximum storage duration of each shared file (number in days, 0 for no limit or -1 for less than 1 day).",
   },
   {
     name: "maximumMessageArchiveManagementStorageTime",
     type: "integer",
     title: "Maximum Message Archive Management Storage Time",
     dataDescription:
-      "Number in days, 0 for no limit or -1 for less than 1 day.",
+      "Maximum storage duration of each exchanged message (number in days, 0 for no limit or -1 for less than 1 day).",
   },
   {
     name: "professionalHosting",
     type: "boolean",
     title: "Professional Hosting",
     dataDescription:
-      "True if hosted with good internet connection speed, uninterruptible power supply, access protection and regular backups, otherwise false.",
+      "Whether the XMPP server is hosted with good internet connection speed, uninterruptible power supply, access protection and regular backups.",
   },
   {
     name: "freeOfCharge",
     type: "boolean",
     title: "Free of Charge",
-    dataDescription: "True if unpaid service, otherwise false.",
+    dataDescription: "Whether the XMPP service can be used for free.",
   },
   {
     name: "legalNotice",
     type: "dictionary-language-website",
     title: "Legal Notice",
     dataDescription:
-      "Legal notice website (per language). Language codes are two-letter (639-1).",
+      "Legal notice website (per language).",
   },
   {
     name: "serverLocations",
     type: "list-language-string",
     title: "Server Locations",
-    dataDescription: "List of lower-case two-letter country codes (639-1).",
+    dataDescription: "Countries the service is hosted in.",
   },
   {
     name: "since",
     type: "string-date",
     title: "Since",
-    dataDescription: "Date since the provider is available or listed for.",
+    dataDescription: "Date since the XMPP service is available or listed for.",
   },
 ];
 
@@ -204,6 +204,68 @@ function _on_add_language_entry_clicked(event) {
   _add_language_entry(event.srcElement.dataset.property);
 }
 
+function _on_add_country_entry_clicked(event) {
+  _add_country_entry(event.srcElement.dataset.property);
+}
+
+function _add_country_entry(property_name) {
+  const input_row = document.createElement("div");
+  input_row.classList.add("row", "g-2", "align-items-end", "mb-3");
+
+  const country_col = document.createElement("div");
+  country_col.classList.add("col-6");
+
+  const country_label = document.createElement("label");
+  const country_select_id = _get_random_id();
+  country_label.htmlFor = `property-country-${property_name}-${country_select_id}`;
+  country_label.classList.add("form-label");
+  country_label.innerHTML = "Country";
+
+  const country_select = document.createElement("select");
+  country_select.id = `property-country-${property_name}-${country_select_id}`;
+  country_select.classList.add("form-select", "form-select-sm");
+  country_select.required = true
+
+  const default_option = document.createElement("option");
+  default_option.value = "placeholder";
+  default_option.text = "Choose Country...";
+  country_select.append(default_option);
+
+  for (const country in country_codes) {
+    const option = document.createElement("option");
+    option.value = country_codes[country];
+    option.text = country;
+    country_select.append(option);
+  }
+
+  country_col.append(country_label);
+  country_col.append(country_select);
+  input_row.append(country_col);
+
+  const remove_button_col = document.createElement("div");
+  remove_button_col.classList.add("col-1");
+  const remove_button = document.createElement("button");
+  const random_id = _get_random_id();
+  remove_button.id = `remove_button_${random_id}`;
+  remove_button.classList.add("btn", "btn-sm", "btn-secondary");
+  remove_button.title = "Remove Entry";
+  remove_button.setAttribute("data-bs-toggle", "tooltip");
+  remove_button.addEventListener("click", _remove_language_entry);
+  const remove_button_icon = document.createElement("i");
+  remove_button_icon.classList.add("fa-solid", "fa-trash");
+  remove_button.append(remove_button_icon);
+  remove_button_col.append(remove_button);
+  input_row.append(remove_button_col);
+
+  const container = document.getElementById(`container-${property_name}`);
+  const add_entry_row = document.getElementById(
+    `add-entry-row-${property_name}`
+  );
+  container.insertBefore(input_row, add_entry_row);
+
+  initialize_bootstrap_tooltips();
+}
+
 function _add_language_entry(property_name) {
   const input_row = document.createElement("div");
   input_row.classList.add("row", "g-2", "align-items-end", "mb-3");
@@ -220,6 +282,7 @@ function _add_language_entry(property_name) {
   const language_select = document.createElement("select");
   language_select.id = `property-language-${property_name}-${language_select_id}`;
   language_select.classList.add("form-select", "form-select-sm");
+  language_select.required = true
 
   const default_option = document.createElement("option");
   default_option.value = "placeholder";
@@ -249,9 +312,10 @@ function _add_language_entry(property_name) {
   const website_input = document.createElement("input");
   website_input.id = `property-website-${property_name}-${website_input_id}`;
   website_input.classList.add("form-control", "form-control-sm");
-  website_input.placeholder = "https://example.org/page";
+  website_input.placeholder = "For example: https://example.org/page";
   website_input.type = "url";
   website_input.pattern = "https://.*";
+  website_input.required = true
 
   website_col.append(website_label);
   website_col.append(website_input);
@@ -332,6 +396,7 @@ function _on_generate_json_file_clicked() {
       const entry_rows = container.querySelectorAll(
         `.row:not(#add-entry-row-${property.name})`
       );
+
       let entries = {};
       for (const row of entry_rows) {
         const language_code = row.querySelector("select").value;
@@ -340,10 +405,28 @@ function _on_generate_json_file_clicked() {
           entries[language_code] = website;
         }
       }
-      if (Object.keys(entries).length !== 0) {
-        generated_properties_dict[property.name] = {};
-        generated_properties_dict[property.name]["content"] = entries;
+
+      generated_properties_dict[property.name] = {};
+      generated_properties_dict[property.name]["content"] = entries;
+      continue;
+    }
+
+    if (property.type === "list-language-string") {
+      const container = document.getElementById(`container-${property.name}`);
+      const entry_rows = container.querySelectorAll(
+        `.row:not(#add-entry-row-${property.name})`
+      );
+
+      let entries = [];
+      for (const row of entry_rows) {
+        const country_code = row.querySelector("select").value;
+        if (country_code != "placeholder") {
+          entries.push(country_code.toLowerCase());
+        }
       }
+
+      generated_properties_dict[property.name] = {};
+      generated_properties_dict[property.name]["content"] = entries;
       continue;
     }
 
@@ -352,17 +435,6 @@ function _on_generate_json_file_clicked() {
     if (property.type === "boolean") {
       generated_properties_dict[property.name] = {
         content: element.checked,
-      };
-      continue;
-    }
-
-    if (element.value === "") {
-      continue;
-    }
-
-    if (property.type === "list-language-string") {
-      generated_properties_dict[property.name] = {
-        content: element.value.split(","),
       };
       continue;
     }
@@ -415,7 +487,6 @@ function initialize_provider_data_form() {
 
     const outer_div = document.createElement("div");
     outer_div.id = `container-${property.name}`;
-    outer_div.classList.add("mb-3");
     card_body.append(outer_div);
 
     if (property.type === "boolean") {
@@ -452,9 +523,9 @@ function initialize_provider_data_form() {
       const input = document.createElement("input");
       input.id = `property-${property.name}`;
       input.classList.add("form-control");
-      input.placeholder = "1";
       input.type = "number";
-      input.min = "-1";
+      input.min = -1;
+      input.value = -1
 
       outer_div.append(label);
       outer_div.append(input);
@@ -476,19 +547,26 @@ function initialize_provider_data_form() {
     }
 
     if (property.type === "list-language-string") {
-      const label = document.createElement("label");
-      label.htmlFor = `property-${property.name}`;
-      label.classList.add("form-label");
-      label.innerHTML = "Comma-separated list of language codes";
+      _add_country_entry(property.name)
 
-      const input = document.createElement("input");
-      input.id = `property-${property.name}`;
-      input.classList.add("form-control");
-      input.placeholder = "de,en,fr";
-      input.type = "text";
+      // "Add Entry" button
+      const button_row = document.createElement("div");
+      button_row.classList.add("row", "mt-3");
+      button_row.id = `add-entry-row-${property.name}`;
 
-      outer_div.append(label);
-      outer_div.append(input);
+      const button_col = document.createElement("div");
+      button_col.classList.add("col");
+
+      const add_button = document.createElement("button");
+      add_button.classList.add("btn", "btn-sm", "btn-secondary");
+      add_button.innerHTML = "Add Entry";
+      add_button.dataset.property = property.name;
+      add_button.addEventListener("click", _on_add_country_entry_clicked);
+
+      button_col.append(add_button);
+      button_row.append(button_col);
+
+      outer_div.append(button_row);
     }
 
     if (property.type === "dictionary-language-website") {

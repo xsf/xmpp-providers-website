@@ -5,6 +5,7 @@ title: Provider File Generator
 ### What is a Provider File
 
 A provider file is a JSON file containing only the provider properties that cannot be retrieved via other methods.
+
 Each provider can supply such a provider file via its web server (replace `<provider>` and `<version>` with the desired values):
 
 ```url
