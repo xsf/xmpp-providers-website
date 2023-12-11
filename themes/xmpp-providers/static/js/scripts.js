@@ -2,7 +2,11 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-const providers_data_form_properties = [
+const api_levels = [
+  "v1",
+]
+
+const providers_data_form_properties_v1 = [
   {
     name: "website",
     type: "dictionary-language-website",
@@ -15,7 +19,7 @@ const providers_data_form_properties = [
     type: "integer",
     title: "Bus Factor",
     dataDescription:
-      "Minimum number of team members that the service could not survive losing.",
+      "Bus factor of the XMPP service (i.e., the minimum number of team members that the service could not survive losing) or `-1` for n/a.",
   },
   {
     name: "company",
@@ -35,7 +39,7 @@ const providers_data_form_properties = [
     type: "integer",
     title: "Maximum HTTP File Upload Total Size",
     dataDescription:
-      "Maximum size of all shared file in total (number in megabytes (MB), 0 for no limit or -1 for less than 1 MB).",
+      "Maximum size of all shared files in total (number in megabytes (MB), 0 for no limit or -1 for less than 1 MB).",
   },
   {
     name: "maximumHttpFileUploadStorageTime",
@@ -75,13 +79,13 @@ const providers_data_form_properties = [
     name: "serverLocations",
     type: "list-language-string",
     title: "Server Locations",
-    dataDescription: "Countries the service is hosted in.",
+    dataDescription: "List of server/backup locations.",
   },
   {
     name: "since",
     type: "string-date",
     title: "Since",
-    dataDescription: "Date since the XMPP service is available or listed for.",
+    dataDescription: "Date since the XMPP service is available or listed.",
   },
 ];
 
@@ -89,6 +93,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   initialize_provider_filters();
   initialize_copy_badge_button();
   initialize_contact_page_clients();
+  initialize_provider_api_level_select()
   initialize_provider_data_form();
   initialize_bootstrap_tooltips();
 });
@@ -312,7 +317,7 @@ function _add_language_entry(property_name) {
   const website_input = document.createElement("input");
   website_input.id = `property-website-${property_name}-${website_input_id}`;
   website_input.classList.add("form-control", "form-control-sm");
-  website_input.placeholder = "For example: https://example.org/page";
+  website_input.placeholder = "https://example.org/page";
   website_input.type = "url";
   website_input.pattern = "https://.*";
   website_input.required = true
@@ -390,7 +395,13 @@ function save_as_json(filename, data) {
 function _on_generate_json_file_clicked() {
   let generated_properties_dict = {};
 
-  for (const property of providers_data_form_properties) {
+  const selected_api_level = document.getElementById("api_level_select").value
+  let properties_list = undefined
+  if (selected_api_level === "v1") {
+    properties_list = providers_data_form_properties_v1
+  }
+
+  for (const property of properties_list) {
     if (property.type === "dictionary-language-website") {
       const container = document.getElementById(`container-${property.name}`);
       const entry_rows = container.querySelectorAll(
@@ -406,8 +417,7 @@ function _on_generate_json_file_clicked() {
         }
       }
 
-      generated_properties_dict[property.name] = {};
-      generated_properties_dict[property.name]["content"] = entries;
+      generated_properties_dict[property.name] = entries;
       continue;
     }
 
@@ -425,41 +435,78 @@ function _on_generate_json_file_clicked() {
         }
       }
 
-      generated_properties_dict[property.name] = {};
-      generated_properties_dict[property.name]["content"] = entries;
+      generated_properties_dict[property.name] = entries;
       continue;
     }
 
     const element = document.getElementById(`property-${property.name}`);
 
     if (property.type === "boolean") {
-      generated_properties_dict[property.name] = {
-        content: element.checked,
-      };
+      generated_properties_dict[property.name] = element.checked;
       continue;
     }
 
     if (property.type === "integer") {
-      generated_properties_dict[property.name] = {
-        content: Number(element.value),
-      };
+      generated_properties_dict[property.name] = Number(element.value);
       continue;
     }
 
-    generated_properties_dict[property.name] = {
-      content: element.value,
-    };
+    generated_properties_dict[property.name] = element.value;
   }
 
-  save_as_json("provider-v1.json", generated_properties_dict);
+  save_as_json(`xmpp-provider-${selected_api_level}.json`, generated_properties_dict);
+}
+
+function on_api_level_changed() {
+  initialize_provider_data_form()
+
+}
+function initialize_provider_api_level_select() {
+  const container = document.getElementById(
+    "provider_api_level_select_container"
+  );
+
+  const api_select_row = document.createElement("div")
+  api_select_row.classList.add("row", "pb-4")
+
+  const api_select_col = document.createElement("div")
+  api_select_col.classList.add("col-4", "mx-auto", "p-3", "rounded", "border", "shadow-sm", "bg-body-tertiary")
+  api_select_row.append(api_select_col)
+
+  const api_select_label = document.createElement("label")
+  api_select_label.htmlFor = "api_level_select"
+  api_select_label.classList.add("form-label")
+  api_select_label.innerHTML = "API Level"
+  api_select_col.append(api_select_label)
+
+  const api_select = document.createElement("select")
+  api_select.id = "api_level_select"
+  api_select.classList.add("form-select")
+  api_select.addEventListener("change", on_api_level_changed)
+  api_select_col.append(api_select)
+
+  for (const api_level of api_levels) {
+    const option = document.createElement("option")
+    option.label = api_level
+    option.value = api_level
+    api_select.append(option)
+  }
+  container.append(api_select_row)
 }
 
 function initialize_provider_data_form() {
   const container = document.getElementById(
-    "provider_file_generator_container"
+    "provider_file_form_container"
   );
+  container.innerHTML = ""
 
-  for (const property of providers_data_form_properties) {
+  const selected_api_level = document.getElementById("api_level_select").value
+  let properties_list = undefined
+  if (selected_api_level === "v1") {
+    properties_list = providers_data_form_properties_v1
+  }
+
+  for (const property of properties_list) {
     const card = document.createElement("div")
     card.classList.add("card", "mb-3")
 

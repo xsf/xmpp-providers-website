@@ -9,13 +9,13 @@ A provider file is a JSON file containing only the provider properties that cann
 Each provider can supply such a provider file via its web server (replace `<provider>` and `<version>` with the desired values):
 
 ```url
-https://<provider>/.well-known/provider-v<version>.json
+https://<provider>/.well-known/xmpp-provider-v<version>.json
 ```
 
 Example for a provider file of version **1**:
 
 ```url
-https://example.org/.well-known/provider-v1.json
+https://example.org/.well-known/xmpp-provider-v1.json
 ```
 
 ### Generate a Provider File
