@@ -2,14 +2,14 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-const api_levels = [
+const api_versions = [
   "v1",
 ]
 
 const providers_data_form_properties_v1 = [
   {
     name: "website",
-    type: "dictionary-language-website",
+    type: "dictionary-language-web-page",
     title: "Website",
     dataDescription:
       "Provider website (per language).",
@@ -19,7 +19,7 @@ const providers_data_form_properties_v1 = [
     type: "integer",
     title: "Bus Factor",
     dataDescription:
-      "Bus factor of the XMPP service (i.e., the minimum number of team members that the service could not survive losing) or `-1` for n/a.",
+      "Bus factor of the XMPP service (i.e., the minimum number of team members that the service could not survive losing) or -1 for n/a.",
   },
   {
     name: "company",
@@ -29,17 +29,17 @@ const providers_data_form_properties_v1 = [
   },
   {
     name: "passwordReset",
-    type: "dictionary-language-website",
+    type: "dictionary-language-web-page",
     title: "Password Reset",
     dataDescription:
-      "Password reset website (per language). Website should contain infos about automatic password reset (e.g., via email) / web page describing how to manually reset password (e.g., by contacting the provider).",
+      "Password reset web page (per language) used for an automatic password reset (e.g., via email) or describing how to manually reset a password (e.g., by contacting the provider).",
   },
   {
     name: "maximumHttpFileUploadTotalSize",
     type: "integer",
     title: "Maximum HTTP File Upload Total Size",
     dataDescription:
-      "Maximum size of all shared files in total (number in megabytes (MB), 0 for no limit or -1 for less than 1 MB).",
+      "Maximum size of all shared files in total per user (number in megabytes (MB), 0 for no limit or -1 for less than 1 MB).",
   },
   {
     name: "maximumHttpFileUploadStorageTime",
@@ -70,22 +70,22 @@ const providers_data_form_properties_v1 = [
   },
   {
     name: "legalNotice",
-    type: "dictionary-language-website",
+    type: "dictionary-language-web-page",
     title: "Legal Notice",
     dataDescription:
-      "Legal notice website (per language).",
+      "Legal notice web page (per language).",
   },
   {
     name: "serverLocations",
     type: "list-language-string",
     title: "Server Locations",
-    dataDescription: "List of server/backup locations.",
+    dataDescription: "Server/Backup locations.",
   },
   {
     name: "since",
     type: "string-date",
     title: "Since",
-    dataDescription: "Date since the XMPP service is available or listed.",
+    dataDescription: "Date since the XMPP service is available.",
   },
 ];
 
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   initialize_provider_filters();
   initialize_copy_badge_button();
   initialize_contact_page_clients();
-  initialize_provider_api_level_select()
+  initialize_provider_api_version_select()
   initialize_provider_data_form();
   initialize_bootstrap_tooltips();
 });
@@ -233,7 +233,7 @@ function _add_country_entry(property_name) {
 
   const default_option = document.createElement("option");
   default_option.value = "placeholder";
-  default_option.text = "Choose Country...";
+  default_option.text = "Choose...";
   country_select.append(default_option);
 
   for (const country in country_codes) {
@@ -291,7 +291,7 @@ function _add_language_entry(property_name) {
 
   const default_option = document.createElement("option");
   default_option.value = "placeholder";
-  default_option.text = "Choose Language...";
+  default_option.text = "Choose...";
   language_select.append(default_option);
 
   for (const language of language_codes) {
@@ -395,14 +395,14 @@ function save_as_json(filename, data) {
 function _on_generate_json_file_clicked() {
   let generated_properties_dict = {};
 
-  const selected_api_level = document.getElementById("api_level_select").value
+  const selected_api_version = document.getElementById("api_version_select").value
   let properties_list = undefined
-  if (selected_api_level === "v1") {
+  if (selected_api_version === "v1") {
     properties_list = providers_data_form_properties_v1
   }
 
   for (const property of properties_list) {
-    if (property.type === "dictionary-language-website") {
+    if (property.type === "dictionary-language-web-page") {
       const container = document.getElementById(`container-${property.name}`);
       const entry_rows = container.querySelectorAll(
         `.row:not(#add-entry-row-${property.name})`
@@ -454,16 +454,16 @@ function _on_generate_json_file_clicked() {
     generated_properties_dict[property.name] = element.value;
   }
 
-  save_as_json(`xmpp-provider-${selected_api_level}.json`, generated_properties_dict);
+  save_as_json(`xmpp-provider-${selected_api_version}.json`, generated_properties_dict);
 }
 
-function on_api_level_changed() {
+function on_api_version_changed() {
   initialize_provider_data_form()
 
 }
-function initialize_provider_api_level_select() {
+function initialize_provider_api_version_select() {
   const container = document.getElementById(
-    "provider_api_level_select_container"
+    "provider_api_version_select_container"
   );
 
   const api_select_row = document.createElement("div")
@@ -474,21 +474,21 @@ function initialize_provider_api_level_select() {
   api_select_row.append(api_select_col)
 
   const api_select_label = document.createElement("label")
-  api_select_label.htmlFor = "api_level_select"
+  api_select_label.htmlFor = "api_version_select"
   api_select_label.classList.add("form-label")
-  api_select_label.innerHTML = "API Level"
+  api_select_label.innerHTML = "API Version"
   api_select_col.append(api_select_label)
 
   const api_select = document.createElement("select")
-  api_select.id = "api_level_select"
+  api_select.id = "api_version_select"
   api_select.classList.add("form-select")
-  api_select.addEventListener("change", on_api_level_changed)
+  api_select.addEventListener("change", on_api_version_changed)
   api_select_col.append(api_select)
 
-  for (const api_level of api_levels) {
+  for (const api_version of api_versions) {
     const option = document.createElement("option")
-    option.label = api_level
-    option.value = api_level
+    option.label = api_version
+    option.value = api_version
     api_select.append(option)
   }
   container.append(api_select_row)
@@ -500,9 +500,9 @@ function initialize_provider_data_form() {
   );
   container.innerHTML = ""
 
-  const selected_api_level = document.getElementById("api_level_select").value
+  const selected_api_version = document.getElementById("api_version_select").value
   let properties_list = undefined
-  if (selected_api_level === "v1") {
+  if (selected_api_version === "v1") {
     properties_list = providers_data_form_properties_v1
   }
 
@@ -616,7 +616,7 @@ function initialize_provider_data_form() {
       outer_div.append(button_row);
     }
 
-    if (property.type === "dictionary-language-website") {
+    if (property.type === "dictionary-language-web-page") {
       _add_language_entry(property.name);
 
       // "Add Entry" button
