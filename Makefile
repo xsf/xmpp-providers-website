@@ -13,13 +13,14 @@ TOOLSDIR=$(BASEDIR)/tools
 BASEURL=https://providers.xmpp.net/
 
 help:
-	@echo 'Makefile for a hugo website                                            '
-	@echo '                                                                       '
-	@echo 'Usage:                                                                 '
-	@echo '   make clean                       remove the generated files         '
-	@echo '   make publish                     generate using production settings '
-	@echo '   make serve                       serve site at http://localhost:1313'
-	@echo '                                                                       '
+	@echo 'Makefile for a hugo website                                                 '
+	@echo '                                                                            '
+	@echo 'Usage:                                                                      '
+	@echo '   make clean          remove the generated files                           '
+	@echo '   make publish        generate using production settings                   '
+	@echo '   make serve          serve site at http://localhost:1313                  '
+	@echo '   make serve-no-pip   serve site at http://localhost:1313 without using PIP'
+	@echo '                                                                            '
 
 clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)

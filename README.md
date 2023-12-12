@@ -39,6 +39,12 @@ Running the server in development mode (reloads whenever a file is changed):
 make serve
 ```
 
+or, to use installed dependencies instead of using pip:
+
+```bash
+make serve-no-pip
+```
+
 View at `http://localhost:1313`
 
 ### Run via Docker
