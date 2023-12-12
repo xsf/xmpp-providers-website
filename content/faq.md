@@ -86,8 +86,6 @@ All sources are stored in the {{< external-link text="providers file" url="https
 That file is the data source of all provider properties.
 This website's provider listings and details are based on it.
 
-{{< spacer size="middle" >}}
-
 ## How can server operators provide properties via XMPP?
 
 Our XMPP bot requests many properties via XMPP from the providers' servers.
@@ -136,6 +134,8 @@ Please set those limits as high as possible to enable users to share large files
     * [mod_http_upload](https://docs.ejabberd.im/admin/configuration/modules/#mod-http-upload) - `max_size`
     * [mod_http_upload_quota](https://docs.ejabberd.im/admin/configuration/modules/#mod-http-upload-quota) - `access_hard_quota`, `access_soft_quota`, `max_days`
 * Prosody: [mod_http_file_share](https://prosody.im/doc/modules/mod_http_file_share) - `http_file_share_size_limit`, `http_file_share_daily_quota`, `http_file_share_global_quota`, `http_file_share_expires_after`
+
+{{< spacer size="middle" >}}
 
 ## Glossary
 
