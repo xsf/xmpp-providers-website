@@ -21,6 +21,12 @@ h3:hover .heading-anchor,
 h4:hover .heading-anchor {
     visibility: visible;
 }
+h2:target,
+h3:target,
+h4:target {
+    color: var(--bs-highlight-color);
+    background-color: var(--bs-highlight-bg);
+}
 article h2 {
     margin-top: 0.8em;
     font-weight: 200;
