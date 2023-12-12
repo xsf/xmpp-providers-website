@@ -169,9 +169,3 @@ The *client-to-server (C2S)* connection is used for the communication between yo
 ### Server-to-Server
 
 *Server-to-server (S2S)* connections are used for the communication between your provider and the provider of your contact.
-
-{{< spacer size="large" >}}
-{{< spacer size="large" >}}
-{{< spacer size="large" >}}
-{{< spacer size="large" >}}
-{{< spacer size="large" >}}
