@@ -466,6 +466,11 @@ function initialize_provider_api_version_select() {
     "provider_api_version_select_container"
   );
 
+  if (!container) {
+    // We are on a differnt page
+    return
+  }
+
   const api_select_row = document.createElement("div")
   api_select_row.classList.add("row", "pb-4")
 
@@ -498,6 +503,10 @@ function initialize_provider_data_form() {
   const container = document.getElementById(
     "provider_file_form_container"
   );
+  if (!container) {
+    // We are on a differnt page
+    return
+  }
   container.innerHTML = ""
 
   const selected_api_version = document.getElementById("api_version_select").value
