@@ -25,18 +25,24 @@ BADGES_PATH = STATIC_PATH / "badge"
 PROVIDERS_JSON_PATH = DATA_PATH / "results"
 PROVIDERS_PAGES_PATH = Path("content/provider")
 
+with open(DATA_PATH / "api_version.json", "rb") as api_version_file:
+    api_version_info = json.load(api_version_file)
+
+API_VERSION = api_version_info["api_version"]
+
 FILTERED_PROVIDERS_DATA_URL = (
-    "https://invent.kde.org/melvo/xmpp-providers/"
-    "-/jobs/artifacts/stable/v1/download/?job=filtered-provider-lists"
+    f"https://invent.kde.org/melvo/xmpp-providers/"
+    f"-/jobs/artifacts/stable/{API_VERSION}/download/?job=filtered-provider-lists"
 )
 BADGES_DATA_URL = (
-    "https://invent.kde.org/melvo/xmpp-providers/"
-    "-/jobs/artifacts/stable/v1/download/?job=badges"
+    f"https://invent.kde.org/melvo/xmpp-providers/"
+    f"-/jobs/artifacts/stable/{API_VERSION}/download/?job=badges"
 )
 CLIENTS_DATA_URL = (
-    "https://invent.kde.org/melvo/xmpp-providers/-/raw/stable/v1/clients.json"
+    f"https://invent.kde.org/melvo/xmpp-providers/-/raw/stable/"
+    f"{API_VERSION}/clients.json"
 )
-PROVIDERS_FILE_URL = "https://data.xmpp.net/providers/v1/providers.json"
+PROVIDERS_FILE_URL = f"https://data.xmpp.net/providers/{API_VERSION}/providers.json"
 XSF_SOFTWARE_LIST_URL = (
     "https://raw.githubusercontent.com/xsf/xmpp.org/master/data/software.json"
 )
@@ -74,6 +80,10 @@ def prepare_provider_data_files() -> None:
         DATA_PATH / "recommended_clients.json",
         DOWNLOAD_PATH / "recommended_clients.json",
     )
+    shutil.copyfile(
+        DATA_PATH / "api_version.json",
+        DOWNLOAD_PATH / "api_version.json",
+    )
 
     initialize_directory(STATIC_PATH)
     initialize_directory(DATA_PATH)
@@ -87,6 +97,10 @@ def prepare_provider_data_files() -> None:
     shutil.copyfile(
         DOWNLOAD_PATH / "recommended_clients.json",
         DATA_PATH / "recommended_clients.json",
+    )
+    shutil.copyfile(
+        DOWNLOAD_PATH / "api_version.json",
+        DATA_PATH / "api_version.json",
     )
 
 
