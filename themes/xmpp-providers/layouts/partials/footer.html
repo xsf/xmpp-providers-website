@@ -25,8 +25,11 @@
         </div>
     </div>
 </footer>
-<script src="{{ "js/bootstrap.bundle.min.js" | relURL }}"></script>
-<script src="{{ "js/bootstrap-theme-switcher.js" | relURL }}"></script>
-<script src="{{ "js/sorttable.js" | relURL }}"></script>
-<script src="{{ "js/language-country-codes.js" | relURL }}"></script>
-<script src="{{ "js/scripts.js" | relURL }}"></script>
+<script src="{{- "js/bootstrap.bundle.min.js" | relURL -}}"></script>
+<script src="{{- "js/bootstrap-theme-switcher.js" | relURL -}}"></script>
+<script src="{{- "js/sorttable.js" | relURL -}}"></script>
+{{- if ( .Params.provider_file_generator ) -}}
+    <script src="{{- "js/language-country-codes.js" | relURL -}}"></script>
+    <script src="{{- "js/provider-file-generator.js" | relURL -}}"></script>
+{{- end -}}
+<script src="{{- "js/scripts.js" | relURL -}}"></script>

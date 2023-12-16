@@ -1,5 +1,6 @@
 ---
 title: Provider File Generator
+provider_file_generator: true
 ---
 
 ### What is a Provider File
