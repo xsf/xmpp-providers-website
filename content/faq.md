@@ -73,15 +73,17 @@ Those providers should only be used for autocomplete (e.g., while adding a conta
 
 ## Where do we have the providers' properties from?
 
-For each property, there must be a corresponding source.
-That is needed for transparency and maintainability of the data.
-In most cases, that is a statement on a provider's website or the result page of a rating service.
-The source of a property can also be the property itself.
-That is the case when the property is a web page (e.g., a web registration page).
+Each property is retrieved by one of the following methods:
+* A rating service's HTTP server is requested to gather a provider's rating.
+* A provider's [XMPP server is requested](#how-can-server-operators-provide-properties-via-xmpp) to gather data specified by an {{< external-link text="XMPP Extension Procotol (XEP)" url="https://xmpp.org/extensions/" >}}.
+* A provider's [HTTP server is requested](#how-can-server-operators-provide-properties-via-http) to gather data via a [provider file](#provider-file).
+
+Those methods define a property's source.
+A source is needed for transparency and maintainability of the data.
 
 Furthermore, several properties are updated automatically on a daily basis.
-E.g., our web bot retrieves ratings while our XMPP bot retrieves registration support and upload limits directly from the providers' XMPP server.
-The providers project lists update mechanisms for both {{< external-link text="basic information" url="https://invent.kde.org/melvo/xmpp-providers/-/tree/master#basic-information">}} and {{< external-link text="criteria" url="https://invent.kde.org/melvo/xmpp-providers/-/tree/master#criteria">}} in the 'Automatic Updates' column.
+E.g., our web bot retrieves ratings from rating services and a provider file from a provider's web server while our XMPP bot retrieves registration support and upload limits from a providers' XMPP server.
+The specific update methods for both {{< external-link text="basic information" url="https://invent.kde.org/melvo/xmpp-providers/-/tree/master#basic-information">}} and {{< external-link text="criteria" url="https://invent.kde.org/melvo/xmpp-providers/-/tree/master#criteria">}} are denoted in the *Automatic Updates* column.
 
 All sources are stored in the {{< external-link text="providers file" url="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/providers.json" >}}.
 That file is the data source of all provider properties.
@@ -138,6 +140,11 @@ Please set those limits as high as possible to enable users to share large files
 
 {{< spacer size="middle" >}}
 
+## How can server operators provide properties via HTTP?
+
+Our web bot requests several properties via HTTP from the providers' servers.
+For that purpose, a [provider file](#provider-file) is used.
+
 ## Glossary
 
 Unfamiliar terms are explained here.
@@ -145,6 +152,11 @@ Unfamiliar terms are explained here.
 ### Unknown
 
 A property is called *unknown* if no [source](#where-do-we-have-the-providers-properties-from) is available.
+
+### Provider File
+
+A provider file is a JSON file containing only the provider properties that cannot be retrieved via other methods.
+Each provider can [generate a provider file](https://providers.xmpp.net/provider-file-generator/) and supply it via its web server.
 
 ### Bus Factor
 
