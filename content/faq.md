@@ -81,6 +81,7 @@ That is the case when the property is a web page (e.g., a web registration page)
 
 Furthermore, several properties are updated automatically on a daily basis.
 E.g., our web bot retrieves ratings while our XMPP bot retrieves registration support and upload limits directly from the providers' XMPP server.
+The providers project lists update mechanisms for both {{< external-link text="basic information" url="https://invent.kde.org/melvo/xmpp-providers/-/tree/master#basic-information">}} and {{< external-link text="criteria" url="https://invent.kde.org/melvo/xmpp-providers/-/tree/master#criteria">}} in the 'Automatic Updates' column.
 
 All sources are stored in the {{< external-link text="providers file" url="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/providers.json" >}}.
 That file is the data source of all provider properties.
