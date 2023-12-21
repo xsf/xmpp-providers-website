@@ -32,7 +32,7 @@ For properties such as the web registration or the website language alternatives
 And there have to be statements e.g. about the service price or the support channels on the provider's website.
 
 If properties are not verifiable, they are seen as not available which often results in a bad [category](#in-which-categories-can-providers-be).
-Verifiable properties must meet specific {{< external-link text="criteria" url="https://invent.kde.org/melvo/xmpp-providers#criteria" >}} we decided on for a good user experience.
+Verifiable properties must meet specific [criteria](https://invent.kde.org/melvo/xmpp-providers#criteria) we decided on for a good user experience.
 
 The criteria are used to answer different questions.
 Here are some of them:
@@ -45,7 +45,7 @@ If a provider meets all criteria of a category, it is part of the providers in t
 ## In which categories can providers be?
 
 Here are all categories from best to worst.
-If you want to integrate XMPP Providers in your app, have a look at the {{< external-link text="category details" url="https://invent.kde.org/melvo/xmpp-providers#categories" >}}.
+If you want to integrate XMPP Providers in your app, have a look at the [category details](https://invent.kde.org/melvo/xmpp-providers#categories).
 
 {{< category-heading category="A" >}}
 
@@ -75,7 +75,7 @@ Those providers should only be used for autocomplete (e.g., while adding a conta
 
 Each property is retrieved by one of the following methods:
 * A rating service's HTTP server is requested to gather a provider's rating.
-* A provider's [XMPP server is requested](#how-can-server-operators-provide-properties-via-xmpp) to gather data specified by an {{< external-link text="XMPP Extension Procotol (XEP)" url="https://xmpp.org/extensions/" >}}.
+* A provider's [XMPP server is requested](#how-can-server-operators-provide-properties-via-xmpp) to gather data specified by an [XMPP Extension Procotol (XEP)](https://xmpp.org/extensions/).
 * A provider's [HTTP server is requested](#how-can-server-operators-provide-properties-via-http) to gather data via a [provider file](#provider-file).
 
 Those methods define a property's source.
@@ -83,9 +83,9 @@ A source is needed for transparency and maintainability of the data.
 
 Furthermore, several properties are updated automatically on a daily basis.
 E.g., our web bot retrieves ratings from rating services and a provider file from a provider's web server while our XMPP bot retrieves registration support and upload limits from a providers' XMPP server.
-The specific update methods for both {{< external-link text="basic information" url="https://invent.kde.org/melvo/xmpp-providers/-/tree/master#basic-information">}} and {{< external-link text="criteria" url="https://invent.kde.org/melvo/xmpp-providers/-/tree/master#criteria">}} are denoted in the *Automatic Updates* column.
+The specific update methods for both [basic information](https://invent.kde.org/melvo/xmpp-providers/-/tree/master#basic-information) and [criteria](https://invent.kde.org/melvo/xmpp-providers/-/tree/master#criteria) are denoted in the *Automatic Updates* column.
 
-All sources are stored in the {{< external-link text="providers file" url="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/providers.json" >}}.
+All sources are stored in the [providers file](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/providers.json).
 That file is the data source of all provider properties.
 This website's provider listings and details are based on it.
 
@@ -156,11 +156,11 @@ A property is called *unknown* if no [source](#where-do-we-have-the-providers-pr
 ### Provider File
 
 A provider file is a JSON file containing only the provider properties that cannot be retrieved via other methods.
-Each provider can [generate a provider file](https://providers.xmpp.net/provider-file-generator/) and supply it via its web server.
+Each provider can [generate a provider file](/provider-file-generator/) and supply it via its web server.
 
 ### Bus Factor
 
-The term {{< external-link text="bus factor" url="https://en.wikipedia.org/wiki/Bus_factor" >}} describes the minimum number of team members that the service could not survive losing.
+The term [bus factor](https://en.wikipedia.org/wiki/Bus_factor) describes the minimum number of team members that the service could not survive losing.
 
 ### Professional Hosting
 
@@ -177,7 +177,7 @@ The *client-to-server (C2S)* connection is used for the communication between yo
 
 ### HTTP Upload
 
-{{< external-link text="XEP-0363 HTTP File Upload" url="https://xmpp.org/extensions/xep-0363.html" >}} is a standard for sharing files between you and others.
+[XEP-0363 HTTP File Upload](https://xmpp.org/extensions/xep-0363.html) is a standard for sharing files between you and others.
 
 ### Server-to-Server
 

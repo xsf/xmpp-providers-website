@@ -6,7 +6,7 @@ date: 2022-04-25
 ## It's Your Choice
 
 Are you looking for an XMPP provider that suits you?
-There is this new website now based on the data of {{< external-link url="https://invent.kde.org/melvo/xmpp-providers" text="XMPP Providers" >}}.
+There is this new website now based on the data of [XMPP Providers](https://invent.kde.org/melvo/xmpp-providers).
 **XMPP Providers** has a curated list of providers and tools for filtering them, creating badges and more.
 
 Each provider is [categorized](/faq/#why-do-we-collect-and-categorize-providers) based on its properties to make decisions for users as easy as possible.
@@ -34,4 +34,4 @@ We need to find ways to simplify the maintenance while still providing results t
 If you are a developer, please help us with automating the tasks we currently have to do manually.
 If you are an operator of an already listed public provider, please update your website to improve your category.
 You can see what is needed on your details page after selecting a provider entry and clicking the *Details* button.
-If your provider is not listed yet, please {{< external-link url="https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md" text="contribute to the list" >}}.
+If your provider is not listed yet, please [contribute to the list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md).
