@@ -6,16 +6,22 @@
 Download / prepare / process XMPP Providers data
 """
 import json
+import logging
 import os
 import shutil
 import sys
 import zipfile
-from datetime import date
+from argparse import ArgumentParser
+from datetime import datetime
+from datetime import UTC
+from http import HTTPStatus
 from pathlib import Path
 
 import requests
 from defusedxml.ElementTree import parse
 from defusedxml.ElementTree import ParseError
+from requests.exceptions import ConnectTimeout
+from requests.exceptions import ReadTimeout
 
 DOWNLOAD_PATH = Path("downloads")
 DOCKER_DOWNLOAD_PATH = Path("downloads-docker")
@@ -54,6 +60,36 @@ DOAP_OS = f".//{{{DOAP_NS}}}os"
 MD_FRONTMATTER = """---\ntitle: %s\ndate: %s\n---\n
 {{< provider-details provider="%s">}}
 """
+
+
+class ToolsArgumentParser(ArgumentParser):
+    """Parses arguments for XMPP Providers Website processor."""
+
+    def __init__(self) -> None:
+        super().__init__()
+
+        self.description = """
+        Provides tools for data processing.
+        """
+        debug_group = self.add_mutually_exclusive_group()
+        debug_group.add_argument(
+            "-q",
+            "--quiet",
+            help="log only errors",
+            action="store_const",
+            dest="log_level",
+            const=logging.ERROR,
+            default=logging.INFO,
+        )
+        debug_group.add_argument(
+            "-d",
+            "--debug",
+            help="log debug output",
+            action="store_const",
+            dest="log_level",
+            const=logging.DEBUG,
+            default=logging.INFO,
+        )
 
 
 def initialize_directory(path: Path) -> None:
@@ -110,24 +146,26 @@ def download_file(url: str, path: Path) -> bool:
     returns success
     """
     try:
-        file_request = requests.get(url, timeout=5)
-    except Exception as err:
-        print("Error while trying to download from ", url, err)
+        file_response = requests.get(url, timeout=5)
+    except (ConnectTimeout, ReadTimeout) as err:
+        log.error("Error while trying to download from %s, %s", url, err)
         return False
 
-    if not 200 >= file_request.status_code < 400:
-        print("Error while trying to download from ", url, file_request.status_code)
+    if not HTTPStatus.OK >= file_response.status_code < HTTPStatus.BAD_REQUEST:
+        log.error(
+            "Error while trying to download from %s, %s", url, file_response.status_code
+        )
         return False
 
     with open(DOWNLOAD_PATH / path, "wb") as data_file:
         max_size = 1024 * 1024 * 10  # 10 MiB
         size = 0
-        for chunk in file_request.iter_content(chunk_size=8192):
+        for chunk in file_response.iter_content(chunk_size=8192):
             data_file.write(chunk)
             size += len(chunk)
             if size > max_size:
-                file_request.close()
-                print("File size exceeds 10 MiB:", path)
+                file_response.close()
+                log.warning("File size exceeds 10 MiB: %s", path)
                 return False
     return True
 
@@ -208,16 +246,18 @@ def create_provider_pages() -> None:
     """
     initialize_directory(PROVIDERS_PAGES_PATH)
 
-    today = date.today()
+    today = datetime.now(UTC).date()
     date_formatted = today.strftime("%Y-%m-%d")
 
     (_, _, filenames) = next(os.walk(PROVIDERS_JSON_PATH))
     for filename in filenames:
-        filename = filename[:-5]
+        provider_name = filename[:-5]
         with open(
-            PROVIDERS_PAGES_PATH / f"{filename}.md", "w", encoding="utf8"
+            PROVIDERS_PAGES_PATH / f"{provider_name}.md", "w", encoding="utf8"
         ) as md_file:
-            md_file.write(MD_FRONTMATTER % (filename, date_formatted, filename))
+            md_file.write(
+                MD_FRONTMATTER % (provider_name, date_formatted, provider_name)
+            )
 
 
 def parse_doap_infos(doap_file: str) -> dict[str, list[str]] | None:
@@ -304,6 +344,10 @@ def prepare_client_data_file() -> None:
 
 
 if __name__ == "__main__":
+    arguments = ToolsArgumentParser().parse_args()
+
+    logging.basicConfig(level=arguments.log_level)
+    log = logging.getLogger(__name__)
     prepare_provider_data_files()
     create_provider_pages()
     prepare_client_data_file()
