@@ -41,7 +41,7 @@ const providers_data_form_properties_v1 = [
     type: "integer",
     title: "Maximum HTTP File Upload Total Size",
     dataDescription:
-      "Maximum size of all shared files in total per user (number in megabytes (MB), 0 for no limit or -1 for less than 1 MB).",
+      "Maximum size of <b>all shared files in total</b> per user (number in megabytes (MB), 0 for no limit or -1 for less than 1 MB). Attention: MB is used instead of MiB (i.e., 104,857,600 bytes = 100 MiB ≈ 104 MB). This property is <i>not</i> about the maximum size of each shared file, which is already retrieved via XMPP.",
   },
   {
     name: "maximumHttpFileUploadStorageTime",
