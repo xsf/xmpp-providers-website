@@ -73,6 +73,6 @@ This website makes use of:
 
 ### API Levels
 
-Currently, this website is based on the [v1 version](https://invent.kde.org/melvo/xmpp-providers/-/tree/stable/v1) of the Providers API.
+Currently, this website is based on the [v2 version](https://invent.kde.org/melvo/xmpp-providers/-/tree/stable/v2) of the Providers API.
 
 When moving to another API version, URLs have to be changed in both `Dockerfile` and `tools/prepare.py`.
