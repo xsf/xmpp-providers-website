@@ -49,6 +49,11 @@ CLIENTS_DATA_URL = (
     f"{API_VERSION}/clients.json"
 )
 PROVIDERS_FILE_URL = f"https://data.xmpp.net/providers/{API_VERSION}/providers.json"
+# TODO: Remove temporary workaround
+PROVIDERS_FILE_WORKAROUND_URL = (
+    f"https://data.xmpp.net/providers/{API_VERSION}/providers-{API_VERSION[1]}.json"
+)
+
 XSF_SOFTWARE_LIST_URL = (
     "https://raw.githubusercontent.com/xsf/xmpp.org/master/data/software.json"
 )
@@ -233,7 +238,12 @@ def get_providers_file() -> None:
     else:
         success = download_file(PROVIDERS_FILE_URL, Path("providers.json"))
         if not success:
-            sys.exit(f"Error while trying to download from {PROVIDERS_FILE_URL}")
+            # TODO: Remove temporary workaround
+            success = download_file(
+                PROVIDERS_FILE_WORKAROUND_URL, Path("providers.json")
+            )
+            if not success:
+                sys.exit(f"Error while trying to download from {PROVIDERS_FILE_URL}")
     shutil.copyfile(
         DOWNLOAD_PATH / "providers.json",
         DATA_PATH / "providers.json",

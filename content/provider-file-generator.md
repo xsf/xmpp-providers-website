@@ -13,10 +13,10 @@ Each provider can supply such a provider file via its web server (replace `<prov
 https://<provider>/.well-known/xmpp-provider-v<version>.json
 ```
 
-Example for a provider file of version **1**:
+Example for a provider file of version **2**:
 
 ```url
-https://example.org/.well-known/xmpp-provider-v1.json
+https://example.org/.well-known/xmpp-provider-v2.json
 ```
 
 ### Generate a Provider File

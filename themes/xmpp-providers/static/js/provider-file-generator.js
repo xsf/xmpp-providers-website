@@ -7,14 +7,21 @@ document.addEventListener("DOMContentLoaded", () => {
   _initialize_provider_data_form();
 });
 
-const api_versions = ["v1"];
+const api_versions = ["v2"];
 
-const providers_data_form_properties_v1 = [
+const providers_data_form_properties_v2 = [
   {
     name: "website",
     type: "dictionary-language-web-page",
     title: "Website",
     dataDescription: "Provider website (per language).",
+  },
+  {
+    name: "alternativeJids",
+    type: "list-jids",
+    title: "Alternative Addresses",
+    dataDescription:
+      "List of JIDs a provider offers for registration other than the main JID.",
   },
   {
     name: "busFactor",
@@ -24,10 +31,10 @@ const providers_data_form_properties_v1 = [
       "Bus factor of the XMPP service (i.e., the minimum number of team members that the service could not survive losing) or -1 for n/a.",
   },
   {
-    name: "company",
-    type: "boolean",
-    title: "Company",
-    dataDescription: "Whether the provider is a company.",
+    name: "organization",
+    type: "organization-select",
+    title: "Organization",
+    dataDescription: "Type of organization providing the XMPP service.",
   },
   {
     name: "passwordReset",
@@ -83,6 +90,13 @@ const providers_data_form_properties_v1 = [
     dataDescription: "Server/Backup locations.",
   },
   {
+    name: "serverTesting",
+    type: "boolean",
+    title: "Server Testing",
+    dataDescription:
+      "Whether tests against the provider's server are allowed (e.g., certificate checks and uptime monitoring).",
+  },
+  {
     name: "since",
     type: "string-date",
     title: "Since",
@@ -96,6 +110,58 @@ function _on_add_language_entry_clicked(event) {
 
 function _on_add_country_entry_clicked(event) {
   _add_country_entry(event.srcElement.dataset.property);
+}
+
+function _on_add_address_entry_clicked(event) {
+  _add_address_entry(event.srcElement.dataset.property);
+}
+
+function _add_address_entry(property_name) {
+  const input_row = document.createElement("div");
+  input_row.classList.add("row", "g-2", "align-items-end", "mb-3");
+
+  const address_col = document.createElement("div");
+  address_col.classList.add("col-6");
+
+  const address_label = document.createElement("label");
+  const address_input_id = get_random_id();
+  address_label.htmlFor = `property-address-${property_name}-${address_input_id}`;
+  address_label.classList.add("form-label");
+  address_label.innerHTML = "Address";
+
+  const address_input = document.createElement("input");
+  address_input.id = `property-address-${property_name}-${address_input_id}`;
+  address_input.type = "url";
+  address_input.placeholder = "Address, e.g. alternative-address.tld";
+  address_input.classList.add("form-control", "form-control-sm");
+  address_input.required = true;
+
+  address_col.append(address_label);
+  address_col.append(address_input);
+  input_row.append(address_col);
+
+  const remove_button_col = document.createElement("div");
+  remove_button_col.classList.add("col-1");
+  const remove_button = document.createElement("button");
+  const random_id = get_random_id();
+  remove_button.id = `remove_button_${random_id}`;
+  remove_button.classList.add("btn", "btn-sm", "btn-secondary");
+  remove_button.title = "Remove Entry";
+  remove_button.setAttribute("data-bs-toggle", "tooltip");
+  remove_button.addEventListener("click", _remove_entry);
+  const remove_button_icon = document.createElement("i");
+  remove_button_icon.classList.add("fa-solid", "fa-trash");
+  remove_button.append(remove_button_icon);
+  remove_button_col.append(remove_button);
+  input_row.append(remove_button_col);
+
+  const container = document.getElementById(`container-${property_name}`);
+  const add_entry_row = document.getElementById(
+    `add-entry-row-${property_name}`
+  );
+  container.insertBefore(input_row, add_entry_row);
+
+  initialize_bootstrap_tooltips();
 }
 
 function _add_country_entry(property_name) {
@@ -140,7 +206,7 @@ function _add_country_entry(property_name) {
   remove_button.classList.add("btn", "btn-sm", "btn-secondary");
   remove_button.title = "Remove Entry";
   remove_button.setAttribute("data-bs-toggle", "tooltip");
-  remove_button.addEventListener("click", _remove_language_entry);
+  remove_button.addEventListener("click", _remove_entry);
   const remove_button_icon = document.createElement("i");
   remove_button_icon.classList.add("fa-solid", "fa-trash");
   remove_button.append(remove_button_icon);
@@ -219,7 +285,7 @@ function _add_language_entry(property_name) {
   remove_button.classList.add("btn", "btn-sm", "btn-secondary");
   remove_button.title = "Remove Entry";
   remove_button.setAttribute("data-bs-toggle", "tooltip");
-  remove_button.addEventListener("click", _remove_language_entry);
+  remove_button.addEventListener("click", _remove_entry);
   const remove_button_icon = document.createElement("i");
   remove_button_icon.classList.add("fa-solid", "fa-trash");
   remove_button.append(remove_button_icon);
@@ -235,7 +301,7 @@ function _add_language_entry(property_name) {
   initialize_bootstrap_tooltips();
 }
 
-function _remove_language_entry(event) {
+function _remove_entry(event) {
   let button_id = null;
 
   if (event.srcElement.tagName === "BUTTON") {
@@ -283,8 +349,8 @@ function _on_generate_json_file_clicked() {
   const selected_api_version =
     document.getElementById("api_version_select").value;
   let properties_list = undefined;
-  if (selected_api_version === "v1") {
-    properties_list = providers_data_form_properties_v1;
+  if (selected_api_version === "v2") {
+    properties_list = providers_data_form_properties_v2;
   }
 
   for (const property of properties_list) {
@@ -307,6 +373,17 @@ function _on_generate_json_file_clicked() {
       continue;
     }
 
+    if (property.type === "organization-select") {
+      let organization = "";
+      const organization_select = document.getElementById(
+        `property-${property.name}`
+      );
+      if (organization_select.value != "placeholder") {
+        organization = organization_select.value;
+      }
+      generated_properties_dict[property.name] = organization;
+      continue;
+    }
     if (property.type === "list-language-string") {
       const container = document.getElementById(`container-${property.name}`);
       const entry_rows = container.querySelectorAll(
@@ -321,6 +398,23 @@ function _on_generate_json_file_clicked() {
         }
       }
 
+      generated_properties_dict[property.name] = entries;
+      continue;
+    }
+
+    if (property.type === "list-jids") {
+      const container = document.getElementById(`container-${property.name}`);
+      const entry_rows = container.querySelectorAll(
+        `.row:not(#add-entry-row-${property.name})`
+      );
+
+      let entries = [];
+      for (const row of entry_rows) {
+        const alternative_address = row.querySelector("input").value;
+        if (alternative_address) {
+          entries.push(alternative_address);
+        }
+      }
       generated_properties_dict[property.name] = entries;
       continue;
     }
@@ -397,8 +491,8 @@ function _initialize_provider_data_form() {
   const selected_api_version =
     document.getElementById("api_version_select").value;
   let properties_list = undefined;
-  if (selected_api_version === "v1") {
-    properties_list = providers_data_form_properties_v1;
+  if (selected_api_version === "v2") {
+    properties_list = providers_data_form_properties_v2;
   }
 
   for (const property of properties_list) {
@@ -441,6 +535,8 @@ function _initialize_provider_data_form() {
 
       if (property.name === "professionalHosting") {
         label.innerHTML = `Provider offers ${property.title.toLocaleLowerCase()}`;
+      } else if (property.name === "serverTesting") {
+        label.innerHTML = `Allow ${property.title.toLowerCase()}`;
       } else {
         label.innerHTML = `Provider is ${property.title.toLowerCase()}`;
       }
@@ -486,6 +582,64 @@ function _initialize_provider_data_form() {
 
       outer_div.append(label);
       outer_div.append(input);
+    }
+
+    if (property.type === "list-jids") {
+      _add_address_entry(property.name);
+
+      // "Add Entry" button
+      const button_row = document.createElement("div");
+      button_row.classList.add("row", "mt-3");
+      button_row.id = `add-entry-row-${property.name}`;
+
+      const button_col = document.createElement("div");
+      button_col.classList.add("col");
+
+      const add_button = document.createElement("button");
+      add_button.classList.add("btn", "btn-sm", "btn-secondary");
+      add_button.innerHTML = "Add Entry";
+      add_button.dataset.property = property.name;
+      add_button.addEventListener("click", _on_add_address_entry_clicked);
+
+      button_col.append(add_button);
+      button_row.append(button_col);
+
+      outer_div.append(button_row);
+    }
+
+    if (property.type === "organization-select") {
+      const label = document.createElement("label");
+      label.htmlFor = `property-${property.name}`;
+      label.classList.add("form-label");
+      label.innerHTML = "Organization";
+
+      const organization_select = document.createElement("select");
+      organization_select.id = `property-${property.name}`;
+      organization_select.classList.add("form-select", "form-select-sm");
+
+      const default_option = document.createElement("option");
+      default_option.value = "placeholder";
+      default_option.text = "Choose...";
+      organization_select.append(default_option);
+
+      const option_values = [
+        "company",
+        "commercial person",
+        "private person",
+        "governmental",
+        "non-governmental",
+      ];
+      for (const option_value of option_values) {
+        const option = document.createElement("option");
+        option.value = option_value;
+        option.text = `${option_value
+          .charAt(0)
+          .toUpperCase()}${option_value.slice(1)}`;
+        organization_select.append(option);
+      }
+
+      outer_div.append(label);
+      outer_div.append(organization_select);
     }
 
     if (property.type === "list-language-string") {

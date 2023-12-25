@@ -36,13 +36,19 @@
                     Green<br>Hosting
                 </th>
                 <th>
-                    Run by a<br>Company
+                    Organization
                 </th>
                 <th>
                     Server<br>Software
                 </th>
                 <th>
                     Registration
+                </th>
+                <th>
+                    <span data-bs-toggle="tooltip" title="Requires an email address for registration">Email<br>required</span>
+                </th>
+                <th>
+                    <span data-bs-toggle="tooltip" title="Requires solving a CAPTCHA during registration">CAPTCHA<br>required</span>
                 </th>
                 <th>
                     Password<br>Reset
@@ -78,6 +84,9 @@
                     Support (Group Chat)
                 </th>
                 <th>
+                    Alternative<br>Addresses
+                </th>
+                <th>
                     Provider
                 </th>
             </tr>
@@ -90,7 +99,7 @@
                         <a href="/provider/{{ .jid }}/">{{ .jid }}</a>
                     </td>
                     <td>
-                        {{ .lastCheck | dateFormat "2006-01-02" }}
+                        {{ .latestChange | dateFormat "2006-01-02" }}
                     </td>
                     <td>
                         <span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span>
@@ -187,17 +196,17 @@
                         {{ end }}
                     </td>
                     <td>
-                        {{ if .company }}
-                            Yes
+                        {{ if .organization }}
+                            {{ .organization | strings.FirstUpper }}
                         {{ else }}
-                            No
+                            <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ end }}
                     </td>
                     <td>
                         {{ if .serverSoftwareName }}
                             <span class="small">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
                         {{ else }}
-                            Unknown
+                            <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ end }}
                     </td>
                     <td>
@@ -223,6 +232,20 @@
                         {{ end }}
                     </td>
                     <td>
+                        {{ if .inBandRegistrationEmailAddressRequired }}
+                            Yes
+                        {{ else }}
+                            No
+                        {{ end }}
+                    </td>
+                    <td>
+                        {{ if .inBandRegistrationCaptchaRequired }}
+                            Yes
+                        {{ else }}
+                            No
+                        {{ end }}
+                    </td>
+                    <td>
                         {{ if .passwordReset }}
                             {{ $len := (len .passwordReset) }}
                             {{ $count := 0 }}
@@ -239,7 +262,7 @@
                     </td>
                     <td class="text-end">
                         {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
-                            <a href="/faq#unknown" class="abbr">unknown</a>
+                            <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ else if eq (string .maximumMessageArchiveManagementStorageTime) "0" }}
                             unlimited
                         {{ else }}
@@ -347,6 +370,15 @@
                                     <span class="text-body-secondary">|</span>
                                 {{ end }}
                             {{- end -}}
+                        {{ else }}
+                            -
+                        {{ end }}
+                    </td>
+                    <td>
+                        {{ if .alternativeJids }}
+                            {{ range .alternativeJids }}
+                                <span class="badge text-bg-secondary opacity-75">{{ . }}</span>
+                            {{ end }}
                         {{ else }}
                             -
                         {{ end }}

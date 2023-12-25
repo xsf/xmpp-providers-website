@@ -43,6 +43,16 @@
         {{ end }}
     </div>
 </div>
+{{ if .alternativeJids }}
+<div class="row justify-content-center pb-4">
+    <div class="col-sm-8 text-center border rounded text-bg-light p-3">
+        <p class="text-muted mb-1">Alternative Addresses</p>
+        {{ range .alternativeJids }}
+            <span class="badge text-bg-secondary opacity-75">{{ . }}</span>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
 <div class="row justify-content-center">
     <div class="col-md-6 pb-4">
         <div class="card shadow-sm h-100">
@@ -107,10 +117,11 @@
                             <i class="fa-regular fa-building px-2 text-body-secondary"></i>
                         </td>
                         <td>
-                            {{ if .company }}
-                                Run by a company
+                            Organization:
+                            {{ if .organization }}
+                                {{ .organization | strings.FirstUpper }}
                             {{ else }}
-                                Not run by a company
+                                <a href="/faq/#unknown" class="abbr">unknown</a>
                             {{ end }}
                         </td>
                     </tr>
@@ -188,7 +199,7 @@
                             {{ if .serverSoftwareName }}
                                 Server software:&nbsp;<span class="d-block text-wrap" style="max-width: 14rem;">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
                             {{ else }}
-                                Unknown
+                                <a href="/faq/#unknown" class="abbr">unknown</a>
                             {{ end }}
                         </td>
                     </tr>
@@ -242,6 +253,30 @@
                     {{ end }}
                     {{ if and (not .inBandRegistration) (not .registrationWebPage) }}
                         You cannot register on this provider (at any time)
+                    {{ end }}
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center">
+                    <i class="fa-solid fa-envelope-circle-check px-2 text-body-secondary"></i>
+                </td>
+                <td>
+                    {{ if .inBandRegistrationEmailAddressRequired }}
+                        An email address is required for registration
+                    {{ else }}
+                        An email address is <i>not</i> required for registration
+                    {{ end }}
+                </td>
+            </tr>
+            <tr>
+                <td class="text-center">
+                    <i class="fa-solid fa-robot px-2 text-body-secondary"></i>
+                </td>
+                <td>
+                    {{ if .inBandRegistrationCaptchaRequired }}
+                        A <a class="abbr" href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA <i class="fas fa-xs fa-external-link-alt"></i></a> must be solved for registration
+                    {{ else }}
+                        No <a class="abbr" href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA <i class="fas fa-xs fa-external-link-alt"></i></a> must be solved for registration
                     {{ end }}
                 </td>
             </tr>
@@ -584,7 +619,7 @@
     </div>
 </div>
 <div class="row pt-3">
-    <p class="text-center text-body-secondary small">Latest change: {{ .lastCheck | dateFormat "Jan 2, 2006" }}&nbsp;&middot;&nbsp;<a href="/faq/#where-do-we-have-the-providers-properties-from">Something changed?</a></p>
+    <p class="text-center text-body-secondary small">Latest change: {{ .latestChange | dateFormat "Jan 2, 2006" }}&nbsp;&middot;&nbsp;<a href="/faq/#where-do-we-have-the-providers-properties-from">Something changed?</a></p>
     <p class="text-center text-body-secondary small">Providers are checked for updates on a daily basis.</p>
 </div>
 {{ end }}
