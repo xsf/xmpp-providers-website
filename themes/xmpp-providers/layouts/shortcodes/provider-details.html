@@ -67,9 +67,9 @@
                         </td>
                         <td>
                             {{ if .freeOfCharge }}
-                                Free of charge
+                                Cost: Free of charge
                             {{ else }}
-                                Paid
+                                Cost: Paid
                             {{ end }}
                         </td>
                     </tr>
@@ -199,7 +199,7 @@
                             {{ if .serverSoftwareName }}
                                 Server software:&nbsp;<span class="d-block text-wrap" style="max-width: 14rem;">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
                             {{ else }}
-                                <a href="/faq/#unknown" class="abbr">unknown</a>
+                                Server software:&nbsp;<a href="/faq/#unknown" class="abbr">unknown</a>
                             {{ end }}
                         </td>
                     </tr>
