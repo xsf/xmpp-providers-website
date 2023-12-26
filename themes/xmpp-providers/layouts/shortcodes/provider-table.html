@@ -305,18 +305,10 @@
                         <a href="https://compliance.conversations.im/server/{{ .jid }}/" class="badge badge-rating text-light text-decoration-none {{ if gt .ratingXmppComplianceTester 99 }}category-a{{ else if gt .ratingXmppComplianceTester 89 }}category-c{{ else }}category-d{{ end }}" target="_blank">{{ .ratingXmppComplianceTester }}</a>
                     </td>
                     <td>
-                        {{ if .ratingImObservatoryClientToServer }}
-                            <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=client" class="badge badge-rating text-light text-decoration-none {{ if eq .ratingImObservatoryClientToServer "A" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingImObservatoryClientToServer }}</a>
-                        {{ else }}
-                            <a href="/faq/#unknown" class="abbr">unknown</a>
-                        {{ end }}
+                        <a href="/faq/#unknown" class="abbr badge text-light bg-secondary">unknown</a>
                     </td>
                     <td>
-                        {{ if .ratingImObservatoryServerToServer }}
-                            <a href="https://xmpp.net/result.php?domain={{ .jid }}&type=server" class="badge badge-rating text-light text-decoration-none {{ if eq .ratingImObservatoryServerToServer "A" }}category-a{{ else }}category-d{{ end }}" target="_blank">{{ .ratingImObservatoryServerToServer }}</a>
-                        {{ else }}
-                            <a href="/faq/#unknown" class="abbr">unknown</a>
-                        {{ end }}
+                        <a href="/faq/#unknown" class="abbr badge text-light bg-secondary">unknown</a>
                     </td>
                     <td>
                         {{ if .emailSupport }}
