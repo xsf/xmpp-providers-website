@@ -13,7 +13,10 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-get clean
 
 # Install dependencies
-RUN apt-get install -y make hugo
+RUN apt-get install -y make curl
+
+RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.121.1/hugo_0.121.1_linux-amd64.deb -o hugo.deb
+RUN apt-get install ./hugo.deb
 
 ARG API_VERSION=v2
 ARG BASEURL=https://providers.xmpp.net/
