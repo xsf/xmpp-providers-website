@@ -19,6 +19,12 @@
     url = "/blog/"
     weight = 5
 [[main]]
+    name = "Provider File Generator"
+    url = "/provider-file-generator/"
+    weight = 6
+    [[main.params]]
+        new = true
+[[main]]
     name = "API"
     url = "https://invent.kde.org/melvo/xmpp-providers#usage"
-    weight = 6
+    weight = 7
