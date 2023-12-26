@@ -46,7 +46,7 @@
 {{ if .alternativeJids }}
 <div class="row justify-content-center pb-4">
     <div class="col-sm-8 text-center border rounded text-bg-light p-3">
-        <p class="text-muted mb-1">Alternative Addresses</p>
+        <p class="text-muted mb-1">Alternative JIDs</p>
         {{ range .alternativeJids }}
             <span class="badge text-bg-secondary opacity-75">{{ . }}</span>
         {{ end }}
@@ -69,7 +69,12 @@
                             {{ if .freeOfCharge }}
                                 Cost: Free of charge
                             {{ else }}
-                                Cost: Paid
+                                {{ $freeOfCharge_source := $providers_data.freeOfCharge.source }}
+                                {{ if eq $freeOfCharge_source "" }}
+                                    Cost: <a href="/faq/#unknown" class="abbr">unknown</a>
+                                {{ else }}
+                                    Cost: Paid
+                                {{ end }}
                             {{ end }}
                         </td>
                     </tr>

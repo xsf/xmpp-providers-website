@@ -19,7 +19,7 @@ const providers_data_form_properties_v2 = [
   {
     name: "alternativeJids",
     type: "list-jids",
-    title: "Alternative Addresses",
+    title: "Alternative JIDs",
     dataDescription:
       "List of JIDs a provider offers for registration other than the main JID.",
   },
@@ -48,7 +48,7 @@ const providers_data_form_properties_v2 = [
     type: "integer",
     title: "Maximum HTTP File Upload Total Size",
     dataDescription:
-      "Maximum size of <b>all shared files in total</b> per user (number in megabytes (MB), 0 for no limit or -1 for less than 1 MB). Attention: MB is used instead of MiB (i.e., 104,857,600 bytes = 100 MiB ≈ 104 MB). This property is <i>not</i> about the maximum size of each shared file, which is already retrieved via XMPP.",
+      "Maximum size of <b>all shared files in total</b> per user (number in megabytes (MB), 0 for no limit or -1 for less than 1 MB). Attention: MB is used instead of MiB (e.g., 104,857,600 bytes = 100 MiB ≈ 104 MB). This property is <i>not</i> about the maximum size of each shared file, which is already retrieved via XMPP.",
   },
   {
     name: "maximumHttpFileUploadStorageTime",
@@ -121,7 +121,7 @@ function _add_address_entry(property_name) {
   input_row.classList.add("row", "g-2", "align-items-end", "mb-3");
 
   const address_col = document.createElement("div");
-  address_col.classList.add("col-6");
+  address_col.classList.add("col-11");
 
   const address_label = document.createElement("label");
   const address_input_id = get_random_id();
@@ -132,7 +132,7 @@ function _add_address_entry(property_name) {
   const address_input = document.createElement("input");
   address_input.id = `property-address-${property_name}-${address_input_id}`;
   address_input.type = "url";
-  address_input.placeholder = "Address, e.g. alternative-address.tld";
+  address_input.placeholder = "Address, e.g. example.org";
   address_input.classList.add("form-control", "form-control-sm");
   address_input.required = true;
 
