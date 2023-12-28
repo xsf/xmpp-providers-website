@@ -44,6 +44,13 @@ const providers_data_form_properties_v2 = [
       "Password reset web page (per language) used for an automatic password reset (e.g., via email) or describing how to manually reset a password (e.g., by contacting the provider).",
   },
   {
+    name: "serverTesting",
+    type: "boolean",
+    title: "Server Testing",
+    dataDescription:
+      "Whether tests against the provider's server are allowed (e.g., certificate checks and uptime monitoring).",
+  },
+  {
     name: "maximumHttpFileUploadTotalSize",
     type: "integer",
     title: "Maximum HTTP File Upload Total Size",
@@ -90,13 +97,6 @@ const providers_data_form_properties_v2 = [
     dataDescription: "Server/Backup locations.",
   },
   {
-    name: "serverTesting",
-    type: "boolean",
-    title: "Server Testing",
-    dataDescription:
-      "Whether tests against the provider's server are allowed (e.g., certificate checks and uptime monitoring).",
-  },
-  {
     name: "since",
     type: "string-date",
     title: "Since",
@@ -132,7 +132,7 @@ function _add_address_entry(property_name) {
   const address_input = document.createElement("input");
   address_input.id = `property-address-${property_name}-${address_input_id}`;
   address_input.type = "url";
-  address_input.placeholder = "Address, e.g. example.org";
+  address_input.placeholder = "example.org";
   address_input.classList.add("form-control", "form-control-sm");
   address_input.required = true;
 
@@ -536,7 +536,7 @@ function _initialize_provider_data_form() {
       if (property.name === "professionalHosting") {
         label.innerHTML = `Provider offers ${property.title.toLocaleLowerCase()}`;
       } else if (property.name === "serverTesting") {
-        label.innerHTML = `Allow ${property.title.toLowerCase()}`;
+        label.innerHTML = `Provider allows ${property.title.toLowerCase()}`;
       } else {
         label.innerHTML = `Provider is ${property.title.toLowerCase()}`;
       }
