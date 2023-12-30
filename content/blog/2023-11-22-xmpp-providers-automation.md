@@ -39,4 +39,4 @@ With increasing automation and thus reduced manual intervention, the XMPP Provid
 
 The project lives from the community and client implementations, so [follow us and spread the word](https://fosstodon.org/@xmpp_providers)!
 
-{{< figure src="/images/xmpp-providers.svg" caption="XMPP Providers Logo" class="text-center w-100 pt-5" height="300" link="/" >}}
+{{< figure src="/images/xmpp-providers-adaptive.svg" caption="XMPP Providers Logo" class="text-center w-100 pt-5" height="300" link="/" >}}
