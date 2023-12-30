@@ -21,7 +21,7 @@ const providers_data_form_properties_v2 = [
     type: "list-jids",
     title: "Alternative JIDs",
     dataDescription:
-      "List of JIDs a provider offers for registration other than the main JID.",
+      "List of JIDs (XMPP server domains) a provider offers for registration other than its main JID.",
   },
   {
     name: "busFactor",
