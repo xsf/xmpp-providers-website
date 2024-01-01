@@ -108,7 +108,7 @@
                         {{ if .since }}
                             {{ .since | dateFormat "2006-01-02" }}
                         {{ else }}
-                            ?
+                            <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ end }}
                     </td>
                     <td>
@@ -123,7 +123,7 @@
                                 {{ end }}
                             {{- end -}}
                         {{ else }}
-                            ?
+                            <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ end }}
                     </td>
                     <td>
