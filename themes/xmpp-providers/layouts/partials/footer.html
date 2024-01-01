@@ -32,4 +32,10 @@
     <script src="{{- "js/language-country-codes.js" | relURL -}}"></script>
     <script src="{{- "js/provider-file-generator.js" | relURL -}}"></script>
 {{- end -}}
+{{- if ( .Params.statistics ) -}}
+    <script src="{{- "js/statistics.js" | relURL -}}"></script>
+    <script src="{{- "js/echarts.min.js" | relURL -}}"></script>
+    <script src="{{- "js/leaflet.js" | relURL -}}"></script>
+    <script src="{{- "js/world.geojson.js" | relURL -}}"></script>
+{{- end -}}
 <script src="{{- "js/scripts.js" | relURL -}}"></script>

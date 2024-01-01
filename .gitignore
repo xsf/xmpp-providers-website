@@ -24,6 +24,7 @@ data/results/
 data/filtered_providers.json
 data/implementing_clients.json
 data/providers.json
+data/statistics.json
 downloads/
 downloads-docker/
 public/

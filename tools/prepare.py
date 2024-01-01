@@ -12,6 +12,7 @@ import shutil
 import sys
 import zipfile
 from argparse import ArgumentParser
+from collections import defaultdict
 from datetime import datetime
 from datetime import UTC
 from http import HTTPStatus
@@ -353,6 +354,96 @@ def prepare_client_data_file() -> None:
         json.dump(client_infos, client_data_file, indent=4)
 
 
+def prepare_statistics() -> None:  # noqa: C901
+    try:
+        with open(DATA_PATH / "providers.json") as file:
+            providers_data = json.load(file)
+    except json.decoder.JSONDecodeError as e:
+        log.error("Could not open providers.json: %s", e)
+        return
+
+    total_provider_count = len(providers_data)
+
+    statistics_data = {
+        "total_provider_count": total_provider_count,
+        "server_testing_count": 0,
+        "v1_provider_file_count": 0,
+        "v2_provider_file_count": 0,
+        "since_data": [],
+        "server_locations": defaultdict(int),
+    }
+
+    for provider_data in providers_data.values():
+        if website_data := provider_data.get("website"):
+            website_data_source = website_data.get("source")
+            if website_data_source is not None:
+                if website_data_source.endswith("v1.json"):
+                    statistics_data["v1_provider_file_count"] += 1
+                if website_data_source.endswith("v2.json"):
+                    statistics_data["v2_provider_file_count"] += 1
+
+        if server_testing_data := provider_data.get("serverTesting"):
+            server_testing_allowed = server_testing_data["content"]
+            if server_testing_allowed:
+                statistics_data["server_testing_count"] += 1
+
+        if since_data := provider_data.get("since"):
+            statistics_data["since_data"].append(since_data["content"])
+
+        if server_locations_data := provider_data.get("serverLocations"):
+            for server_location in server_locations_data["content"]:
+                statistics_data["server_locations"][server_location] += 1
+
+    statistics_data["since_data"].sort(
+        key=lambda date: datetime.strptime(date, "%Y-%m-%d").replace(tzinfo=UTC)
+    )
+
+    no_provider_file_count = (
+        total_provider_count
+        - statistics_data["v1_provider_file_count"]
+        - statistics_data["v2_provider_file_count"]
+    )
+    statistics_data["provider_file_pie_chart_data"] = [
+        {
+            "value": statistics_data["v1_provider_file_count"],
+            "name": "Provider File (v1)",
+            "itemStyle": {"color": "rgb(230, 200, 0)"},
+        },
+        {
+            "value": statistics_data["v2_provider_file_count"],
+            "name": "Provider File (v2)",
+            "itemStyle": {"color": "rgb(120, 190, 70)"},
+        },
+        {
+            "value": no_provider_file_count,
+            "name": "No Provider File",
+            "itemStyle": {"color": "rgb(220, 220, 220)"},
+        },
+    ]
+
+    statistics_data["server_testing_pie_chart"] = [
+        {
+            "value": statistics_data["server_testing_count"],
+            "name": "Providers allowing server testing",
+            "itemStyle": {"color": "rgb(120, 190, 70)"},
+        },
+        {
+            "value": statistics_data["v2_provider_file_count"]
+            - statistics_data["server_testing_count"],
+            "name": "Providers not allowing server testing",
+            "itemStyle": {"color": "rgb(230, 200, 0)"},
+        },
+        {
+            "value": total_provider_count - statistics_data["v2_provider_file_count"],
+            "name": "No provider file",
+            "itemStyle": {"color": "rgb(220, 220, 220)"},
+        },
+    ]
+
+    with open(DATA_PATH / "statistics.json", "w", encoding="utf-8") as statistics_file:
+        statistics_file.write(json.dumps(statistics_data, indent=4))
+
+
 if __name__ == "__main__":
     arguments = ToolsArgumentParser().parse_args()
 
@@ -361,3 +452,4 @@ if __name__ == "__main__":
     prepare_provider_data_files()
     create_provider_pages()
     prepare_client_data_file()
+    prepare_statistics()

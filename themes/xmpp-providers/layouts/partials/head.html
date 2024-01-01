@@ -13,12 +13,17 @@
             <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink}}" integrity="{{$secureStyle.Data.Integrity}}">
         {{- end }}
     {{- end }}
-    {{- with $style := resources.Get "css/style.css" | resources.Minify }}
+    {{- with $style := resources.Get "fontawesome/css/all.min.css" }}
         {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
             <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
         {{- end }}
     {{- end }}
-    {{- with $style := resources.Get "fontawesome/css/all.min.css" }}
+    {{- with $style := resources.Get "css/leaflet.css" }}
+        {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
+            <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
+        {{- end }}
+    {{- end }}
+    {{- with $style := resources.Get "css/style.css" | resources.Minify }}
         {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
             <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
         {{- end }}
