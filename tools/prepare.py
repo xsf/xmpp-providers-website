@@ -382,22 +382,22 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
     statistics_data["categories_pie_chart_data"] = [
         {
             "value": categories_count["A"],
-            "name": "Category A",
+            "name": "A",
             "itemStyle": {"color": "rgb(67, 150, 57)"},
         },
         {
             "value": categories_count["B"],
-            "name": "Category B",
+            "name": "B",
             "itemStyle": {"color": "rgb(160, 206, 103)"},
         },
         {
             "value": categories_count["C"],
-            "name": "Category C",
+            "name": "C",
             "itemStyle": {"color": "rgb(233, 109, 31)"},
         },
         {
             "value": categories_count["D"],
-            "name": "Category D",
+            "name": "D",
             "itemStyle": {"color": "rgb(217, 16, 30)"},
         },
     ]
@@ -503,12 +503,12 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
     statistics_data["green_web_check_pie_chart_data"] = [
         {
             "value": statistics_data["green_web_check_count"],
-            "name": "Providers with green hosting",
+            "name": "Green hosting",
             "itemStyle": {"color": "rgb(120, 190, 70)"},
         },
         {
             "value": total_provider_count - statistics_data["green_web_check_count"],
-            "name": "Providers without green hosting",
+            "name": "Not green hosted",
             "itemStyle": {"color": "rgb(230, 200, 0)"},
         },
     ]
