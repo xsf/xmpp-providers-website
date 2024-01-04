@@ -4,20 +4,21 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   initialize_categories_pie_chart();
+  initialize_since_bar_chart();
+  initialize_bus_factor_pie_chart();
+  initialize_green_web_check_pie_chart();
   initialize_provider_file_pie_chart();
   initialize_server_testing_pie_chart();
   initialize_map();
 });
 
 function initialize_categories_pie_chart() {
-  const categories_pie_chart_container = document.getElementById(
+  const container = document.getElementById(
     "categories_pie_chart_container"
   );
-  const values = JSON.parse(categories_pie_chart_container.dataset.values);
+  const values = JSON.parse(container.dataset.values);
 
-  const categories_pie_chart = echarts.init(
-    categories_pie_chart_container
-  );
+  const chart = echarts.init(container);
   const option = {
     tooltip: {
       trigger: "item",
@@ -25,8 +26,8 @@ function initialize_categories_pie_chart() {
     label: {
       show: true,
       formatter(param) {
-        return param.name + ' (' + param.percent + '%)';
-      }
+        return param.name + " (" + param.percent + "%)";
+      },
     },
     series: [
       {
@@ -38,18 +39,58 @@ function initialize_categories_pie_chart() {
     ],
   };
 
-  categories_pie_chart.setOption(option);
+  chart.setOption(option);
 }
 
-function initialize_provider_file_pie_chart() {
-  const provider_file_pie_chart_container = document.getElementById(
-    "provider_file_pie_chart_container"
+function initialize_since_bar_chart() {
+  const container = document.getElementById(
+    "since_bar_chart_container"
   );
-  const values = JSON.parse(provider_file_pie_chart_container.dataset.values);
+  const values = JSON.parse(container.dataset.values);
+  let years = [];
+  let counts = [];
+  for (const [key, value] of Object.entries(values)) {
+    years.push(key);
+    counts.push(value);
+  }
 
-  const provider_file_pie_chart = echarts.init(
-    provider_file_pie_chart_container
+  const chart = echarts.init(container);
+  const option = {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    xAxis: {
+      type: "category",
+      data: years,
+      axisLabel: {
+        interval: 0,
+        rotate: 45
+      }
+    },
+    yAxis: {
+      type: "value",
+    },
+    series: [
+      {
+        data: counts,
+        type: "bar",
+      },
+    ],
+  };
+
+  chart.setOption(option);
+}
+
+function initialize_bus_factor_pie_chart() {
+  const container = document.getElementById(
+    "bus_factor_pie_chart_container"
   );
+  const values = JSON.parse(container.dataset.values);
+
+  const chart = echarts.init(container);
   const option = {
     tooltip: {
       trigger: "item",
@@ -57,8 +98,68 @@ function initialize_provider_file_pie_chart() {
     label: {
       show: true,
       formatter(param) {
-        return param.name + ' (' + param.percent + '%)';
-      }
+        return param.name + " (" + param.percent + "%)";
+      },
+    },
+    series: [
+      {
+        name: "Bus Factor",
+        type: "pie",
+        radius: "70%",
+        data: values,
+      },
+    ],
+  };
+
+  chart.setOption(option);
+}
+
+function initialize_green_web_check_pie_chart() {
+  const container = document.getElementById(
+    "green_web_check_pie_chart_container"
+  );
+  const values = JSON.parse(container.dataset.values);
+
+  const chart = echarts.init(container);
+  const option = {
+    tooltip: {
+      trigger: "item",
+    },
+    label: {
+      show: true,
+      formatter(param) {
+        return param.name + " (" + param.percent + "%)";
+      },
+    },
+    series: [
+      {
+        name: "Green Hosting",
+        type: "pie",
+        radius: "70%",
+        data: values,
+      },
+    ],
+  };
+
+  chart.setOption(option);
+}
+
+function initialize_provider_file_pie_chart() {
+  const container = document.getElementById(
+    "provider_file_pie_chart_container"
+  );
+  const values = JSON.parse(container.dataset.values);
+
+  const chart = echarts.init(container);
+  const option = {
+    tooltip: {
+      trigger: "item",
+    },
+    label: {
+      show: true,
+      formatter(param) {
+        return param.name + " (" + param.percent + "%)";
+      },
     },
     series: [
       {
@@ -70,18 +171,16 @@ function initialize_provider_file_pie_chart() {
     ],
   };
 
-  provider_file_pie_chart.setOption(option);
+  chart.setOption(option);
 }
 
 function initialize_server_testing_pie_chart() {
-  const server_testing_pie_chart_container = document.getElementById(
+  const container = document.getElementById(
     "server_testing_pie_chart_container"
   );
-  const values = JSON.parse(server_testing_pie_chart_container.dataset.values);
+  const values = JSON.parse(container.dataset.values);
 
-  const server_testing_pie_chart = echarts.init(
-    server_testing_pie_chart_container
-  );
+  const chart = echarts.init(container);
   const option = {
     tooltip: {
       trigger: "item",
@@ -89,8 +188,8 @@ function initialize_server_testing_pie_chart() {
     label: {
       show: true,
       formatter(param) {
-        return param.name + ' (' + param.percent + '%)';
-      }
+        return param.name + " (" + param.percent + "%)";
+      },
     },
     series: [
       {
@@ -102,7 +201,7 @@ function initialize_server_testing_pie_chart() {
     ],
   };
 
-  server_testing_pie_chart.setOption(option);
+  chart.setOption(option);
 }
 
 function initialize_map() {

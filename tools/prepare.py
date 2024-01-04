@@ -345,7 +345,7 @@ def prepare_client_data_file() -> None:
         json.dump(client_infos, client_data_file, indent=4)
 
 
-def prepare_statistics() -> None:  # noqa: C901, PLR0912
+def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
     try:
         with open(DATA_PATH / "providers.json") as file:
             providers_data = json.load(file)
@@ -364,20 +364,18 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912
 
     statistics_data = {
         "total_provider_count": total_provider_count,
+        "green_web_check_count": 0,
         "server_testing_count": 0,
         "v1_provider_file_count": 0,
         "v2_provider_file_count": 0,
-        "since_data": [],
+        "bus_factor_data": defaultdict(int),
+        "bus_factor_pie_chart_data": [],
+        "since_bar_chart_data": defaultdict(int),
         "server_locations": defaultdict(int),
     }
 
     # Category data
-    categories_count = {
-        "A": 0,
-        "B": 0,
-        "C": 0,
-        "D": 0
-    }
+    categories_count = {"A": 0, "B": 0, "C": 0, "D": 0}
     for filtered_provider_data in filtered_providers_data:
         categories_count[filtered_provider_data["category"]] += 1
 
@@ -404,7 +402,6 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912
         },
     ]
 
-
     # Other data
     for provider_data in providers_data.values():
         if website_data := provider_data.get("website"):
@@ -420,15 +417,64 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912
             if server_testing_allowed:
                 statistics_data["server_testing_count"] += 1
 
+        if bus_factor_data := provider_data.get("busFactor"):
+            bus_factor = bus_factor_data["content"]
+            if bus_factor:
+                if bus_factor == -1:
+                    statistics_data["bus_factor_data"]["unknown"] += 1
+                else:
+                    statistics_data["bus_factor_data"][str(bus_factor)] += 1
+
+        if green_web_check_data := provider_data.get("ratingGreenWebCheck"):
+            green = green_web_check_data["content"]
+            if green:
+                statistics_data["green_web_check_count"] += 1
+
         if since_data := provider_data.get("since"):
-            statistics_data["since_data"].append(since_data["content"])
+            since_date = datetime.strptime(since_data["content"], "%Y-%m-%d").replace(
+                tzinfo=UTC
+            )
+            if not since_data["source"]:
+                statistics_data["since_bar_chart_data"]["unknown"] += 1
+            else:
+                statistics_data["since_bar_chart_data"][str(since_date.year)] += 1
 
         if server_locations_data := provider_data.get("serverLocations"):
             for server_location in server_locations_data["content"]:
                 statistics_data["server_locations"][server_location] += 1
 
-    statistics_data["since_data"].sort(
-        key=lambda date: datetime.strptime(date, "%Y-%m-%d").replace(tzinfo=UTC)
+    # Sort bus factor data
+    statistics_data["bus_factor_data"] = dict(
+        sorted(statistics_data["bus_factor_data"].items())
+    )
+    bus_factor_colors = {
+        "1": "rgb(160, 206, 103)",
+        "2": "rgb(120, 190, 70)",
+        "3": "rgb(90, 170, 60)",
+        "4": "rgb(67, 150, 57)",
+        "5": "rgb(60, 140, 70)",
+        "unknown": "rgb(230, 200, 0)",
+    }
+    for key, value in statistics_data["bus_factor_data"].items():
+        statistics_data["bus_factor_pie_chart_data"].append(
+            {
+                "value": value,
+                "name": key,
+                "itemStyle": {
+                    "color": bus_factor_colors.get(key, "rgb(220, 220, 220)")
+                },
+            }
+        )
+
+    # Add missing dates to since date
+    first_date = int(min(statistics_data["since_bar_chart_data"]))
+    for year in range(first_date, datetime.now(tz=UTC).year):
+        if statistics_data["since_bar_chart_data"].get(str(year), None) is None:
+            statistics_data["since_bar_chart_data"][str(year)] = 0
+
+    # Sort since data by date
+    statistics_data["since_bar_chart_data"] = dict(
+        sorted(statistics_data["since_bar_chart_data"].items())
     )
 
     no_provider_file_count = (
@@ -454,7 +500,20 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912
         },
     ]
 
-    statistics_data["server_testing_pie_chart"] = [
+    statistics_data["green_web_check_pie_chart_data"] = [
+        {
+            "value": statistics_data["green_web_check_count"],
+            "name": "Providers with green hosting",
+            "itemStyle": {"color": "rgb(120, 190, 70)"},
+        },
+        {
+            "value": total_provider_count - statistics_data["green_web_check_count"],
+            "name": "Providers without green hosting",
+            "itemStyle": {"color": "rgb(230, 200, 0)"},
+        },
+    ]
+
+    statistics_data["server_testing_pie_chart_data"] = [
         {
             "value": statistics_data["server_testing_count"],
             "name": "Providers allowing server testing",

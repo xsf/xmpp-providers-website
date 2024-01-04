@@ -19,6 +19,33 @@
 <div class="row pb-4">
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
+            <h5>History of Providers</h5>
+            <div id="since_bar_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.since_bar_chart_data | jsonify }}"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row pb-4">
+    <div class="col mx-auto text-center">
+        <div class="bg-body-tertiary rounded p-3">
+            <h5>Bus Factor</h5>
+            <div id="bus_factor_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.bus_factor_pie_chart_data | jsonify }}"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row pb-4">
+    <div class="col mx-auto text-center">
+        <div class="bg-body-tertiary rounded p-3">
+            <h5>Providers with Green Hosting</h5>
+            <div id="green_web_check_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.green_web_check_pie_chart_data | jsonify }}"></div>
+        </div>
+    </div>
+</div>
+
+<div class="row pb-4">
+    <div class="col mx-auto text-center">
+        <div class="bg-body-tertiary rounded p-3">
             <h5>Providers Offering a Provider File</h5>
             <div id="provider_file_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.provider_file_pie_chart_data | jsonify }}"></div>
         </div>
@@ -29,7 +56,7 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Providers Allowing Server Testing</h5>
-            <div id="server_testing_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.server_testing_pie_chart | jsonify }}"></div>
+            <div id="server_testing_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.server_testing_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
 </div>
