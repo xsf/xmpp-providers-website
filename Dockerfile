@@ -27,8 +27,7 @@ COPY . /var/tmp/src/xmpp-providers
 
 ADD https://invent.kde.org/melvo/xmpp-providers/-/jobs/artifacts/stable/$API_VERSION/download/?job=filtered-provider-lists /var/tmp/src/xmpp-providers/downloads-docker/providers_data.zip
 ADD https://invent.kde.org/melvo/xmpp-providers/-/jobs/artifacts/stable/$API_VERSION/download/?job=badges /var/tmp/src/xmpp-providers/downloads-docker/badges_data.zip
-# TODO: Remove "providers-2" workaround
-ADD https://data.xmpp.net/providers/$API_VERSION/providers-2.json /var/tmp/src/xmpp-providers/downloads-docker/providers.json
+ADD https://data.xmpp.net/providers/$API_VERSION/providers.json /var/tmp/src/xmpp-providers/downloads-docker/providers.json
 
 RUN cd /var/tmp/src/xmpp-providers && make publish BASEURL=$BASEURL
 
