@@ -11,6 +11,7 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Provider Categories</h5>
+            <small class="text-muted">A provider's <a href="/faq/#how-are-categories-determined" class="abbr">category</a> is determined by its properties.</small>
             <div id="categories_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.categories_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
@@ -30,6 +31,7 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Bus Factor</h5>
+            <small class="text-muted">A provider's <a href="/faq/#bus-factor" class="abbr">bus-factor</a> describes the minimum number of team members that the service could not survive losing.</small>
             <div id="bus_factor_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.bus_factor_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
@@ -39,6 +41,7 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Green Hosting</h5>
+            <small class="text-muted">Whether a provider's server is <a href="/faq/#green-hosting" class="abbr">hosted green</a>.</small>
             <div id="green_web_check_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.green_web_check_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
@@ -48,6 +51,7 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Providers Offering a Provider File</h5>
+            <small class="text-muted">A <a href="/faq/#provider-file" class="abbr">provider file</a> allows retrieving properties automatically.</small>
             <div id="provider_file_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.provider_file_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
@@ -57,13 +61,16 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Providers Allowing Server Testing</h5>
+            <small class="text-muted">Whether tests against the provider's server are allowed (e.g., certificate checks and uptime monitoring).</small>
             <div id="server_testing_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.server_testing_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <div class="col">
-        <div id="map_container" class="border rounded shadow" style="height:500px;" data-providers="{{ .Site.Data.statistics.server_locations | jsonify }}"></div>
+    <div class="col mx-auto text-center">
+        <h5>Provider Distribution on the Globe</h5>
+        <small class="text-muted">This map shows where servers of providers are distributed in the world.</small>
+        <div id="map_container" class="border rounded shadow mt-2" style="height:500px;" data-providers="{{ .Site.Data.statistics.server_locations | jsonify }}"></div>
     </div>
 </div>
