@@ -2,6 +2,12 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+let chart_background_color = "rgb(43, 48, 53)"
+if (theme === "light") {
+  chart_background_color = "rgb(248, 249, 250)"
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initialize_categories_pie_chart();
   initialize_since_bar_chart();
@@ -20,6 +26,7 @@ function initialize_categories_pie_chart() {
 
   const chart = echarts.init(container);
   const option = {
+    backgroundColor: chart_background_color,
     tooltip: {
       trigger: "item",
     },
@@ -56,6 +63,7 @@ function initialize_since_bar_chart() {
 
   const chart = echarts.init(container);
   const option = {
+    backgroundColor: chart_background_color,
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -92,6 +100,7 @@ function initialize_bus_factor_pie_chart() {
 
   const chart = echarts.init(container);
   const option = {
+    backgroundColor: chart_background_color,
     tooltip: {
       trigger: "item",
     },
@@ -122,6 +131,7 @@ function initialize_green_web_check_pie_chart() {
 
   const chart = echarts.init(container);
   const option = {
+    backgroundColor: chart_background_color,
     tooltip: {
       trigger: "item",
     },
@@ -152,6 +162,7 @@ function initialize_provider_file_pie_chart() {
 
   const chart = echarts.init(container);
   const option = {
+    backgroundColor: chart_background_color,
     tooltip: {
       trigger: "item",
     },
@@ -182,6 +193,7 @@ function initialize_server_testing_pie_chart() {
 
   const chart = echarts.init(container);
   const option = {
+    backgroundColor: chart_background_color,
     tooltip: {
       trigger: "item",
     },
