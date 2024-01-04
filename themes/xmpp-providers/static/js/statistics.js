@@ -22,6 +22,12 @@ function initialize_categories_pie_chart() {
     tooltip: {
       trigger: "item",
     },
+    label: {
+      show: true,
+      formatter(param) {
+        return param.name + ' (' + param.percent + '%)';
+      }
+    },
     series: [
       {
         name: "Provider Category",
@@ -48,6 +54,12 @@ function initialize_provider_file_pie_chart() {
     tooltip: {
       trigger: "item",
     },
+    label: {
+      show: true,
+      formatter(param) {
+        return param.name + ' (' + param.percent + '%)';
+      }
+    },
     series: [
       {
         name: "Provider File",
@@ -73,6 +85,12 @@ function initialize_server_testing_pie_chart() {
   const option = {
     tooltip: {
       trigger: "item",
+    },
+    label: {
+      show: true,
+      formatter(param) {
+        return param.name + ' (' + param.percent + '%)';
+      }
     },
     series: [
       {
