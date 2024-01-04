@@ -345,12 +345,19 @@ def prepare_client_data_file() -> None:
         json.dump(client_infos, client_data_file, indent=4)
 
 
-def prepare_statistics() -> None:  # noqa: C901
+def prepare_statistics() -> None:  # noqa: C901, PLR0912
     try:
         with open(DATA_PATH / "providers.json") as file:
             providers_data = json.load(file)
     except json.decoder.JSONDecodeError as e:
         log.error("Could not open providers.json: %s", e)
+        return
+
+    try:
+        with open(DATA_PATH / "filtered_providers.json") as file:
+            filtered_providers_data = json.load(file)
+    except json.decoder.JSONDecodeError as e:
+        log.error("Could not open filtered_providers.json: %s", e)
         return
 
     total_provider_count = len(providers_data)
@@ -364,6 +371,41 @@ def prepare_statistics() -> None:  # noqa: C901
         "server_locations": defaultdict(int),
     }
 
+    # Category data
+    categories_count = {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0
+    }
+    for filtered_provider_data in filtered_providers_data:
+        categories_count[filtered_provider_data["category"]] += 1
+
+    statistics_data["categories_pie_chart_data"] = [
+        {
+            "value": categories_count["A"],
+            "name": "Category A",
+            "itemStyle": {"color": "rgb(67, 150, 57)"},
+        },
+        {
+            "value": categories_count["B"],
+            "name": "Category B",
+            "itemStyle": {"color": "rgb(160, 206, 103)"},
+        },
+        {
+            "value": categories_count["C"],
+            "name": "Category C",
+            "itemStyle": {"color": "rgb(233, 109, 31)"},
+        },
+        {
+            "value": categories_count["D"],
+            "name": "Category D",
+            "itemStyle": {"color": "rgb(217, 16, 30)"},
+        },
+    ]
+
+
+    # Other data
     for provider_data in providers_data.values():
         if website_data := provider_data.get("website"):
             website_data_source = website_data.get("source")

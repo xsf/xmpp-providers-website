@@ -3,10 +3,37 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 document.addEventListener("DOMContentLoaded", () => {
+  initialize_categories_pie_chart();
   initialize_provider_file_pie_chart();
   initialize_server_testing_pie_chart();
   initialize_map();
 });
+
+function initialize_categories_pie_chart() {
+  const categories_pie_chart_container = document.getElementById(
+    "categories_pie_chart_container"
+  );
+  const values = JSON.parse(categories_pie_chart_container.dataset.values);
+
+  const categories_pie_chart = echarts.init(
+    categories_pie_chart_container
+  );
+  const option = {
+    tooltip: {
+      trigger: "item",
+    },
+    series: [
+      {
+        name: "Provider Category",
+        type: "pie",
+        radius: "70%",
+        data: values,
+      },
+    ],
+  };
+
+  categories_pie_chart.setOption(option);
+}
 
 function initialize_provider_file_pie_chart() {
   const provider_file_pie_chart_container = document.getElementById(
