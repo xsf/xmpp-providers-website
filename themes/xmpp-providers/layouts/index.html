@@ -86,6 +86,9 @@
             <div class="accordion pb-5" id="providers-accordion-d">
                 {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "D") }}
             </div>
+            <div class="text-center">
+                <a class="btn btn-secondary" href="/statistics" role="button">View Statistics</a>
+            </div>
         </div>
     </div>
 </div>
