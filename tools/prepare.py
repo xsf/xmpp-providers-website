@@ -422,8 +422,10 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             if bus_factor:
                 if bus_factor == -1:
                     statistics_data["bus_factor_data"]["unknown"] += 1
+                elif bus_factor == 1:
+                    statistics_data["bus_factor_data"][f"{bus_factor} Person"] += 1
                 else:
-                    statistics_data["bus_factor_data"][str(bus_factor)] += 1
+                    statistics_data["bus_factor_data"][f"{bus_factor} Persons"] += 1
 
         if green_web_check_data := provider_data.get("ratingGreenWebCheck"):
             green = green_web_check_data["content"]
@@ -448,12 +450,12 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
         sorted(statistics_data["bus_factor_data"].items())
     )
     bus_factor_colors = {
-        "1": "rgb(160, 206, 103)",
-        "2": "rgb(120, 190, 70)",
-        "3": "rgb(90, 170, 60)",
-        "4": "rgb(67, 150, 57)",
-        "5": "rgb(60, 140, 70)",
-        "unknown": "rgb(230, 200, 0)",
+        "1 Person": "rgb(160, 206, 103)",
+        "2 Persons": "rgb(120, 190, 70)",
+        "3 Persons": "rgb(90, 170, 60)",
+        "4 Persons": "rgb(67, 150, 57)",
+        "5 Persons": "rgb(60, 140, 70)",
+        "unknown": "rgb(240, 220, 0)",
     }
     for key, value in statistics_data["bus_factor_data"].items():
         statistics_data["bus_factor_pie_chart_data"].append(
@@ -486,7 +488,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
         {
             "value": statistics_data["v1_provider_file_count"],
             "name": "Provider File (v1)",
-            "itemStyle": {"color": "rgb(230, 200, 0)"},
+            "itemStyle": {"color": "rgb(240, 220, 0)"},
         },
         {
             "value": statistics_data["v2_provider_file_count"],
@@ -509,7 +511,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
         {
             "value": total_provider_count - statistics_data["green_web_check_count"],
             "name": "Not green hosted",
-            "itemStyle": {"color": "rgb(230, 200, 0)"},
+            "itemStyle": {"color": "rgb(240, 220, 0)"},
         },
     ]
 
@@ -523,7 +525,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             "value": statistics_data["v2_provider_file_count"]
             - statistics_data["server_testing_count"],
             "name": "Providers not allowing server testing",
-            "itemStyle": {"color": "rgb(230, 200, 0)"},
+            "itemStyle": {"color": "rgb(240, 220, 0)"},
         },
         {
             "value": total_provider_count - statistics_data["v2_provider_file_count"],
