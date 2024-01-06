@@ -372,6 +372,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
         "bus_factor_pie_chart_data": [],
         "since_bar_chart_data": defaultdict(int),
         "server_locations": defaultdict(int),
+        "file_size_bar_chart_data": defaultdict(int),
     }
 
     # Category data
@@ -431,6 +432,27 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             green = green_web_check_data["content"]
             if green:
                 statistics_data["green_web_check_count"] += 1
+
+        if file_size_data := provider_data.get("maximumHttpFileUploadFileSize"):
+            file_size = file_size_data["content"]
+            # Add a placeholder number for sorting the data,
+            # as Hugo does not preserve input order
+            if file_size == -1:
+                statistics_data["file_size_bar_chart_data"]["1unknown"] += 1
+            elif file_size <= 10:  # noqa: PLR2004
+                statistics_data["file_size_bar_chart_data"]["2up to 10 MB"] += 1
+            elif file_size <= 25:  # noqa: PLR2004
+                statistics_data["file_size_bar_chart_data"]["3up to 25 MB"] += 1
+            elif file_size <= 50:  # noqa: PLR2004
+                statistics_data["file_size_bar_chart_data"]["4up to 50 MB"] += 1
+            elif file_size <= 100:  # noqa: PLR2004
+                statistics_data["file_size_bar_chart_data"]["5up to 100 MB"] += 1
+            elif file_size <= 500:  # noqa: PLR2004
+                statistics_data["file_size_bar_chart_data"]["6up to 500 MB"] += 1
+            elif file_size <= 1000:  # noqa: PLR2004
+                statistics_data["file_size_bar_chart_data"]["7up to 1000 MB"] += 1
+            else:
+                statistics_data["file_size_bar_chart_data"]["8>1000 MB"] += 1
 
         if since_data := provider_data.get("since"):
             since_date = datetime.strptime(since_data["content"], "%Y-%m-%d").replace(

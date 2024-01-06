@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initialize_since_bar_chart();
   initialize_bus_factor_pie_chart();
   initialize_green_web_check_pie_chart();
+  initialize_file_size_bar_chart();
   initialize_provider_file_pie_chart();
   initialize_server_testing_pie_chart();
   initialize_map();
@@ -147,6 +148,51 @@ function initialize_green_web_check_pie_chart() {
         type: "pie",
         radius: "70%",
         data: values,
+      },
+    ],
+  };
+
+  chart.setOption(option);
+}
+
+function initialize_file_size_bar_chart() {
+  const container = document.getElementById(
+    "file_size_bar_chart_container"
+  );
+  const values = JSON.parse(container.dataset.values);
+  let file_sizes = [];
+  let counts = [];
+  for (const [key, value] of Object.entries(values)) {
+    // Remove leading number, which was used for sorting,
+    // as Hugo does not preserve input order
+    file_sizes.push(key.slice(1));
+    counts.push(value);
+  }
+
+  const chart = echarts.init(container);
+  const option = {
+    backgroundColor: chart_background_color,
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    xAxis: {
+      type: "category",
+      data: file_sizes,
+      axisLabel: {
+        interval: 0,
+        rotate: 45
+      }
+    },
+    yAxis: {
+      type: "value",
+    },
+    series: [
+      {
+        data: counts,
+        type: "bar",
       },
     ],
   };
