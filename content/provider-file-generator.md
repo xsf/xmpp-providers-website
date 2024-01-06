@@ -22,7 +22,12 @@ https://example.org/.well-known/xmpp-provider-v2.json
 ### Generate a Provider File
 
 If you are an admin of a provider, and you plan to make additional data available to the XMPP Providers project, this generator is for you.
-
 Fill out the form below and click **Generate Provider File** at the bottom to create and download your own provider file.
+
+Please keep each provider file for the duration specified in the following table:
+
+Version | Duration
+---|---
+v2 | No end date yet
 
 {{< provider-file-generator >}}
