@@ -34,7 +34,7 @@ function initialize_categories_pie_chart() {
     label: {
       show: true,
       formatter(param) {
-        return param.name + " (" + param.percent + "%)";
+        return `${param.name}: ${param.value} (${param.percent} %)`;
       },
     },
     series: [
@@ -70,6 +70,12 @@ function initialize_since_bar_chart() {
       axisPointer: {
         type: 'shadow'
       }
+    },
+    label: {
+      show: true,
+      formatter(param) {
+        return param.value ? param.value : ""
+      },
     },
     xAxis: {
       type: "category",
@@ -108,7 +114,7 @@ function initialize_bus_factor_pie_chart() {
     label: {
       show: true,
       formatter(param) {
-        return param.name + " (" + param.percent + "%)";
+        return `${param.name}: ${param.value} (${param.percent} %)`;
       },
     },
     series: [
@@ -139,7 +145,7 @@ function initialize_green_web_check_pie_chart() {
     label: {
       show: true,
       formatter(param) {
-        return param.name + " (" + param.percent + "%)";
+        return `${param.name}: ${param.value} (${param.percent} %)`;
       },
     },
     series: [
@@ -178,6 +184,12 @@ function initialize_file_size_bar_chart() {
         type: 'shadow'
       }
     },
+    label: {
+      show: true,
+      formatter(param) {
+        return param.value ? param.value : ""
+      },
+    },
     xAxis: {
       type: "category",
       data: file_sizes,
@@ -215,7 +227,7 @@ function initialize_provider_file_pie_chart() {
     label: {
       show: true,
       formatter(param) {
-        return param.name + " (" + param.percent + "%)";
+        return `${param.name}: ${param.value} (${param.percent} %)`;
       },
     },
     series: [
@@ -246,7 +258,7 @@ function initialize_server_testing_pie_chart() {
     label: {
       show: true,
       formatter(param) {
-        return param.name + " (" + param.percent + "%)";
+        return `${param.name}: ${param.value} (${param.percent} %)`;
       },
     },
     series: [
