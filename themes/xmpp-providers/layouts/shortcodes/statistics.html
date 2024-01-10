@@ -11,8 +11,10 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Provider Categories</h5>
-            <small class="text-muted">A provider's <a href="/faq/#how-are-categories-determined" class="abbr">category</a> is determined by its properties.</small>
-            <div id="categories_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.categories_pie_chart_data | jsonify }}"></div>
+            <small class="text-muted">A provider's <a href="/faq/#how-are-categories-determined"
+                    class="abbr">category</a> is determined by its properties.</small>
+            <div id="categories_pie_chart_container" style="height:300px;"
+                data-values="{{ .Site.Data.statistics.categories_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
 </div>
@@ -22,7 +24,8 @@
         <div class="bg-body-tertiary rounded p-3">
             <h5>History of Providers</h5>
             <small class="text-muted">This chart shows since when providers are available.</small>
-            <div id="since_bar_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.since_bar_chart_data | jsonify }}"></div>
+            <div id="since_bar_chart_container" style="height:300px;"
+                data-values="{{ .Site.Data.statistics.since_bar_chart_data | jsonify }}"></div>
         </div>
     </div>
 </div>
@@ -31,8 +34,10 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Bus Factor</h5>
-            <small class="text-muted">A provider's <a href="/faq/#bus-factor" class="abbr">bus-factor</a> describes the minimum number of team members that the service could not survive losing.</small>
-            <div id="bus_factor_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.bus_factor_pie_chart_data | jsonify }}"></div>
+            <small class="text-muted">A provider's <a href="/faq/#bus-factor" class="abbr">bus-factor</a> describes the
+                minimum number of team members that the service could not survive losing.</small>
+            <div id="bus_factor_pie_chart_container" style="height:300px;"
+                data-values="{{ .Site.Data.statistics.bus_factor_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
 </div>
@@ -41,8 +46,10 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Green Hosting</h5>
-            <small class="text-muted">Whether a provider's server is <a href="/faq/#green-hosting" class="abbr">hosted green</a>.</small>
-            <div id="green_web_check_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.green_web_check_pie_chart_data | jsonify }}"></div>
+            <small class="text-muted">Whether a provider's server is <a href="/faq/#green-hosting" class="abbr">hosted
+                    green</a>.</small>
+            <div id="green_web_check_pie_chart_container" style="height:300px;"
+                data-values="{{ .Site.Data.statistics.green_web_check_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
 </div>
@@ -52,7 +59,8 @@
         <div class="bg-body-tertiary rounded p-3">
             <h5>File Sharing</h5>
             <small class="text-muted">Maximum file size for shared files (in Megabytes).</small>
-            <div id="file_size_bar_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.file_size_bar_chart_data | jsonify }}"></div>
+            <div id="file_size_bar_chart_container" style="height:300px;"
+                data-values="{{ .Site.Data.statistics.file_size_bar_chart_data | jsonify }}"></div>
         </div>
     </div>
 </div>
@@ -61,8 +69,10 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Providers Offering a Provider File</h5>
-            <small class="text-muted">A <a href="/faq/#provider-file" class="abbr">provider file</a> allows retrieving properties automatically.</small>
-            <div id="provider_file_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.provider_file_pie_chart_data | jsonify }}"></div>
+            <small class="text-muted">A <a href="/faq/#provider-file" class="abbr">provider file</a> allows retrieving
+                properties automatically.</small>
+            <div id="provider_file_pie_chart_container" style="height:300px;"
+                data-values="{{ .Site.Data.statistics.provider_file_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
 </div>
@@ -71,8 +81,10 @@
     <div class="col mx-auto text-center">
         <div class="bg-body-tertiary rounded p-3">
             <h5>Providers Allowing Server Testing</h5>
-            <small class="text-muted">Whether tests against the provider's server are allowed (e.g., certificate checks and uptime monitoring).</small>
-            <div id="server_testing_pie_chart_container" style="height:300px;" data-values="{{ .Site.Data.statistics.server_testing_pie_chart_data | jsonify }}"></div>
+            <small class="text-muted">Whether tests against the provider's server are allowed (e.g., certificate checks
+                and uptime monitoring).</small>
+            <div id="server_testing_pie_chart_container" style="height:300px;"
+                data-values="{{ .Site.Data.statistics.server_testing_pie_chart_data | jsonify }}"></div>
         </div>
     </div>
 </div>
@@ -81,6 +93,23 @@
     <div class="col mx-auto text-center">
         <h5>Provider Distribution on the Globe</h5>
         <small class="text-muted">This map shows where servers of providers are distributed in the world.</small>
-        <div id="map_container" class="border rounded shadow mt-2" style="height:500px;" data-providers="{{ .Site.Data.statistics.server_locations | jsonify }}"></div>
+        <div id="map_container" class="border rounded shadow mt-2" style="height:500px;"
+            data-providers="{{ .Site.Data.statistics.server_locations | jsonify }}"></div>
+    </div>
+</div>
+
+<div id="statistics_details_modal" class="modal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="statistics_details_modal_title" class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="statistics_details_modal_body" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>

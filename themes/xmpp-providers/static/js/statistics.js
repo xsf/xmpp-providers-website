@@ -19,6 +19,40 @@ document.addEventListener("DOMContentLoaded", () => {
   initialize_map();
 });
 
+
+function show_chart_details(params) {
+  let modal_title = ""
+  if (params.componentSubType === "pie") {
+    modal_title = `${params.seriesName}: ${params.name}`
+  } else {
+    modal_title = `${params.dimensionNames[1]}: ${params.name}`
+  }
+
+  let providers = []
+  if (Array.isArray(params.data.providers)) {
+    for (const provider_jid of params.data.providers) {
+      providers.push(`<a href="/provider/${provider_jid}/">${provider_jid}</a>`)
+    }
+  } else {
+    for (const provider_jid in params.data.providers) {
+      const file_size = params.data.providers[provider_jid]
+      let file_size_span = ""
+      if (file_size != -1) {
+        file_size_span = `<span class="text-muted">&nbsp;-&nbsp;${file_size} MB</span>`
+      }
+      providers.push(`<a href="/provider/${provider_jid}/">${provider_jid}</a>${file_size_span}`)
+    }
+  }
+
+  show_statistics_modal(modal_title, providers)
+}
+
+function show_statistics_modal(title, providers) {
+  document.getElementById("statistics_details_modal_title").innerHTML = title
+  document.getElementById("statistics_details_modal_body").innerHTML = providers.join("<br>")
+  new bootstrap.Modal(document.getElementById("statistics_details_modal")).show()
+}
+
 function initialize_categories_pie_chart() {
   const container = document.getElementById(
     "categories_pie_chart_container"
@@ -48,6 +82,9 @@ function initialize_categories_pie_chart() {
   };
 
   chart.setOption(option);
+  chart.on('click', function(params) {
+    show_chart_details(params)
+  });
 }
 
 function initialize_since_bar_chart() {
@@ -77,6 +114,9 @@ function initialize_since_bar_chart() {
         return param.value ? param.value : ""
       },
     },
+    title: {
+      text: "Provider History"
+    },
     xAxis: {
       type: "category",
       data: years,
@@ -92,11 +132,15 @@ function initialize_since_bar_chart() {
       {
         data: counts,
         type: "bar",
+        dimensions: ["Year", "Provider History"],
       },
     ],
   };
 
   chart.setOption(option);
+  chart.on('click', function(params) {
+    show_chart_details(params)
+  });
 }
 
 function initialize_bus_factor_pie_chart() {
@@ -128,6 +172,9 @@ function initialize_bus_factor_pie_chart() {
   };
 
   chart.setOption(option);
+  chart.on('click', function(params) {
+    show_chart_details(params)
+  });
 }
 
 function initialize_green_web_check_pie_chart() {
@@ -159,6 +206,9 @@ function initialize_green_web_check_pie_chart() {
   };
 
   chart.setOption(option);
+  chart.on('click', function(params) {
+    show_chart_details(params)
+  });
 }
 
 function initialize_file_size_bar_chart() {
@@ -205,11 +255,15 @@ function initialize_file_size_bar_chart() {
       {
         data: counts,
         type: "bar",
+        dimensions: ["File Size", "File Sharing"],
       },
     ],
   };
 
   chart.setOption(option);
+  chart.on('click', function(params) {
+    show_chart_details(params)
+  });
 }
 
 function initialize_provider_file_pie_chart() {
@@ -241,6 +295,9 @@ function initialize_provider_file_pie_chart() {
   };
 
   chart.setOption(option);
+  chart.on('click', function(params) {
+    show_chart_details(params)
+  });
 }
 
 function initialize_server_testing_pie_chart() {
@@ -272,6 +329,9 @@ function initialize_server_testing_pie_chart() {
   };
 
   chart.setOption(option);
+  chart.on('click', function(params) {
+    show_chart_details(params)
+  });
 }
 
 function initialize_map() {
@@ -299,9 +359,10 @@ function initialize_map() {
   info.update = function (props) {
     let contents = '<span class="text-secondary">Hover over a country</span>';
     if (props !== undefined) {
-      let providers_count = providers_data[props.ISO_A2.toLowerCase()];
-      if (providers_count === undefined) {
-        providers_count = 0;
+      const providers_count_data = providers_data[props.ISO_A2.toLowerCase()];
+      let providers_count = 0
+      if (providers_count_data !== undefined) {
+        providers_count = providers_count_data.value
       }
       contents = `<span class="text-secondary"><b>${props.NAME}</b><br>${providers_count}`;
       if (providers_count == 1) {
@@ -335,15 +396,19 @@ function initialize_map() {
   }
 
   function style(feature) {
+    const providers_count_data = providers_data[feature.properties.ISO_A2.toLowerCase()];
+    let providers_count = 0
+    if (providers_count_data !== undefined) {
+      providers_count = providers_count_data.value
+    }
+
     return {
       weight: 0.1,
       opacity: 1,
       color: "#CCC",
       dashArray: "3",
       fillOpacity: 0.6,
-      fillColor: getColor(
-        providers_data[feature.properties.ISO_A2.toLowerCase()]
-      ),
+      fillColor: getColor(providers_count),
     };
   }
 
@@ -374,6 +439,20 @@ function initialize_map() {
 
   function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
+
+    const providers_count_data = providers_data[e.target.feature.properties.ISO_A2.toLowerCase()];
+    if (providers_count_data === undefined) {
+      return
+    }
+
+    let provider_links = []
+    for (const provider_jid of providers_count_data.providers) {
+      provider_links.push(`<a href="/provider/${provider_jid}/">${provider_jid}</a>`)
+    }
+    show_statistics_modal(
+      `Providers in ${e.target.feature.properties.NAME}`,
+      provider_links
+    )
   }
 
   function onEachFeature(feature, layer) {
