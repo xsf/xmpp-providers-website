@@ -6,6 +6,8 @@
 
 {{ $permalink := .Page.Permalink }}
 
+{{ $api_version := .Site.Data.api_version.api_version }}
+
 {{ $category_criteria := "" }}
 {{ range $index, $data := .Site.Data.results }}
     {{ if eq $index $provider_name }}
@@ -622,7 +624,7 @@
         <a href="{{ .Permalink }}"><img alt="{{ $provider_name }} badge" src="/badge/{{ $provider_name }}.svg"></a>
         <div class="input-group my-3">
             <span class="input-group-text" id="badge-desc">Embed badge</span>
-            <input id="badge_link_input" autocomplete="off" type="text" class="form-control form-control-sm font-monospace" aria-label="Badge URL" aria-describedby="badge-desc" value='<a href="{{ $permalink }}"><img alt="{{ $provider_name }} badge" src="/badge/{{ $provider_name }}.svg"></a>'>
+            <input id="badge_link_input" autocomplete="off" type="text" class="form-control form-control-sm font-monospace" aria-label="Badge URL" aria-describedby="badge-desc" value='<a href="{{ $permalink }}"><img alt="{{ $provider_name }} badge" src="https://data.xmpp.net/providers/{{ $api_version}}/badges/{{ $provider_name }}.svg"></a>'>
             <button class="btn btn-secondary" type="button" id="badge_link_copy" title="Copy" data-bs-toggle="tooltip"><i class="fa-solid fa-copy"></i></button>
         </div>
     </div>
