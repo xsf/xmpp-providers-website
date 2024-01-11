@@ -29,19 +29,16 @@ from tools.common import PROVIDERS_JSON_PATH
 from tools.common import PROVIDERS_PAGES_PATH
 from tools.common import STATIC_PATH
 
-FILTERED_PROVIDERS_DATA_URL = (
-    f"https://invent.kde.org/melvo/xmpp-providers/"
-    f"-/jobs/artifacts/stable/{API_VERSION}/download/?job=filtered-provider-lists"
+FILTERED_PROVIDERS_LIST_URL = (
+    f"https://data.xmpp.net/providers/{API_VERSION}/providers-D.json"
 )
-BADGES_DATA_URL = (
-    f"https://invent.kde.org/melvo/xmpp-providers/"
-    f"-/jobs/artifacts/stable/{API_VERSION}/download/?job=badges"
+FILTERED_PROVIDERS_RESULTS_URL = (
+    f"https://data.xmpp.net/providers/{API_VERSION}/results.zip"
 )
-CLIENTS_DATA_URL = (
-    f"https://invent.kde.org/melvo/xmpp-providers/-/raw/stable/"
-    f"{API_VERSION}/clients.json"
-)
+BADGES_DATA_URL = f"https://data.xmpp.net/providers/{API_VERSION}/provider-badges.zip"
+CLIENTS_DATA_URL = f"https://data.xmpp.net/providers/{API_VERSION}/clients.json"
 PROVIDERS_FILE_URL = f"https://data.xmpp.net/providers/{API_VERSION}/providers.json"
+
 XSF_SOFTWARE_LIST_URL = (
     "https://raw.githubusercontent.com/xsf/xmpp.org/master/data/software.json"
 )
@@ -99,28 +96,43 @@ def _get_filtered_providers_data() -> None:
     """
     Download, extract, and move providers data.
     Use downloaded file from docker build, if it exists.
-    Docker builds need to download providers_data.zip directly in order to
+    Docker builds need to download providers_results.zip directly in order to
     correctly apply caching.
     """
     log.info("Downloading filtered providers list")
-    providers_docker_path = Path(DOCKER_DOWNLOAD_PATH / "providers_data.zip")
-    if providers_docker_path.exists():
-        shutil.copyfile(providers_docker_path, DOWNLOAD_PATH / "providers_data.zip")
+    providers_list_docker_path = Path(DOCKER_DOWNLOAD_PATH / "providers-D.json")
+    if providers_list_docker_path.exists():
+        shutil.copyfile(providers_list_docker_path, DOWNLOAD_PATH / "providers-D.json")
     else:
-        success = download_file(FILTERED_PROVIDERS_DATA_URL, Path("providers_data.zip"))
+        success = download_file(FILTERED_PROVIDERS_LIST_URL, Path("providers-D.json"))
         if not success:
             sys.exit(
-                f"Error while trying to download from {FILTERED_PROVIDERS_DATA_URL}"
+                f"Error while trying to download from {FILTERED_PROVIDERS_LIST_URL}"
             )
-
-    with zipfile.ZipFile(DOWNLOAD_PATH / "providers_data.zip", "r") as zip_file:
-        zip_file.extractall(DOWNLOAD_PATH / "providers_data")
-
     shutil.copyfile(
-        DOWNLOAD_PATH / "providers_data" / "providers-D.json",
+        DOWNLOAD_PATH / "providers-D.json",
         DATA_PATH / "filtered_providers.json",
     )
-    shutil.copytree(DOWNLOAD_PATH / "providers_data" / "results", DATA_PATH / "results")
+
+    log.info("Downloading filtered providers results")
+    providers_results_docker_path = Path(DOCKER_DOWNLOAD_PATH / "providers_results.zip")
+    if providers_results_docker_path.exists():
+        shutil.copyfile(
+            providers_results_docker_path, DOWNLOAD_PATH / "providers_results.zip"
+        )
+    else:
+        success = download_file(
+            FILTERED_PROVIDERS_RESULTS_URL, Path("providers_results.zip")
+        )
+        if not success:
+            sys.exit(
+                f"Error while trying to download from {FILTERED_PROVIDERS_RESULTS_URL}"
+            )
+
+    with zipfile.ZipFile(DOWNLOAD_PATH / "providers_results.zip", "r") as zip_file:
+        zip_file.extractall(DOWNLOAD_PATH / "providers_results")
+
+    shutil.copytree(DOWNLOAD_PATH / "providers_results", DATA_PATH / "results")
 
 
 def _get_badges() -> None:
@@ -142,9 +154,7 @@ def _get_badges() -> None:
     with zipfile.ZipFile(DOWNLOAD_PATH / "badges_data.zip", "r") as zip_file:
         zip_file.extractall(DOWNLOAD_PATH / "badges_data")
 
-    shutil.copytree(
-        DOWNLOAD_PATH / "badges_data" / "badges", BADGES_PATH, dirs_exist_ok=True
-    )
+    shutil.copytree(DOWNLOAD_PATH / "badges_data", BADGES_PATH, dirs_exist_ok=True)
 
 
 def _get_providers_file() -> None:
@@ -155,9 +165,9 @@ def _get_providers_file() -> None:
     correctly apply caching.
     """
     log.info("Downloading providers file")
-    providers_docker_path = Path(DOCKER_DOWNLOAD_PATH / "providers.json")
-    if providers_docker_path.exists():
-        shutil.copyfile(providers_docker_path, DOWNLOAD_PATH / "providers.json")
+    providers_file_docker_path = Path(DOCKER_DOWNLOAD_PATH / "providers.json")
+    if providers_file_docker_path.exists():
+        shutil.copyfile(providers_file_docker_path, DOWNLOAD_PATH / "providers.json")
     else:
         success = download_file(PROVIDERS_FILE_URL, Path("providers.json"))
         if not success:
