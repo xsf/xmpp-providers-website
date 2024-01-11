@@ -27,18 +27,18 @@ clean:
 
 serve:
 	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
-	$(PY) $(TOOLSDIR)/prepare.py
+	$(PY) -m tools.run prepare_website
 	$(HUGO) version
 	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
 
 serve-no-pip:
-	$(PY) $(TOOLSDIR)/prepare.py
+	$(PY) -m tools.run prepare_website
 	$(HUGO) version
 	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
 
 publish:
 	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
-	$(PY) $(TOOLSDIR)/prepare.py
+	$(PY) -m tools.run prepare_website
 	$(HUGO) version
 	$(HUGO) --baseURL=$(BASEURL)
 
