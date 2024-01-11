@@ -34,7 +34,7 @@ jobs:
         run: pip install -r tools/requirements.txt
 
       - name: Prepare provider list
-        run: python tools/prepare.py
+        run: python -m tools.run prepare_website
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v2
