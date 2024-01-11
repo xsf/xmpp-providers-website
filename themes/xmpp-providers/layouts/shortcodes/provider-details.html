@@ -628,7 +628,7 @@
     </div>
 </div>
 <div class="row pt-3">
-    <p class="text-center text-body-secondary small">Latest change: {{ .latestChange | dateFormat "Jan 2, 2006" }}&nbsp;&middot;&nbsp;<a href="/faq/#where-do-we-have-the-providers-properties-from">Something changed?</a></p>
+    <p class="text-center text-body-secondary small">Latest change: {{ if .latestChange }}{{ .latestChange | dateFormat "Jan 2, 2006" }}{{ end }}&nbsp;&middot;&nbsp;<a href="/faq/#where-do-we-have-the-providers-properties-from">Something changed?</a></p>
     <p class="text-center text-body-secondary small">Providers are checked for updates on a daily basis.</p>
 </div>
 {{ end }}
