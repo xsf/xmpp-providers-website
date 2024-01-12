@@ -26,8 +26,10 @@ Fill out the form below and click **Generate Provider File** at the bottom to cr
 
 Please keep each provider file for the duration specified in the following table:
 
+{{< table table_class="table table-hover table-sm" >}}
 Version | Duration
 ---|---
 v2 | No end date yet
+{{</ table >}}
 
 {{< provider-file-generator >}}
