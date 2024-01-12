@@ -4,6 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   _initialize_provider_api_version_select();
+  _initialize_provider_file_import_button();
   _initialize_provider_data_form();
 });
 
@@ -162,6 +163,7 @@ function _add_address_entry(property_name) {
   container.insertBefore(input_row, add_entry_row);
 
   initialize_bootstrap_tooltips();
+  return address_input_id
 }
 
 function _add_country_entry(property_name) {
@@ -220,6 +222,7 @@ function _add_country_entry(property_name) {
   container.insertBefore(input_row, add_entry_row);
 
   initialize_bootstrap_tooltips();
+  return country_select_id
 }
 
 function _add_language_entry(property_name) {
@@ -299,6 +302,7 @@ function _add_language_entry(property_name) {
   container.insertBefore(input_row, add_entry_row);
 
   initialize_bootstrap_tooltips();
+  return [language_select_id, website_input_id]
 }
 
 function _remove_entry(event) {
@@ -443,6 +447,7 @@ function _on_generate_json_file_clicked() {
 function _on_api_version_changed() {
   _initialize_provider_data_form();
 }
+
 function _initialize_provider_api_version_select() {
   const container = document.getElementById(
     "provider_api_version_select_container"
@@ -453,7 +458,8 @@ function _initialize_provider_api_version_select() {
 
   const api_select_col = document.createElement("div");
   api_select_col.classList.add(
-    "col-4",
+    "col-12",
+    "col-sm-4",
     "mx-auto",
     "p-3",
     "rounded",
@@ -482,6 +488,77 @@ function _initialize_provider_api_version_select() {
     api_select.append(option);
   }
   container.append(api_select_row);
+}
+
+function _apply_imported_provider_file(provider_file_data) {
+  _initialize_provider_data_form()
+
+  const feedback = document.getElementById("provider_file_import_input_feedback")
+  feedback.querySelector("span").innerHTML = "Provider file imported successfully"
+  feedback.classList.remove("d-none", "text-danger")
+  feedback.classList.add("text-success")
+
+  for (const property of providers_data_form_properties_v2) {
+    const property_value = provider_file_data[property.name]
+
+    if (property.type === "boolean" && typeof property_value === "boolean") {
+      document.getElementById(`property-${property.name}`).checked = property_value
+    }
+    if (property.type === "integer" && typeof property_value === "number") {
+      document.getElementById(`property-${property.name}`).value = property_value
+    }
+    if (property.type === "string-date" && Date.parse(property_value) !== "NaN" && property_value.length === 10) {
+      document.getElementById(`property-${property.name}`).value = property_value
+    }
+    if (property.type === "list-jids" && property_value instanceof Array) {
+      for (const entry of property_value) {
+        const address_input_id = _add_address_entry(property.name)
+        document.getElementById(`property-address-${property.name}-${address_input_id}`).value = entry
+      }
+    }
+    if (property.type === "organization-select" && ["company", "commercial person", "private person", "governmental", "non-governmental"].includes(property_value)) {
+      document.getElementById(`property-${property.name}`).value = property_value
+    }
+    if (property.type === "list-language-string" && property_value instanceof Array) {
+      for (const entry of property_value) {
+        if (Object.values(country_codes).includes(entry.toUpperCase())) {
+          const country_select_id = _add_country_entry(property.name);
+          document.getElementById(`property-country-${property.name}-${country_select_id}`).value = entry.toUpperCase()
+        }
+      }
+    }
+    if (property.type === "dictionary-language-web-page" && property_value instanceof Object) {
+      for (const entry in property_value) {
+        const website = property_value[entry]
+        if (language_codes.some(e => e.code == entry.toLowerCase()) && typeof website === "string") {
+          const [language_select_id, website_input_id] = _add_language_entry(property.name)
+          document.getElementById(`property-language-${property.name}-${language_select_id}`).value = entry.toLowerCase()
+          document.getElementById(`property-website-${property.name}-${website_input_id}`).value = website
+        }
+      }
+    }
+  }
+}
+
+
+function _initialize_provider_file_import_button() {
+  const file_input = document.getElementById("provider_file_import_input")
+  file_input.addEventListener("change", function(file_change_event) {
+    const reader = new FileReader();
+    reader.onload = function(load_event) {
+      try {
+        const provider_file_data = JSON.parse(load_event.target.result)
+        _apply_imported_provider_file(provider_file_data)
+      }
+      catch(err) {
+        const feedback = document.getElementById("provider_file_import_input_feedback")
+        feedback.querySelector("span").innerHTML = `Provider file could not be imported: ${err.message}`
+        feedback.classList.remove("d-none", "text-success")
+        feedback.classList.add("text-danger")
+      }
+    }
+    reader.readAsText(file_change_event.target.files[0]);
+  });
 }
 
 function _initialize_provider_data_form() {
@@ -585,8 +662,6 @@ function _initialize_provider_data_form() {
     }
 
     if (property.type === "list-jids") {
-      _add_address_entry(property.name);
-
       // "Add Entry" button
       const button_row = document.createElement("div");
       button_row.classList.add("row", "mt-3");
@@ -643,8 +718,6 @@ function _initialize_provider_data_form() {
     }
 
     if (property.type === "list-language-string") {
-      _add_country_entry(property.name);
-
       // "Add Entry" button
       const button_row = document.createElement("div");
       button_row.classList.add("row", "mt-3");
@@ -666,8 +739,6 @@ function _initialize_provider_data_form() {
     }
 
     if (property.type === "dictionary-language-web-page") {
-      _add_language_entry(property.name);
-
       // "Add Entry" button
       const button_row = document.createElement("div");
       button_row.classList.add("row", "mt-3");
