@@ -34,7 +34,7 @@
               >
               {{ .Name }}
               {{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}
-              {{ if eq .Params.new true }}<span class="badge badge-new bg-primary position-absolute translate-middle">New</span>{{ end }}
+              {{ if eq .Params.new true }}<span class="badge badge-new bg-primary">New</span>{{ end }}
               </a>
             </li>
           {{ end }}

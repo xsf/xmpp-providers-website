@@ -57,8 +57,8 @@ article h2 {
 }
 .badge-new {
     font-size: 0.6em;
-    margin-top: -3px;
-    margin-left: -5px;
+    margin-left: -32px;
+    transform: translate(20%,-110%)!important;
 }
 .logo {
     background-color: var(--bs-gray-300);
