@@ -20,7 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function show_chart_details(params) {
+function show_chart_details(chart, params) {
+  chart.dispatchAction({
+    type: "hideTip"
+  })
+
   let modal_title = ""
   if (params.componentSubType === "pie") {
     modal_title = `${params.seriesName}: ${params.name}`
@@ -82,8 +86,8 @@ function initialize_categories_pie_chart() {
   };
 
   chart.setOption(option);
-  chart.on('click', function(params) {
-    show_chart_details(params)
+  chart.on("click", function(params) {
+    show_chart_details(chart, params)
   });
 }
 
@@ -114,9 +118,6 @@ function initialize_since_bar_chart() {
         return param.value ? param.value : ""
       },
     },
-    title: {
-      text: "Provider History"
-    },
     xAxis: {
       type: "category",
       data: years,
@@ -138,8 +139,8 @@ function initialize_since_bar_chart() {
   };
 
   chart.setOption(option);
-  chart.on('click', function(params) {
-    show_chart_details(params)
+  chart.on("click", function(params) {
+    show_chart_details(chart, params)
   });
 }
 
@@ -172,8 +173,8 @@ function initialize_bus_factor_pie_chart() {
   };
 
   chart.setOption(option);
-  chart.on('click', function(params) {
-    show_chart_details(params)
+  chart.on("click", function(params) {
+    show_chart_details(chart, params)
   });
 }
 
@@ -206,8 +207,8 @@ function initialize_green_web_check_pie_chart() {
   };
 
   chart.setOption(option);
-  chart.on('click', function(params) {
-    show_chart_details(params)
+  chart.on("click", function(params) {
+    show_chart_details(chart, params)
   });
 }
 
@@ -261,8 +262,8 @@ function initialize_file_size_bar_chart() {
   };
 
   chart.setOption(option);
-  chart.on('click', function(params) {
-    show_chart_details(params)
+  chart.on("click", function(params) {
+    show_chart_details(chart, params)
   });
 }
 
@@ -295,8 +296,8 @@ function initialize_provider_file_pie_chart() {
   };
 
   chart.setOption(option);
-  chart.on('click', function(params) {
-    show_chart_details(params)
+  chart.on("click", function(params) {
+    show_chart_details(chart, params)
   });
 }
 
@@ -329,8 +330,8 @@ function initialize_server_testing_pie_chart() {
   };
 
   chart.setOption(option);
-  chart.on('click', function(params) {
-    show_chart_details(params)
+  chart.on("click", function(params) {
+    show_chart_details(chart, params)
   });
 }
 
