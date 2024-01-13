@@ -181,7 +181,12 @@
                             {{ if .professionalHosting }}
                                 <a href="/faq/#professional-hosting" class="abbr">Professional hosting</a>
                             {{ else }}
-                                No <a href="/faq/#professional-hosting" class="abbr">professional hosting</a>
+                                {{ $professionalHosting_source := $providers_data.professionalHosting.source }}
+                                {{ if eq $professionalHosting_source "" }}
+                                    <a href="/faq/#professional-hosting" class="abbr">Professional hosting</a>: <a href="/faq/#unknown" class="abbr">unknown</a>
+                                {{ else }}
+                                    No <a href="/faq/#professional-hosting" class="abbr">professional hosting</a>
+                                {{ end }}
                             {{ end }}
                         </td>
                     </tr>

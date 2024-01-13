@@ -187,9 +187,14 @@
                     </td>
                     <td>
                         {{ if .professionalHosting }}
-                            Yes
+                            <a href="/faq/#professional-hosting" class="abbr">Yes</a>
                         {{ else }}
-                            No
+                            {{ $professionalHosting_source := $providers_data.professionalHosting.source }}
+                            {{ if eq $professionalHosting_source "" }}
+                                <a href="/faq/#unknown" class="abbr">unknown</a>
+                            {{ else }}
+                                No
+                            {{ end }}
                         {{ end }}
                     </td>
                     <td>
