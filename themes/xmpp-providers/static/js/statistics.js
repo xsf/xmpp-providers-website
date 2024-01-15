@@ -8,6 +8,8 @@ if (theme === "light") {
   chart_background_color = "rgb(248, 249, 250)"
 }
 
+const charts = []
+
 document.addEventListener("DOMContentLoaded", () => {
   initialize_categories_pie_chart();
   initialize_since_bar_chart();
@@ -18,6 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
   initialize_server_testing_pie_chart();
   initialize_map();
 });
+
+window.onresize = function () {
+  // Resize charts when resizing window
+  // Reduce pie chart radius for better usability on mobile
+  let pie_chart_radius
+  if (window.innerWidth < 576) {
+    pie_chart_radius = "40%"
+  } else {
+    pie_chart_radius = "75%"
+  }
+  for (const chart of charts) {
+    let option = chart.getOption()
+    option["series"][0]["radius"] = pie_chart_radius
+    chart.setOption(option)
+    chart.resize()
+  }
+}
 
 
 function show_chart_details(chart, params) {
@@ -87,6 +106,7 @@ function initialize_categories_pie_chart() {
   };
 
   chart.setOption(option);
+  charts.push(chart)
   chart.on("click", function(params) {
     show_chart_details(chart, params)
   });
@@ -140,6 +160,7 @@ function initialize_since_bar_chart() {
   };
 
   chart.setOption(option);
+  charts.push(chart)
   chart.on("click", function(params) {
     show_chart_details(chart, params)
   });
@@ -175,6 +196,7 @@ function initialize_bus_factor_pie_chart() {
   };
 
   chart.setOption(option);
+  charts.push(chart)
   chart.on("click", function(params) {
     show_chart_details(chart, params)
   });
@@ -210,6 +232,7 @@ function initialize_green_web_check_pie_chart() {
   };
 
   chart.setOption(option);
+  charts.push(chart)
   chart.on("click", function(params) {
     show_chart_details(chart, params)
   });
@@ -265,6 +288,7 @@ function initialize_file_size_bar_chart() {
   };
 
   chart.setOption(option);
+  charts.push(chart)
   chart.on("click", function(params) {
     show_chart_details(chart, params)
   });
@@ -300,6 +324,7 @@ function initialize_provider_file_pie_chart() {
   };
 
   chart.setOption(option);
+  charts.push(chart)
   chart.on("click", function(params) {
     show_chart_details(chart, params)
   });
@@ -335,6 +360,7 @@ function initialize_server_testing_pie_chart() {
   };
 
   chart.setOption(option);
+  charts.push(chart)
   chart.on("click", function(params) {
     show_chart_details(chart, params)
   });
