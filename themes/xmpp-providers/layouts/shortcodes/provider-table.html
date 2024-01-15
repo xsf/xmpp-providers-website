@@ -270,40 +270,40 @@
                             No
                         {{ end }}
                     </td>
-                    <td class="text-end">
+                    <td class="text-end"
                         {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
-                            <a href="/faq/#unknown" class="abbr">unknown</a>
+                            sorttable_customkey="0"><a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ else if eq (string .maximumMessageArchiveManagementStorageTime) "0" }}
-                            unlimited
+                            sorttable_customkey="999999">unlimited
                         {{ else }}
-                            {{ .maximumMessageArchiveManagementStorageTime }} days
+                            sorttable_customkey="{{ .maximumMessageArchiveManagementStorageTime }}">{{ .maximumMessageArchiveManagementStorageTime }} days
                         {{ end }}
                     </td>
-                    <td class="text-end">
+                    <td class="text-end"
                         {{ if eq (string .maximumHttpFileUploadFileSize) "-1" }}
-                            <a href="/faq/#unknown" class="abbr">unknown</a>
+                            sorttable_customkey="0"><a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ else if eq (string .maximumHttpFileUploadFileSize) "0" }}
-                            unlimited
+                            sorttable_customkey="999999">unlimited
                         {{ else }}
-                            {{ .maximumHttpFileUploadFileSize }} MB
+                            sorttable_customkey="{{ .maximumHttpFileUploadFileSize }}">{{ .maximumHttpFileUploadFileSize }} MB
                         {{ end }}
                     </td>
-                    <td class="text-end">
+                    <td class="text-end"
                         {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
-                            <a href="/faq/#unknown" class="abbr">unknown</a>
+                            sorttable_customkey="0"><a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ else if eq (string .maximumHttpFileUploadTotalSize) "0" }}
-                            unlimited
+                            sorttable_customkey="999999">unlimited
                         {{ else }}
-                            {{ .maximumHttpFileUploadTotalSize }} MB
+                            sorttable_customkey="{{ .maximumHttpFileUploadTotalSize }}">{{ .maximumHttpFileUploadTotalSize }} MB
                         {{ end }}
                     </td>
-                    <td class="text-end">
+                    <td class="text-end"
                         {{ if eq (string .maximumHttpFileUploadStorageTime) "-1" }}
-                            <a href="/faq/#unknown" class="abbr">unknown</a>
+                            sorttable_customkey="0"><a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ else if eq (string .maximumHttpFileUploadStorageTime) "0" }}
-                            unlimited
+                            sorttable_customkey="999999">unlimited
                         {{ else }}
-                            {{ .maximumHttpFileUploadStorageTime }} days
+                            sorttable_customkey="{{ .maximumHttpFileUploadStorageTime }}">{{ .maximumHttpFileUploadStorageTime }} days
                         {{ end }}
                     </td>
                     <td>
