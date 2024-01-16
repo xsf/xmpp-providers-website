@@ -105,8 +105,10 @@
                         <span class="badge {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span>
                     </td>
                     <td>
+                        {{ $since_source := $providers_data.since.source }}
                         {{ if .since }}
-                            {{ .since | dateFormat "2006-01-02" }}
+                            <span title="{{ if eq $since_source "" }}Listed since this date{{ else }}Avaliable since this date{{ end }}" data-bs-toggle="tooltip"
+                            >{{ .since | dateFormat "2006-01-02" }}</span>
                         {{ else }}
                             <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ end }}

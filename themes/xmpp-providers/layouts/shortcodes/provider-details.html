@@ -20,11 +20,16 @@
 <div class="row justify-content-center pb-4">
     <div class="col-sm-10 pt-3 text-center">
         <span class="text-body-secondary">
-            since 
+            {{ $since_source := $providers_data.since.source }}
+            {{ if eq $since_source "" }}
+                Listed since
+            {{ else }}
+                Avaliable since
+            {{ end }}
             {{ if .since }}
                 {{ .since | dateFormat "Jan 2, 2006" }}
             {{ else }}
-                ?
+                <a href="/faq/#unknown" class="abbr">unknown</a>
             {{ end }}
         </span>
         &nbsp;&middot;&nbsp;
