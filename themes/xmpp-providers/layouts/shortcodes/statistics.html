@@ -24,7 +24,7 @@
         <div class="bg-body-tertiary rounded p-3">
             <h5>History of Providers</h5>
             <small class="text-muted">This chart shows since when providers are available.</small>
-            <div id="since_bar_chart_container" style="height:300px;"
+            <div id="since_bar_chart_container" style="height:400px;"
                 data-values="{{ .Site.Data.statistics.since_bar_chart_data | jsonify }}"></div>
         </div>
     </div>
@@ -59,7 +59,7 @@
         <div class="bg-body-tertiary rounded p-3">
             <h5>File Sharing</h5>
             <small class="text-muted">Maximum file size for shared files (in Megabytes).</small>
-            <div id="file_size_bar_chart_container" style="height:300px;"
+            <div id="file_size_bar_chart_container" style="height:400px;"
                 data-values="{{ .Site.Data.statistics.file_size_bar_chart_data | jsonify }}"></div>
         </div>
     </div>

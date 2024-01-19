@@ -8,9 +8,12 @@ if (theme === "light") {
   chart_background_color = "rgb(248, 249, 250)"
 }
 
+let pie_chart_radius
+
 const charts = []
 
 document.addEventListener("DOMContentLoaded", () => {
+  set_pie_chart_radius();
   initialize_categories_pie_chart();
   initialize_since_bar_chart();
   initialize_bus_factor_pie_chart();
@@ -23,13 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 window.onresize = function () {
   // Resize charts when resizing window
-  // Reduce pie chart radius for better usability on mobile
-  let pie_chart_radius
+  set_pie_chart_radius()
+}
+
+function set_pie_chart_radius() {
+  // Adapt pie chart radius to available screen width (mainly for mobile devices)
   if (window.innerWidth < 576) {
     pie_chart_radius = "40%"
   } else {
     pie_chart_radius = "75%"
   }
+
   for (const chart of charts) {
     let option = chart.getOption()
     option["series"][0]["radius"] = pie_chart_radius
@@ -37,7 +44,6 @@ window.onresize = function () {
     chart.resize()
   }
 }
-
 
 function show_chart_details(chart, params) {
   chart.dispatchAction({
@@ -98,7 +104,7 @@ function initialize_categories_pie_chart() {
       {
         name: "Provider Category",
         type: "pie",
-        radius: "70%",
+        radius: pie_chart_radius,
         percentPrecision: 1,
         data: values,
       },
@@ -188,7 +194,7 @@ function initialize_bus_factor_pie_chart() {
       {
         name: "Bus Factor",
         type: "pie",
-        radius: "70%",
+        radius: pie_chart_radius,
         percentPrecision: 1,
         data: values,
       },
@@ -224,7 +230,7 @@ function initialize_green_web_check_pie_chart() {
       {
         name: "Green Hosting",
         type: "pie",
-        radius: "70%",
+        radius: pie_chart_radius,
         percentPrecision: 1,
         data: values,
       },
@@ -316,7 +322,7 @@ function initialize_provider_file_pie_chart() {
       {
         name: "Provider File",
         type: "pie",
-        radius: "70%",
+        radius: pie_chart_radius,
         percentPrecision: 1,
         data: values,
       },
@@ -352,7 +358,7 @@ function initialize_server_testing_pie_chart() {
       {
         name: "Server Testing",
         type: "pie",
-        radius: "70%",
+        radius: pie_chart_radius,
         percentPrecision: 1,
         data: values,
       },
