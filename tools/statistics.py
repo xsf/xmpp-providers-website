@@ -164,7 +164,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
 
             if server_testing_allowed:
                 server_testing_key = "Providers allowing server testing"
-            elif server_testing_source is None:
+            elif server_testing_source in ("", None):
                 server_testing_key = "No provider file"
             else:
                 server_testing_key = "Providers not allowing server testing"
