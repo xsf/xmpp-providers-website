@@ -83,11 +83,6 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             "providers": [],
             "color": "rgb(120, 190, 70)",
         },
-        "Provider File (v1)": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(240, 220, 0)",
-        },
         "No Provider File": {
             "value": 0,
             "providers": [],
@@ -145,10 +140,6 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
         if website_data := provider_data.get("website"):
             website_data_source = website_data.get("source")
             if website_data_source is not None and website_data_source.endswith(
-                "v1.json"
-            ):
-                provider_file_key = "Provider File (v1)"
-            elif website_data_source is not None and website_data_source.endswith(
                 "v2.json"
             ):
                 provider_file_key = "Provider File (v2)"
