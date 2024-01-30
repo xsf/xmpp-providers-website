@@ -37,7 +37,11 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
         "bus_factor_pie_chart_data": [],
         "since_bar_chart_data": {},
         "file_size_bar_chart_data": {
-            "unknown": {"value": 0, "providers": {}},
+            "unknown": {
+                "value": 0,
+                "providers": {},
+                "itemStyle": {"color": "rgb(220, 220, 220)"},
+            },
             "up to 10 MB": {"value": 0, "providers": {}},
             "up to 25 MB": {"value": 0, "providers": {}},
             "up to 50 MB": {"value": 0, "providers": {}},
@@ -132,7 +136,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
         "unknown": {
             "value": 0,
             "providers": [],
-            "color": "rgb(240, 220, 0)",
+            "color": "rgb(220, 220, 220)",
         },
     }
 
@@ -221,6 +225,9 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             if not since_data["source"]:
                 if statistics_data["since_bar_chart_data"].get("unknown") is None:
                     statistics_data["since_bar_chart_data"]["unknown"] = {}
+                    statistics_data["since_bar_chart_data"]["unknown"]["itemStyle"] = {
+                        "color": "rgb(220, 220, 220)"
+                    }
                     statistics_data["since_bar_chart_data"]["unknown"]["value"] = 1
                     statistics_data["since_bar_chart_data"]["unknown"]["providers"] = [
                         provider_jid
