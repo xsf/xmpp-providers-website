@@ -14,18 +14,19 @@ log = logging.getLogger()
 
 
 def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
+    """Create statistics dict which can be consumed by echarts."""
     try:
         with open(DATA_PATH / "providers.json") as file:
             providers_data = json.load(file)
-    except json.decoder.JSONDecodeError as e:
-        log.error("Could not open providers.json: %s", e)
+    except json.decoder.JSONDecodeError:
+        log.exception("Could not open providers.json")
         return
 
     try:
         with open(DATA_PATH / "filtered_providers.json") as file:
             filtered_providers_data = json.load(file)
-    except json.decoder.JSONDecodeError as e:
-        log.error("Could not open filtered_providers.json: %s", e)
+    except json.decoder.JSONDecodeError:
+        log.exception("Could not open filtered_providers.json")
         return
 
     statistics_data = {

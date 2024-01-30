@@ -2,9 +2,6 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-"""
-Download / prepare / process XMPP Providers data
-"""
 import json
 import logging
 import os
@@ -55,9 +52,7 @@ log = logging.getLogger()
 
 
 def prepare_provider_data_files() -> None:
-    """
-    Download and prepare provider data files
-    """
+    """Download and prepare provider data files"""
     initialize_directory(DOWNLOAD_PATH)
 
     # Temporarily move 'logo' folder and 'recommended_clients.json'
@@ -180,9 +175,7 @@ def _get_providers_file() -> None:
 
 
 def create_provider_pages() -> None:
-    """
-    Create a .md page per provider
-    """
+    """Create a .md page per provider"""
     log.info("Creating provider pages")
     initialize_directory(PROVIDERS_PAGES_PATH)
 
@@ -218,9 +211,7 @@ def _parse_doap_infos(doap_file: str) -> dict[str, list[str]] | None:
 
 
 def prepare_client_data_file() -> None:
-    """
-    Download and prepare clients data
-    """
+    """Download and prepare clients data"""
     log.info("Downloading clients list file")
     Path(DOWNLOAD_PATH / "clients_data/doap_files").mkdir(parents=True)
 
@@ -248,16 +239,13 @@ def prepare_client_data_file() -> None:
         xsf_software_list = json.load(json_file)
 
     log.info("Parsing clients list infos")
-    client_names: list[str] = []
-    for client in providers_clients_list:
-        client_names.append(client)
 
     client_infos: list[dict[str, str | bool | list[str] | None]] = []
     for package in xsf_software_list:
         if "client" not in package["categories"]:
             continue
 
-        if package["name"] in client_names:
+        if package["name"] in providers_clients_list:
             provider_infos = providers_clients_list[package["name"]]
             if package["doap"] is not None:
                 log.info("Downloading DOAP file for: %s", package["name"])

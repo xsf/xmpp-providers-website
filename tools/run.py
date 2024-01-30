@@ -17,6 +17,7 @@ class ToolsArgumentParser(ArgumentParser):
     """Parses arguments for XMPP Providers Website processor."""
 
     def __init__(self) -> None:
+        """Parses arguments for XMPP Providers Website processor."""
         super().__init__()
 
         self.description = """

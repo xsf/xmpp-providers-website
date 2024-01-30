@@ -4,7 +4,6 @@
 
 import json
 import logging
-import os
 import shutil
 from http import HTTPStatus
 from pathlib import Path
@@ -37,8 +36,8 @@ def download_file(url: str, path: Path) -> bool:
     """
     try:
         file_response = requests.get(url, timeout=5)
-    except (ConnectTimeout, ReadTimeout) as err:
-        log.error("Error while trying to download from %s, %s", url, err)
+    except (ConnectTimeout, ReadTimeout):
+        log.exception("Error while trying to download from %s", url)
         return False
 
     if not HTTPStatus.OK >= file_response.status_code < HTTPStatus.BAD_REQUEST:
@@ -61,10 +60,8 @@ def download_file(url: str, path: Path) -> bool:
 
 
 def initialize_directory(path: Path) -> None:
-    """
-    Remove path (if it exists) and containing files, then recreate path
-    """
+    """Remove path (if it exists) and containing files, then recreate path"""
     if path.exists() and path.is_dir():
         shutil.rmtree(path)
 
-    os.mkdir(path)
+    path.mkdir()

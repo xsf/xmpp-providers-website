@@ -31,43 +31,23 @@ skip_gitignore = true
 
 [tool.ruff]
 
-select = [
-  "A",      # flake8-builtins
-  "ANN",    # flake8-annotations
-  "ARG",    # flake8-unused-arguments
-  "B",      # flake8-bugbear
-  "BLE",    # flake8-blind-except
-  "C4",     # flake8-comprehensions
-  "C90",    # mccabe
-  "DTZ",    # flake8-datetimez
-  "E",      # pycodestyle
-  "EM",     # flake8-errmsg
-  "ERA",    # eradicate
-  "F",      # pyflakes
-  # "FBT",  # flake8-boolean-trap
-  "ICN",    # flake8-import-conventions
-  "ISC",    # flake8-implicit-str-concat
-  "N",      # pep8-naming
-  "PIE",    # flake8-pie
-  "PGH",    # pygrep-hooks
-  "PLC",    # pylint
-  "PLE",    # pylint
-  "PLR",    # pylint
-  "PLW",    # pylint
-  "Q",      # flake8-quotes
-  "RUF",    # Ruff-specific rules
-  "RET",    # flake8-return
-  "S",      # flake8-bandit
-  "SIM",    # flake8-simplify
-  "T",      # flake8-debugger, flake8-print
-  "TID",    # flake8-tidy-imports
-  "UP",     # pyupgrade
-  "W",      # pycodestyle
-  "YTT",    # flake8-2020
-]
+select = ["ALL"]
 
 ignore = [
   "ANN101", # missing-type-self
+  "COM812", # missing-trailing-comma
+  "D100",   # undocumented-public-module
+  "D104",   # undocumented-public-package
+  "D203",   # one-blank-line-before-class
+  "D205",   # blank-line-after-summary
+  "D212",   # multi-line-summary-first-line
+  "D213",   # multi-line-summary-second-line
+  "D400",   # ends-in-period
+  "D401",   # non-imperative-mood
+  "D404",   # docstring-starts-with-this
+  "D415",   # ends-in-punctuation
+  "I001",   # unsorted-imports
+  "PTH123", # builtin-open
 ]
 
 target-version = "py311"
