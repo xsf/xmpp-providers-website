@@ -26,25 +26,46 @@
                         <div id="status-selector" class="pb-2">
                             <div class="d-flex flex-wrap pb-2">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="free" name="free">
-                                    <label class="form-check-label" for="free">Free of Charge</label>
+                                    <input class="form-check-input" type="checkbox" id="filter_free_of_charge">
+                                    <label class="form-check-label" for="filter_free_of_charge">Free of Charge</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="professional-hosting" name="professional-hosting">
-                                    <label class="form-check-label" for="professional-hosting">Professional Hosting</label>
+                                    <input class="form-check-input" type="checkbox" id="filter_professional_hosting">
+                                    <label class="form-check-label" for="filter_professional_hosting">Professional Hosting</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="rating-green-web-check" name="rating-green-web-check">
-                                    <label class="form-check-label" for="rating-green-web-check">Green Hosting</label>
+                                    <input class="form-check-input" type="checkbox" id="filter_rating_green_web_check">
+                                    <label class="form-check-label" for="filter_rating_green_web_check">Green Hosting</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="in-band-registration" name="in-band-registration">
-                                    <label class="form-check-label" for="in-band-registration">Registration via App</label>
+                                    <input class="form-check-input" type="checkbox" id="filter_in_band_registration">
+                                    <label class="form-check-label" for="filter_in_band_registration">Registration via App</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="password-reset" name="password-reset">
-                                    <label class="form-check-label" for="password-reset">Password Reset</label>
+                                    <input class="form-check-input" type="checkbox" id="filter_password_reset">
+                                    <label class="form-check-label" for="filter_password_reset">Password Reset</label>
                                 </div>
+                            </div>
+                            <div class="d-flex flex-wrap pb-2">
+                                {{ $allServerLocations := slice }}
+                                {{ range .Site.Data.filtered_providers }}
+                                    {{ range .serverLocations }}
+                                        {{ if not (in $allServerLocations .) }}
+                                            {{ $allServerLocations = append . $allServerLocations }}
+                                        {{ end }}
+                                    {{ end }}
+                                {{ end }}
+                                <label for="filter_server_locations" class="form-label">Server Location</label>
+                                <select id="filter_server_locations" class="form-select form-select-sm" aria-label="Server Location">
+                                    <option selected value="all">All Locations</option>
+                                    {{ range $country, $country_code := $.Site.Data.country_codes }}
+                                        {{ range $allServerLocations }}
+                                            {{ if eq . (lower $country_code) }}
+                                                <option value="{{ lower . }}">{{ $country }}</option>
+                                            {{ end }}
+                                        {{ end }}
+                                    {{ end }}
+                                </select>
                             </div>
                         </div>
                     </form>

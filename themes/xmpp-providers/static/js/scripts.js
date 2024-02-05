@@ -14,54 +14,101 @@ function initialize_provider_filters() {
   const checkboxes = document.querySelectorAll("#status-selector input");
   for (const checkbox of checkboxes) {
     checkbox.addEventListener("click", function (event) {
-      _filter_providers(event.target);
+      _filter_providers();
     });
+  }
+  const filter_server_locations = document.getElementById("filter_server_locations");
+  if (filter_server_locations) {
+    filter_server_locations.addEventListener("change", _filter_providers)
   }
 }
 
-function _filter_providers(checkbox) {
-  const property = checkbox.getAttribute("name");
+function _filter_providers() {
 
-  const toggle_provider = function(relevant_providers, checked) {
-    for (const provider of relevant_providers) {
-      provider.hidden = checked
+  function intersection (a, b) {
+    const setA = new Set(a);
+    return b.filter(value => setA.has(value));
+  }
+
+  const freeOfChargeOnly = document.getElementById("filter_free_of_charge").checked
+  const professionalHostingOnly = document.getElementById("filter_professional_hosting").checked
+  const ratingGreenWebCheckOnly = document.getElementById("filter_rating_green_web_check").checked
+  const inBandRegistrationOnly = document.getElementById("filter_in_band_registration").checked
+  const passwordResetOnly = document.getElementById("filter_password_reset").checked
+  const serverLocationOnly = document.getElementById("filter_server_locations").value
+
+  const allProviders = document.querySelectorAll("[data-provider]")
+
+  let freeOfChargeProviders = []
+  if (freeOfChargeOnly) {
+    freeOfChargeProviders = document.querySelectorAll(
+      "[data-property-free=true]"
+    );
+  }
+
+  let professionalHostingProviders = []
+  if (professionalHostingOnly) {
+    professionalHostingProviders = document.querySelectorAll(
+      "[data-property-professional-hosting=true]"
+    );
+  }
+
+  let ratingGreenWebCheckProviders = []
+  if (ratingGreenWebCheckOnly) {
+    ratingGreenWebCheckProviders = document.querySelectorAll(
+      "[data-property-rating-green-web-check=true]"
+    );
+  }
+
+  let inBandRegistrationProviders = []
+  if (inBandRegistrationOnly) {
+    inBandRegistrationProviders = document.querySelectorAll(
+      "[data-property-ibr=true]"
+    );
+  }
+
+  let passwordResetProviders = []
+  if (passwordResetOnly) {
+    passwordResetProviders = document.querySelectorAll(
+      "[data-property-password-reset=true]"
+    );
+  }
+
+  let serverLocationProviders = document.querySelectorAll(
+    "[data-property-server-locations]")
+  if (serverLocationOnly !== "all") {
+    serverLocationProviders = document.querySelectorAll(
+      `[data-property-server-locations*="${serverLocationOnly}"]`
+    );
+  }
+
+  let filteredProviders = Array.from(allProviders)
+
+  if (freeOfChargeOnly) {
+    filteredProviders = intersection(filteredProviders, Array.from(freeOfChargeProviders))
+  }
+  if (professionalHostingOnly) {
+    filteredProviders = intersection(filteredProviders, Array.from(professionalHostingProviders))
+  }
+  if (ratingGreenWebCheckOnly) {
+    filteredProviders = intersection(filteredProviders, Array.from(ratingGreenWebCheckProviders))
+  }
+  if (inBandRegistrationOnly) {
+    filteredProviders = intersection(filteredProviders, Array.from(inBandRegistrationProviders))
+  }
+  if (passwordResetOnly) {
+    filteredProviders = intersection(filteredProviders, Array.from(passwordResetProviders))
+  }
+  if (serverLocationOnly) {
+    filteredProviders = intersection(filteredProviders, Array.from(serverLocationProviders))
+  }
+
+  for (const provider of allProviders) {
+    if (filteredProviders.includes(provider)) {
+      provider.hidden = false
+    } else {
+      provider.hidden = true
     }
-  }
-
-  if (property == "free") {
-    const relevant_providers = document.querySelectorAll(
-      "[data-property-free=false]"
-    );
-    toggle_provider(relevant_providers, checkbox.checked)
-    return
-  }
-  if (property == "professional-hosting") {
-    const relevant_providers = document.querySelectorAll(
-      "[data-property-professional-hosting=false]"
-    );
-    toggle_provider(relevant_providers, checkbox.checked)
-    return
-  }
-  if (property == "rating-green-web-check") {
-    const relevant_providers = document.querySelectorAll(
-      "[data-property-rating-green-web-check=false]"
-    );
-    toggle_provider(relevant_providers, checkbox.checked)
-    return
-  }
-  if (property == "in-band-registration") {
-    const relevant_providers = document.querySelectorAll(
-      "[data-property-ibr=false]"
-    );
-    toggle_provider(relevant_providers, checkbox.checked)
-    return
-  }
-  if (property == "password-reset") {
-    const relevant_providers = document.querySelectorAll(
-      "[data-property-password-reset=false]"
-    );
-    toggle_provider(relevant_providers, checkbox.checked)
-    return
   }
 };
 
