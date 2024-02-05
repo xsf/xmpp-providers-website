@@ -12,54 +12,58 @@ document.addEventListener("DOMContentLoaded", () => {
 function initialize_provider_filters() {
   // Provider filtering in overview
   const checkboxes = document.querySelectorAll("#status-selector input");
-  const show_hide = function (checkbox) {
-    const property = checkbox.getAttribute("name");
-    if (property == "free") {
-      const relevant_providers = document.querySelectorAll(
-        "[data-property-free=false]"
-      );
-      relevant_providers.forEach(function (provider) {
-        provider.hidden = checkbox.checked;
-      });
-    }
-    if (property == "professional-hosting") {
-      const relevant_providers = document.querySelectorAll(
-        "[data-property-professional-hosting=false]"
-      );
-      relevant_providers.forEach(function (provider) {
-        provider.hidden = checkbox.checked;
-      });
-    }
-    if (property == "rating-green-web-check") {
-      const relevant_providers = document.querySelectorAll(
-        "[data-property-rating-green-web-check=false]"
-      );
-      relevant_providers.forEach(function (provider) {
-        provider.hidden = checkbox.checked;
-      });
-    }
-    if (property == "in-band-registration") {
-      const relevant_providers = document.querySelectorAll(
-        "[data-property-ibr=false]"
-      );
-      relevant_providers.forEach(function (provider) {
-        provider.hidden = checkbox.checked;
-      });
-    }
-    if (property == "password-reset") {
-      const relevant_providers = document.querySelectorAll(
-        "[data-property-password-reset=false]"
-      );
-      relevant_providers.forEach(function (provider) {
-        provider.hidden = checkbox.checked;
-      });
-    }
+  for (const checkbox of checkboxes) {
     checkbox.addEventListener("click", function (event) {
-      show_hide(event.target);
+      _filter_providers(event.target);
     });
-  };
-  checkboxes.forEach(show_hide);
+  }
 }
+
+function _filter_providers(checkbox) {
+  const property = checkbox.getAttribute("name");
+
+  const toggle_provider = function(relevant_providers, checked) {
+    for (const provider of relevant_providers) {
+      provider.hidden = checked
+    }
+  }
+
+  if (property == "free") {
+    const relevant_providers = document.querySelectorAll(
+      "[data-property-free=false]"
+    );
+    toggle_provider(relevant_providers, checkbox.checked)
+    return
+  }
+  if (property == "professional-hosting") {
+    const relevant_providers = document.querySelectorAll(
+      "[data-property-professional-hosting=false]"
+    );
+    toggle_provider(relevant_providers, checkbox.checked)
+    return
+  }
+  if (property == "rating-green-web-check") {
+    const relevant_providers = document.querySelectorAll(
+      "[data-property-rating-green-web-check=false]"
+    );
+    toggle_provider(relevant_providers, checkbox.checked)
+    return
+  }
+  if (property == "in-band-registration") {
+    const relevant_providers = document.querySelectorAll(
+      "[data-property-ibr=false]"
+    );
+    toggle_provider(relevant_providers, checkbox.checked)
+    return
+  }
+  if (property == "password-reset") {
+    const relevant_providers = document.querySelectorAll(
+      "[data-property-password-reset=false]"
+    );
+    toggle_provider(relevant_providers, checkbox.checked)
+    return
+  }
+};
 
 function initialize_copy_badge_button() {
   // Copy badge embed link to clipboard
