@@ -2,6 +2,8 @@
 title: Frequently Asked Questions (FAQ)
 ---
 
+{{< toc >}}
+
 ## Why do we collect and categorize providers?
 
 When we tried to onboard users in the past, there were different but similar bad stories:
