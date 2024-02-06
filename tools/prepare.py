@@ -60,12 +60,16 @@ def prepare_provider_data_files() -> None:
     shutil.copytree(STATIC_PATH / "logo", DOWNLOAD_PATH / "logo")
     shutil.copytree(STATIC_PATH / "images", DOWNLOAD_PATH / "images")
     shutil.copyfile(
-        DATA_PATH / "recommended_clients.json",
-        DOWNLOAD_PATH / "recommended_clients.json",
-    )
-    shutil.copyfile(
         DATA_PATH / "api_version.json",
         DOWNLOAD_PATH / "api_version.json",
+    )
+    shutil.copyfile(
+        DATA_PATH / "country_codes.json",
+        DOWNLOAD_PATH / "country_codes.json",
+    )
+    shutil.copyfile(
+        DATA_PATH / "recommended_clients.json",
+        DOWNLOAD_PATH / "recommended_clients.json",
     )
 
     initialize_directory(STATIC_PATH)
@@ -78,12 +82,16 @@ def prepare_provider_data_files() -> None:
     shutil.copytree(DOWNLOAD_PATH / "logo", STATIC_PATH / "logo")
     shutil.copytree(DOWNLOAD_PATH / "images", STATIC_PATH / "images")
     shutil.copyfile(
-        DOWNLOAD_PATH / "recommended_clients.json",
-        DATA_PATH / "recommended_clients.json",
-    )
-    shutil.copyfile(
         DOWNLOAD_PATH / "api_version.json",
         DATA_PATH / "api_version.json",
+    )
+    shutil.copyfile(
+        DOWNLOAD_PATH / "country_codes.json",
+        DATA_PATH / "country_codes.json",
+    )
+    shutil.copyfile(
+        DOWNLOAD_PATH / "recommended_clients.json",
+        DATA_PATH / "recommended_clients.json",
     )
 
 
