@@ -82,6 +82,9 @@ article h2 {
 .badge-rating:hover {
     filter: brightness(0.9);
 }
+.accordion-shadow {
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.075);
+}
 .category-a {
     background-color: rgb(67, 150, 57);
 }

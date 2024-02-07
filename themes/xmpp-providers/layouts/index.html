@@ -77,36 +77,40 @@
                 <a class="heading-anchor" href="#category-a"><i class="fa-solid fa-link fa-xs"></i></a>
             </h3>
             <p>Providers in this category have the best properties, allow you to register via an app and are free of charge.</p>
-            <div class="accordion pb-5" id="providers-accordion-a">
+            <div class="accordion accordion-shadow" id="providers-accordion-a">
                 {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "A") }}
             </div>
+            <div class="pb-5"></div>
             <h3 id="category-b">
                 Category&nbsp;
                 <span class="badge rounded-1 category-b">B</span>
                 <a class="heading-anchor" href="#category-b"><i class="fa-solid fa-link fa-xs"></i></a>
             </h3>
             <p>Providers in this category have the best properties but may only allow you to register via a web page or are <i>not</i> free of charge.</p>
-            <div class="accordion pb-5" id="providers-accordion-b">
+            <div class="accordion accordion-shadow" id="providers-accordion-b">
                 {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "B") }}
             </div>
+            <div class="pb-5"></div>
             <h3 id="category-c">
                 Category&nbsp;
                 <span class="badge rounded-1 category-c">C</span>
                 <a class="heading-anchor" href="#category-c"><i class="fa-solid fa-link fa-xs"></i></a>
             </h3>
             <p>Providers in this category have average properties and should only be used if there is a certain reason for it.</p>
-            <div class="accordion pb-5" id="providers-accordion-c">
+            <div class="accordion accordion-shadow" id="providers-accordion-c">
                 {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "C") }}
             </div>
+            <div class="pb-5"></div>
             <h3 id="category-d">
                 Category&nbsp;
                 <span class="badge rounded-1 category-d">D</span>
                 <a class="heading-anchor" href="#category-d"><i class="fa-solid fa-link fa-xs"></i></a>
             </h3>
             <p>Providers in this category cannot or should not be used for registration.</p>
-            <div class="accordion pb-5" id="providers-accordion-d">
+            <div class="accordion accordion-shadow" id="providers-accordion-d">
                 {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "D") }}
             </div>
+            <div class="pb-5"></div>
             <div class="text-center">
                 <a class="btn btn-secondary" href="/statistics" role="button"><i class="fa-solid fa-chart-pie"></i>&nbsp;View Statistics</a>
             </div>
