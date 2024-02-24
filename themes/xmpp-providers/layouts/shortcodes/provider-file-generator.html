@@ -1,11 +1,16 @@
+{{ $providers := slice }}
+{{ range $k, $_ := .Site.Data.providers }}
+  {{ $providers = $providers | append $k }}
+{{ end }}
+
 <div class="pt-3">
     <div id="provider_api_version_select_container"></div>
     <div class="row pb-4">
         <div class="col-12 col-sm-10 mx-auto p-3 rounded border shadow-sm bg-body-tertiary">
-            <label for="provider_file_import_input" class="form-label">Import an existing provider file (optional)</label>
+            <label for="provider_file_import_input" class="form-label">Load and edit an existing provider file (optional)</label>
             <input class="form-control" type="file" accept="application/JSON" id="provider_file_import_input">
             <div id="provider_file_import_input_feedback" class="mt-2 d-none"><span></span></div>
         </div>
       </div>
-    <div id="provider_file_form_container"></div>
+    <div id="provider_file_form_container" data-providers="{{- delimit $providers "," -}}"></div>
 </div>

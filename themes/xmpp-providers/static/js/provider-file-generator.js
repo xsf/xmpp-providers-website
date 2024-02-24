@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const api_versions = ["v2"];
+const providers = document.getElementById("provider_file_form_container").dataset.providers.split(",");
 
 const providers_data_form_properties_v2 = [
   {
@@ -357,6 +358,13 @@ function _on_generate_json_file_clicked() {
     properties_list = providers_data_form_properties_v2;
   }
 
+  warnings = []
+  properties_to_check_for_warnings = [
+    "maximumHttpFileUploadTotalSize",
+    "maximumHttpFileUploadStorageTime",
+    "maximumMessageArchiveManagementStorageTime",
+  ]
+
   for (const property of properties_list) {
     if (property.type === "dictionary-language-web-page") {
       const container = document.getElementById(`container-${property.name}`);
@@ -415,7 +423,7 @@ function _on_generate_json_file_clicked() {
       let entries = [];
       for (const row of entry_rows) {
         const alternative_address = row.querySelector("input").value;
-        if (alternative_address) {
+        if (alternative_address && !providers.includes(alternative_address)) {
           entries.push(alternative_address);
         }
       }
@@ -432,16 +440,42 @@ function _on_generate_json_file_clicked() {
 
     if (property.type === "integer") {
       generated_properties_dict[property.name] = Number(element.value);
+      if (element.value === "-1" && properties_to_check_for_warnings.includes(property.name)) {
+        warnings.push(property.name)
+      }
       continue;
     }
 
     generated_properties_dict[property.name] = element.value;
   }
 
+  if (warnings.length > 0) {
+    _update_properties_warning_alert(warnings)
+  }
+
   _save_as_json(
     `xmpp-provider-${selected_api_version}.json`,
     generated_properties_dict
   );
+}
+
+function _update_properties_warning_alert(warnings) {
+  document.getElementById("properties_warning_container").classList.add("d-none")
+
+  const properties_warning_container = document.getElementById("properties_warning_container")
+  properties_warning_container.innerHTML = ""
+
+  const warning_span = document.createElement("span")
+  warning_span.innerHTML = "Please note that <code>-1</code> means <i>lower than 1</i>, whereas <code>0</code> means <i>no limit</i>.<br>We noticed that you provided <code>-1</code> for the following properties."
+  const ul = document.createElement("ul")
+  for (const item of warnings) {
+    const li = document.createElement("li")
+    li.innerHTML = `<b>${item}</b>`
+    ul.append(li)
+  }
+  properties_warning_container.append(warning_span)
+  properties_warning_container.append(ul)
+  properties_warning_container.classList.remove("d-none")
 }
 
 function _on_api_version_changed() {
@@ -759,6 +793,11 @@ function _initialize_provider_data_form() {
       outer_div.append(button_row);
     }
   }
+
+  const properties_warning_container = document.createElement("div");
+  properties_warning_container.classList.add("alert", "alert-warning", "d-none")
+  properties_warning_container.id = "properties_warning_container"
+  container.append(properties_warning_container)
 
   const generate_button = document.createElement("button");
   generate_button.innerHTML = "Generate Provider File";
