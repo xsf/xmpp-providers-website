@@ -35,6 +35,18 @@ article h2 {
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
 }
+.navbar-custom {
+    background-color: transparent;
+    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px rgba(255,255,255,.05);
+}
+.navbar-custom::after {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    display: block;
+    content: "";
+    background-image: linear-gradient(rgba(var(--bs-tertiary-bg-rgb), 1), rgba(var(--bs-tertiary-bg-rgb), 0.95));
+}
 .navbar-brand {
     border-radius: 4px;
     margin-left: -0.6rem;
