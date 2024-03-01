@@ -1,0 +1,21 @@
+{
+    "baseURL": "https://providers.xmpp.net/",
+    "canonifyurls": true,
+    "title": "XMPP Providers",
+    "contentdir": "content",
+    "layoutdir": "layouts",
+    "publishdir": "public",
+    "Paginate": 10,
+    "defaultContentLanguage": "en",
+    "disableHugoGeneratorInject": true,
+    "enableEmoji": true,
+    "theme": "xmpp-providers",
+    "Params": {
+        "author": {
+            "name": "XMPP Providers Team"
+        },
+        "dateFormat": "January 2, 2006",
+        "hideAuthor": false,
+        "subtitle": "Subtitle"
+    }
+}

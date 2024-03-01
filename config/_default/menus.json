@@ -1,0 +1,54 @@
+{
+    "main": [
+        {
+            "name": "Apps",
+            "url": "/apps/",
+            "weight": 1
+        },
+        {
+            "name": "About",
+            "url": "/about/",
+            "weight": 2
+        },
+        {
+            "name": "FAQ",
+            "url": "/faq/",
+            "weight": 3
+        },
+        {
+            "name": "Overview",
+            "url": "/overview/",
+            "weight": 4
+        },
+        {
+            "name": "Statistics",
+            "url": "/statistics/",
+            "weight": 5,
+            "params": [
+                {
+                    "new": true
+                }
+            ]
+        },
+        {
+            "name": "Blog",
+            "url": "/blog/",
+            "weight": 6
+        },
+        {
+            "name": "Provider File Generator",
+            "url": "/provider-file-generator/",
+            "weight": 7,
+            "params": [
+                {
+                    "new": true
+                }
+            ]
+        },
+        {
+            "name": "API",
+            "url": "https://invent.kde.org/melvo/xmpp-providers#usage",
+            "weight": 8
+        }
+    ]
+}

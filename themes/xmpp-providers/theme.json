@@ -1,0 +1,11 @@
+{
+    "name": "XMPP Providers",
+    "description": "",
+    "homepage": "https://providers.xmpp.net/",
+    "min_version": "0.112.0",
+    "tags": [],
+    "features": [],
+    "author": {
+        "name": "XMPP Providers Team"
+    }
+}
