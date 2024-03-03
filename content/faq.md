@@ -181,6 +181,20 @@ Each provider can [generate a provider file](/provider-file-generator/) and supp
 
 *Server-to-server (S2S)* connections are used for the communication between your provider and the provider of your contact.
 
+### Storage
+
+Servers usually store messages via [XEP-0313: Message Archive Management](https://xmpp.org/extensions/xep-0313.html).
+That is needed to deliver messages that are sent while the recipient is offline.
+In addition, users can retrieve old messages (excluding [OMEMO](https://xmpp.org/extensions/xep-0384.html) messages) that are not locally stored from the server.
+Messages are stored for a maxmimum duration the server defines.
+But users can disable it completely if the server supports [XEP-0441: Message Archive Management Preferences](https://xmpp.org/extensions/xep-0441.html).
+
+Files are mostly stored on the server as well.
+That is done to avoid aborts while transferring a file if the recipient has connection problems.
+But it is also needed in order to share a file while the recipient is offline.
+That way, the recipient can download the file after coming online.
+Furthermore, it enables the recipient to decide when to download the file.
+
 ### Unknown
 
 A property is called *unknown* if no [source](#where-do-we-have-the-providers-properties-from) is available.
