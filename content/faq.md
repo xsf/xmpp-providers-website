@@ -151,36 +151,36 @@ For that purpose, a [provider file](#provider-file) is used.
 
 Unfamiliar terms are explained here.
 
-### Unknown
-
-A property is called *unknown* if no [source](#where-do-we-have-the-providers-properties-from) is available.
-
-### Provider File
-
-A provider file is a JSON file containing only the provider properties that cannot be retrieved via other methods.
-Each provider can [generate a provider file](/provider-file-generator/) and supply it via its web server.
-
 ### Bus Factor
 
 The term [bus factor](https://en.wikipedia.org/wiki/Bus_factor) describes the minimum number of team members that the service could not survive losing.
+
+### Client-to-Server
+
+The *client-to-server (C2S)* connection is used for the communication between your app and your provider.
+
+### Green Hosting
+
+[thegreenwebfoundation.org](https://www.thegreenwebfoundation.org/) offers a [Green Web Check](https://www.thegreenwebfoundation.org/green-web-check/) which enables you to check if your provider's servers run on green energy. Please note that we use the provider's XMPP host for checking, which might differ from the provider's public internet address.
+
+### HTTP Upload
+
+[XEP-0363 HTTP File Upload](https://xmpp.org/extensions/xep-0363.html) is a standard for sharing files between you and others.
 
 ### Professional Hosting
 
 A provider's service is seen as *professionally hosted* if it has a good internet connection speed, an uninterruptible power supply, access protection and regular backups.
 That is usually the case if the service is hosted in a data center.
 
-### Green Hosting
+### Provider File
 
-[thegreenwebfoundation.org](https://www.thegreenwebfoundation.org/) offers a [Green Web Check](https://www.thegreenwebfoundation.org/green-web-check/) which enables you to check if your provider's servers run on green energy. Please note that we use the provider's XMPP host for checking, which might differ from the provider's public internet address.
-
-### Client-to-Server
-
-The *client-to-server (C2S)* connection is used for the communication between your app and your provider.
-
-### HTTP Upload
-
-[XEP-0363 HTTP File Upload](https://xmpp.org/extensions/xep-0363.html) is a standard for sharing files between you and others.
+A provider file is a JSON file containing only the provider properties that cannot be retrieved via other methods.
+Each provider can [generate a provider file](/provider-file-generator/) and supply it via its web server.
 
 ### Server-to-Server
 
 *Server-to-server (S2S)* connections are used for the communication between your provider and the provider of your contact.
+
+### Unknown
+
+A property is called *unknown* if no [source](#where-do-we-have-the-providers-properties-from) is available.
