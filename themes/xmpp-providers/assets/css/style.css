@@ -10,6 +10,12 @@ html {
 a {
     text-decoration: none;
 }
+h2 {
+    margin-top: 1em;
+}
+h3 {
+    margin-top: 1em;
+}
 .heading-anchor {
     visibility: hidden;
     color:#6c757d;
@@ -93,6 +99,9 @@ article h2 {
 
 .badge-rating:hover {
     filter: brightness(0.9);
+}
+.accordion-header {
+    margin-top: 0;
 }
 .accordion-shadow {
     box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.075);
