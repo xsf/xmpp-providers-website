@@ -14,7 +14,8 @@ The curated list of XMPP providers on this website makes it easy for you to find
 This website uses data from [XMPP Providers](https://invent.kde.org/melvo/xmpp-providers).
 All properties of the included providers are [automatically checked](/faq/#where-do-we-have-the-providers-properties-from) on a daily basis and updated if needed.
 
-Help us to make _free communication_ possible and [contribute to XMPP Providers](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md) or [improve this website](https://github.com/xsf/xmpp-providers-website)!
+Help us make _free communication_ possible and [contribute to XMPP Providers](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md) or [improve this website](https://github.com/xsf/xmpp-providers-website)!
+Feel free to [join our group chat](/contact/).
 
 ## History
 
