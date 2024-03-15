@@ -640,15 +640,21 @@
     </div>
 </div>
 <div class="row pt-3">
-    <p class="text-center text-body-secondary small">Latest change: {{ if .latestChange }}{{ .latestChange | dateFormat "Jan 2, 2006" }}{{ end }}&nbsp;&middot;&nbsp;<a href="/faq/#where-do-we-have-the-providers-properties-from">Something changed?</a></p>
-    <p class="text-center text-body-secondary small pb-3">Providers are checked for updates on a daily basis.</p>
+    <div class="col-auto text-center mx-auto border rounded px-3 py-2 small">
+        <i class="fa-solid fa-globe me-2"></i>
+        <a href="https://xmppnetwork.goodbytes.im/webgl.html?focus={{- $provider_name -}}" target="_blank">Show this provider in the global XMPP network&nbsp;<i class="fas fa-xs fa-external-link-alt"></i></a>
+    </div>
+</div>
+<div class="row pt-5">
     <p class="text-center text-body-secondary small">
-    {{ if strings.Contains $providers_data.website.source ".json" }}
-        <i class="fa-regular fa-circle-check text-success"></i>&nbsp;This provider offers a <a href="/faq/#provider-file" class="abbr">Provider File</a>.
-    {{ else }}
-        <i class="fa-regular fa-circle-xmark text-warning"></i>&nbsp;This provider does not offer a <a href="/faq/#provider-file" class="abbr">Provider File</a>.
-    {{ end }}
+        {{ if strings.Contains $providers_data.website.source ".json" }}
+            <i class="fa-regular fa-circle-check text-success"></i>&nbsp;This provider offers a <a href="/faq/#provider-file" class="abbr">Provider File</a>.
+        {{ else }}
+            <i class="fa-regular fa-circle-xmark text-warning"></i>&nbsp;This provider does not offer a <a href="/faq/#provider-file" class="abbr">Provider File</a>.
+        {{ end }}
     </p>
+    <p class="text-center text-body-secondary small mb-1">Latest change: {{ if .latestChange }}{{ .latestChange | dateFormat "Jan 2, 2006" }}{{ end }}&nbsp;&middot;&nbsp;<a href="/faq/#where-do-we-have-the-providers-properties-from">Something changed?</a></p>
+    <p class="text-center text-body-secondary small">Providers are checked for updates on a daily basis.</p>
 </div>
 {{ end }}
 
