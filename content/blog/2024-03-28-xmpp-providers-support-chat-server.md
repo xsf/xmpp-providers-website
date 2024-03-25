@@ -5,24 +5,30 @@ date: 2024-03-28
 
 ## XMPP Providers Support Chat
 
-Currently, [59 XMPP servers](https://providers.xmpp.net/statistics/) are listed in our project and database. With increase number of participants, more features and also usage of the list in general we already saw 
-the need for offering a dedicated support chat. You can join this [public group chat now](xmpp:support@chat.xmpp-providers.org?join)!
+Currently, [59 XMPP servers](https://providers.xmpp.net/statistics/) are listed in our project and database.
+With increase number of participants, more features and also usage of the list in general we already saw the need for offering a dedicated support chat. You can join this [public group chat now](xmpp:support@chat.xmpp-providers.org?join)!
 
 In general, please consider reading our [extended FAQ](/faq/#where-do-we-have-the-providers-properties-from) as well as [general API documentation](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/README.md).
 Of course, somethings are better addressed in a personal conversation.
 
 ## XMPP Providers Support Server
 
-When we started to setup our own XMPP server for XMPP Providers we also thought about how the experience is for XMPP newcommers to setup their own and new instance of an XMPP server. There are many 
-[XMPP servers](https://xmpp.org/software/?platform=all-platforms) available, but only few projects focus on quick and simple setups. Therefore, we started another small project called 
-XMPP Providers Server which will allow interested operators to have a smooth and good start with running their own XMPP server instance.
+When we started to setup our own XMPP server for XMPP Providers we also thought about how the experience is for XMPP newcommers to setup their own and new instance of an XMPP server.
+There are many [XMPP servers](https://xmpp.org/software/?platform=all-platforms) available, but only few projects focus on quick and simple setups.
+Therefore, we started another small project called XMPP Providers Server which will allow interested operators to have a smooth and good start with running their own XMPP server instance.
 
-The XMPP Providers Server is an automated server setup and makes use of Ansible to set up a Debian-based server. The Ansible playbooks as well as the guide we wrote are an all-in-one setup for fully-featured XMPP servers.
-The focus is on simplicity rather than on covering all possible use cases. The setup covers sensible defaults with strong security properties. With more experience the setup can be expanded a more complex configuration.
+The XMPP Providers Server is an automated server setup and makes use of Ansible to set up a Debian-based server.
+The Ansible playbooks as well as the guide we wrote are an all-in-one setup for fully-featured XMPP servers.
+The focus is on simplicity rather than on covering all possible use cases.
+The setup covers sensible defaults with strong security properties.
+With more experience the setup can be expanded a more complex configuration.
 
-Read on our [setup of the XMPP Providers Server](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/README.md). We are happy to hear your feedback!
+Read on our [setup of the XMPP Providers Server](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/README.md).
+We are happy to hear your feedback!
 
-We want to encourage to use XMPP and run your own instance. Still, hosting servers for others comes with great responsibility your should be aware of. Best practices can be discussed in many [public chats](https://xmpp.org/community/chat/).
+We want to encourage to use XMPP and run your own instance.
+Still, hosting servers for others comes with great responsibility your should be aware of.
+Best practices can be discussed in many [public chats](https://xmpp.org/community/chat/).
 
 ## Spread the Word
 
