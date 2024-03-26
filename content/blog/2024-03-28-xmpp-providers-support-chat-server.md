@@ -9,7 +9,7 @@ date: 2024-03-28
 We recently started to set up our own XMPP server to provide a [support chat](/blog/2024-03-11-xmpp-providers-chat/).
 Our goal was to automate as much as possible to reduce the maintenance effort to a minimum.
 While doing that, we also thought about how the experience is for XMPP newcomers to set up their own XMPP server.
-There are many [XMPP servers](https://xmpp.org/software/?platform=all-platforms) available, but only few projects focus on quick and simple setups.
+There are many [XMPP servers](https://xmpp.org/software/) available, but only few projects focus on quick and simple setups.
 Therefore, we started another small project called XMPP Providers Server which will allow interested operators to have a smooth and good start with running their own XMPP server instance.
 
 The XMPP Providers Server is an automated server setup and makes use of Ansible to set up a Debian-based server.
