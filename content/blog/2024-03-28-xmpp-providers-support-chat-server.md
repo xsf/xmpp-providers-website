@@ -21,7 +21,7 @@ Read on our [setup of the XMPP Providers Server](https://invent.kde.org/melvo/xm
 We are happy to hear your feedback!
 
 We want to encourage to use XMPP and run your own instance.
-Still, hosting servers for others comes with great responsibility your should be aware of.
+But keep in mind that providing a public service comes with great responsibility you should be aware of.
 Best practices can be discussed in many [public chats](https://xmpp.org/community/chat/).
 
 ## Spread the Word
