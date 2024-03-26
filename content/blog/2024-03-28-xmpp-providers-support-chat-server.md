@@ -33,12 +33,13 @@ We are happy to hear your feedback!
 We encourage you to use XMPP and run your own server instance, maybe even by becoming a public provider.
 But keep in mind that providing a public service comes with great responsibility you should be aware of.
 Best practices can be discussed in the [official XMPP operators chat](https://xmpp.org/community/chat/#operators-chatroom).
-If your topic does not suit one of them, there are plenty of other [public XMPP group chats](https://search.jabber.network) in the [XMPP network](https://xmppnetwork.goodbytes.im).
+If your topic does not suit that chat, there are plenty of other [public XMPP group chats](https://search.jabber.network) in the [XMPP network](https://xmppnetwork.goodbytes.im).
+
 ## Help Us
 
 For a good user experience, [apps integrating XMPP Providers](https://providers.xmpp.net/apps/) are as important as the providers themselves.
 If you are an XMPP developer, please consider [adding XMPP Provider support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
-If you are an operator of a public XMPP service, provide the [information we need](https://providers.xmpp.net/faq/#where-do-we-have-the-providers-properties-from) and [add it to our list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
+If you are an operator of a public XMPP service, provide the [information we need](/faq/#where-do-we-have-the-providers-properties-from) and [add it to our list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
 
 Feel free to [reach out to us](/contact/) if you have any questions!
 ## Spread the Word
