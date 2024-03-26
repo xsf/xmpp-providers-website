@@ -9,7 +9,9 @@ date: 2024-03-28
 We recently started to set up our own XMPP server to provide a [support chat](/blog/2024-03-11-xmpp-providers-chat/).
 Our goal was to automate as much as possible to reduce the maintenance effort to a minimum.
 While doing that, we also thought about how the experience is for XMPP newcomers to set up their own XMPP server.
-There are many [XMPP servers](https://xmpp.org/software/) available, but only few projects focus on quick and simple setups.
+
+There are many [XMPP servers](https://xmpp.org/software/) available.
+But only few projects focus on quick and simple setups.
 Therefore, we started another small project called [XMPP Providers Server](https://invent.kde.org/melvo/xmpp-providers-server).
 Its main purpose is to manage our XMPP server.
 And in the future, we will possibly run additional services on that server.
