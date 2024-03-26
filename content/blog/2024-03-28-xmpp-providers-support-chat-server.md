@@ -4,7 +4,7 @@ date: 2024-03-28
 ---
 
 
-## XMPP Providers Support Server
+## XMPP Providers Server
 
 When we started to setup our own XMPP server for XMPP Providers we also thought about how the experience is for XMPP newcommers to setup their own and new instance of an XMPP server.
 There are many [XMPP servers](https://xmpp.org/software/?platform=all-platforms) available, but only few projects focus on quick and simple setups.
