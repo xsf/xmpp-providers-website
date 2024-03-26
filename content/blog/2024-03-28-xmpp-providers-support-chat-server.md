@@ -3,13 +3,6 @@ title: XMPP Providers Support Chat and Server
 date: 2024-03-28
 ---
 
-## XMPP Providers Support Chat
-
-Currently, [59 XMPP servers](https://providers.xmpp.net/statistics/) are listed in our project and database.
-With increase number of participants, more features and also usage of the list in general we already saw the need for offering a dedicated support chat. You can join this [public group chat now](xmpp:support@chat.xmpp-providers.org?join)!
-
-In general, please consider reading our [extended FAQ](/faq/#where-do-we-have-the-providers-properties-from) as well as [general API documentation](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/README.md).
-Of course, somethings are better addressed in a personal conversation.
 
 ## XMPP Providers Support Server
 
