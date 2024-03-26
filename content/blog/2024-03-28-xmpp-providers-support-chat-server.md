@@ -26,6 +26,11 @@ Best practices can be discussed in many [public chats](https://xmpp.org/communit
 
 ## Spread the Word
 
-The XMPP Providers project lives from the community and client implementations, so [follow us and spread the word](https://fosstodon.org/@xmpp_providers)!
+For a good user experience, [apps integrating XMPP Providers](https://providers.xmpp.net/apps/) are as important as the providers themselves.
+If you are an XMPP developer, please consider [adding XMPP Provider support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
+If you are an operator of a public XMPP service, provide the [information we need](https://providers.xmpp.net/faq/#where-do-we-have-the-providers-properties-from) and [add it to our list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
+
+The XMPP Providers project lives from the community.
+[Follow us and spread the word](https://fosstodon.org/@xmpp_providers)!
 
 {{< figure src="/images/xmpp-providers-adaptive.svg" caption="XMPP Providers Logo" class="text-center w-100 pt-5" height="300" link="/" >}}
