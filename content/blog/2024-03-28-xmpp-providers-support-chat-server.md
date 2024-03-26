@@ -26,7 +26,8 @@ We are happy to hear your feedback!
 
 We encourage you to use XMPP and run your own server instance, maybe even by becoming a public provider.
 But keep in mind that providing a public service comes with great responsibility you should be aware of.
-Best practices can be discussed in many [public chats](https://xmpp.org/community/chat/).
+Best practices can be discussed in the [official XMPP operators chat](https://xmpp.org/community/chat/#operators-chatroom).
+If your topic does not suit one of them, there are plenty of other [public XMPP group chats](https://search.jabber.network) in the [XMPP network](https://xmppnetwork.goodbytes.im).
 
 ## Spread the Word
 
