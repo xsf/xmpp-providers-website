@@ -43,10 +43,6 @@ If you are an operator of a public XMPP service, provide the [information we nee
 Feel free to [reach out to us](/contact/) if you have any questions!
 ## Spread the Word
 
-For a good user experience, [apps integrating XMPP Providers](https://providers.xmpp.net/apps/) are as important as the providers themselves.
-If you are an XMPP developer, please consider [adding XMPP Provider support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
-If you are an operator of a public XMPP service, provide the [information we need](https://providers.xmpp.net/faq/#where-do-we-have-the-providers-properties-from) and [add it to our list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
-
 The XMPP Providers project lives from the community.
 [Follow us and spread the word](https://fosstodon.org/@xmpp_providers)!
 
