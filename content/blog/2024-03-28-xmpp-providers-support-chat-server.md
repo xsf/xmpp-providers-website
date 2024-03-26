@@ -21,7 +21,11 @@ The Ansible playbooks as well as the guide we wrote are an all-in-one setup for 
 By using sensible defaults, the project focuses on simplicity rather than on covering all possible use cases.
 With more experience, the setup can be expanded in order to use a more complex configuration.
 
-Read on our [setup of the XMPP Providers Server](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/README.md).
+There is no support for a regular web server yet.
+Thus, the setup cannot be used to serve a website.
+But since the Ansible setup is very modular, that functionality can be added as well as other functionality.
+If you do so, consider to [contribute](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/CONTRIBUTING.md) those improvements to the official project :)
+That way, everybody can benefit from your effort!
 We are happy to hear your feedback!
 
 We encourage you to use XMPP and run your own server instance, maybe even by becoming a public provider.
