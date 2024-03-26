@@ -15,7 +15,8 @@ Its main purpose is to manage our XMPP server.
 And in the future, we will possibly run additional services on that server.
 But it also allows interested operators to have a smooth start with running their own XMPP server.
 
-The XMPP Providers Server is an automated server setup and makes use of Ansible to set up a Debian-based server.
+The XMPP Providers Server is an automated server setup.
+It makes use of Ansible to configure a Debian-based server.
 The Ansible playbooks as well as the guide we wrote are an all-in-one setup for fully-featured XMPP servers.
 By using sensible defaults, the project focuses on simplicity rather than on covering all possible use cases.
 With more experience, the setup can be expanded in order to use a more complex configuration.
