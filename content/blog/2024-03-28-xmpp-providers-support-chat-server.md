@@ -44,6 +44,7 @@ Feel free to [reach out to us](/contact/) if you have any questions!
 ## Spread the Word
 
 The XMPP Providers project lives from the community.
+We are happy to hear your feedback!
 [Follow us and spread the word](https://fosstodon.org/@xmpp_providers)!
 
 {{< figure src="/images/xmpp-providers-adaptive.svg" caption="XMPP Providers Logo" class="text-center w-100 pt-5" height="300" link="/" >}}
