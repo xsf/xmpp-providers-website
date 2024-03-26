@@ -16,7 +16,7 @@ The XMPP Providers Server is an automated server setup and makes use of Ansible 
 The Ansible playbooks as well as the guide we wrote are an all-in-one setup for fully-featured XMPP servers.
 The focus is on simplicity rather than on covering all possible use cases.
 The setup covers sensible defaults with strong security properties.
-With more experience the setup can be expanded a more complex configuration.
+With more experience, the setup can be expanded in order to use a more complex configuration.
 
 Read on our [setup of the XMPP Providers Server](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/README.md).
 We are happy to hear your feedback!
