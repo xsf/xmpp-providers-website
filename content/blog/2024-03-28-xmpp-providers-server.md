@@ -1,10 +1,9 @@
 ---
-title: XMPP Providers Support Chat and Server
+title: XMPP Providers Server
 date: 2024-03-28
 ---
 
-
-## XMPP Providers Server
+## Server Setup
 
 We recently started to set up our own XMPP server to provide a [support chat](/blog/2024-03-11-xmpp-providers-chat/).
 Our goal was to automate as much as possible to reduce the maintenance effort to a minimum.
@@ -42,6 +41,7 @@ If you are an XMPP developer, please consider [adding XMPP Provider support](htt
 If you are an operator of a public XMPP service, provide the [information we need](/faq/#where-do-we-have-the-providers-properties-from) and [add it to our list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
 
 Feel free to [reach out to us](/contact/) if you have any questions!
+
 ## Spread the Word
 
 The XMPP Providers project lives from the community.
