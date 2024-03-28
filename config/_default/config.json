@@ -17,7 +17,7 @@
         "dateFormat": "January 2, 2006",
         "hideAuthor": false,
         "subtitle": "Subtitle",
-        "SiteDescription": "It’s Your Choice. Which XMPP provider suits you best? The XMPP Providers project offers a curated list of XMPP providers for you to choose from.",
+        "description": "It’s Your Choice. Which XMPP provider suits you best? The XMPP Providers project offers a curated list of XMPP providers for you to choose from.",
         "SiteLogoUrl": "https://providers.xmpp.net/images/xmpp-providers.svg"
     }
 }
