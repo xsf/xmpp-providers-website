@@ -2,18 +2,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta name="description" content="{{ .Params.SiteDescription }}">
+    <meta name="description" content="{{ .Site.Params.Description }}">
     <meta property="og:url" content="{{ .Site.BaseURL }}">
     <meta property="og:type" content="website">
     <meta property="og:title" content="{{ .Site.Title }}">
-    <meta property="og:description" content="{{ .Site.Params.SiteDescription }}">
+    <meta property="og:description" content="{{ .Site.Params.Description }}">
     <meta property="og:image" content="{{ .Site.Params.SiteLogoUrl }}">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="providers.xmpp.net">
     <meta property="twitter:url" content="{{ .Site.BaseURL }}">
     <meta name="twitter:title" content="{{ .Site.Title }}">
-    <meta name="twitter:description" content="{{ .Site.Params.SiteDescription }}">
+    <meta name="twitter:description" content="{{ .Site.Params.Description }}">
     <meta name="twitter:image" content="{{ .Site.Params.SiteLogoUrl }}">
 
     <meta name="msapplication-TileColor" content="#ffffff">
