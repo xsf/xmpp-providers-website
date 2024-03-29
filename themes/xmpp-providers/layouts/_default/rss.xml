@@ -30,18 +30,7 @@
   {{- end }}
 {{- end }}
 
-{{- $pctx := . }}
-{{- if .IsHome }}{{ $pctx = .Site }}{{ end }}
-{{- $pages := slice }}
-{{- if or $.IsHome $.IsSection }}
-{{- $pages = $pctx.RegularPages }}
-{{- else }}
-{{- $pages = $pctx.Pages }}
-{{- end }}
-{{- $limit := .Site.Config.Services.RSS.Limit }}
-{{- if ge $limit 1 }}
-{{- $pages = $pages | first $limit }}
-{{- end }}
+{{- $pages := where (where .Site.Pages ".Section" "blog") "Kind" "page" -}}
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
@@ -57,7 +46,7 @@
     {{- with .OutputFormats.Get "RSS" }}
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end }}
-    {{- range $pages }}
+    {{- range $pages -}}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>
