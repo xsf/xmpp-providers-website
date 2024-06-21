@@ -470,7 +470,7 @@ function _update_properties_warning_alert(warnings) {
   const ul = document.createElement("ul")
   for (const item of warnings) {
     const li = document.createElement("li")
-    li.innerHTML = `<b>${item}</b>`
+    li.innerHTML = `<b class="text-break">${item}</b>`
     ul.append(li)
   }
   properties_warning_container.append(warning_span)
