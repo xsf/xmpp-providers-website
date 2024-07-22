@@ -50,6 +50,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             "up to 500 MB": {"value": 0, "providers": {}},
             "up to 1000 MB": {"value": 0, "providers": {}},
             ">1000 MB": {"value": 0, "providers": {}},
+            "no limit": {"value": 0, "providers": {}},
         },
         "server_locations": defaultdict(lambda: defaultdict()),
     }
@@ -199,6 +200,8 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             # as Hugo does not preserve input order
             if file_size == -1:
                 file_size_key = "unknown"
+            elif file_size == 0:
+                file_size_key = "no limit"
             elif file_size <= 10:  # noqa: PLR2004
                 file_size_key = "up to 10 MB"
             elif file_size <= 21:  # noqa: PLR2004

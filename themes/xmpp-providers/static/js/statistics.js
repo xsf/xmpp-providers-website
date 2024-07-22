@@ -66,7 +66,7 @@ function show_chart_details(chart, params) {
     for (const provider_jid in params.data.providers) {
       const file_size = params.data.providers[provider_jid]
       let file_size_span = ""
-      if (file_size != -1) {
+      if (file_size != -1 && file_size != 0) {
         file_size_span = `<span class="text-muted">&nbsp;-&nbsp;${file_size} MB</span>`
       }
       providers.push(`<a href="/provider/${provider_jid}/">${provider_jid}</a>${file_size_span}`)
