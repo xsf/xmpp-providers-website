@@ -79,7 +79,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
 
     green_web_check = {
         "Hosted green": {"value": 0, "providers": [], "color": "rgb(120, 190, 70)"},
-        "Not green hosted": {"value": 0, "providers": [], "color": "rgb(240, 220, 0)"},
+        "Not hosted green": {"value": 0, "providers": [], "color": "rgb(240, 220, 0)"},
     }
 
     provider_file = {
@@ -188,7 +188,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             green_web_check_key = (
                 "Hosted green"
                 if green_web_check_data["content"]
-                else "Not green hosted"
+                else "Not hosted green"
             )
             green_web_check[green_web_check_key]["value"] += 1
             green_web_check[green_web_check_key]["providers"].append(provider_jid)
