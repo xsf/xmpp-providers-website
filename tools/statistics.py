@@ -44,7 +44,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
                 "itemStyle": {"color": "rgb(220, 220, 220)"},
             },
             "up to 10 MB": {"value": 0, "providers": {}},
-            "up to 25 MB": {"value": 0, "providers": {}},
+            "up to 20 MB": {"value": 0, "providers": {}},
             "up to 50 MB": {"value": 0, "providers": {}},
             "up to 100 MB": {"value": 0, "providers": {}},
             "up to 500 MB": {"value": 0, "providers": {}},
@@ -201,8 +201,8 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
                 file_size_key = "unknown"
             elif file_size <= 10:  # noqa: PLR2004
                 file_size_key = "up to 10 MB"
-            elif file_size <= 25:  # noqa: PLR2004
-                file_size_key = "up to 25 MB"
+            elif file_size <= 21:  # noqa: PLR2004
+                file_size_key = "up to 20 MB"
             elif file_size <= 52:  # noqa: PLR2004
                 file_size_key = "up to 50 MB"
             elif file_size <= 104:  # noqa: PLR2004
