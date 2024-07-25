@@ -201,7 +201,7 @@
                     </td>
                     <td>
                         {{ if .ratingGreenWebCheck }}
-                            {{ $url := replace $providers_data.ratingGreenWebCheck.source "https://admin.thegreenwebfoundation.org/greencheck/" "" }}
+                            {{ $url := index (last 1 (split $providers_data.ratingGreenWebCheck.source "/")) 0 }}
                             <a href="https://www.thegreenwebfoundation.org/green-web-check/?url={{ $url }}" target="_blank">Yes</a>
                         {{ else }}
                             <a href="/faq/#green-hosting" class="abbr">No</a>
