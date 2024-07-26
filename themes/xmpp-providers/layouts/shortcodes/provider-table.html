@@ -240,7 +240,7 @@
                             {{- end -}}
                         {{ end }}
                         {{ if and (not .inBandRegistration) (not .registrationWebPage) }}
-                            No
+                            <span class="badge rounded-pill text-bg-secondary">Registration closed</span>
                         {{ end }}
                     </td>
                     <td>

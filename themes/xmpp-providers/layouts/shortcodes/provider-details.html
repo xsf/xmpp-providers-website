@@ -228,7 +228,12 @@
 
 <div class="row justify-content-center">
     <div class="col-12 col-md-10 p-4 mb-4 rounded shadow provider-details-bg">
-        <h4>Account</h4>
+        <div class="d-flex align-items-center">
+            <h4>Account</h4>
+            {{ if and (not .inBandRegistration) (not .registrationWebPage) }}
+                <span class="badge rounded-pill text-bg-secondary mx-3">Registration closed</span>
+            {{ end }}
+        </div>
         <table class="mb-4">
             <tr>
                 <td class="text-center">

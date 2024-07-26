@@ -4,11 +4,20 @@
     <div class="accordion-item" data-provider="{{ .jid }}" data-category="{{ .category }}" data-property-free="{{ .freeOfCharge }}" data-property-professional-hosting="{{ .professionalHosting }}" data-property-rating-green-web-check="{{ .ratingGreenWebCheck }}" data-property-ibr="{{ .inBandRegistration }}" data-property-password-reset="{{ ne (len .passwordReset) 0 }}" data-property-server-locations="{{ delimit .serverLocations "," }}">
         <h2 class="accordion-header" id="heading-{{ $provider_id }}">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $provider_id }}" aria-expanded="false" aria-controls="collapse-{{ $provider_id }}">
-                <span class="badge rounded-1 {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span>
-                <span class="">&nbsp;&nbsp;{{ .jid }}</span>
-                {{ if or (eq (string .maximumHttpFileUploadFileSize) "-1") (eq (string .maximumHttpFileUploadTotalSize) "-1") (eq (string .maximumHttpFileUploadStorageTime) "-1") (eq (string .maximumMessageArchiveManagementStorageTime) "-1") (lt (len .serverLocations) 1) }}
-                    <span class="text-body-secondary">&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-xs fa-circle-exclamation"></i>&nbsp;<span title="Listed in this category due to missing data" data-bs-toggle="tooltip" class="abbr text-body-secondary">data missing</a></span>
-                {{ end }}
+                <div class="d-flex justify-content-between w-100">
+                    <div>
+                        <span class="badge rounded-1 {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span>
+                        <span class="">&nbsp;&nbsp;{{ .jid }}</span>
+                        {{ if or (eq (string .maximumHttpFileUploadFileSize) "-1") (eq (string .maximumHttpFileUploadTotalSize) "-1") (eq (string .maximumHttpFileUploadStorageTime) "-1") (eq (string .maximumMessageArchiveManagementStorageTime) "-1") (lt (len .serverLocations) 1) }}
+                            <span class="badge rounded-pill text-bg-light text-body-secondary mx-2"><i class="fa-solid fa-xs fa-circle-exclamation"></i>&nbsp;<span title="Listed in this category due to missing data" data-bs-toggle="tooltip" class="abbr text-body-secondary">data missing</a></span></span>
+                        {{ end }}
+                    </div>
+                    <div>
+                        {{ if and (not .inBandRegistration) (not .registrationWebPage) }}
+                            <span class="badge rounded-pill text-bg-secondary mx-3">Registration closed</span>
+                        {{ end }}
+                    </div>
+                </div>
             </button>
         </h2>
         <div id="collapse-{{ $provider_id }}" class="accordion-collapse collapse" aria-labelledby="heading-{{ $provider_id }}" data-bs-parent="#providers-accordion-{{ .category }}">
