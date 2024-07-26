@@ -9,7 +9,7 @@
                         <span class="badge rounded-1 {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span>
                         <span class="">&nbsp;&nbsp;{{ .jid }}</span>
                         {{ if or (eq (string .maximumHttpFileUploadFileSize) "-1") (eq (string .maximumHttpFileUploadTotalSize) "-1") (eq (string .maximumHttpFileUploadStorageTime) "-1") (eq (string .maximumMessageArchiveManagementStorageTime) "-1") (lt (len .serverLocations) 1) }}
-                            <span class="badge rounded-pill text-bg-light text-body-secondary mx-2"><i class="fa-solid fa-xs fa-circle-exclamation"></i>&nbsp;<span title="Listed in this category due to missing data" data-bs-toggle="tooltip" class="abbr text-body-secondary">data missing</a></span></span>
+                            <span class="badge text-body-secondary mx-2"><i class="fa-solid fa-xs fa-circle-exclamation"></i>&nbsp;<span title="Listed in this category due to missing data" data-bs-toggle="tooltip" class="abbr">data missing</a></span></span>
                         {{ end }}
                     </div>
                     <div>
