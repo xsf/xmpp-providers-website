@@ -110,9 +110,7 @@ For retrieving a web page that can be used to create accounts, [XEP-0077: In-Ban
 
 Please use that feature to either provide an alternative way for users to create an account or if your server does not support account creation via XMPP apps:
 * ejabberd: [mod_register](https://docs.ejabberd.im/admin/configuration/modules/#mod-register) - `redirect_url`
-* Prosody (alternative modules):
-    * [mod_register_redirect](https://modules.prosody.im/mod_register_redirect.html) - `registration_url`
-    * [mod_register_oob_url](https://modules.prosody.im/mod_register_oob_url.html) - `register_oob_url`
+* Prosody: [mod_register_oob_url](https://modules.prosody.im/mod_register_oob_url.html) - `register_oob_url`
 
 ### Server Software
 
