@@ -138,12 +138,12 @@ Please set those limits as high as possible to enable users to share large files
     * [mod_http_upload_quota](https://docs.ejabberd.im/admin/configuration/modules/#mod-http-upload-quota) - `access_hard_quota`, `access_soft_quota`, `max_days`
 * Prosody: [mod_http_file_share](https://prosody.im/doc/modules/mod_http_file_share) - `http_file_share_size_limit`, `http_file_share_daily_quota`, `http_file_share_expires_after`
 
-{{< spacer size="middle" >}}
-
 ## How can server operators provide properties via HTTP?
 
 Our web bot requests several properties via HTTP from the providers' servers.
 For that purpose, a [provider file](#provider-file) is used.
+
+{{< spacer size="middle" >}}
 
 ## Glossary
 
