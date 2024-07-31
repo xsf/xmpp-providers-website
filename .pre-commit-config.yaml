@@ -3,7 +3,7 @@
 # SPDX-License-Identifier: CC0-1.0
 
 default_language_version:
-    python: python3.11
+    python: python3.12
 
 repos:
   - repo: https://github.com/pycqa/isort
@@ -15,7 +15,7 @@ repos:
     rev: 23.12.1
     hooks:
       - id: black
-        language_version: python3.11
+        language_version: python3.12
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.1.14
