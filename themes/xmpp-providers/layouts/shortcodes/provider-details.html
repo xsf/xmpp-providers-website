@@ -351,7 +351,13 @@
                     {{ else if eq (string .maximumHttpFileUploadFileSize) "0" }}
                         an unlimited size
                     {{ else }}
-                        {{ .maximumHttpFileUploadFileSize }} MB
+                        {{ if ge .maximumHttpFileUploadFileSize 1048576 }}
+                            {{ div .maximumHttpFileUploadFileSize 1048576 | lang.FormatNumber 1 }} TB
+                        {{ else if and (ge .maximumHttpFileUploadFileSize 1024) (lt .maximumHttpFileUploadFileSize 1048576) }}
+                            {{ div .maximumHttpFileUploadFileSize 1024 | lang.FormatNumber 1 }} GB
+                        {{ else }}
+                            {{ .maximumHttpFileUploadFileSize }} MB
+                        {{ end }}
                     {{ end }}
                 </td>
             </tr>
@@ -366,7 +372,13 @@
                     {{ else if eq (string .maximumHttpFileUploadTotalSize) "0" }}
                         an unlimited size
                     {{ else }}
-                        {{ .maximumHttpFileUploadTotalSize }} MB
+                        {{ if ge .maximumHttpFileUploadTotalSize 1048576 }}
+                            {{ div .maximumHttpFileUploadTotalSize 1048576 | lang.FormatNumber 1 }} TB
+                        {{ else if and (ge .maximumHttpFileUploadTotalSize 1024) (lt .maximumHttpFileUploadTotalSize 1048576) }}
+                            {{ div .maximumHttpFileUploadTotalSize 1024 | lang.FormatNumber 1 }} GB
+                        {{ else }}
+                            {{ .maximumHttpFileUploadTotalSize }} MB
+                        {{ end }}
                     {{ end }}
                 </td>
             </tr>
