@@ -404,8 +404,23 @@
                     </td>
                     <td>
                         {{ if .alternativeJids }}
-                            {{ range .alternativeJids }}
-                                <span class="badge text-bg-secondary opacity-75">{{ . }}</span>
+                            {{ if gt (len .alternativeJids) 1 }}
+                                <div class="d-flex align-items-center">
+                                    <button class="btn btn-sm py-0 ps-0" type="button" data-bs-toggle="collapse" data-bs-target="#{{ .jid }}-alternative-addresses-collapse" aria-expanded="false" aria-controls="{{ .jid }}-alternative-addresses-collapse">
+                                        Show All ({{ len .alternativeJids }})
+                                    </button>
+                                    <div>
+                                        <div class="collapse collapse-horizontal" id="{{ .jid }}-alternative-addresses-collapse">
+                                            {{ range .alternativeJids }}
+                                                <span class="badge text-bg-secondary opacity-75">{{ . }}</span>
+                                            {{ end }}
+                                        </div>
+                                    </div>
+                                </div>
+                            {{ else }}
+                                {{ range .alternativeJids }}
+                                    <span class="badge text-bg-secondary opacity-75">{{ . }}</span>
+                                {{ end }}
                             {{ end }}
                         {{ else }}
                             -
