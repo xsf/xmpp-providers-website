@@ -278,30 +278,32 @@
                     {{ end }}
                 </td>
             </tr>
-            <tr>
-                <td class="text-center">
-                    <i class="fa-solid fa-envelope-circle-check px-2 text-body-secondary"></i>
-                </td>
-                <td>
-                    {{ if .inBandRegistrationEmailAddressRequired }}
-                        An email address is required for registration
-                    {{ else }}
-                        An email address is <i>not</i> required for registration
-                    {{ end }}
-                </td>
-            </tr>
-            <tr>
-                <td class="text-center">
-                    <i class="fa-solid fa-robot px-2 text-body-secondary"></i>
-                </td>
-                <td>
-                    {{ if .inBandRegistrationCaptchaRequired }}
-                        A <a class="abbr" href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA <i class="fas fa-xs fa-external-link-alt"></i></a> must be solved for registration
-                    {{ else }}
-                        No <a class="abbr" href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA <i class="fas fa-xs fa-external-link-alt"></i></a> must be solved for registration
-                    {{ end }}
-                </td>
-            </tr>
+            {{ if .inBandRegistration }}
+              <tr>
+                  <td class="text-center">
+                      <i class="fa-solid fa-envelope-circle-check px-2 text-body-secondary"></i>
+                  </td>
+                  <td>
+                      {{ if .inBandRegistrationEmailAddressRequired }}
+                          An email address is required for registration
+                      {{ else }}
+                          An email address is <i>not</i> required for registration
+                      {{ end }}
+                  </td>
+              </tr>
+              <tr>
+                  <td class="text-center">
+                      <i class="fa-solid fa-robot px-2 text-body-secondary"></i>
+                  </td>
+                  <td>
+                      {{ if .inBandRegistrationCaptchaRequired }}
+                          A <a class="abbr" href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA <i class="fas fa-xs fa-external-link-alt"></i></a> must be solved for registration
+                      {{ else }}
+                          No <a class="abbr" href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA <i class="fas fa-xs fa-external-link-alt"></i></a> must be solved for registration
+                      {{ end }}
+                  </td>
+              </tr>
+            {{ end }}
             <tr>
                 <td class="text-center">
                     <i class="fa-solid fa-key px-2 text-body-secondary"></i>
