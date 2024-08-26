@@ -31,17 +31,20 @@ As thin as is your tolerance is possibly with the limits and threshold we have d
 The perspective we take is to ensure a good experience right after registering to an XMPP server.
 At least, the server should not be part of any issue.
 
-When it comes to the rating parameter minimums, limits and thresholds we have defined, we usually went through long and reiterating discussions that partly have not yet even come to settle.
-The main focus is the question for example of how too low parameter for HTTP file upload could affect the user experience.
+When it comes to the rating parameter minimums, the limits and the thresholds defined, we usually went through long and reiterating discussions, partly with no conclusion yet.
+One example for illustration: The main focus is the question for example of how too low parameter for HTTP file upload could affect the user experience.
 If you believe 5 MB are enough, then you have not have had the situation that maybe some clients do not compress files sent.
-Videos being transfered easily reach sizes that exceed this by the factor of 10.
+Videos being transferred easily reach sizes that exceed this by the factor of 10.
 Is this good? Is this something you as operator should care about?
-Well, you run a public server and with this unfortunately have some responsibility and, to our understanding, most providers are interested to have more users.
+
+Well, once you run a public server this unfortunately have comes with responsibility. Usually, to our understanding, most providers are also interested to have more users.
 This is why we argued to have a minimum of 20 MB for example.
 It is certainly not sufficient in all cases, but it will cover the commonly transferred sizes and ensures a good experience with a greater likelihood.
 If you disagree, that is fine, this is why we love decentralization.
 However, then it is maybe not the best to registers newcomers that have certain expectations right away to your server.
-Sorry to say, but especially public server maintainers have and have show the potential to ruin the user experience and reputation of the network and also your XMPP apps.
+Users of course don't care about your properties, until they realize this video cannot be sent.
+Then the client (!) and maybe even XMPP is bad and they leave it.
+Sorry to say, but especially public server maintainers have and have shown the potential to ruin the user experience and reputation of the network and also your XMPP apps.
 Note to client developers: Users will regardless of the origin of the issue blame your app.
 
 Due to the reality of the decentralized nature of the network, the discussions and the learnings required us to create more distinct and refined parameters that now may bug you.
@@ -69,7 +72,7 @@ This is great and this is what the network nature should be.
 However, on the one side the quality of the provided choice of XMPP server providers varies and has often a manual maintained, outdated and uninformed nature which leads to bad experiences.
 On the other side a too restrictive behavior or no recommendation at all does not support the federated idea.
 That leads to oligopoly-like distribution of users.
-These two extrema of ignorance or mistrust are neither a solution.
+These two extreme of ignorance or mistrust are neither a solution.
 We intend to address the problematic onboarding and user experience but also at the same time user decentralization in XMPP great again, at least be an enabler for it.
 An enabler through transparency, accessibility, quality and completeness of information.
 
