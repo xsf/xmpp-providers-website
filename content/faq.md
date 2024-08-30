@@ -103,6 +103,7 @@ For determining whether a server supports the creation of accounts via XMPP apps
 Please enable that feature to simplify the onboarding process for new users:
 * ejabberd: [mod_register](https://docs.ejabberd.im/admin/configuration/modules/#mod-register)
 * Prosody: [mod_register_ibr](https://prosody.im/doc/modules/mod_register_ibr)
+* Tigase: [jabber:iq:register](https://docs.tigase.net/en/latest/Tigase_Administration/Configuration/_Configuration.html#session-manager)
 
 ### Account Creation via Web Page
 
@@ -111,6 +112,7 @@ For retrieving a web page that can be used to create accounts, [XEP-0077: In-Ban
 Please use that feature to either provide an alternative way for users to create an account or if your server does not support account creation via XMPP apps:
 * ejabberd: [mod_register](https://docs.ejabberd.im/admin/configuration/modules/#mod-register) - `redirect_url`
 * Prosody: [mod_register_oob_url](https://modules.prosody.im/mod_register_oob_url.html) - `register_oob_url`
+* Tigase: [jabber:iq:register](https://docs.tigase.net/en/latest/Tigase_Administration/Configuration/_Configuration.html#session-manager)
 
 ### Server Software
 
@@ -119,6 +121,7 @@ For determining which software (including its version) a server runs, [XEP-0092:
 Please enable that feature for checking whether your server runs the software desired by the user and whether it is up-to-date:
 * ejabberd: [mod_version](https://docs.ejabberd.im/admin/configuration/modules/#mod-version)
 * Prosody: [mod_version](https://prosody.im/doc/modules/mod_version)
+* Tigase: [jabber:iq:version](https://docs.tigase.net/en/latest/Tigase_Administration/Configuration/_Configuration.html#session-manager)
 
 ### Support Addresses
 
@@ -127,6 +130,7 @@ For retrieving the support addresses of a provider, [XEP-0157: Contact Addresses
 Please provide those addresses to enable users and our upcoming support bots to reach you (**Important: Append `?join` to group chat addresses**):
 * ejabberd: [mod_disco](https://docs.ejabberd.im/admin/configuration/modules/#mod-disco) - `server_info`, entry with `name: support-addresses`
 * Prosody: [mod_server_contact_info](https://prosody.im/doc/modules/mod_server_contact_info) - `support`
+* Tigase: [disco-extensions](https://docs.tigase.net/en/latest/Tigase_Administration/Configuration/_Configuration.html#abuse-contacts) - `support-addresses`
 
 ### Upload Limits and Storage Durations
 
@@ -137,6 +141,7 @@ Please set those limits as high as possible to enable users to share large files
     * [mod_http_upload](https://docs.ejabberd.im/admin/configuration/modules/#mod-http-upload) - `max_size`
     * [mod_http_upload_quota](https://docs.ejabberd.im/admin/configuration/modules/#mod-http-upload-quota) - `access_hard_quota`, `access_soft_quota`, `max_days`
 * Prosody: [mod_http_file_share](https://prosody.im/doc/modules/mod_http_file_share) - `http_file_share_size_limit`, `http_file_share_daily_quota`, `http_file_share_expires_after`
+* Tigase: [HTTP File Upload component](https://docs.tigase.net/projects/tigase-tigase-http-api/en/latest/Administration/HTTP_File_Upload_component.html#logic) - `max-file-size`
 
 ## How can server operators provide properties via HTTP?
 
