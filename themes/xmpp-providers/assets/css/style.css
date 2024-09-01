@@ -134,6 +134,11 @@ article h2 {
 .provider-overview {
     white-space: nowrap;
 }
+.provider-overview th:first-child,
+.provider-overview td:first-child {
+  position: sticky;
+  left: 0;
+}
 table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
     content: " \25B4\25BE";
     color: #aaa;
