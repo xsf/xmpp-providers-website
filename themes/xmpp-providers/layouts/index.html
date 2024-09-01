@@ -107,8 +107,13 @@
                 <a class="heading-anchor" href="#category-d"><i class="fa-solid fa-link fa-xs"></i></a>
             </h3>
             <p>Providers in this category cannot or should not be used for registration.</p>
-            <div class="accordion accordion-shadow" id="providers-accordion-d">
-                {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "D") }}
+            <button class="btn btn-sm btn-outline-secondary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#category-d-collapse" aria-expanded="false" aria-controls="category-d-collapse">
+                Toggle Category D
+            </button>
+            <div class="collapse" id="category-d-collapse">
+                <div class="accordion accordion-shadow" id="providers-accordion-d">
+                    {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "D") }}
+                </div>
             </div>
             <div class="pb-5"></div>
             <div class="text-center">
