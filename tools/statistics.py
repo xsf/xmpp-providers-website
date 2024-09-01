@@ -43,13 +43,13 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
                 "providers": {},
                 "itemStyle": {"color": "rgb(220, 220, 220)"},
             },
-            "up to 10 MB": {"value": 0, "providers": {}},
-            "up to 20 MB": {"value": 0, "providers": {}},
-            "up to 50 MB": {"value": 0, "providers": {}},
-            "up to 100 MB": {"value": 0, "providers": {}},
-            "up to 500 MB": {"value": 0, "providers": {}},
-            "up to 1000 MB": {"value": 0, "providers": {}},
-            ">1000 MB": {"value": 0, "providers": {}},
+            "< 10 MB": {"value": 0, "providers": {}},
+            "≥ 10 MB": {"value": 0, "providers": {}},
+            "≥ 20 MB": {"value": 0, "providers": {}},
+            "≥ 50 MB": {"value": 0, "providers": {}},
+            "≥ 100 MB": {"value": 0, "providers": {}},
+            "≥ 500 MB": {"value": 0, "providers": {}},
+            "≥ 1 GB": {"value": 0, "providers": {}},
             "no limit": {"value": 0, "providers": {}},
         },
         "server_locations": defaultdict(lambda: defaultdict()),
@@ -130,7 +130,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             "providers": [],
             "color": "rgb(90, 170, 60)",
         },
-        ">3 persons": {
+        "> 3 persons": {
             "value": 0,
             "providers": [],
             "color": "rgb(60, 140, 70)",
@@ -178,7 +178,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             elif bus_factor_number == 3:  # noqa: PLR2004
                 bus_factor_key = "3 persons"
             elif bus_factor_number > 3:  # noqa: PLR2004
-                bus_factor_key = ">3 persons"
+                bus_factor_key = "> 3 persons"
             else:
                 bus_factor_key = "unknown"
 
@@ -202,20 +202,20 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
                 file_size_key = "unknown"
             elif file_size == 0:
                 file_size_key = "no limit"
-            elif file_size <= 10:  # noqa: PLR2004
-                file_size_key = "up to 10 MB"
-            elif file_size <= 21:  # noqa: PLR2004
-                file_size_key = "up to 20 MB"
-            elif file_size <= 52:  # noqa: PLR2004
-                file_size_key = "up to 50 MB"
-            elif file_size <= 104:  # noqa: PLR2004
-                file_size_key = "up to 100 MB"
-            elif file_size <= 512:  # noqa: PLR2004
-                file_size_key = "up to 500 MB"
-            elif file_size <= 1024:  # noqa: PLR2004
-                file_size_key = "up to 1000 MB"
+            elif file_size < 10:  # noqa: PLR2004
+                file_size_key = "< 10 MB"
+            elif file_size >= 10 and file_size < 20:  # noqa: PLR2004
+                file_size_key = "≥ 10 MB"
+            elif file_size >= 20 and file_size < 50:  # noqa: PLR2004
+                file_size_key = "≥ 20 MB"
+            elif file_size >= 50 and file_size < 100:  # noqa: PLR2004
+                file_size_key = "≥ 50 MB"
+            elif file_size >= 100 and file_size < 500:  # noqa: PLR2004
+                file_size_key = "≥ 100 MB"
+            elif file_size >= 500 and file_size < 1000:  # noqa: PLR2004
+                file_size_key = "≥ 500 MB"
             else:
-                file_size_key = ">1000 MB"
+                file_size_key = "≥ 1 GB"
 
             statistics_data["file_size_bar_chart_data"][file_size_key]["value"] += 1
             statistics_data["file_size_bar_chart_data"][file_size_key]["providers"][
