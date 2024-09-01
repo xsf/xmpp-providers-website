@@ -138,6 +138,7 @@ article h2 {
 .provider-overview td:first-child {
   position: sticky;
   left: 0;
+  z-index: 1;
 }
 table.sortable th:not(.sorttable_sorted):not(.sorttable_sorted_reverse):not(.sorttable_nosort):after {
     content: " \25B4\25BE";
