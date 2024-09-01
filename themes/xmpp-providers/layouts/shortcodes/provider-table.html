@@ -286,10 +286,10 @@
                             unlimited
                         {{ else }}
                             sorttable_customkey="{{ .maximumHttpFileUploadFileSize }}">
-                            {{ if ge .maximumHttpFileUploadFileSize 1048576 }}
-                                {{ div .maximumHttpFileUploadFileSize 1048576 | lang.FormatNumber 1 }} TB
-                            {{ else if and (ge .maximumHttpFileUploadFileSize 1024) (lt .maximumHttpFileUploadFileSize 1048576) }}
-                                {{ div .maximumHttpFileUploadFileSize 1024 | lang.FormatNumber 1 }} GB
+                            {{ if ge .maximumHttpFileUploadFileSize 1000000 }}
+                                {{ div .maximumHttpFileUploadFileSize 1000000 | lang.FormatNumber 1 }} TB
+                            {{ else if and (ge .maximumHttpFileUploadFileSize 1000) (lt .maximumHttpFileUploadFileSize 1000000) }}
+                                {{ div .maximumHttpFileUploadFileSize 1000 | lang.FormatNumber 1 }} GB
                             {{ else }}
                                 {{ .maximumHttpFileUploadFileSize }} MB
                             {{ end }}
@@ -303,10 +303,10 @@
                             unlimited
                         {{ else }}
                             sorttable_customkey="{{ .maximumHttpFileUploadTotalSize }}">
-                            {{ if ge .maximumHttpFileUploadTotalSize 1048576 }}
-                                {{ div .maximumHttpFileUploadTotalSize 1048576 | lang.FormatNumber 1 }} TB
-                            {{ else if and (ge .maximumHttpFileUploadTotalSize 1024) (lt .maximumHttpFileUploadTotalSize 1048576) }}
-                                {{ div .maximumHttpFileUploadTotalSize 1024 | lang.FormatNumber 1 }} GB
+                            {{ if ge .maximumHttpFileUploadTotalSize 1000000 }}
+                                {{ div .maximumHttpFileUploadTotalSize 1000000 | lang.FormatNumber 1 }} TB
+                            {{ else if and (ge .maximumHttpFileUploadTotalSize 1000) (lt .maximumHttpFileUploadTotalSize 1000000) }}
+                                {{ div .maximumHttpFileUploadTotalSize 1000 | lang.FormatNumber 1 }} GB
                             {{ else }}
                                 {{ .maximumHttpFileUploadTotalSize }} MB
                             {{ end }}
