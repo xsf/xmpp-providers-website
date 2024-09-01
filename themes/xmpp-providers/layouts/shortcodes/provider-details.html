@@ -368,7 +368,7 @@
                     <i class="fa-solid fa-cloud-arrow-down px-2 text-body-secondary"></i>
                 </td>
                 <td>
-                    Shared files are stored up to
+                    Shared files are <a href="/faq/#storage" class="abbr">stored</a> up to
                     {{ if eq (string .maximumHttpFileUploadTotalSize) "-1" }}
                         an <a href="/faq/#unknown" class="abbr">unknown</a> size or less than 1 MB
                     {{ else if eq (string .maximumHttpFileUploadTotalSize) "0" }}
@@ -389,7 +389,7 @@
                     <i class="fa-solid fa-clock-rotate-left px-2 text-body-secondary"></i>
                 </td>
                 <td>
-                    <a href="/faq/#storage" class="abbr">Stores</a> files for
+                    Shared files are <a href="/faq/#storage" class="abbr">stored</a> for
                     {{ if eq (string .maximumHttpFileUploadStorageTime) "-1" }}
                         an <a href="/faq/#unknown" class="abbr">unknown</a> time or less than 1 day
                     {{ else if eq (string .maximumHttpFileUploadStorageTime) "0" }}
