@@ -3,12 +3,12 @@ title: Currently more than 50% of the listed XMPP providers support API version 
 date: 2024-09-01
 ---
 
-Six months after we have offered the hosting a [generic JSON files](https://providers.xmpp.net/provider-file-generator/) which are based on our API version 2, more than 50% of the currently listed XMPP service providers on their XMPP instance.
+Six months after we have offered the hosting a [generic JSON files](https://providers.xmpp.net/provider-file-generator/) which are based on our API version 2, more than [50% of the currently listed XMPP service providers](https://providers.xmpp.net/statistics/#provider-file) host it on their XMPP instance.
 This is a great success for decentralization in XMPP onboarding. However, our efforts go beyond the project goals and chart a path to better transparency, quality and understanding of the entire XMPP network.
 
 At the moment we have 72 XMPP providers listed in our setup.
 By end of 2024 we want to exceed the 100.
-Our main statics shows that about 50% of the listed servers are categorized in D.
+Our main [statics](https://providers.xmpp.net/statistics/) shows that about 50% of the listed servers are categorized in D.
 The main reasons are either closed registrations, missing information or both.
 We recommend to also support the automated way we have established to not just support better onboarding, but also transparency of the network and general quality measures.
 
