@@ -74,7 +74,7 @@ This is surely not a perfect solution to issues with registration and usability.
 But it represents our strong efforts to improve the general unpopular situation around onboarding.
 The priority is to prevent the two extremes:
 - Unmaintained lists containing any server you can find and expose themselves in a lottery-manner to uninformed users to pick from.
--Purely limited selection of servers in your client that for sure may work, but unfortunately jeopardizes the idea of federation.
+- Purely limited selection of servers in your client that for sure may work, but unfortunately jeopardizes the idea of federation.
 
 XMPP Providers with all the great achievements we have made so far is not the end of the road.
 From a simple list for automatic registration we have evolved to build an API and a website with interesting statistics on the network.
