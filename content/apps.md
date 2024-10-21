@@ -22,5 +22,5 @@ These apps are not developed anymore but support the XMPP Providers lists.
 
 ## For Developers
 
-Would you like to [integrate XMPP Providers in your app](https://invent.kde.org/melvo/xmpp-providers)?
+Would you like to [integrate XMPP Providers in your app](https://invent.kde.org/melvo/xmpp-providers#client-integration)?
 There is an API for querying provider lists which are regularly updated.
