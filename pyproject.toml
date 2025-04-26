@@ -10,6 +10,7 @@ name = "XMPP Providers Website"
 dev = [
   "isort==6.0.1",
   "ruff==0.11.7",
+  "pyright==1.1.400",
 ]
 
 [tool.isort]
