@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2025 XMPP Providers Team
+#
+# SPDX-License-Identifier: CC0-1.0
 .github
 .reuse
 .ruff_cache
