@@ -11,16 +11,11 @@ repos:
     hooks:
       - id: isort
 
-  - repo: https://github.com/psf/black
-    rev: 23.12.1
-    hooks:
-      - id: black
-        language_version: python3.12
-
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.14
+    rev: v0.11.7
     hooks:
       - id: ruff
+      - id: ruff-format
 
   - repo: https://github.com/RobertCraigie/pyright-python
     rev: v1.1.348
