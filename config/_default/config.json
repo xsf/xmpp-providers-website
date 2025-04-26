@@ -5,7 +5,9 @@
     "contentdir": "content",
     "layoutdir": "layouts",
     "publishdir": "public",
-    "Paginate": 10,
+    "pagination": {
+        "pagerSize": 10
+    },
     "defaultContentLanguage": "en",
     "disableHugoGeneratorInject": true,
     "enableEmoji": true,
