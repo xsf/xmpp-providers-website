@@ -249,32 +249,34 @@ def prepare_client_data_file() -> None:
     log.info("Parsing clients list infos")
 
     client_infos: list[dict[str, str | bool | list[str] | None]] = []
-    for package in xsf_software_list:
-        if "client" not in package["categories"]:
-            continue
+    for client_name, client_data in providers_clients_list.items():
+        supported_os = None
 
-        if package["name"] in providers_clients_list:
-            provider_infos = providers_clients_list[package["name"]]
-            if package["doap"] is not None:
-                log.info("Downloading DOAP file for: %s", package["name"])
+        filtered_data = [
+            item for item in xsf_software_list if item.get("name") == client_name
+        ]
+
+        if filtered_data:
+            package_data = filtered_data[0]
+            if package_data["doap"] is not None:
+                log.info("Downloading DOAP file for: %s", client_name)
                 download_file(
-                    package["doap"],
-                    Path(f'clients_data/doap_files/{package["name"]}.doap'),
+                    package_data["doap"],
+                    Path(f"clients_data/doap_files/{client_name}.doap"),
                 )
-            parsed_infos = _parse_doap_infos(package["name"])
+                parsed_infos = _parse_doap_infos(client_name)
+                if parsed_infos is not None:
+                    supported_os = parsed_infos["os"]
 
-            supported_os = None
-            if parsed_infos is not None:
-                supported_os = parsed_infos["os"]
-            client_infos.append(
-                {
-                    "name": package["name"],
-                    "os": supported_os,
-                    "since": provider_infos["since"]["content"],
-                    "website": provider_infos["website"]["content"],
-                    "maintained": provider_infos["maintained"]["content"],
-                }
-            )
+        client_infos.append(
+            {
+                "name": client_name,
+                "os": supported_os,
+                "since": client_data["since"]["content"],
+                "website": client_data["website"]["content"],
+                "maintained": client_data["maintained"]["content"],
+            }
+        )
 
     with open(
         DATA_PATH / "implementing_clients.json", "w", encoding="utf-8"

@@ -17,8 +17,7 @@ If they do not fit your needs, there is also an [overview of all available XMPP 
 
 These apps are not developed anymore but support the XMPP Providers lists.
 
-- [Blabber.im](https://codeberg.org/kriztan/blabber.im)
-- [UWPX](https://uwpx.org/)
+{{< apps-integration-archived >}}
 
 ## For Developers
 
