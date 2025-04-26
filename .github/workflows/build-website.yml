@@ -30,11 +30,14 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
       - name: Install Python packages
-        run: pip install -r tools/requirements.txt
+        run: uv pip install -r pyproject.toml
 
       - name: Prepare provider list
-        run: python -m tools.run prepare_website
+        run: python -m src.run prepare_website
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3

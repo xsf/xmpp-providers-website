@@ -2,15 +2,15 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
-PY=python3
-PIP=pip3
+PY=python
+UV=uv
 HUGO=hugo
 
 BASEDIR=$(CURDIR)
 INPUTDIR=$(BASEDIR)/content
 OUTPUTDIR=$(BASEDIR)/public
-TOOLSDIR=$(BASEDIR)/tools
 BASEURL=https://providers.xmpp.net/
+UV_SYSTEM=""
 
 help:
 	@echo 'Makefile for a hugo website                                                 '
@@ -26,19 +26,19 @@ clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 
 serve:
-	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
-	$(PY) -m tools.run prepare_website
+	$(UV) pip install --upgrade -r pyproject.toml
+	$(PY) -m src.run prepare_website
 	$(HUGO) version
 	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
 
 serve-no-pip:
-	$(PY) -m tools.run prepare_website
+	$(PY) -m src.run prepare_website
 	$(HUGO) version
 	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
 
 publish:
-	$(PIP) install --upgrade -r $(TOOLSDIR)/requirements.txt
-	$(PY) -m tools.run prepare_website
+	$(UV) pip install --upgrade $(UV_SYSTEM) -r pyproject.toml
+	$(PY) -m src.run prepare_website
 	$(HUGO) version
 	$(HUGO) --baseURL=$(BASEURL)
 

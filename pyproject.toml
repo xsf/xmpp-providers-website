@@ -3,7 +3,13 @@
 # SPDX-License-Identifier: CC0-1.0
 
 [project]
-name = "XMPP Providers Website"
+name = "xmpp-providers-website"
+version = "1.0.0"
+
+dependencies = [
+  "defusedxml",
+  "requests"
+]
 
 [project.optional-dependencies]
 

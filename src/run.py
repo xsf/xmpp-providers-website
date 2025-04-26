@@ -6,11 +6,11 @@ import logging
 import sys
 from argparse import ArgumentParser
 
-from tools.common import LOG_FORMAT
-from tools.prepare import create_provider_pages
-from tools.prepare import prepare_client_data_file
-from tools.prepare import prepare_provider_data_files
-from tools.statistics import prepare_statistics
+from src.common import LOG_FORMAT
+from src.prepare import create_provider_pages
+from src.prepare import prepare_client_data_file
+from src.prepare import prepare_provider_data_files
+from src.statistics import prepare_statistics
 
 
 class ToolsArgumentParser(ArgumentParser):

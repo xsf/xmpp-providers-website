@@ -8,7 +8,7 @@ from collections import defaultdict
 from datetime import datetime
 from datetime import UTC
 
-from tools.common import DATA_PATH
+from src.common import DATA_PATH
 
 log = logging.getLogger()
 

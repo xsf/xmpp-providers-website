@@ -15,16 +15,16 @@ from pathlib import Path
 from defusedxml.ElementTree import parse
 from defusedxml.ElementTree import ParseError
 
-from tools.common import API_VERSION
-from tools.common import BADGES_PATH
-from tools.common import DATA_PATH
-from tools.common import DOCKER_DOWNLOAD_PATH
-from tools.common import download_file
-from tools.common import DOWNLOAD_PATH
-from tools.common import initialize_directory
-from tools.common import PROVIDERS_JSON_PATH
-from tools.common import PROVIDERS_PAGES_PATH
-from tools.common import STATIC_PATH
+from src.common import API_VERSION
+from src.common import BADGES_PATH
+from src.common import DATA_PATH
+from src.common import DOCKER_DOWNLOAD_PATH
+from src.common import download_file
+from src.common import DOWNLOAD_PATH
+from src.common import initialize_directory
+from src.common import PROVIDERS_JSON_PATH
+from src.common import PROVIDERS_PAGES_PATH
+from src.common import STATIC_PATH
 
 FILTERED_PROVIDERS_LIST_URL = (
     f"https://data.xmpp.net/providers/{API_VERSION}/providers-D.json"

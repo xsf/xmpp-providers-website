@@ -18,8 +18,8 @@ This is due to some delay in building and deploying.
 
 ## Software Requirements
 
-* hugo
-* python >=3.13
+* [hugo](https://gohugo.io/)
+* [Python](https://www.python.org/) >=3.13
 
 ## Development
 
@@ -29,7 +29,7 @@ To run a development server on your local computer, follow these basic steps:
 
 ```bash
 git clone https://github.com/xsf/xmpp-providers-website.git
-# install Hugo
+# install Hugo and Python dependencies
 cd xmpp-providers-website
 ```
 

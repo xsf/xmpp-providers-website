@@ -8,6 +8,8 @@
 # or operating system, you probably want to add a global ignore instead:
 # git config --global core.excludesfile ~/.gitignore_global
 
+__pycache__
+*.egg-info
 *.swp
 *.pyc
 *.~
@@ -15,9 +17,11 @@
 .DS_Store
 .hugo_build.lock
 .project
+.ruff_cache
 .vscode
 
-.venv
+.venv/
+build/
 
 content/provider/
 data/results/

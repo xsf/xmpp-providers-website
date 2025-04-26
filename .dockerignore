@@ -1,0 +1,9 @@
+.github
+.reuse
+.ruff_cache
+.venv
+.vscode
+build/
+downloads/
+public/
+resources/
