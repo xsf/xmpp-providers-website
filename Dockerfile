@@ -4,7 +4,7 @@
 
 # Dockerfile to build a docker image for xmpp-providers
 
-FROM python:3.11-slim-bookworm
+FROM python:3.13-slim-bookworm
 
 # Set environment variables
 ENV DEBIAN_FRONTEND noninteractive

@@ -19,7 +19,7 @@ This is due to some delay in building and deploying.
 ## Software Requirements
 
 * hugo
-* python >=3.11
+* python >=3.13
 
 ## Development
 

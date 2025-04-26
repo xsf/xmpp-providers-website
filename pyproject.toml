@@ -50,7 +50,7 @@ ignore = [
   "PTH123", # builtin-open
 ]
 
-target-version = "py311"
+target-version = "py313"
 
 [tool.ruff.flake8-quotes]
 inline-quotes = "double"
