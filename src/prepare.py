@@ -11,9 +11,14 @@ import zipfile
 from datetime import datetime
 from datetime import UTC
 from pathlib import Path
+from urllib.parse import urlparse
 
 from defusedxml.ElementTree import parse
 from defusedxml.ElementTree import ParseError
+from PIL import Image
+from PIL import UnidentifiedImageError
+from PIL.Image import Resampling
+from slugify import slugify
 
 from src.common import API_VERSION
 from src.common import BADGES_PATH
@@ -40,9 +45,17 @@ XSF_SOFTWARE_LIST_URL = (
     "https://raw.githubusercontent.com/xsf/xmpp.org/master/data/software.json"
 )
 
+MAX_LOGO_FILE_SIZE = 300000
+LOGOS_PATH = STATIC_PATH / "logos"
+
+SCHEMA_NS = "https://schema.org/"
+RDF_RESOURCE = "{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource"
 DOAP_NS = "http://usefulinc.com/ns/doap#"
 DOAP_NAME = f".//{{{DOAP_NS}}}name"
+DOAP_SHORTDESC = f".//{{{DOAP_NS}}}shortdesc"
+DOAP_HOMEPAGE = f".//{{{DOAP_NS}}}homepage"
 DOAP_OS = f".//{{{DOAP_NS}}}os"
+DOAP_LOGO = f".//{{{SCHEMA_NS}}}logo"
 
 MD_FRONTMATTER = """---\ntitle: %s\ndate: %s\n---\n
 {{< provider-details provider="%s">}}
@@ -55,9 +68,8 @@ def prepare_provider_data_files() -> None:
     """Download and prepare provider data files"""
     initialize_directory(DOWNLOAD_PATH)
 
-    # Temporarily move 'logo' folder and 'recommended_clients.json'
+    # Temporarily move some folders and files
     # in order to clean up directories
-    shutil.copytree(STATIC_PATH / "logo", DOWNLOAD_PATH / "logo")
     shutil.copytree(STATIC_PATH / "images", DOWNLOAD_PATH / "images")
     shutil.copyfile(
         DATA_PATH / "api_version.json",
@@ -73,13 +85,13 @@ def prepare_provider_data_files() -> None:
     )
 
     initialize_directory(STATIC_PATH)
+    initialize_directory(LOGOS_PATH)
     initialize_directory(DATA_PATH)
 
     _get_filtered_providers_data()
     _get_badges()
     _get_providers_file()
 
-    shutil.copytree(DOWNLOAD_PATH / "logo", STATIC_PATH / "logo")
     shutil.copytree(DOWNLOAD_PATH / "images", STATIC_PATH / "images")
     shutil.copyfile(
         DOWNLOAD_PATH / "api_version.json",
@@ -212,9 +224,26 @@ def _parse_doap_infos(doap_file: str) -> dict[str, list[str]] | None:
     doap_name = doap.find(DOAP_NAME)
     if doap_name is not None:
         info["name"] = doap_name.text
+
+    info["shortdesc"] = None
+    doap_shortdesc = doap.find(DOAP_SHORTDESC)
+    if doap_shortdesc is not None:
+        info["shortdesc"] = doap_shortdesc.text
+
+    info["homepage"] = None
+    doap_homepage = doap.find(DOAP_HOMEPAGE)
+    if doap_homepage is not None:
+        info["homepage"] = doap_homepage.attrib.get(RDF_RESOURCE)
+
     info["os"] = []
     for entry in doap.findall(DOAP_OS):
         info["os"].append(entry.text)
+
+    info["logo"] = None
+    doap_logo = doap.find(DOAP_LOGO)
+    if doap_logo is not None:
+        info["logo"] = doap_logo.attrib.get(RDF_RESOURCE)
+
     return info
 
 
@@ -250,7 +279,10 @@ def prepare_client_data_file() -> None:
 
     client_infos: list[dict[str, str | bool | list[str] | None]] = []
     for client_name, client_data in providers_clients_list.items():
+        shortdesc = None
+        homepage = None
         supported_os = None
+        logo_uri = None
 
         filtered_data = [
             item for item in xsf_software_list if item.get("name") == client_name
@@ -266,14 +298,24 @@ def prepare_client_data_file() -> None:
                 )
                 parsed_infos = _parse_doap_infos(client_name)
                 if parsed_infos is not None:
+                    homepage = parsed_infos["homepage"]
+                    shortdesc = parsed_infos["shortdesc"]
                     supported_os = parsed_infos["os"]
+                    logo = parsed_infos["logo"]
+                    if logo is not None and isinstance(logo, str):
+                        package_name_slug = slugify(
+                            client_name, replacements=[["+", "plus"]]
+                        )
+                        logo_uri = process_logo(package_name_slug, logo)
 
         client_infos.append(
             {
                 "name": client_name,
+                "homepage": homepage,
+                "shortdesc": shortdesc,
                 "os": supported_os,
+                "logo": logo_uri,
                 "since": client_data["since"]["content"],
-                "website": client_data["website"]["content"],
                 "maintained": client_data["maintained"]["content"],
             }
         )
@@ -282,3 +324,58 @@ def prepare_client_data_file() -> None:
         DATA_PATH / "implementing_clients.json", "w", encoding="utf-8"
     ) as client_data_file:
         json.dump(client_infos, client_data_file, indent=4)
+
+
+def check_image_file(file_path: Path, extension: str) -> bool:
+    """Check if file size is greater than 300 KiB and if so, resize image
+    Returns success
+    """
+    if extension == "svg":
+        # No need to resize SVG files
+        return True
+
+    try:
+        file_size = file_path.stat().st_size
+    except OSError:
+        log.exception("An error occurred while trying to open logo")
+        return False
+
+    if file_size <= MAX_LOGO_FILE_SIZE:
+        # Small enough, no need to resize image
+        return True
+
+    try:
+        with Image.open(file_path) as img:
+            width, height = img.size
+            new_width = 400
+            new_height = int(new_width * height / width)
+            resized_img = img.resize((new_width, new_height), Resampling.LANCZOS)
+            resized_img.save(file_path)
+            log.info(
+                "Logo at %s (file size: %s KB) too big, had to be resized",
+                file_path,
+                f"{file_size / (1 << 10):,.0f}",
+            )
+    except (ValueError, OSError, UnidentifiedImageError):
+        log.exception("An error occurred while trying to resize logo")
+        return False
+
+    return True
+
+
+def process_logo(package_name: str, uri: str) -> str | None:
+    """Download package logo and return logo URI"""
+    image_url = urlparse(uri)
+    extension = Path(image_url.path).suffix
+    file_name = f"{package_name}{extension}"
+    success = download_file(uri, Path(file_name))
+    if not success:
+        return None
+
+    success = check_image_file(DOWNLOAD_PATH / file_name, extension[1:].lower())
+    if not success:
+        return None
+
+    logo_uri = f"/logos/{package_name}{extension}"
+    shutil.copyfile(DOWNLOAD_PATH / file_name, Path(LOGOS_PATH / file_name))
+    return logo_uri
