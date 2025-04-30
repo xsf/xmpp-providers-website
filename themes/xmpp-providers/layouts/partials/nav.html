@@ -13,7 +13,7 @@
         {{ range .Site.Menus.main }}
           {{ $baseurl := urls.Parse $.Site.Params.Baseurl }}
           {{ if .HasChildren }}
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown d-flex align-items-center">
             <a class="nav-link dropdown-toggle" href="{{ .URL | relLangURL }}" id="{{ .Name }}" data-bs-toggle="dropdown" aria-expanded="false">{{ .Name }}</a>
             <ul class="dropdown-menu" aria-labelledby="{{ .Name }}">
               {{ range .Children }}
@@ -26,7 +26,7 @@
             {{ $url := urls.Parse .URL }}
             {{ $menu_item_url := .URL | relLangURL }}
             {{ $page_url:= $currentPage.RelPermalink | relLangURL }}
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center">
               <a
               class="nav-link{{ if ne $url.Host $baseurl.Host }} nav-link-external{{ end }}{{ if eq $menu_item_url $page_url }} active{{ end }}"
               href="{{ .URL | relLangURL }}"
@@ -39,6 +39,9 @@
             </li>
           {{ end }}
         {{ end }}
+        <li class="nav-item d-flex align-items-center">
+          <a href="https://liberapay.com/xmpp_providers" target="_blank" class="nav-link"><img src="/images/liberapay-donate.svg"></a>
+        </li>
       </ul>
     </div>
   </div>
