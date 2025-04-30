@@ -1,0 +1,46 @@
+version = 1
+SPDX-PackageName = "XMPP Providers Website"
+SPDX-PackageSupplier = "XMPP Providers Team <>"
+SPDX-PackageDownloadLocation = "https://providers.xmpp.net"
+
+[[annotations]]
+path = "config/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 XMPP Providers Team"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "content/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 XMPP Providers Team"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+[[annotations]]
+path = "data/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 XMPP Providers Team"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "themes/xmpp-providers/theme.json"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 XMPP Providers Team"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "themes/xmpp-providers/i18n/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 XMPP Providers Team"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "themes/xmpp-providers/layouts/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 XMPP Providers Team"
+SPDX-License-Identifier = "AGPL-3.0-or-later"
+
+[[annotations]]
+path = "themes/xmpp-providers/static/fontawesome/webfonts/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2022 Fonticons, Inc."
+SPDX-License-Identifier = "OFL-1.1"
