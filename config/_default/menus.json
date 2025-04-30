@@ -23,12 +23,7 @@
         {
             "name": "Statistics",
             "url": "/statistics/",
-            "weight": 5,
-            "params": [
-                {
-                    "new": true
-                }
-            ]
+            "weight": 5
         },
         {
             "name": "Blog",
@@ -38,12 +33,7 @@
         {
             "name": "Provider File Generator",
             "url": "/provider-file-generator/",
-            "weight": 7,
-            "params": [
-                {
-                    "new": true
-                }
-            ]
+            "weight": 7
         },
         {
             "name": "API",
