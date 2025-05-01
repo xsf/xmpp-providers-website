@@ -95,7 +95,7 @@ article h2 {
     -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted #6c757d;
     cursor: help;
-    color: #2a2e31;
+    color: initial;
 }
 
 .dropdown-item.active, .dropdown-item:active {
@@ -259,9 +259,6 @@ table.sortable th:hover {
     }
     .accordion-body {
         background-color: #2a2e31;
-    }
-    .abbr {
-        color: #97a0a8;
     }
     .card {
         background-color:#2d3439;
