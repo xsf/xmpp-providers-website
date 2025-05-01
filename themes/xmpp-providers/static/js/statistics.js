@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+const theme = getPreferredTheme()
 let chart_background_color = "rgb(43, 48, 53)"
 if (theme === "light") {
   chart_background_color = "rgb(248, 249, 250)"
