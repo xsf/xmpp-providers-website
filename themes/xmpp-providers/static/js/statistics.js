@@ -2,11 +2,16 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-const theme = getPreferredTheme()
-let chart_background_color = "rgb(43, 48, 53)"
-if (theme === "light") {
-  chart_background_color = "rgb(248, 249, 250)"
-}
+const themeObserver = new MutationObserver((mutations) => {
+  mutations.forEach((mutation) => {
+    if (mutation.attributeName === 'data-bs-theme') {
+      update_chart_background_color()
+    }
+  });
+});
+themeObserver.observe(document.querySelector('html'), {
+  attributes: true, childList: false, characterData: false
+});
 
 let pie_chart_radius
 
@@ -27,6 +32,18 @@ document.addEventListener("DOMContentLoaded", () => {
 window.onresize = function () {
   // Resize charts when resizing window
   set_pie_chart_radius()
+}
+
+function get_chart_background_color() {
+  return getPreferredTheme() === "dark" ? "rgb(43, 48, 53)" : "rgb(248, 249, 250)";
+}
+
+function update_chart_background_color() {
+  for (const chart of charts) {
+    let option = chart.getOption()
+    option["backgroundColor"] = get_chart_background_color()
+    chart.setOption(option)
+  }
 }
 
 function set_pie_chart_radius() {
@@ -90,7 +107,7 @@ function initialize_categories_pie_chart() {
 
   const chart = echarts.init(container);
   const option = {
-    backgroundColor: chart_background_color,
+    backgroundColor: get_chart_background_color(),
     tooltip: {
       trigger: "item",
     },
@@ -132,7 +149,7 @@ function initialize_since_bar_chart() {
 
   const chart = echarts.init(container);
   const option = {
-    backgroundColor: chart_background_color,
+    backgroundColor: get_chart_background_color(),
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -180,7 +197,7 @@ function initialize_bus_factor_pie_chart() {
 
   const chart = echarts.init(container);
   const option = {
-    backgroundColor: chart_background_color,
+    backgroundColor: get_chart_background_color(),
     tooltip: {
       trigger: "item",
     },
@@ -216,7 +233,7 @@ function initialize_green_web_check_pie_chart() {
 
   const chart = echarts.init(container);
   const option = {
-    backgroundColor: chart_background_color,
+    backgroundColor: get_chart_background_color(),
     tooltip: {
       trigger: "item",
     },
@@ -260,7 +277,7 @@ function initialize_file_size_bar_chart() {
 
   const chart = echarts.init(container);
   const option = {
-    backgroundColor: chart_background_color,
+    backgroundColor: get_chart_background_color(),
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -308,7 +325,7 @@ function initialize_provider_file_pie_chart() {
 
   const chart = echarts.init(container);
   const option = {
-    backgroundColor: chart_background_color,
+    backgroundColor: get_chart_background_color(),
     tooltip: {
       trigger: "item",
     },
@@ -344,7 +361,7 @@ function initialize_server_testing_pie_chart() {
 
   const chart = echarts.init(container);
   const option = {
-    backgroundColor: chart_background_color,
+    backgroundColor: get_chart_background_color(),
     tooltip: {
       trigger: "item",
     },
