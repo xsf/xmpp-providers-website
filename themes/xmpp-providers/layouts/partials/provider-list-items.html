@@ -3,7 +3,7 @@
     {{ $providers_data := index site.Data.providers .jid }}
     <div class="accordion-item" data-provider="{{ .jid }}" data-category="{{ .category }}" data-property-free="{{ .freeOfCharge }}" data-property-professional-hosting="{{ .professionalHosting }}" data-property-rating-green-web-check="{{ .ratingGreenWebCheck }}" data-property-ibr="{{ .inBandRegistration }}" data-property-password-reset="{{ ne (len .passwordReset) 0 }}" data-property-server-locations="{{ delimit .serverLocations "," }}">
         <h2 class="accordion-header" id="heading-{{ $provider_id }}">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $provider_id }}" aria-expanded="false" aria-controls="collapse-{{ $provider_id }}">
+            <button class="accordion-button bg-body-tertiary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $provider_id }}" aria-expanded="false" aria-controls="collapse-{{ $provider_id }}">
                 <div class="d-flex justify-content-between w-100">
                     <div class="d-flex align-items-center">
                         <span class="badge rounded-1 {{ if eq .category "A" }}category-a{{ else if eq .category "B" }}category-b{{ else if eq .category "C" }}category-c{{ else }}category-d{{ end }}">{{ .category }}</span>
@@ -132,9 +132,9 @@
                         </table>
                     </div>
                 </div>
-                <div class="row justify-content-center pt-3">
+                <div class="row justify-content-center pt-4">
                     <div class="col-sm-6 d-grid text-center">
-                        <a class="btn btn-secondary btn-sm" href="/provider/{{ .jid }}/" role="button">Details</a>
+                        <a class="btn btn-secondary btn-sm" href="/provider/{{ .jid }}/" role="button">Show Details</a>
                     </div>
                 </div>
             </div>

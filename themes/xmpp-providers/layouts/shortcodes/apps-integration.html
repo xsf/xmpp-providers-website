@@ -2,7 +2,7 @@
 
 {{ range sort $clients_data ".name" }}
     {{ if .maintained }}
-        <a href="{{ .homepage }}" target="_blank" class="card app-card my-3 shadow-sm" style="max-width: 540px;">
+        <a href="{{ .homepage }}" target="_blank" class="card app-card bg-body-tertiary my-3 shadow-sm" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4 d-flex align-items-center justify-content-center">
                     <img src="{{ .logo }}" class="img-fluid rounded-start p-4 w-100" style="max-width: 15rem;" alt="{{ .name }} logo">

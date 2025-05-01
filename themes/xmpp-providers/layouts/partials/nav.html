@@ -28,7 +28,7 @@
             {{ $page_url:= $currentPage.RelPermalink | relLangURL }}
             <li class="nav-item d-flex align-items-center">
               <a
-              class="nav-link{{ if ne $url.Host $baseurl.Host }} nav-link-external{{ end }}{{ if eq $menu_item_url $page_url }} active{{ end }}"
+              class="nav-link{{ if ne $url.Host $baseurl.Host }} nav-link-external align-items-baseline mx-1{{ end }}{{ if eq $menu_item_url $page_url }} active{{ end }}"
               href="{{ .URL | relLangURL }}"
               {{ if ne $url.Host $baseurl.Host }}target="_blank"{{ end }}
               >
