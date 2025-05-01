@@ -98,6 +98,10 @@ article h2 {
     color: #2a2e31;
 }
 
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #748891;
+}
+
 .app-card {
     transition: box-shadow 0.1s ease-in-out;
 }
