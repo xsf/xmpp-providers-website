@@ -93,6 +93,13 @@ article h2 {
     color: #2a2e31;
 }
 
+.app-card {
+    transition: box-shadow 0.1s ease-in-out;
+}
+.app-card:hover {
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
 #copy_toast {
     margin-top: 6rem;
 }

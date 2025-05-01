@@ -2,7 +2,7 @@
 
 {{ range sort $clients_data ".name" }}
     {{ if .maintained }}
-        <div class="card my-3 shadow-sm" style="max-width: 540px;">
+        <a href="{{ .homepage }}" target="_blank" class="card app-card my-3 shadow-sm" style="max-width: 540px;">
             <div class="row g-0">
                 <div class="col-md-4 d-flex align-items-center justify-content-center">
                     <img src="{{ .logo }}" class="img-fluid rounded-start p-4 w-100" style="max-width: 15rem;" alt="{{ .name }} logo">
@@ -12,9 +12,6 @@
                         <h4 class="card-title fw-bold">{{ .name }}</h4>
                         <p class="card-text text-muted small">{{ .shortdesc }}</p>
                         <ul>
-                            <li>
-                                <a href="{{ .homepage }}" target="_blank" class="stretched-link">Website</a>
-                            </li>
                             <li>
                                 Support since version {{ .since }}
                             </li>
@@ -36,6 +33,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     {{ end }}
 {{ end }}
