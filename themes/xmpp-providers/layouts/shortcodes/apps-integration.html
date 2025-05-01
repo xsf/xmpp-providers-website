@@ -1,6 +1,6 @@
 {{ $clients_data := .Site.Data.implementing_clients }}
 
-{{ range $clients_data }}
+{{ range sort $clients_data ".name" }}
     {{ if .maintained }}
         <div class="card my-3 shadow-sm" style="max-width: 540px;">
             <div class="row g-0">
