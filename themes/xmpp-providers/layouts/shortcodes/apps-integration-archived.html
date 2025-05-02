@@ -1,13 +1,17 @@
 {{ $clients_data := .Site.Data.implementing_clients }}
 
 <ul>
-{{ range $clients_data }}
+{{ range sort $clients_data ".name" }}
     {{ if not .maintained }}
        <li>
-            <a href="{{ .website.en }}" target="_blank" class="icon-link align-items-baseline">
+            {{ if .homepage }}
+            <a href="{{ .homepage }}" target="_blank" class="icon-link align-items-baseline">
                 {{ .name }}
                 <i class="fa-solid fa-arrow-up-right-from-square fa-xs opacity-75 me-1"></i>
             </a>
+            {{ else }}
+                {{ .name }}
+            {{ end }}
        </li>
     {{ end }}
 {{ end }}
