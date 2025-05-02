@@ -94,6 +94,7 @@ article h2 {
 .abbr {
     -webkit-text-decoration: underline dotted;
     text-decoration: underline dotted #6c757d;
+    text-underline-offset: 0.2rem;
     cursor: help;
     color: initial;
 }
