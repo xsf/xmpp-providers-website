@@ -4,17 +4,17 @@ date: 2025-07-20
 ---
 
 This May we have been running a small three-minute survey focusing to especially listed and non-listed operators to collect valuable feedback on our service and project.
-Overall, we say thanks to almost 60 participants which is a big number for currently more than 70 operators listed in our database.
+Overall, we say thanks to almost 60 participants which is a big number for currently more than [70 operators listed in our database](https://providers.xmpp.net/statistics/).
 We can tell already that the general feedback is very positive!
 
-
+{{< figure src="/images/survey_result_overall.png" caption="Survey overall result" class="text-center w-100 pt-5" height="400" link="/" >}}
 
 Although, we had numerous participants, only one about third were actual server maintainers.
-Most of the responders were listed in category A or B or not yet at all.
+Most of the responders were listed in [category A or B](https://providers.xmpp.net/faq/#in-which-categories-can-providers-be) or not yet at all.
 Our first interest was to understand the general satisfaction with our service.
 Hence, we ask about these four aspects:
 
-
+{{< figure src="/images/survey_result_general_experience.png" caption="Survey general experience result" class="text-center w-100 pt-5" height="400" link="/" >}}
 
 Across the aspects, we see general happiness with our project’s listing service, documentation and transparency, which is very important to us as well as communication.
 Though, we hear that sometimes we could put more efforts on our documentation.
@@ -23,6 +23,7 @@ We recommend to read our FAQ first and from here our detailed documentation on G
 Another question that was interesting to us is how the experience for an XMPP server operator after listing a server on our list is.
 Therefore, we asked about the following four aspects:
 
+{{< figure src="/images/survey_result_listing_experience.png" caption="Survey listing experience result" class="text-center w-100 pt-5" height="400" link="/" >}}
 
 Here, the feedback supports our project in the way that after listing the maintenance as well as potential spam incidents did not increase in a significant way.
 At the same time, most participants tell that the number of users and usage of their server increased.
@@ -34,20 +35,20 @@ In theory, we would like to list any publicly visible XMPP instance.
 Since we started, our project capabilities grew beyond just listing and evaluating servers.
 We also provide many information that is helpful to users, even if server’s do not have an open registration running.
 
-Another common point we hear is making inband-registration as requirement for a good categorisation. We are aware of the issues around abuse and spam.
+Another common point we hear is making [inband-registration](https://xmpp.org/extensions/xep-0077.html) as requirement for a good categorisation. We are aware of the issues around abuse and spam.
 Still, we believe to flourish and enable a federated and accessible network.
 Onboarding to the XMPP ecosystem has been a struggle since ever for newcomers and we believe that this way of registration is essential for the growing of the network.
 Instead of closing registration, we should not let our ecosystem being dictated by abusive behaviour and find better ways to fight spam.
 
 Furthermore, people have still been suggesting to be listed with their server in an easier way.
-We try to reduce the efforts to a minimum and with the DOAP file we believe that we have found a good way so far.
+We try to reduce the efforts to a minimum and with the [DOAP file](https://xmpp.org/extensions/xep-0453.html) we believe that we have found a good way so far.
 We will also try to reduce barriers in the future. Until now, please bare with us and accept the current way of listing your instance. If you need help, we are always happy to help.
 
 Finally, concerns along promoting free-of-cost services has been criticised.
 First of all, we respect that running XMPP servers does cost money and further more we also actively encouraging maintainers finding a commercial business case as well as asking for donations to keep their setup running. On the other side, we are also confronted with the reality that most XMPP clients only list servers for registration that do not cost any money to their user. Not rating this would mean, that client developers would not accept the listing of recommended paid servers (in category A) to  implement the data of our project. In the future, we are considering to enable information along costs of services as well as links for donation information. This should allow client’s to offer different types of services to their users (e.g. commercial and non-commercial ones). We believe this supports a healthier XMPP ecosystem. But until we reach this, we need to keep the rating as it is.
 
 ## Perspective
-More than one year after we have offered the hosting a generic JSON file (API version 2), more than 60% of the currently listed XMPP service providers host such a file on their XMPP instance.
+More than one year after we have offered the hosting a [generic JSON file](https://providers.xmpp.net/provider-file-generator/) (API version 2), more than [60% of the currently listed XMPP service providers](https://providers.xmpp.net/statistics/#provider-file) host such a file on their XMPP instance.
 This is a great success for decentralisation in XMPP onboarding and project towards to better transparency, quality and understanding of the entire XMPP ecosystem.
 
 By the day of publishing this article have 74 XMPP providers listed in our setup.
@@ -56,7 +57,7 @@ The main reasons are either closed registrations, missing information or both.
 We recommend to also support the automated way we have established to improve here.
 
 Due to the reality of the decentralised nature of the network, the discussions and the learnings required us to create more distinct and refined parameters.
-The rating's main purpose is a simple recommendation for *registration of especially newcomers to the XMPP ecosystem (through your server)*.
+The rating's main purpose is a simple recommendation for **registration of especially newcomers to the XMPP ecosystem (through your server)**.
 
 To remind, the distances, between our highly tech-savvy knowledge and the majority of the non-tech-savvy users is huge.
 And on the opposite, the tolerance of these people is often very thin.
@@ -83,7 +84,7 @@ To thrive trust with our service we build it
 * as a service that tracks and enable quality checks overtime and even help operators with feedback to their service,
 * a service that provides an API to automatically register a new account for a user, 
 * a service that helps to retrieve service information and support information beyond the registration process,
-* with good documentation and transparency including a user-friendly automated setup for everyone to have a good start.
+* with good documentation and transparency including a [user-friendly automated setup](https://invent.kde.org/melvo/xmpp-providers-server) for everyone to have a good start.
 
 Not being a perfect solution, it represents strong efforts in the right direction to make registration smooth and elegant.
 The priority is to prevent the two extremes of unmaintained provider lists containing any server you can find and also a purely limited selection of servers only with no changes.
@@ -97,13 +98,13 @@ And remember, a rising tide lifts all boats.
 — The XMPP Providers Team
 
 ## Help Us
-For a good user experience, apps integrating XMPP Providers are as important as the providers themselves.
-If you are an XMPP developer, please consider adding XMPP Provider support to your app.
-If you are an operator of a public XMPP service, provide the information we need and add it to our list.
-Feel free to reach out to us if you have any questions!
+For a good user experience, [apps integrating XMPP Providers](https://providers.xmpp.net/apps/) are as important as the providers themselves.
+If you are an XMPP developer, please consider [adding XMPP Provider support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
+If you are an operator of a public XMPP service, provide the [information we need](https://github.com/xsf/xmpp-providers-website/blob/2024-08_blogpost_67_perc_providers/faq/#where-do-we-have-the-providers-properties-from) and [add it to our list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
+Feel free to [reach out to us](https://github.com/xsf/xmpp-providers-website/blob/2024-08_blogpost_67_perc_providers/contact) if you have any questions!
 
 ## Spread the Word
 The XMPP Providers project lives from the community.
 We are happy to hear your feedback!
-Follow us and spread the word!
+[Follow us and spread the word](https://fosstodon.org/@xmpp_providers)!
 {{< figure src="/images/xmpp-providers-adaptive.svg" caption="XMPP Providers Logo" class="text-center w-100 pt-5" height="300" link="/" >}}
