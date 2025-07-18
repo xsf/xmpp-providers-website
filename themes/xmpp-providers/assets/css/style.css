@@ -42,6 +42,10 @@ article h2 {
     margin-top: 0.8em;
     font-weight: 200;
 }
+.container {
+    hyphens: auto;
+    word-wrap: break-word;
+}
 .navbar {
     padding-top: 0.2rem;
     padding-bottom: 0.2rem;
