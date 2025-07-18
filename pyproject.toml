@@ -18,8 +18,8 @@ dependencies = [
 [dependency-groups]
 dev = [
   "isort==6.0.1",
-  "ruff==0.11.7",
-  "pyright==1.1.400",
+  "ruff==0.12.4",
+  "pyright==1.1.403",
 ]
 
 [tool.isort]
@@ -44,6 +44,7 @@ target-version = "py313"
 select = ["ALL"]
 
 ignore = [
+  "A005",   # stdlib-module-shadowing
   "COM812", # missing-trailing-comma
   "D100",   # undocumented-public-module
   "D104",   # undocumented-public-package
