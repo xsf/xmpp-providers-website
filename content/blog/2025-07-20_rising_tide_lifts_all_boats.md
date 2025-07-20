@@ -5,8 +5,10 @@ date: 2025-07-20
 
 ## Providers Survey
 
-In May we ran a small survey to gather feedback from XMPP server operators. Our main concerns were XMPP Provider's service and the project itself.
-First of all, we would like to thank almost 60 people who participated in this survey. While the XMPP Providers project currently lists a little more than [70 operators](/statistics/), this is a good turnout.
+In May we ran a small survey to gather feedback from XMPP server operators.
+Our main concerns were XMPP Provider's service and the project itself.
+First of all, we would like to thank almost 60 people who participated in this survey.
+While the XMPP Providers project currently lists a little more than [70 operators](/statistics/), this is a good turnout.
 At this point we can already tell that the general feedback is very positive!
 
 Although we had quite a few participants, only about one third were actual server operators.
@@ -14,15 +16,22 @@ Most of the responders were listed in [category A or B](/faq/#in-which-categorie
 
 {{< figure src="/images/survey_result_overall.png" caption="Survey overall result" class="text-center pt-5" >}}
 
-Since we are curious about the general satisfaction with XMPP Provider's service, we made these four aspects part of the survey: Service listing and its processes, Transparency, Documentation and Communication. Across all these aspects, we see mostly satisfied to very satisfied participants.
+Since we are curious about the general satisfaction with XMPP Provider's service, we made these four aspects part of the survey:
+Service listing and its processes, transparency, documentation and communication.
+Across all these aspects, we see mostly satisfied to very satisfied participants.
+For the occasional question about project documentation, we [recommend the FAQ](/faq) as a starting point.
 
 {{< figure src="/images/survey_result_general_experience.png" caption="Survey general experience result" class="text-center pt-5" >}}
 
-Since being listed as a provider may come with increased public visibility, we are interested in potential changes in registration count, usage activity, maintenance efforts or spam incidents. The results suggest that spam incidents, maintenance efforts and usage activity didn't change much. However, registration count increased, which supports federation in the XMPP ecosystem.
+Since being listed as a provider may come with increased public visibility, we are interested in potential changes in registration count, usage activity, maintenance efforts or spam incidents.
+The results suggest that spam incidents, maintenance efforts and usage activity didn't change much.
+However, registration count increased, which supports federation in the XMPP ecosystem.
 
 {{< figure src="/images/survey_result_listing_experience.png" caption="Survey listing experience result" class="text-center pt-5" >}}
 
-In addition to these survey results, we received a lot of written feedback. A good share of this feedback praises the project for empowering people to make a good and informed choice about their XMPP provider. We would like to address some of the points raised in the feedback separately:
+In addition to these survey results, we received a lot of written feedback.
+A good share of this feedback praises the project for empowering people to make a good and informed choice about their XMPP provider.
+We would like to address some of the points raised in the feedback separately:
 
 - Which kind of providers do we list? In theory, we would like to list any publicly visible XMPP provider. XMPP Providers [gathers information about all listed providers automatically](/blog/2023-12-29-xmpp-providers-fully-automated/), which may be helpful for registration purposes, for getting an overview about providers, or for looking up information about a specific provider, even if registration is closed.
 - Why do you make [inband-registration](https://xmpp.org/extensions/xep-0077.html) a requirement for a category A or B listing? XMPP Providers is a project made to simplify the users’ onboardings. Therefore, the criteria we use for the categorization are from a user’s perspective. This means users should be able to register directly from their XMPP client. Spam may be the most prominent reason to close down inband-registration, but that creates a barrier for newcomers.
@@ -30,9 +39,12 @@ In addition to these survey results, we received a lot of written feedback. A go
 
 ## Perspective
 
-A year after introducing the [provider file](/provider-file-generator/), more than [60% of the currently listed XMPP providers](/statistics/#provider-file) host such a file to offer additional information. We see this as a great success, since it helps to improve both transparency and quality of XMPP providers.
+A year after introducing the [provider file](/provider-file-generator/), more than [60% of the currently listed XMPP providers](/statistics/#provider-file) host such a file to offer additional information.
+We see this as a great success, since it helps to improve both transparency and quality of XMPP providers.
 
-At the time of writing, about 60% of the 74 XMPP providers listed are category D providers. This is either due to closed registration, missing information, or both. We encourage all providers to offer a provider file to fill the missing information gap.
+At the time of writing, about 60% of the 74 XMPP providers listed are category D providers.
+This is either due to closed registration, missing information, or both.
+We encourage all providers to offer a provider file to fill the missing information gap.
 
 <!-- TODO -->
 
