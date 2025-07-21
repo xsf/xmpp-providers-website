@@ -47,6 +47,8 @@ At the time of writing, about 60% of the 74 XMPP providers listed are category D
 This is either due to closed registration, missing information, or both.
 We encourage all providers to offer a provider file to fill the missing information gap.
 
+Furthermore, with the client Monocles now [three apps have integrated information](/apps/) from the XMPP Providers project.
+
 ## Why Provider Categories
 
 The decentralized nature of the XMPP network allows for a wide variety of clients and servers.
@@ -74,7 +76,7 @@ Last but not least, categories give providers an incentive to improve their serv
 ## Why Another Providers List
 
 There are many websites listing XMPP providers, ranging from wikis to user guides and personal websites.
-Many of these lists have common problems - info gets stale.
+Many of these lists have common problems - information gets stale.
 In order to have up-to-date information, these lists need a lot of manual maintenance.
 To avoid having to maintain a list manually, the XMPP Providers project builds on automation.
 As much of the data gathering and processing as possible has been automated.
