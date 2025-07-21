@@ -36,6 +36,7 @@ We would like to address some of the points raised in the feedback separately:
 - Which kind of providers do we list? In theory, we would like to list any publicly visible XMPP provider. XMPP Providers [gathers information about all listed providers automatically](/blog/2023-12-29-xmpp-providers-fully-automated/), which may be helpful for registration purposes, for getting an overview about providers, or for looking up information about a specific provider, even if registration is closed.
 - Why do you make [inband-registration](https://xmpp.org/extensions/xep-0077.html) a requirement for a category A or B listing? XMPP Providers is a project made to simplify the users’ onboardings. Therefore, the criteria we use for the categorization are from a user’s perspective. This means users should be able to register directly from their XMPP client. Spam may be the most prominent reason to close down inband-registration, but that creates a barrier for newcomers.
 - Why do I need to provide an extra file for XMPP Providers? We try to gather data automatically, but not all data is available in machine-readable format. To reduce manual efforts until more data is available for automatic processing, we opted for a [providers file](/provider-file-generator/) containing additional information, which is hosted by individual providers. In the meantime, we continue to work on automating as much as possible.
+- Why can I only get into category B and not into category A if my service is not free? We have to make this distinction because we need to give client developers a chance to display paid and free-of-charge providers in separated lists. In the future, we would like to extend the provider list with e.g. donation information, to give providers an opportunity to ask users for support.
 
 ## Perspective
 
@@ -46,54 +47,56 @@ At the time of writing, about 60% of the 74 XMPP providers listed are category D
 This is either due to closed registration, missing information, or both.
 We encourage all providers to offer a provider file to fill the missing information gap.
 
-<!-- TODO -->
+## Why Provider Categories
 
-Due to the reality of the decentralised nature of the network, the discussions and the learnings required us to create more distinct and refined parameters.
-The rating's main purpose is a simple recommendation for **registration of especially newcomers to the XMPP ecosystem (through your server)**.
+The decentralized nature of the XMPP network allows for a wide variety of clients and servers.
+While the basic features might work in many cases, more advanced features might fail to work if a client or a server does not support the necessary feature set.
+On top of that, there can be servers configured with outdated settings or insufficient storage options, which may further degrade the experience.
 
-To remind, the distances, between our highly tech-savvy knowledge and the majority of the non-tech-savvy users is huge.
-And on the opposite, the tolerance of these people is often very thin.
-Therefore, we should ensure a good experience right after registering to an XMPP server.
+Take for example file transfers: A provider offers file transfers via [HTTP File Upload](https://xmpp.org/extensions/xep-0363.html) with up to 10 MB per file.
+Now there is a user trying to send a 12 MB file, but their client does not support alternative file transfer methods (e.g. direct transfer).
+In this case, the user can not send their file via XMPP.
+While registering with their provider, the user might not be aware of potential limits or issues, which could be avoided otherwise.
 
-We have repeatedly discussed the minimum values of the rating parameters, the limits and the defined thresholds.
-Usually, to our understanding, most providers are also interested to have more users.
-It is certainly not sufficient in all cases, but your users don't care about your properties, until they realise certain functions don’t work.
-Then often the chat client (!) and maybe even XMPP as technology is blamed and they leave it forever.
+To give newcomers the best experience possible, the XMPP Providers project groups providers into simple categories.
+Each category is based on a set of criteria a provider has to meet, and thus generalizes technical details into categories.
+This is the easiest way to offer newcomers a list of providers with little potential for frustration.
+Frustration during the first steps with a new service may turn users away from XMPP.
+That's why frictionless onboarding and initial experience for first-time users is so important.
+But users don't have to rely on categories alone.
+XMPP Providers offers plenty of details for tech-savvy users, which can be used to filter the list by further criteria.
 
-Ratings are sensitive and they obviously lead to conflict, no doubts.
-Still, we took strong actions to de-escalate and show good intentions.
-Such as, keep the requirements for A as low as possible, actively reach out and help providers on improving their setup, host our support chat where we help operators even beyond the project with technical support.
+Putting providers into categories may lead to conflicts, that's true.
+Oftentimes providers can reach better categories by fixing configuration issues, and we are always glad to help where we can.
+There is an [extensive FAQ](/faq/#how-can-server-operators-provide-properties-via-xmpp) with the most frequent configuration issues, and we offer a [support chat](/contact/) for help with technical issues or related questions.
+Last but not least, categories give providers an incentive to improve their service for better first-time user experience.
 
-## Purpose
+## Why Another Providers List
 
-There are many XMPP chat clients that help users to register a new account to a (pre-)existing list of XMPP server providers.
-However, one issue is the variation in quality of XMPP servers lists, due to often a manual maintained and outdated nature.
-In addition, restrictive behaviour as well as no recommendation to users at all by client developers does not support the federated idea and leads to oligopoly-like distribution of users.
+There are many websites listing XMPP providers, ranging from wikis to user guides and personal websites.
+Many of these lists have common problems - info gets stale.
+In order to have up-to-date information, these lists need a lot of manual maintenance.
+To avoid having to maintain a list manually, the XMPP Providers project builds on automation.
+As much of the data gathering and processing as possible has been automated.
+For data which cannot be gathered automatically, we are actively working on solutions.
 
-We intend to address the unpopular situation around onboarding and user experience as well as promote user decentralisation in XMPP through transparency, accessibility, quality and completeness of information.
-To thrive trust with our service we build it
+Automating data processing and categorization needs transparency, accessibility, and good documentation to be sustainable.
+To reach these goals, and to improve the XMPP onboarding experience, we built the service around XMPP Providers with the following features in mind:
 
-* with a federated and decentralised interface,
-* with a transparent high level of semi-automated and up-to-date information of listed servers with soft and hard quality measures,
-* as a service that tracks and enable quality checks overtime and even help operators with feedback to their service,
-* a service that provides an API to automatically register a new account for a user, 
-* a service that helps to retrieve service information and support information beyond the registration process,
-* with good documentation and transparency including a [user-friendly automated setup](https://invent.kde.org/melvo/xmpp-providers-server) for everyone to have a good start.
+- an open-source interface which can be hosted by every interested party
+- extensive service documentation
+- offering of automated and up-to-date information for listed providers, including categorization with soft and hard quality criteria
+- helping to retrieve service information and support information beyond the registration process
+- giving opportunities for providers to check and improve their service quality
+- providing an API to [include the list of providers in XMPP clients](/apps/)
 
-Not being a perfect solution, it represents strong efforts in the right direction to make registration smooth and elegant.
-The priority is to prevent the two extremes of unmaintained provider lists containing any server you can find and also a purely limited selection of servers only with no changes.
+While this project certainly leaves room for improvement, it's a first step to make the registration process smoother and less error-prone.
+Providing a public service comes with great responsibility, and we would like to support service providers in that.
+Remember: a rising tide lifts all boats.
 
-We encourage you to use XMPP technology and run your own server instance, maybe even by becoming a public provider.
-But keep in mind that providing a public service comes with great responsibility.
-Let’s make the best out of this project, regardless of how you apply to it.
-We believe this project is a great chance.
+## Help the Project, Improve XMPP
 
-And remember, a rising tide lifts all boats.
-— The XMPP Providers Team
-
-## Help the Project, Help XMPP
-
-For a good user experience, [apps integrating XMPP Providers](https://providers.xmpp.net/apps/) are as important as the providers themselves.
+For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the providers themselves.
 If you are an XMPP developer, please consider [adding XMPP Provider support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
 If you are an operator of a public XMPP service, provide the [information we need](https://github.com/xsf/xmpp-providers-website/blob/2024-08_blogpost_67_perc_providers/faq/#where-do-we-have-the-providers-properties-from) and [add it to the list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
 Feel free to [reach out](https://github.com/xsf/xmpp-providers-website/blob/2024-08_blogpost_67_perc_providers/contact) if you have any questions!
