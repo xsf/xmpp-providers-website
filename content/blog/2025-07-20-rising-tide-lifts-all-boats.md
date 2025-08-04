@@ -49,7 +49,7 @@ We encourage all providers to offer a provider file to fill the missing informat
 
 Furthermore, with the client monocles chat, now [three active apps have integrated information](/apps/) from the XMPP Providers project.
 
-## Why Provider Categories
+## Why Provider Categories?
 
 The decentralized nature of the XMPP network allows for a wide variety of clients and servers.
 While the basic features might work in many cases, more advanced features might fail to work if a client or a server does not support the necessary feature set.
