@@ -94,7 +94,8 @@ To reach these goals, and to improve the XMPP onboarding experience, we built th
 
 While this project certainly leaves room for improvement, it's a first step to make the registration process smoother and less error-prone.
 Providing a public service comes with great responsibility, and we would like to support service providers in that.
-Remember: a rising tide lifts all boats.
+
+Remember: A rising tide lifts all boats!
 
 ## Help the Project, Improve XMPP
 
