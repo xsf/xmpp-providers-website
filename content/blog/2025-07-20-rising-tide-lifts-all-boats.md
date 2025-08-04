@@ -87,7 +87,7 @@ To reach these goals, and to improve the XMPP onboarding experience, we built th
 
 - an open-source interface which can be hosted by every interested party
 - extensive service documentation
-- offering of automated and up-to-date information for listed providers, including categorization with soft and hard quality criteria
+- offering automated and up-to-date information for listed providers, including categorization with soft and hard quality criteria
 - helping to retrieve service information and support information beyond the registration process
 - giving opportunities for providers to check and improve their service quality
 - providing an API to [include the list of providers in XMPP clients](/apps/)
