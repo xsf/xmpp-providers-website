@@ -40,7 +40,7 @@ We would like to address some of the points raised in the feedback separately:
 
 ## Perspective
 
-A year after introducing the [provider file](/provider-file-generator/), more than [60% of the currently listed XMPP providers](/statistics/#provider-file) host such a file to offer additional information.
+A year after introducing the provider file, more than [60% of the currently listed XMPP providers](/statistics/#provider-file) host such a file to offer additional information.
 We see this as a great success, since it helps to improve both transparency and quality of XMPP providers.
 
 At the time of writing, about 60% of the 74 XMPP providers listed are category D providers.
