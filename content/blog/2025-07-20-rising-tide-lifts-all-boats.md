@@ -97,6 +97,8 @@ Providing a public service comes with great responsibility, and we would like to
 
 Remember: A rising tide lifts all boats!
 
+_The survey has been created with [Formbricks](https://formbricks.com/)._
+
 ## Help the Project, Improve XMPP
 
 For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the providers themselves.
