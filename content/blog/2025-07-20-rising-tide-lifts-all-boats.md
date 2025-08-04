@@ -104,6 +104,9 @@ _The survey has been created with [Formbricks](https://formbricks.com/)._
 For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the providers themselves.
 If you are an XMPP developer, please consider [adding XMPP Providers support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
 If you are an operator of a public XMPP service, provide the [information we need](/faq/#where-do-we-have-the-providers-properties-from) and [add it to the list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
+
+If you like to support XMPP Providers, please consider [making a donation](https://liberapay.com/xmpp_providers).
+
 Feel free to [reach out to us](/contact/) if you have any questions!
 
 ## Spread the Word
