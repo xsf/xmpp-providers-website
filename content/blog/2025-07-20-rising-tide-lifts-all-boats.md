@@ -57,7 +57,7 @@ On top of that, there can be servers configured with outdated settings or insuff
 
 Take for example file transfers: A provider offers file transfers via [HTTP File Upload](https://xmpp.org/extensions/xep-0363.html) with up to 10 MB per file.
 Now there is a user trying to send a 12 MB file, but their client does not support alternative file transfer methods.
-In this case, the user can not send their file via XMPP.
+In this case, the user cannot send their file via XMPP.
 While registering with their provider, the user might not be aware of potential limits or issues, which could be avoided otherwise.
 
 To give newcomers the best experience possible, the XMPP Providers project groups providers into simple categories.
