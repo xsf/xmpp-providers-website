@@ -8,7 +8,7 @@ date: 2025-07-20
 In May 2025, we ran a small survey to gather feedback from XMPP server operators.
 Our main concerns were XMPP Provider's service and the project itself.
 First of all, we would like to thank almost 60 people who participated in this survey.
-While the XMPP Providers project currently lists a little more than [70 operators](/statistics/), this is a good turnout.
+While the XMPP Providers project currently lists a little more than [70 providers](/statistics/), this is a good turnout.
 At this point we can already tell that the general feedback is very positive!
 
 Although we had quite a few participants, only about one third were actual server operators.
