@@ -78,7 +78,7 @@ Last but not least, categories give providers an incentive to improve their serv
 There are many websites listing XMPP providers, ranging from wikis to user guides and personal websites.
 Many of them have a common problem: Information becomes stale.
 In order to have up-to-date information, they need a lot of manual maintenance.
-To avoid having to maintain a list manually, the XMPP Providers project builds on automation.
+To avoid having to maintain a list manually, XMPP Providers builds on automation.
 As much of the data gathering and processing as possible has been automated.
 For data which cannot be gathered automatically, we are actively working on solutions.
 
