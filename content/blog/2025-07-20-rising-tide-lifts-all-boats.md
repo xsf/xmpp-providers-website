@@ -60,7 +60,7 @@ Now there is a user trying to send a 12 MB file, but their client does not suppo
 In this case, the user cannot send their file via XMPP.
 While registering with their provider, the user might not be aware of potential limits or issues, which could be avoided otherwise.
 
-To give newcomers the best experience possible, the XMPP Providers project groups providers into simple categories.
+To give newcomers the best possible experience, the XMPP Providers project groups providers into simple categories.
 Each category is based on a set of criteria a provider has to meet, and thus generalizes technical details into categories.
 This is the easiest way to offer newcomers a list of providers with little potential for frustration.
 Frustration during the first steps with a new service may turn users away from XMPP.
