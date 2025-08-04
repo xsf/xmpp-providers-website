@@ -1,6 +1,6 @@
 ---
 title: A Rising Tide Lifts All Boats
-date: 2025-07-20
+date: 2025-08-05
 ---
 
 ## Providers Survey
