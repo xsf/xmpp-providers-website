@@ -14,7 +14,7 @@ At this point we can already tell that the general feedback is very positive!
 Although we had quite a few participants, only about one third were actual server operators.
 Most of the responders were listed in [category A or B](/faq/#in-which-categories-can-providers-be) or they were not listed yet.
 
-{{< figure src="/images/survey_result_overall.png" caption="Survey overall result" class="text-center pt-5" >}}
+{{< figure src="/images/survey_result_overall.png" caption="Survey category result" class="text-center pt-5" >}}
 
 Since we are curious about the general satisfaction with XMPP Provider's service, we made these four aspects part of the survey:
 Service listing and its processes, transparency, documentation and communication.
