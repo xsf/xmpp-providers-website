@@ -73,7 +73,7 @@ Oftentimes providers can reach better categories by fixing configuration issues,
 There is an [extensive FAQ](/faq/#how-can-server-operators-provide-properties-via-xmpp) with the most frequent configuration issues, and we offer a [support chat](/contact/) for help with technical issues or related questions.
 Last but not least, categories give providers an incentive to improve their service for better first-time user experience.
 
-## Why Another Providers List
+## Why Another Providers List?
 
 There are many websites listing XMPP providers, ranging from wikis to user guides and personal websites.
 Many of these lists have common problems - information gets stale.
