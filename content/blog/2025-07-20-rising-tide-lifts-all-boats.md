@@ -102,7 +102,7 @@ Remember: A rising tide lifts all boats!
 For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the providers themselves.
 If you are an XMPP developer, please consider [adding XMPP Providers support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
 If you are an operator of a public XMPP service, provide the [information we need](/faq/#where-do-we-have-the-providers-properties-from) and [add it to the list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
-Feel free to [reach out](https://github.com/xsf/xmpp-providers-website/blob/2024-08_blogpost_67_perc_providers/contact) if you have any questions!
+Feel free to [reach out to us](/contact/) if you have any questions!
 
 ## Spread the Word
 
