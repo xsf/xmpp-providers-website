@@ -76,7 +76,7 @@ Last but not least, categories give providers an incentive to improve their serv
 ## Why Another Providers List?
 
 There are many websites listing XMPP providers, ranging from wikis to user guides and personal websites.
-Many of these lists have common problems - information gets stale.
+Many of them have a common problem: Information becomes stale.
 In order to have up-to-date information, these lists need a lot of manual maintenance.
 To avoid having to maintain a list manually, the XMPP Providers project builds on automation.
 As much of the data gathering and processing as possible has been automated.
