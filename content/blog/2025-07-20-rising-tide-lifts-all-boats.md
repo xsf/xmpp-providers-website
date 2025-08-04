@@ -47,7 +47,7 @@ At the time of writing, about 60% of the 74 XMPP providers listed are category D
 This is either due to closed registration, missing information, or both.
 We encourage all providers to offer a provider file to fill the missing information gap.
 
-Furthermore, with the client Monocles now [three apps have integrated information](/apps/) from the XMPP Providers project.
+Furthermore, with the client monocles chat, now [three active apps have integrated information](/apps/) from the XMPP Providers project.
 
 ## Why Provider Categories
 
