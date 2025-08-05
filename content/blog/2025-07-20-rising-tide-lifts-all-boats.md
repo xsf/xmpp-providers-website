@@ -97,7 +97,7 @@ Providing a public service comes with great responsibility, and we would like to
 
 Remember: A rising tide lifts all boats!
 
-_The survey has been created with [Formbricks](https://formbricks.com/)._
+_The survey has been created with Formbricks._
 
 ## Help the Project, Improve XMPP
 
