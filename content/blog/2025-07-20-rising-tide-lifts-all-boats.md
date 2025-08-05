@@ -33,10 +33,21 @@ In addition to these survey results, we received a lot of written feedback.
 A good share of this feedback praises the project for empowering people to make a good and informed choice about their XMPP provider.
 We would like to address some of the points raised in the feedback separately:
 
-- Which kind of providers do we list? In theory, we would like to list any publicly visible XMPP provider. XMPP Providers [gathers information about all listed providers automatically](/blog/2023-12-29-xmpp-providers-fully-automated/), which may be helpful for registration purposes, for getting an overview about providers, or for looking up information about a specific provider, even if registration is closed.
-- Why do you make [in-band registration](https://xmpp.org/extensions/xep-0077.html) a requirement for a category A or B listing? XMPP Providers is a project made to simplify the users’ onboardings. Therefore, the criteria we use for the categorization are from a user’s perspective. This means users should be able to register directly from their XMPP client. Spam may be the most prominent reason to disable in-band registration, but that creates a barrier for newcomers.
-- Why do I need to provide an extra file for XMPP Providers? We try to gather data automatically, but not all data is available in a machine-readable format. To reduce manual efforts until more data is available for automatic processing, we opted for a [provider file](/faq/#provider-file) containing additional information, which is hosted by individual providers. In the meantime, we continue to work on automating as much as possible.
-- Why can I only get into category B and not into category A if my service is not free? We made this distinction to allow a completely automated registration without any user input. In the future, we would like to add payment and donation information.
+- Which kind of providers do we list?
+Our goal is to list all publicly visible XMPP providers.
+XMPP Providers [gathers information about all listed providers automatically](/blog/2023-12-29-xmpp-providers-fully-automated/), which may be helpful for registration purposes, for getting an overview about providers, or for looking up information about a specific provider, even if registration is closed.
+- Why do you make [in-band registration](https://xmpp.org/extensions/xep-0077.html) a requirement for a category A or B listing?
+XMPP Providers is a project made to simplify the users’ onboardings.
+Therefore, the criteria we use for the categorization are from a user’s perspective.
+This means users should be able to register directly from their XMPP client.
+Spam may be the most prominent reason to disable in-band registration, but that creates a barrier for newcomers.
+- Why do I need to provide an extra file for XMPP Providers?
+We try to gather data automatically, but not all data is available in a machine-readable format.
+To reduce manual efforts until more data is available for automatic processing, we opted for a [provider file](/faq/#provider-file) containing additional information, which is hosted by individual providers.
+In the meantime, we continue to work on automating as much as possible.
+- Why can I only get into category B and not into category A if my service is not free?
+We made this distinction to allow a completely automated registration without any user input.
+In the future, we would like to add payment and donation information.
 
 ## Perspective
 
