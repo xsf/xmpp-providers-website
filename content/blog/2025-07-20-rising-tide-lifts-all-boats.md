@@ -101,7 +101,7 @@ To reach these goals, and to improve the XMPP onboarding experience, we built th
 - offering automated and up-to-date information for listed providers, including categorization with soft and hard quality criteria
 - helping to retrieve service information and support information beyond the registration process
 - giving opportunities for providers to check and improve their service quality
-- providing an API to [include the list of providers in XMPP clients](/apps/)
+- providing an API to include the list of providers in XMPP clients
 
 While this project certainly leaves room for improvement, it's a first step to make the registration process smoother and less error-prone.
 Providing a public service comes with great responsibility, and we would like to support service providers in that.
