@@ -214,7 +214,7 @@
                         </td>
                         <td>
                             {{ if .serverSoftwareName }}
-                                Server software:&nbsp;<span class="d-block text-wrap" style="max-width: 14rem;">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
+                                Server software:&nbsp;<span class="d-block text-truncate" style="max-width: 14rem;" title="{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
                             {{ else }}
                                 Server software:&nbsp;<a href="/faq/#unknown" class="abbr">unknown</a>
                             {{ end }}

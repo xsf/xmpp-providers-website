@@ -211,9 +211,9 @@
                             <a href="/faq/#unknown" class="abbr">unknown</a>
                         {{ end }}
                     </td>
-                    <td>
+                    <td class="overflow-x-hidden text-truncate" style="max-width: 15rem;">
                         {{ if .serverSoftwareName }}
-                            <span class="small">{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
+                            <span class="small" title="{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}" >{{ .serverSoftwareName }} {{ .serverSoftwareVersion }}</span>
                         {{ else }}
                             <a href="/faq/#unknown" class="abbr small">unknown</a>
                         {{ end }}
