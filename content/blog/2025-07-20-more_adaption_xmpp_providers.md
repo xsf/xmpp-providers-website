@@ -8,7 +8,7 @@ So if users are looking for a way to register a new account when accessing conve
 This is of course, not a full integration as we propose to do and other [apps](https://providers.xmpp.net/apps/) already do, but we are happy to see more general adoption of our project.
 
 Even more the XMPP Server ejabberd has added [mod_providers](https://docs.ejabberd.im/admin/configuration/modules/#mod_providers) from version `25.08`.
-More details in their [Github commit](https://github.com/processone/ejabberd/commit/97e1b419a0189b4a5a87f0fc6ef709af799beaa0).
+More details in their [GitHub commit](https://github.com/processone/ejabberd/commit/97e1b419a0189b4a5a87f0fc6ef709af799beaa0).
 As we were not involved or have reached out in this regard this is a big honour for us.
 
 This circumstance, but also level of acceptance and adoption will motivate us even more to realise a long-standing thought:
