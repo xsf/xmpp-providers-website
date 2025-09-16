@@ -1,6 +1,6 @@
 ---
-title: More adaption of XMPP Providers in the XMPP Ecosystem
-date: 2025-09-15
+title: More adaption of XMPP Providers in the XMPP Ecosystem & XMPP Providers Server Update
+date: 2025-09-20
 ---
 
 We are very pleased to see that recently the XMPP web-client [converse.js](https://github.com/conversejs/converse.js/releases/tag/v12.0.0) has adapted their application to refer to our service.
