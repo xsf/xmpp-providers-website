@@ -21,12 +21,20 @@ Still, activation of this feature is required to qualify for [category A](https:
 Enabling simple registrations is a key improvement area in the XMPP ecosystem and also the background of our service.
 Therefore, we welcome this development!
 
+## XMPP Providers Server Update
+
+We have also updated the [XMPP Providers Server](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/README.md?ref_type=heads) to Debian Trixie (13) as well as ejabberd `24.12`.
+Furthermore, a number of smaller updates and improvements have been made to make updating running instances more convientent.
+
+The XMPP Providers Server is the automated server setup used by XMPP Providers.
+It makes use of Ansible to set up a Debian-based server and contains playbooks as all-in-one simple setup for a fully-featured XMPP server.
+
 ## Help the Project, Improve XMPP
 
 For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the providers themselves.
 If you are an XMPP developer, please consider [adding XMPP Providers support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
 If you are an operator of a public XMPP service, provide the [information we need](/faq/#where-do-we-have-the-providers-properties-from) and [add it to the list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
-You can also consider to run our (automated) [XMPP Providers Server setup](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/README.md?ref_type=heads).
+You can also consider to run our (automated) [XMPP Providers Server setup](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/README.md?ref_type=heads) yourself.
 
 If you like to support XMPP Providers, please consider [making a donation](https://liberapay.com/xmpp_providers).
 
