@@ -96,12 +96,16 @@ This website's provider listings and details are based on it.
 Our XMPP bot requests many properties via XMPP from the providers' servers.
 Here are some hints on how to configure the server to provide the properties.
 
+ejabberd has an [XMPP Providers module](https://docs.ejabberd.im/admin/configuration/modules/#mod_providers).
+It provides the properties that would otherwise be served via a [provider file](#provider-file).
+But note that it may not be available for all versions of the API.
+
 ### Account Creation via XMPP Apps
 
 For determining whether a server supports the creation of accounts via XMPP apps, [XEP-0077: In-Band Registration](https://xmpp.org/extensions/xep-0077.html) is used.
 
 Please enable that feature to simplify the onboarding process for new users:
-* ejabberd: [mod_register](https://docs.ejabberd.im/admin/configuration/modules/#mod-register)
+* ejabberd: [mod_register](https://docs.ejabberd.im/admin/configuration/modules/#mod_register)
 * Prosody: [mod_register_ibr](https://prosody.im/doc/modules/mod_register_ibr)
 * Tigase: [jabber:iq:register](https://docs.tigase.net/en/latest/Tigase_Administration/Configuration/_Configuration.html#session-manager)
 
@@ -110,7 +114,7 @@ Please enable that feature to simplify the onboarding process for new users:
 For retrieving a web page that can be used to create accounts, [XEP-0077: In-Band Registration - Redirection](https://xmpp.org/extensions/xep-0077.html#redirect) is used.
 
 Please use that feature to either provide an alternative way for users to create an account or if your server does not support account creation via XMPP apps:
-* ejabberd: [mod_register](https://docs.ejabberd.im/admin/configuration/modules/#mod-register) - `redirect_url`
+* ejabberd: [mod_register](https://docs.ejabberd.im/admin/configuration/modules/#mod_register) - `redirect_url`
 * Prosody: [mod_register_oob_url](https://modules.prosody.im/mod_register_oob_url.html) - `register_oob_url`
 * Tigase: [jabber:iq:register](https://docs.tigase.net/en/latest/Tigase_Administration/Configuration/_Configuration.html#session-manager)
 
@@ -119,7 +123,7 @@ Please use that feature to either provide an alternative way for users to create
 For determining which software (including its version) a server runs, [XEP-0092: Software Version](https://xmpp.org/extensions/xep-0092.html) is used.
 
 Please enable that feature for checking whether your server runs the software desired by the user and whether it is up-to-date:
-* ejabberd: [mod_version](https://docs.ejabberd.im/admin/configuration/modules/#mod-version)
+* ejabberd: [mod_version](https://docs.ejabberd.im/admin/configuration/modules/#mod_version)
 * Prosody: [mod_version](https://prosody.im/doc/modules/mod_version)
 * Tigase: [jabber:iq:version](https://docs.tigase.net/en/latest/Tigase_Administration/Configuration/_Configuration.html#session-manager)
 
@@ -128,7 +132,7 @@ Please enable that feature for checking whether your server runs the software de
 For retrieving the support addresses of a provider, [XEP-0157: Contact Addresses for XMPP Services](https://xmpp.org/extensions/xep-0157.html) is used.
 
 Please provide those addresses to enable users and our upcoming support bots to reach you (**Important: Append `?join` to group chat addresses**):
-* ejabberd: [mod_disco](https://docs.ejabberd.im/admin/configuration/modules/#mod-disco) - `server_info`, entry with `name: support-addresses`
+* ejabberd: [mod_disco](https://docs.ejabberd.im/admin/configuration/modules/#mod_disco) - `server_info`, entry with `name: support-addresses`
 * Prosody: [mod_server_contact_info](https://prosody.im/doc/modules/mod_server_contact_info) - `support`
 * Tigase: [disco-extensions](https://docs.tigase.net/en/latest/Tigase_Administration/Configuration/_Configuration.html#abuse-contacts) - `support-addresses`
 
@@ -138,7 +142,7 @@ For determining how much users can upload to a server and how long those files a
 
 Please set those limits as high as possible to enable users to share large files (such as videos) over a long period of time (e.g., if the recipient is offline on vacation):
 * ejabberd:
-    * [mod_http_upload](https://docs.ejabberd.im/admin/configuration/modules/#mod-http-upload) - `max_size`
+    * [mod_http_upload](https://docs.ejabberd.im/admin/configuration/modules/#mod_http_upload) - `max_size`
     * [mod_http_upload_quota](https://docs.ejabberd.im/admin/configuration/modules/#mod-http-upload-quota) - `access_hard_quota`, `access_soft_quota`, `max_days`
 * Prosody: [mod_http_file_share](https://prosody.im/doc/modules/mod_http_file_share) - `http_file_share_size_limit`, `http_file_share_daily_quota`, `http_file_share_expires_after`
 * Tigase: [HTTP File Upload component](https://docs.tigase.net/projects/tigase-tigase-http-api/en/latest/Administration/HTTP_File_Upload_component.html#logic) - `max-file-size`
