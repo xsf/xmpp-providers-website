@@ -138,7 +138,8 @@ Please provide those addresses to enable users and our upcoming support bots to 
 
 ### Upload Limits and Storage Durations
 
-For determining how much users can upload to a server and how long those files are stored, [XEP-0363: HTTP File Upload - Discovering Support](https://xmpp.org/extensions/xep-0363.html#disco) is used.
+For determining the maximum size of each file a user is allowed to upload to a server, [XEP-0363: HTTP File Upload - Discovering Support](https://xmpp.org/extensions/xep-0363.html#disco) is used.
+Note that the maximum size of all shared files in total per user and the storage duration of each shared file are retrieved from a [provider file](#provider-file).
 
 Please set those limits as high as possible to enable users to share large files (such as videos) over a long period of time (e.g., if the recipient is offline on vacation):
 * ejabberd:
