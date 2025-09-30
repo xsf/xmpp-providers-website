@@ -3,6 +3,8 @@ title: More Adoption of XMPP Providers in the XMPP Ecosystem & XMPP Providers Se
 date: 2025-09-20
 ---
 
+## Adaption of XMPP Providers
+
 We are very pleased to see that the XMPP web client [Converse 12.0.0](https://github.com/conversejs/converse.js/releases/tag/v12.0.0) refers to our service.
 If users of Converse are looking for a way to register a new account, they are guided to our website.
 Of course, this is not an integration as we propose to do and other [apps](/apps/) already do.
@@ -12,19 +14,13 @@ Even more, the XMPP server software ejabberd has added a [module for XMPP provid
 As we were not involved or have reached out in this regard this is a major honor to us.
 
 This circumstance, but also the level of acceptance and adoption motivates us even more to realize a long-standing thought:
-Publish a new XEP to improve formalising and accessing public server information in the XMPP Community.
-We believe this is another piece to enhance accessing of XMPP server information smoothly for everyone in the future.
+Publishing a new XEP to improve formalizing and accessing public XMPP server information.
 
-Speaking of enhancement pieces: Ejabberd Great Invitations. As XMPP operators are often confronted with abuse, many have turned of their so called [in-band registration](https://xmpp.org/extensions/xep-0077.html).
-With this, users can easily register through an XMPP client without going to any other webpage.
-Still, activation of this feature is required to qualify for [category A](https://providers.xmpp.net/faq/#in-which-categories-can-providers-be).
-Enabling simple registrations is a key improvement area in the XMPP ecosystem and also the background of our service.
-Therefore, we welcome this development!
 
 ## XMPP Providers Server Update
 
-We have also updated the [XMPP Providers Server](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/README.md?ref_type=heads) to Debian Trixie (13) as well as ejabberd `24.12`.
-Furthermore, a number of smaller updates and improvements have been made to make updating running instances more convientent.
+We have also updated the [XMPP Providers Server](https://invent.kde.org/melvo/xmpp-providers-server) to Debian Trixie (13) as well as ejabberd to version 24.12.
+Furthermore, a number of smaller improvements have been made to allow updating all software packages and to upgrade the system to new releases.
 
 The XMPP Providers Server is the automated server setup used by XMPP Providers.
 It makes use of Ansible to set up a Debian-based server and contains playbooks as all-in-one simple setup for a fully-featured XMPP server.
@@ -39,11 +35,6 @@ It is easily configurable to be used as a public or private XMPP server.
 
 Feel free to [reach out to us](/contact/) if you have any questions!
 If you like to support XMPP Providers, please consider [making a donation](https://liberapay.com/xmpp_providers).
-[Follow us and spread the word](https://fosstodon.org/@xmpp_providers)!
-
-## Spread the Word
-
-The XMPP Providers project lives from the community and we are happy to hear your feedback.
 [Follow us and spread the word](https://fosstodon.org/@xmpp_providers)!
 
 {{< figure src="/images/xmpp-providers-adaptive.svg" caption="XMPP Providers Logo" class="text-center w-100 pt-5" height="300" link="/" >}}
