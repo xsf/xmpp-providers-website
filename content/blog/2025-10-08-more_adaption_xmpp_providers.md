@@ -1,6 +1,6 @@
 ---
 title: More Adoption of XMPP Providers in the XMPP Ecosystem & XMPP Providers Server Update
-date: 2025-09-20
+date: 2025-10-08
 ---
 
 ## Adaption of XMPP Providers
@@ -15,7 +15,6 @@ As we were not involved or have reached out in this regard this is a major honor
 
 This circumstance, but also the level of acceptance and adoption motivates us even more to realize a long-standing thought:
 Publishing a new XEP to improve formalizing and accessing public XMPP server information.
-
 
 ## XMPP Providers Server Update
 
