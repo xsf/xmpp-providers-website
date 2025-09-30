@@ -5,7 +5,8 @@ date: 2025-09-20
 
 We are very pleased to see that the XMPP web client [Converse 12.0.0](https://github.com/conversejs/converse.js/releases/tag/v12.0.0) refers to our service.
 If users of Converse are looking for a way to register a new account, they are guided to our website.
-This is of course, not a full integration as we propose to do and other [apps](https://providers.xmpp.net/apps/) already do, but we are happy to see more general adoption of our project.
+Of course, this is not an integration as we propose to do and other [apps](/apps/) already do.
+But we are happy to see more general adoption of our project.
 
 Even more the XMPP Server ejabberd has added [mod_providers](https://docs.ejabberd.im/admin/configuration/modules/#mod_providers) from version `25.08`.
 More details in their [GitHub commit](https://github.com/processone/ejabberd/commit/97e1b419a0189b4a5a87f0fc6ef709af799beaa0).
