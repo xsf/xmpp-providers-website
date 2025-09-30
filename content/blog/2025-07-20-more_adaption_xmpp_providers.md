@@ -9,7 +9,7 @@ Of course, this is not an integration as we propose to do and other [apps](/apps
 But we are happy to see more general adoption of our project.
 
 Even more, the XMPP server software ejabberd has added a [module for XMPP provider files](https://docs.ejabberd.im/admin/configuration/modules/#mod_providers) in version 25.08.
-As we were not involved or have reached out in this regard this is a big honour for us.
+As we were not involved or have reached out in this regard this is a major honor to us.
 
 This circumstance, but also level of acceptance and adoption will motivate us even more to realise a long-standing thought:
 Publish a new XEP to improve formalising and accessing public server information in the XMPP Community.
