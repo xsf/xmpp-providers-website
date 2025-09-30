@@ -23,7 +23,7 @@ We have also updated the [XMPP Providers Server](https://invent.kde.org/melvo/xm
 Furthermore, a number of smaller improvements have been made to allow updating all software packages and to upgrade the system to new releases.
 
 The XMPP Providers Server is the automated server setup used by XMPP Providers.
-It makes use of Ansible to set up a Debian-based server and contains playbooks as all-in-one simple setup for a fully-featured XMPP server.
+It makes use of Ansible to set up a Debian-based server and contains playbooks a simple all-in-one setup for a fully-featured XMPP server.
 
 ## Help the Project, Improve XMPP
 
