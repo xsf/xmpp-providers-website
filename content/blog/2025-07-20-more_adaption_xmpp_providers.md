@@ -8,7 +8,7 @@ If users of Converse are looking for a way to register a new account, they are g
 Of course, this is not an integration as we propose to do and other [apps](/apps/) already do.
 But we are happy to see more general adoption of our project.
 
-Even more the XMPP Server ejabberd has added [mod_providers](https://docs.ejabberd.im/admin/configuration/modules/#mod_providers) from version `25.08`.
+Even more, the XMPP server software ejabberd has added a [module for XMPP provider files](https://docs.ejabberd.im/admin/configuration/modules/#mod_providers) in version 25.08.
 More details in their [GitHub commit](https://github.com/processone/ejabberd/commit/97e1b419a0189b4a5a87f0fc6ef709af799beaa0).
 As we were not involved or have reached out in this regard this is a big honour for us.
 
