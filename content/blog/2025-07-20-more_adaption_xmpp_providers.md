@@ -38,9 +38,9 @@ If you are an operator of a public XMPP service, provide the [information we nee
 You can also consider to run our (automated) [XMPP Providers Server setup](https://invent.kde.org/melvo/xmpp-providers-server) yourself.
 It is easily configurable to be used as a public or private XMPP server.
 
-If you like to support XMPP Providers, please consider [making a donation](https://liberapay.com/xmpp_providers).
-
 Feel free to [reach out to us](/contact/) if you have any questions!
+If you like to support XMPP Providers, please consider [making a donation](https://liberapay.com/xmpp_providers).
+[Follow us and spread the word](https://fosstodon.org/@xmpp_providers)!
 
 ## Spread the Word
 
