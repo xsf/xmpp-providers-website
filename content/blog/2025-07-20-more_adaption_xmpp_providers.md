@@ -9,7 +9,6 @@ Of course, this is not an integration as we propose to do and other [apps](/apps
 But we are happy to see more general adoption of our project.
 
 Even more, the XMPP server software ejabberd has added a [module for XMPP provider files](https://docs.ejabberd.im/admin/configuration/modules/#mod_providers) in version 25.08.
-More details in their [GitHub commit](https://github.com/processone/ejabberd/commit/97e1b419a0189b4a5a87f0fc6ef709af799beaa0).
 As we were not involved or have reached out in this regard this is a big honour for us.
 
 This circumstance, but also level of acceptance and adoption will motivate us even more to realise a long-standing thought:
