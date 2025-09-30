@@ -11,7 +11,7 @@ But we are happy to see more general adoption of our project.
 Even more, the XMPP server software ejabberd has added a [module for XMPP provider files](https://docs.ejabberd.im/admin/configuration/modules/#mod_providers) in version 25.08.
 As we were not involved or have reached out in this regard this is a major honor to us.
 
-This circumstance, but also level of acceptance and adoption will motivate us even more to realise a long-standing thought:
+This circumstance, but also the level of acceptance and adoption motivates us even more to realize a long-standing thought:
 Publish a new XEP to improve formalising and accessing public server information in the XMPP Community.
 We believe this is another piece to enhance accessing of XMPP server information smoothly for everyone in the future.
 
