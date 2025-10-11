@@ -3,7 +3,7 @@ title: More Adoption of XMPP Providers in the XMPP Ecosystem & XMPP Providers Se
 date: 2025-10-11
 ---
 
-## Adaption of XMPP Providers
+## Adoption of XMPP Providers
 
 We are very pleased to see that the XMPP web client [Converse 12.0.0](https://github.com/conversejs/converse.js/releases/tag/v12.0.0) refers to XMPP Providers' service.
 If users of Converse are looking for a way to register a new account, they are guided to [providers.xmpp.net](https://providers.xmpp.net).
