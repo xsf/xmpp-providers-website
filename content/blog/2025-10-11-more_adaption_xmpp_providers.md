@@ -1,6 +1,6 @@
 ---
 title: More Adoption of XMPP Providers in the XMPP Ecosystem & XMPP Providers Server Update
-date: 2025-10-08
+date: 2025-10-11
 ---
 
 ## Adaption of XMPP Providers
