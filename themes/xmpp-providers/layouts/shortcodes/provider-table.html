@@ -45,10 +45,10 @@
                     Registration
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip" title="Requires an email address for registration">Email<br>required</span>
+                    <span data-bs-toggle="tooltip" title="Requires an email address for registration">Email<br>Required</span>
                 </th>
                 <th>
-                    <span data-bs-toggle="tooltip" title="Requires solving a CAPTCHA during registration">CAPTCHA<br>required</span>
+                    <span data-bs-toggle="tooltip" title="Requires solving a CAPTCHA during registration">CAPTCHA<br>Required</span>
                 </th>
                 <th>
                     Password<br>Reset
@@ -63,7 +63,7 @@
                     Maximum Total<br>File Size
                 </th>
                 <th class="sorttable_numeric">
-                    File <a href="/faq/#storage" class="abbr">Storag</a>e<br>Duration
+                    File <a href="/faq/#storage" class="abbr">Storage</a><br>Duration
                 </th>
                 <th>
                     Compatibility
@@ -85,6 +85,9 @@
                 </th>
                 <th>
                     Alternative<br>Addresses
+                </th>
+                <th>
+                    <a href="/faq/#provider-file" class="abbr">Provider<br>File</a>
                 </th>
             </tr>
         </thead>
@@ -421,6 +424,13 @@
                             {{ end }}
                         {{ else }}
                             -
+                        {{ end }}
+                    </td>
+                    <td>
+                        {{ if strings.Contains $providers_data.website.source ".json" }}
+                           Yes
+                        {{ else }}
+                            No
                         {{ end }}
                     </td>
                 </tr>
