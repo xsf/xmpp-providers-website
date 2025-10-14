@@ -21,6 +21,10 @@ function initialize_provider_filters() {
   if (filter_server_locations) {
     filter_server_locations.addEventListener("change", _filter_providers)
   }
+  const filter_bus_factor = document.getElementById("filter_bus_factor");
+  if (filter_bus_factor) {
+    filter_bus_factor.addEventListener("change", _filter_providers)
+  }
 }
 
 function _filter_providers() {
@@ -36,6 +40,7 @@ function _filter_providers() {
   const inBandRegistrationOnly = document.getElementById("filter_in_band_registration").checked
   const passwordResetOnly = document.getElementById("filter_password_reset").checked
   const serverLocationOnly = document.getElementById("filter_server_locations").value
+  const busFactorOnly = document.getElementById("filter_bus_factor").value
 
   const allProviders = document.querySelectorAll("[data-provider]")
 
@@ -82,6 +87,22 @@ function _filter_providers() {
     );
   }
 
+  let busFactorProviders = document.querySelectorAll(
+    "[data-property-bus-factor]")
+  if (busFactorOnly !== "all") {
+    if (busFactorOnly === "ge_1") {
+      busFactorProviders = document.querySelectorAll(
+        `:not([data-property-bus-factor="-1"])`
+      );
+    }
+    if (busFactorOnly === "ge_2") {
+      busFactorProviders = document.querySelectorAll(
+        `:not([data-property-bus-factor="-1"], [data-property-bus-factor="1"])`
+      );
+    }
+
+  }
+
   let filteredProviders = Array.from(allProviders)
 
   if (freeOfChargeOnly) {
@@ -101,6 +122,9 @@ function _filter_providers() {
   }
   if (serverLocationOnly) {
     filteredProviders = intersection(filteredProviders, Array.from(serverLocationProviders))
+  }
+  if (busFactorOnly) {
+    filteredProviders = intersection(filteredProviders, Array.from(busFactorProviders))
   }
 
   for (const provider of allProviders) {

@@ -1,7 +1,7 @@
 {{ range . }}
     {{ $provider_id := replace .jid "." "-" }}
     {{ $providers_data := index site.Data.providers .jid }}
-    <div class="accordion-item" data-provider="{{ .jid }}" data-category="{{ .category }}" data-property-free="{{ .freeOfCharge }}" data-property-professional-hosting="{{ .professionalHosting }}" data-property-rating-green-web-check="{{ .ratingGreenWebCheck }}" data-property-ibr="{{ .inBandRegistration }}" data-property-password-reset="{{ ne (len .passwordReset) 0 }}" data-property-server-locations="{{ delimit .serverLocations "," }}">
+    <div class="accordion-item" data-provider="{{ .jid }}" data-category="{{ .category }}" data-property-free="{{ .freeOfCharge }}" data-property-professional-hosting="{{ .professionalHosting }}" data-property-rating-green-web-check="{{ .ratingGreenWebCheck }}" data-property-ibr="{{ .inBandRegistration }}" data-property-password-reset="{{ ne (len .passwordReset) 0 }}" data-property-server-locations="{{ delimit .serverLocations "," }}" data-property-bus-factor="{{ .busFactor }}">
         <h2 class="accordion-header" id="heading-{{ $provider_id }}">
             <button class="accordion-button bg-body-tertiary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-{{ $provider_id }}" aria-expanded="false" aria-controls="collapse-{{ $provider_id }}">
                 <div class="d-flex justify-content-between w-100">
