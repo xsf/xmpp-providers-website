@@ -40,6 +40,13 @@
             <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
         {{- end }}
     {{- end }}
+    {{- if ( .Params.overview_table ) -}}
+        {{- with $style := resources.Get "css/datatables.min.css" }}
+            {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
+                <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
+            {{- end }}
+        {{- end }}
+    {{- end -}}
     {{- with $style := resources.Get "css/style.css" | resources.Minify }}
         {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
             <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">

@@ -34,7 +34,10 @@
 </footer>
 <script src="{{- "js/bootstrap.bundle.min.js" | relURL -}}"></script>
 <script src="{{- "js/bootstrap-theme-switcher.js" | relURL -}}"></script>
-<script src="{{- "js/sorttable.js" | relURL -}}"></script>
+{{- if ( .Params.overview_table ) -}}
+    <script src="{{- "js/datatables.min.js" | relURL -}}"></script>
+    <script src="{{- "js/overview-table.js" | relURL -}}"></script>
+{{- end -}}
 {{- if ( .Params.provider_file_generator ) -}}
     <script src="{{- "js/language-country-codes.js" | relURL -}}"></script>
     <script src="{{- "js/provider-file-generator.js" | relURL -}}"></script>
