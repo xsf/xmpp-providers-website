@@ -100,7 +100,7 @@ article h2 {
     text-decoration: underline dotted #6c757d;
     text-underline-offset: 0.2rem;
     cursor: help;
-    color: initial;
+    color: inherit;
 }
 
 .dropdown-item.active, .dropdown-item:active {
@@ -185,7 +185,7 @@ article h2 {
         color: rgb(197, 206, 209);
     }
     a {
-        color:#518fb9;
+        color:#7bb4da;
     }
     a:hover {
         color:#56a7dd;
@@ -247,5 +247,38 @@ article h2 {
     }
     .card {
         background-color:#2d3439;
+    }
+    /* Overview */
+    table.dataTable thead tr>.dtfc-fixed-start {
+        background-color: var(--bs-table-bg);
+    }
+    table.dataTable tbody tr:nth-of-type(odd)>.dtfc-fixed-start {
+        background-color: #2d3238;
+    }
+    table.dataTable tbody tr:nth-of-type(odd):hover>.dtfc-fixed-start {
+        background-color: #323f47;
+    }
+    table.dataTable tbody tr:nth-of-type(even)>.dtfc-fixed-start {
+        background-color: var(--bs-table-bg);
+    }
+    table.dataTable tbody tr:nth-of-type(even):hover>.dtfc-fixed-start {
+        background-color: #323f47;
+    }
+    table.dataTable span.dtcc span.dtcc-button-icon {
+        color: unset;
+    }
+    div.dtcc-dropdown {
+        background-color: var(--bs-body-bg);
+    }
+    div.dtcc-dropdown div.dtcc-search>div div svg {
+        color: var(--bs-body-color);
+    }
+    div.dtcc-dropdown div.dtcc-search>div select,
+    div.dtcc-dropdown div.dtcc-search>div input {
+        background-color: inherit;
+    }
+    div.dtcc-dropdown div.dtcc-search>div select option,
+    div.dtcc-dropdown div.dtcc-search>div input option {
+        background-color: var(--bs-body-bg);
     }
 }
