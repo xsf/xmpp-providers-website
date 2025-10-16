@@ -27,7 +27,11 @@
         </div>
         <div class="row justify-content-center m-3">
             <span class="text-center text-body-tertiary small">
-                Last website build:&nbsp;{{- time.Now | time.Format ":date_medium" -}}&nbsp;({{- time.Now.UTC.Hour -}}:{{- time.Now.UTC.Minute -}}&nbsp;UTC)&nbsp;&middot;&nbsp;API Version:&nbsp;<code>{{- .Site.Data.api_version.api_version -}}</code>
+                Last website build:&nbsp;{{- time.Now | time.Format ":date_medium" -}}&nbsp;({{- time.Now.UTC.Hour -}}:{{- time.Now.UTC.Minute -}}&nbsp;UTC)
+                {{ with .GitInfo }}
+                    &nbsp;&middot;&nbsp;Last change: <a href="https://github.com/xsf/xmpp-providers-website/commit/{{ .AbbreviatedHash }}" target="_blank" class="small">{{ .AbbreviatedHash }}</a>
+                {{ end }}
+                &nbsp;&middot;&nbsp;API Version:&nbsp;<code>{{- .Site.Data.api_version.api_version -}}</code>
             </span>
         </div>
     </div>

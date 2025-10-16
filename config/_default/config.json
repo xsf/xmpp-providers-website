@@ -12,6 +12,7 @@
     "disableHugoGeneratorInject": true,
     "enableEmoji": true,
     "theme": "xmpp-providers",
+    "enableGitInfo": true,
     "Params": {
         "author": {
             "name": "XMPP Providers Team"
