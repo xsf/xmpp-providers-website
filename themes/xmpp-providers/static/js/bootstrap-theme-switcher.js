@@ -86,7 +86,7 @@ window
   });
 
 window.addEventListener("DOMContentLoaded", () => {
-  showActiveTheme(getPreferredTheme());
+  showActiveTheme(getStoredTheme() ?? "auto");
 
   document.querySelectorAll("[data-bs-theme-value]").forEach((toggle) => {
     toggle.addEventListener("click", () => {
