@@ -1,7 +1,7 @@
 {
     "baseURL": "https://providers.xmpp.net/",
     "canonifyurls": true,
-    "title": "XMPP Providers",
+    "title": "XMPP Providers - Which XMPP provider suits you best?",
     "contentdir": "content",
     "layoutdir": "layouts",
     "publishdir": "public",
@@ -20,7 +20,10 @@
         "dateFormat": "January 2, 2006",
         "hideAuthor": false,
         "subtitle": "Subtitle",
-        "description": "It’s Your Choice. Which XMPP provider suits you best? The XMPP Providers project offers a curated list of XMPP providers for you to choose from.",
-        "SiteLogoUrl": "https://providers.xmpp.net/images/xmpp-providers-800px.png"
+        "description": "The XMPP Providers project offers a curated list of XMPP providers for you to choose from. It’s your choice!",
+        "SiteLogoUrl": "/images/xmpp-providers-1200px-wide.png",
+        "SiteLogoAlt": "XMPP Providers (Extensible Messaging and Presence Protocol) Logo",
+        "SiteLogoWidth": 1200,
+        "SiteLogoHeight": 630
     }
 }
