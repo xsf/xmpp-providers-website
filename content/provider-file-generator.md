@@ -13,6 +13,9 @@ Each provider can supply such a provider file via its web server (replace `<prov
 https://<provider>/.well-known/xmpp-provider-v<version>.json
 ```
 
+**`<provider>` must be the XMPP server domain, not the website domain.**
+If the provider file is located somewhere else, you can redirect to it.
+
 Example for a provider file of version **2**:
 
 ```url
