@@ -434,19 +434,19 @@ function initialize_map() {
 
   function getColor(d) {
     return d > 10
-      ? "#800026"
+      ? "#032e00"
       : d > 5
-      ? "#BD0026"
+      ? "#175000"
       : d > 4
-      ? "#E31A1C"
+      ? "#3f7411"
       : d > 3
-      ? "#FC4E2A"
+      ? "#669a39"
       : d > 2
-      ? "#FD8D3C"
+      ? "#8dc25e"
       : d > 1
-      ? "#FEB24C"
+      ? "#aae279"
       : d > 0
-      ? "#FED976"
+      ? "#c9eea9"
       : "#FFFFFF00";
   }
 
