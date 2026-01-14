@@ -661,7 +661,7 @@ document.addEventListener("DOMContentLoaded", () => {
       columnControl: [
         "order",
         [
-          "searchDropdown",
+          "searchList",
           "orderAsc",
           "orderDesc",
           "orderRemove",
