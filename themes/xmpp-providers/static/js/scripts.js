@@ -2,33 +2,54 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+const urlParams = new URLSearchParams(window.location.search);
+
 document.addEventListener("DOMContentLoaded", () => {
-  initialize_provider_filters();
-  initialize_copy_badge_button();
-  initialize_contact_page_clients();
-  initialize_bootstrap_tooltips();
+  if (window.location.pathname == "/") {
+    initProviderFilters();
+  }
+  initCopyBadgeButton();
+  initContactPageClients();
+  initBootstrapTooltips();
 });
 
-function initialize_provider_filters() {
+function initProviderFilters() {
   // Provider filtering in overview
   const checkboxes = document.querySelectorAll("#status-selector input");
   for (const checkbox of checkboxes) {
-    checkbox.addEventListener("click", function (event) {
-      _filter_providers();
+    const filterId = checkbox.id.split("filter_")[1]
+    const filterValue = urlParams.get(filterId)
+    checkbox.checked = filterValue === "true" ? true : false
+    checkbox.addEventListener("click", () => {
+      urlParams.set(filterId, checkbox.checked);
+      history.pushState(null, "", `${window.location.pathname}?${urlParams.toString()}`);
+      filterProviders();
     });
   }
-  const filter_server_locations = document.getElementById("filter_server_locations");
-  if (filter_server_locations) {
-    filter_server_locations.addEventListener("change", _filter_providers)
+  const filterServerLocations = document.getElementById("filter_server_locations");
+  filterServerLocations.value = urlParams.get("server_location") ?? "all"
+  filterServerLocations.addEventListener("change", () => {
+    urlParams.set("server_location", filterServerLocations.value);
+    history.pushState(null, "", `${window.location.pathname}?${urlParams.toString()}`);
+    filterProviders()
+  })
+  const filterBusFactor = document.getElementById("filter_bus_factor");
+  filterBusFactor.value = urlParams.get("bus_factor") ?? "all"
+  filterBusFactor.addEventListener("change", () => {
+    urlParams.set("bus_factor", filterBusFactor.value);
+    history.pushState(null, "", `${window.location.pathname}?${urlParams.toString()}`);
+    filterProviders()
+  })
+
+  if (urlParams.size > 0) {
+    // Show filter box if there are filter query parameters
+    document.getElementById("filter-button").click();
   }
-  const filter_bus_factor = document.getElementById("filter_bus_factor");
-  if (filter_bus_factor) {
-    filter_bus_factor.addEventListener("change", _filter_providers)
-  }
+
+  filterProviders()
 }
 
-function _filter_providers() {
-
+function filterProviders() {
   function intersection (a, b) {
     const setA = new Set(a);
     return b.filter(value => setA.has(value));
@@ -136,7 +157,7 @@ function _filter_providers() {
   }
 };
 
-function initialize_copy_badge_button() {
+function initCopyBadgeButton() {
   // Copy badge embed link to clipboard
   const badge_link_copy = document.getElementById("badge_link_copy");
   if (badge_link_copy) {
@@ -155,7 +176,7 @@ function initialize_copy_badge_button() {
   }
 }
 
-function initialize_contact_page_clients() {
+function initContactPageClients() {
   // Recommended clients list filtering on /contact page
   const recommended_clients_list = document.getElementById(
     "recommended_clients_list"
@@ -178,7 +199,7 @@ function initialize_contact_page_clients() {
   }
 }
 
-function initialize_bootstrap_tooltips() {
+function initBootstrapTooltips() {
   const tooltipTriggerList = document.querySelectorAll(
     '[data-bs-toggle="tooltip"]'
   );
