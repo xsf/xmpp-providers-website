@@ -11,6 +11,30 @@ const truncateString = (str, max) => {
   return str;
 };
 
+const columnControlDefault = [
+  "order",
+  [
+    "searchList",
+    "orderAsc",
+    "orderDesc",
+    "orderRemove",
+    "orderClear",
+    "orderAddAsc",
+    "orderAddDesc",
+  ],
+]
+const columnControlNoSearchList = [
+  "order",
+  [
+    "orderAsc",
+    "orderDesc",
+    "orderRemove",
+    "orderClear",
+    "orderAddAsc",
+    "orderAddDesc",
+  ],
+]
+
 document.addEventListener("DOMContentLoaded", () => {
   const table = new DataTable(
     document.getElementById("provider-overview-table"),
@@ -19,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "jid",
           title: "<b>Provider</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type) => {
             if (type !== "display") {
               return data;
@@ -29,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "latestChange",
           title: "<b>Last Update</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type) => {
             if (type !== "display") {
               return data;
@@ -51,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "since",
           title: "<b>Established</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type, row) => {
             if (type !== "display") {
               return data;
@@ -70,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "website",
           title: "<b>Website</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type) => {
             if (type !== "display") {
               return data;
@@ -92,10 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
           data: "freeOfCharge",
           title: "<b>Free of Charge</b>",
           render: (data, type, row) => {
-            if (type !== "display") {
-              return data;
-            }
-
             const providerData = providersData[row.jid];
             if (providerData.freeOfCharge.source === "") {
               return unknownString;
@@ -110,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "serverLocations",
           title: "<b>Server/Data<br>Location(s)</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type) => {
             if (type !== "display") {
               return data;
@@ -136,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "legalNotice",
           title: "<b>Legal Notice</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type) => {
             if (type !== "display") {
               return data;
@@ -177,10 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
           data: "professionalHosting",
           title: "<b>Professional<br>Hosting</b>",
           render: (data, type, row) => {
-            if (type !== "display") {
-              return data;
-            }
-
             if (data) {
               return '<a href="/faq/#professional-hosting" class="abbr">Yes</a>';
             }
@@ -253,10 +275,6 @@ document.addEventListener("DOMContentLoaded", () => {
           data: "inBandRegistration",
           title: "<b>Registration</b>",
           render: (data, type, row) => {
-            if (type !== "display") {
-              return data;
-            }
-
             if (!data && Object.keys(row.registrationWebPage).length === 0) {
               return '<span class="badge rounded-pill text-bg-secondary">Registration closed</span>';
             }
@@ -322,6 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "passwordReset",
           title: "<b>Password<br>Reset</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type) => {
             if (type !== "display") {
               return data;
@@ -345,6 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
           title:
             '<b>Message <a href="/faq/#storage" class="abbr">Storage</a><br>Duration</b>',
           className: "text-end",
+          type: "num",
           render: (data, type) => {
             if (type === "sort") {
               if (data === -1) {
@@ -375,6 +395,7 @@ document.addEventListener("DOMContentLoaded", () => {
           data: "maximumHttpFileUploadFileSize",
           title: "<b>Maximum<br>File Size</b>",
           className: "text-end",
+          type: "num",
           render: (data, type) => {
             if (type === "sort") {
               if (data === -1) {
@@ -405,6 +426,7 @@ document.addEventListener("DOMContentLoaded", () => {
           data: "maximumHttpFileUploadTotalSize",
           title: "<b>Maximum Total<br>File Size</b>",
           className: "text-end",
+          type: "num",
           render: (data, type) => {
             if (type === "sort") {
               if (data === -1) {
@@ -436,6 +458,7 @@ document.addEventListener("DOMContentLoaded", () => {
           title:
             '<b>File <a href="/faq/#storage" class="abbr">Storage</a><br>Duration</b>',
           className: "text-end",
+          type: "num",
           render: (data, type) => {
             if (type === "sort") {
               if (data === -1) {
@@ -506,6 +529,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "emailSupport",
           title: "<b>Support (Email)</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type) => {
             if (type !== "display") {
               return data;
@@ -536,6 +560,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "chatSupport",
           title: "<b>Support (Chat)</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type) => {
             if (type !== "display") {
               return data;
@@ -566,6 +591,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "groupChatSupport",
           title: "<b>Support (Group Chat)</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type) => {
             if (type !== "display") {
               return data;
@@ -596,6 +622,7 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           data: "alternativeJids",
           title: "<b>Alternative<br>Addresses</b>",
+          columnControl: columnControlNoSearchList,
           render: (data, type, row) => {
             if (type !== "display") {
               return data;
@@ -631,10 +658,6 @@ document.addEventListener("DOMContentLoaded", () => {
           title:
             '<b><a href="/faq/#provider-file" class="abbr">Provider<br>File</a></b>',
           render: (data, type, row) => {
-            if (type !== "display") {
-              return data;
-            }
-
             const providerData = providersData[row.jid];
             if (providerData.website.source?.includes(".json")) {
               return "Yes";
@@ -658,18 +681,7 @@ document.addEventListener("DOMContentLoaded", () => {
       paging: false,
       scrollX: true,
       // Extensions
-      columnControl: [
-        "order",
-        [
-          "searchList",
-          "orderAsc",
-          "orderDesc",
-          "orderRemove",
-          "orderClear",
-          "orderAddAsc",
-          "orderAddDesc",
-        ],
-      ],
+      columnControl: columnControlDefault,
       fixedColumns: true,
       fixedHeader: {
         header: true,
