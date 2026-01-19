@@ -3,6 +3,35 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 const urlParams = new URLSearchParams(window.location.search);
+const europeanCountryCodes = new Set([
+  "at", // Austria
+  "be", // Belgium
+  "bg",	// Bulgaria
+  "cy", // Cyprus
+  "cz",	// Czechia
+  "de",	// Germany
+  "dk",	// Denmark
+  "es",	// Spain
+  "ee",	// Estonia
+  "fi",	// Finland
+  "fr",	// France
+  "gr",	// Greece
+  "hr",	// Croatia
+  "hu",	// Hungary
+  "ie", // Ireland
+  "it",	// Italy
+  "lt",	// Lithuania
+  "lu", // Luxembourg
+  "lv",	// Latvia
+  "mt", // Malta
+  "nl",	// Nederlands
+  "pl",	// Poland
+  "pt",	// Portugal
+  "ro",	// Romania
+  "sk",	// Slovakia
+  "si",	// Slovenia
+  "se",	// Sweden
+])
 
 document.addEventListener("DOMContentLoaded", () => {
   if (window.location.pathname == "/") {
@@ -130,9 +159,20 @@ function filterProviders() {
     "[data-property-server-locations]"
   );
   if (serverLocationOnly !== "all") {
-    serverLocationProviders = document.querySelectorAll(
-      `[data-property-server-locations*="${serverLocationOnly}"]`
-    );
+    if (serverLocationOnly === "european_union_only") {
+      const europeanUnionOnlyServerLocationProviders = [];
+      for (const provider of serverLocationProviders) {
+        const locations = new Set(provider.dataset.propertyServerLocations.split(","));
+        if (locations.isSubsetOf(europeanCountryCodes)) {
+          europeanUnionOnlyServerLocationProviders.push(provider);
+        }
+      }
+      serverLocationProviders = europeanUnionOnlyServerLocationProviders;
+    } else {
+      serverLocationProviders = document.querySelectorAll(
+        `[data-property-server-locations*="${serverLocationOnly}"]`
+      );
+    }
   }
 
   let busFactorProviders = document.querySelectorAll(

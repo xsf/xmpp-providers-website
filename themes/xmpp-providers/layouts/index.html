@@ -59,6 +59,7 @@
                                     <label for="filter_server_locations" class="form-label">Server Location</label>
                                     <select id="filter_server_locations" class="form-select form-select-sm" aria-label="Server Location">
                                         <option selected value="all">All Locations</option>
+                                        <option value="european_union_only">European Union (EU) only</option>
                                         {{ range $country, $country_code := $.Site.Data.country_codes }}
                                             {{ range $allServerLocations }}
                                                 {{ if eq . (lower $country_code) }}
