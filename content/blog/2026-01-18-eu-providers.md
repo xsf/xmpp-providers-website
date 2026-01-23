@@ -16,7 +16,7 @@ Click the *Filter list* drop-down menu on the [main page](/).
 There are many other properties you can filter for, too.
 In addition, there is an [overview table](/overview/) of providers with column filters and sorting options.
 
-## Use the Service and Improve XMPP
+## Improve the XMPP experience
 
 For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the [providers](/overview/) themselves.
 If you are an XMPP developer, please consider [adding XMPP Providers support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
