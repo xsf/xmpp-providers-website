@@ -1,5 +1,5 @@
 ---
-title: Select your European Union based chat provider!
+title: Your European Union XMPP Chat Provider!
 date: 2026-01-18
 aliases: ["/blog/2026-01-18_eu_providers/"]
 ---
