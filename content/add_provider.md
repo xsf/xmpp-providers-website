@@ -1,28 +1,29 @@
 ---
-title: Add provider
+title: Add a Provider
 ---
 
-If you want to add a missing provider this page describes the required seven steps and the process behind it.
-Listing a provider requires pre-work on both sides and to make this efficient we suggestion the following actions:
+If you want to add a missing provider, this page describes the required steps and the process behind it.
+Listing a provider requires preliminary work.
+To make this efficient, the following actions are suggested:
 
-1. Are you the official server maintainer?
-If not, please reach out to the maintainers first.
+1. Are you the server operator?
+If not, please reach out to the operators first.
 You will need their collaboration to receive a good rating.
 
-2. Please thoroughly read our [Contribution Guidelines](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md?ref_type=heads#providers).
+2. Please thoroughly check the [conditions for adding providers](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#conditions-for-adding-providers).
 
-3. If you already have questions, please read our [FAQ](/faq).
-If something is still unclear you can reach out via the [contact page](/contact).
+3. If you already have questions, please read our [FAQ](/faq/).
+If something is still unclear, feel free to [reach out to us](/contact/).
 
-4. Create and host a so-called XMPP Provider File.
-You can read more about this and use the [Provider File Generator](/provider-file-generator).
+4. Create and host a *provider file*.
+The [provider file generator](/provider-file-generator/) helps you with that.
 
-5. To be listed in e.g. [Category A](faq/#in-which-categories-can-providers-be), your server needs to fulfill certain criteria.
-Therefore, you may need to add information or change certain properties in the server configuration.
+5. To be listed in a specific [category](/faq/#in-which-categories-can-providers-be) such as A or B, your service needs to fulfill certain [criteria](https://invent.kde.org/melvo/xmpp-providers#criteria).
+Therefore, you may need to add information to your provider file or change your server configuration.
 You can inspect the requirements in our [category criteria table](https://invent.kde.org/melvo/xmpp-providers#criteria).
 
-7. Only if you have checked and fulfilled the previous steps: Create an issue according to the [Contribution Guidelines](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md?ref_type=heads#providers).
+7. Only if you have done the previous steps, [create an issue](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers) to be added.
 
-If you are interested to better understand the intentions behind the project and need for such criteria you can read the [About page](/about) and in this [blog post](/blog/2025-07-20-rising-tide-lifts-all-boats/#perspective).
+If you are interested in the project's goals and the need for such criteria, you can read the [about page](/about/) and a related [blog post](/blog/2025-07-20-rising-tide-lifts-all-boats/#perspective).
 
-Looking forward to list your service.
+We are looking forward to listing your service!
