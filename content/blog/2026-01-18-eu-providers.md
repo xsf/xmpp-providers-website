@@ -1,6 +1,6 @@
 ---
 title: Your European Union XMPP Chat Provider!
-date: 2026-01-18
+date: 2026-01-25
 ---
 
 You can now easily find an XMPP provider based in the European Union (EU)!
@@ -11,7 +11,7 @@ That filter now allows to select EU-only hosted services.
 Try it out!
 Click the *Filter list* drop-down menu on the [main page](/).
 
-{{< figure src="/images/" caption="The location-based filter allows to select the server location." >}}
+{{< figure src="/images/category-A_eu-server.png" caption="The location-based filter allows to select the server location." >}}
 
 There are many other properties you can filter for, too.
 In addition, there is an [overview table](/overview/) of providers with column filters and sorting options.
