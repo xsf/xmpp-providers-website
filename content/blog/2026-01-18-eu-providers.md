@@ -20,7 +20,7 @@ In addition, there is an [overview table](/overview/) of providers with column f
 
 For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the [providers](/overview/) themselves.
 If you are an XMPP developer, please consider [adding XMPP Providers support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
-If you are an operator of a public XMPP service, provide the [information XMPP Providers needs](/faq/#where-do-we-have-the-providers-properties-from) and [add your service to the list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
+If you are an operator of a public XMPP service, [add your service to the list](https://providers.xmpp.net/add-provider/).
 
 You can also consider to run your own XMPP server and become a public provider.
 With our automated [XMPP server setup](https://invent.kde.org/melvo/xmpp-providers-server), you can operate a fully-featured XMPP server with minimal effort.
