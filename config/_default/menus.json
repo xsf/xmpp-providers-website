@@ -31,14 +31,24 @@
             "weight": 6
         },
         {
+            "name": "Add Provider",
+            "url": "/add-provider/",
+            "params": [
+                {
+                    "new": true
+                }
+            ],
+            "weight": 7
+        },
+        {
             "name": "Provider File Generator",
             "url": "/provider-file-generator/",
-            "weight": 7
+            "weight": 8
         },
         {
             "name": "API",
             "url": "https://invent.kde.org/melvo/xmpp-providers#usage",
-            "weight": 8
+            "weight": 9
         }
     ]
 }
