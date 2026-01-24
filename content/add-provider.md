@@ -20,7 +20,6 @@ The [provider file generator](/provider-file-generator/) helps you with that.
 
 5. To be listed in a specific [category](/faq/#in-which-categories-can-providers-be) such as A or B, your service needs to fulfill certain [criteria](https://invent.kde.org/melvo/xmpp-providers#criteria).
 Therefore, you may need to add information to your provider file or change your server configuration.
-You can inspect the requirements in our [category criteria table](https://invent.kde.org/melvo/xmpp-providers#criteria).
 
 7. Only if you have done the previous steps, [create an issue](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers) to be added.
 
