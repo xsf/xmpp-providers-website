@@ -1,6 +1,6 @@
 ---
 title: Your European Union XMPP Chat Provider!
-date: 2026-01-25
+date: 2026-01-26
 ---
 
 You can now easily find an XMPP provider based in the European Union (EU)!
