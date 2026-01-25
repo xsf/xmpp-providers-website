@@ -250,7 +250,6 @@ const country_codes = {
   Zambia: "ZM",
   Zimbabwe: "ZW",
   "North Macedonia": "MK",
-  Češka: "CZ",
 };
 
 // List of ISO 639-1 codes
