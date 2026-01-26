@@ -18,7 +18,7 @@ In addition, there is an [overview table](/overview/) of providers with column f
 
 Looking forward to more European Union XMPP chat providers and beyond!
 
-Info: Meet us this week at the [FOSDEM](https://xmpp.org/2026/01/xmpp-at-fosdem-2026-update/)!
+Info: Meet us this week at [FOSDEM](https://xmpp.org/2026/01/xmpp-at-fosdem-2026-update/)!
 
 ## Improve the XMPP experience
 
