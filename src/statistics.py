@@ -36,6 +36,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
         "provider_file_pie_chart_data": [],
         "server_testing_pie_chart_data": [],
         "bus_factor_pie_chart_data": [],
+        "registration_type_pie_chart_data": [],
         "since_bar_chart_data": {},
         "file_size_bar_chart_data": {
             "unknown": {
@@ -142,6 +143,24 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
         },
     }
 
+    registration_type = {
+        "App": {
+            "value": 0,
+            "providers": [],
+            "color": "rgb(67, 150, 57)",
+        },
+        "Website": {
+            "value": 0,
+            "providers": [],
+            "color": "rgb(160, 206, 103)",
+        },
+        "Registration closed": {
+            "value": 0,
+            "providers": [],
+            "color": "rgb(217, 16, 30)",
+        }
+    }
+
     for provider_jid, provider_data in providers_data.items():
         if website_data := provider_data.get("website"):
             website_data_source = website_data.get("source")
@@ -184,6 +203,23 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
 
             bus_factor[bus_factor_key]["value"] += 1
             bus_factor[bus_factor_key]["providers"].append(provider_jid)
+
+        any_registration_method_offered = False
+        registration_app_data = provider_data.get("inBandRegistration")
+        if registration_app_data and registration_app_data["content"]:
+            any_registration_method_offered = True
+            registration_type["App"]["value"] += 1
+            registration_type["App"]["providers"].append(provider_jid)
+
+        registration_website_data = provider_data.get("registrationWebPage")
+        if registration_website_data and len(registration_website_data["content"].keys()) > 0:
+            any_registration_method_offered = True
+            registration_type["Website"]["value"] += 1
+            registration_type["Website"]["providers"].append(provider_jid)
+
+        if not any_registration_method_offered:
+            registration_type["Registration closed"]["value"] += 1
+            registration_type["Registration closed"]["providers"].append(provider_jid)
 
         if green_web_check_data := provider_data.get("ratingGreenWebCheck"):
             green_web_check_key = (
@@ -273,6 +309,16 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
 
     for key, data in bus_factor.items():
         statistics_data["bus_factor_pie_chart_data"].append(
+            {
+                "value": data["value"],
+                "name": key,
+                "itemStyle": {"color": data["color"]},
+                "providers": data["providers"],
+            }
+        )
+
+    for key, data in registration_type.items():
+        statistics_data["registration_type_pie_chart_data"].append(
             {
                 "value": data["value"],
                 "name": key,

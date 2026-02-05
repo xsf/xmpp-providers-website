@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initialize_categories_pie_chart();
   initialize_since_bar_chart();
   initialize_bus_factor_pie_chart();
+  initialize_registration_type_pie_chart();
   initialize_green_web_check_pie_chart();
   initialize_file_size_bar_chart();
   initialize_provider_file_pie_chart();
@@ -210,6 +211,42 @@ function initialize_bus_factor_pie_chart() {
     series: [
       {
         name: "Bus Factor",
+        type: "pie",
+        radius: pie_chart_radius,
+        percentPrecision: 1,
+        data: values,
+      },
+    ],
+  };
+
+  chart.setOption(option);
+  charts.push(chart)
+  chart.on("click", function(params) {
+    show_chart_details(chart, params)
+  });
+}
+
+function initialize_registration_type_pie_chart() {
+  const container = document.getElementById(
+    "registration_type_pie_chart_container"
+  );
+  const values = JSON.parse(container.dataset.values);
+
+  const chart = echarts.init(container);
+  const option = {
+    backgroundColor: get_chart_background_color(),
+    tooltip: {
+      trigger: "item",
+    },
+    label: {
+      show: true,
+      formatter(param) {
+        return `${param.name}: ${param.value} (${param.percent} %)`;
+      },
+    },
+    series: [
+      {
+        name: "Registration",
         type: "pie",
         radius: pie_chart_radius,
         percentPrecision: 1,
