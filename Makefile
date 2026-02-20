@@ -26,7 +26,8 @@ clean:
 	[ ! -d $(OUTPUTDIR) ] || rm -rf $(OUTPUTDIR)
 
 serve:
-	$(UV) pip install --upgrade -r pyproject.toml
+	$(UV) pip install --upgrade -r pyproject.toml --group dev
+	pre-commit install
 	$(PY) -m src.run prepare_website
 	$(HUGO) version
 	$(HUGO) server --bind=0.0.0.0 --baseURL="http://localhost/" --buildFuture
