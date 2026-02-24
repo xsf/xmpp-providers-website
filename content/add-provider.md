@@ -20,7 +20,8 @@ The [provider file generator](/provider-file-generator/) helps you with that.
 
 5. To be listed in a specific [category](/faq/#in-which-categories-can-providers-be) such as A or B, your service needs to fulfill certain [criteria](https://invent.kde.org/melvo/xmpp-providers#criteria).
 Therefore, you may need to add information to your provider file or change your server configuration.
-Fulfillment of the criteria involves a test account registered at the [XMPP Compliance Tester](https://compliance.conversations.im/).
+All criteria can only be met if a test account at the provider to be added can be used by the [XMPP Compliance Tester](https://compliance.conversations.im).
+If no test account is set yet, you need to [provide its credentials](https://compliance.conversations.im/add/).
 
 7. ONLY if you have done the previous steps, [create an issue](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers) to be added.
 Read about creating a [KDE Basic Setup and Identity](https://invent.kde.org/network/kaidan/-/wikis/setup).
