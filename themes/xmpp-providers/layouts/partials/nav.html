@@ -18,7 +18,7 @@
             <ul class="dropdown-menu" aria-labelledby="{{ .Name }}">
               {{ range .Children }}
                 {{ $url := urls.Parse .URL }}
-                <li><a class="dropdown-item" href="{{ .URL | relLangURL }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ .Name }}{{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}</a></li>
+                <li><a class="dropdown-item" href="{{ .URL | relLangURL }}" {{ if ne $url.Host $baseurl.Host }}target="_blank" {{ end }}>{{ .Name }}{{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fa-solid fa-xs fa-external-link-alt"></i>{{ end }}</a></li>
               {{ end }}
             </ul>
           </li>
@@ -33,7 +33,7 @@
               {{ if ne $url.Host $baseurl.Host }}target="_blank"{{ end }}
               >
               {{ .Name }}
-              {{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fas fa-xs fa-external-link-alt"></i>{{ end }}
+              {{ if ne $url.Host $baseurl.Host }}&nbsp;&nbsp;<i class="fa-solid fa-xs fa-external-link-alt"></i>{{ end }}
               {{ if eq .Params.new true }}<span class="badge badge-new bg-primary">New</span>{{ end }}
               </a>
             </li>
@@ -47,28 +47,28 @@
         <li class="nav-item dropdown d-lg-flex align-items-center me-auto">
           <button class="btn btn-link nav-link dropdown-toggle d-flex align-items-center" id="theme-switcher" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)" title="Toggle theme">
             <i class="fa-solid fa-circle-half-stroke me-2 opacity-75" data-bs-theme-value-icon="auto"></i>
-            <i class="fa-solid fa-sun fa-fw me-2 opacity-75 d-none" data-bs-theme-value-icon="light"></i>
-            <i class="fa-solid fa-moon fa-fw me-2 opacity-75 d-none" data-bs-theme-value-icon="dark"></i>
+            <i class="fa-solid fa-sun me-2 opacity-75 d-none" data-bs-theme-value-icon="light"></i>
+            <i class="fa-solid fa-moon me-2 opacity-75 d-none" data-bs-theme-value-icon="dark"></i>
             <span class="d-lg-none" id="theme-switcher-text">Toggle theme</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="theme-switcher-text">
             <li>
               <button type="button" class="dropdown-item d-flex align-items-center small" data-bs-theme-value="light" aria-pressed="false">
-                <i class="fa-solid fa-sun fa-fw me-2 opacity-75"></i>
+                <i class="fa-solid fa-sun me-2 opacity-75"></i>
                 Light
                 <i class="fa-solid fa-check ms-auto d-none"></i>
               </button>
             </li>
             <li>
               <button type="button" class="dropdown-item d-flex align-items-center small" data-bs-theme-value="dark" aria-pressed="false">
-                <i class="fa-solid fa-moon fa-fw me-2 opacity-75"></i>
+                <i class="fa-solid fa-moon me-2 opacity-75"></i>
                 Dark
                 <i class="fa-solid fa-check ms-auto d-none"></i>
               </button>
             </li>
             <li>
               <button type="button" class="dropdown-item d-flex align-items-center small active" data-bs-theme-value="auto" aria-pressed="true">
-                <i class="fa-solid fa-circle-half-stroke fa-fw me-2 opacity-75"></i>
+                <i class="fa-solid fa-circle-half-stroke me-2 opacity-75"></i>
                 Auto
                 <i class="fa-solid fa-check ms-auto d-none"></i>
               </button>

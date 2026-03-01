@@ -1,9 +1,9 @@
 <span class="text-body-secondary">
     {{ $datestr := default (i18n "dateFormat") .Site.Params.dateformat | .Date.Format }}
-    <i class="fas fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
+    <i class="fa-solid fa-calendar"></i>&nbsp;{{ $datestr | i18n "postedOnDate"}}
     {{ if .Params.author }}
-        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
+        &nbsp;|&nbsp;<i class="fa-solid fa-user"></i>&nbsp;{{ .Params.author | safeHTML }}
     {{ else }}
-        &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;{{ .Site.Params.author.name | safeHTML }}
+        &nbsp;|&nbsp;<i class="fa-solid fa-user"></i>&nbsp;{{ .Site.Params.author.name | safeHTML }}
     {{ end }}
 </span>

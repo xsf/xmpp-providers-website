@@ -39,7 +39,7 @@
             {{ $len := (len .website) }}
             {{ $count := 0 }}
             {{ range $lang, $address := .website }}
-                <a href="{{ $address }}" target="_blank">{{ upper $lang }} <i class="fas fa-xs fa-external-link-alt"></i></a>
+                <a href="{{ $address }}" target="_blank">{{ upper $lang }} <i class="fa-solid fa-xs fa-external-link-alt"></i></a>
                 {{ $count = add $count 1 }}
                 {{ if ne $count $len }}
                     <span class="text-body-secondary">|</span>
@@ -70,7 +70,7 @@
                 <table>
                     <tr>
                         <td class="text-center">
-                            <i class="fa-solid fa-dollar-sign px-2 text-body-secondary"></i>
+                            <i class="fa-solid fa-dollar-sign text-body-secondary"></i>
                         </td>
                         <td>
                             {{ if .freeOfCharge }}
@@ -87,7 +87,7 @@
                     </tr>
                     <tr>
                         <td class="text-center">
-                            <i class="fa-solid fa-scale-balanced px-2 text-body-secondary"></i>
+                            <i class="fa-solid fa-scale-balanced text-body-secondary"></i>
                         </td>
                         <td>
                             {{ if .legalNotice }}
@@ -95,7 +95,7 @@
                                 {{ $len := (len .legalNotice) }}
                                 {{ $count := 0 }}
                                 {{ range $lang, $address := .legalNotice }}
-                                    <a href="{{ $address }}" target="_blank">{{ upper $lang }} <i class="fas fa-xs fa-external-link-alt"></i></a>
+                                    <a href="{{ $address }}" target="_blank">{{ upper $lang }} <i class="fa-solid fa-xs fa-external-link-alt"></i></a>
                                     {{ $count = add $count 1 }}
                                     {{ if ne $count $len }}
                                         <span class="text-body-secondary">|</span>
@@ -108,7 +108,7 @@
                     </tr>
                     <tr>
                         <td class="text-center">
-                            <i class="fa-solid fa-people-group px-2 text-body-secondary"></i>
+                            <i class="fa-solid fa-people-group text-body-secondary"></i>
                         </td>
                         <td>
                             <a href="/faq/#bus-factor" class="abbr">Bus factor</a>:
@@ -126,7 +126,7 @@
                     </tr>
                     <tr>
                         <td class="text-center">
-                            <i class="fa-regular fa-building px-2 text-body-secondary"></i>
+                            <i class="fa-regular fa-building text-body-secondary"></i>
                         </td>
                         <td>
                             Organization:
@@ -150,7 +150,7 @@
                 <table>
                     <tr>
                         <td class="text-center">
-                            <i class="fa-solid fa-location-dot px-2 text-body-secondary"></i>
+                            <i class="fa-solid fa-location-dot text-body-secondary"></i>
                         </td>
                         <td>
                             Server / Data
@@ -180,7 +180,7 @@
                     </tr>
                     <tr>
                         <td class="text-center">
-                            <i class="fa-solid fa-database px-2 text-body-secondary"></i>
+                            <i class="fa-solid fa-database text-body-secondary"></i>
                         </td>
                         <td>
                             {{ if .professionalHosting }}
@@ -197,12 +197,12 @@
                     </tr>
                     <tr>
                         <td class="text-center">
-                            <i class="fa-solid fa-leaf px-2 text-body-secondary"></i>
+                            <i class="fa-solid fa-leaf text-body-secondary"></i>
                         </td>
                         <td>
                             {{ if .ratingGreenWebCheck }}
                                 {{ $url := index (last 1 (split $providers_data.ratingGreenWebCheck.source "/")) 0 }}
-                                <a href="https://www.thegreenwebfoundation.org/green-web-check/?url={{ $url }}" target="_blank">Green hosting <i class="fas fa-xs fa-external-link-alt"></i></a>
+                                <a href="https://www.thegreenwebfoundation.org/green-web-check/?url={{ $url }}" target="_blank">Green hosting <i class="fa-solid fa-xs fa-external-link-alt"></i></a>
                             {{ else }}
                                 No <a href="/faq/#green-hosting" class="abbr">green hosting</a>
                             {{ end }}
@@ -210,7 +210,7 @@
                     </tr>
                     <tr>
                         <td class="text-center">
-                            <i class="fa-solid fa-terminal px-2 text-body-secondary"></i>
+                            <i class="fa-solid fa-terminal text-body-secondary"></i>
                         </td>
                         <td>
                             {{ if .serverSoftwareName }}
@@ -237,7 +237,7 @@
         <table class="mb-4">
             <tr>
                 <td class="text-center">
-                    <i class="fa-solid fa-pen px-2 text-body-secondary"></i>
+                    <i class="fa-solid fa-pen text-body-secondary"></i>
                 </td>
                 <td>
                     {{ if .inBandRegistration }}
@@ -257,7 +257,7 @@
                             <br>
                             {{ range $lang, $address := .registrationWebPage }}
                                 <a class="btn btn-secondary btn-sm" href="{{ $address }}" target="_blank">
-                                    Register ({{ upper $lang }}) <i class="fas fa-xs fa-external-link-alt"></i>
+                                    Register ({{ upper $lang }}) <i class="fa-solid fa-xs fa-external-link-alt"></i>
                                 </a>
                             {{ end }}
                         {{ else if gt (len .registrationWebPage) 1 }}
@@ -267,7 +267,7 @@
                                 </button>
                                 <ul id="register-dropdown-menu" class="dropdown-menu" aria-labelledby="register-dropdown-button">
                                     {{ range $lang, $address := .registrationWebPage }}
-                                        <li><a class="dropdown-item" href="{{ $address }}" target="_blank">Register ({{ upper $lang }}) <i class="fas fa-xs fa-external-link-alt"></i></a></li>
+                                        <li><a class="dropdown-item" href="{{ $address }}" target="_blank">Register ({{ upper $lang }}) <i class="fa-solid fa-xs fa-external-link-alt"></i></a></li>
                                     {{ end }}
                                 </ul>
                             </div>
@@ -281,7 +281,7 @@
             {{ if .inBandRegistration }}
               <tr>
                   <td class="text-center">
-                      <i class="fa-solid fa-envelope-circle-check px-2 text-body-secondary"></i>
+                      <i class="fa-solid fa-envelope-circle-check text-body-secondary"></i>
                   </td>
                   <td>
                       {{ if .inBandRegistrationEmailAddressRequired }}
@@ -293,20 +293,20 @@
               </tr>
               <tr>
                   <td class="text-center">
-                      <i class="fa-solid fa-robot px-2 text-body-secondary"></i>
+                      <i class="fa-solid fa-robot text-body-secondary"></i>
                   </td>
                   <td>
                       {{ if .inBandRegistrationCaptchaRequired }}
-                          A <a class="abbr" href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA <i class="fas fa-xs fa-external-link-alt"></i></a> must be solved for registration via XMPP apps
+                          A <a class="abbr" href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA <i class="fa-solid fa-xs fa-external-link-alt"></i></a> must be solved for registration via XMPP apps
                       {{ else }}
-                          No <a class="abbr" href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA <i class="fas fa-xs fa-external-link-alt"></i></a> must be solved for registration via XMPP apps
+                          No <a class="abbr" href="https://en.wikipedia.org/wiki/CAPTCHA" target="_blank">CAPTCHA <i class="fa-solid fa-xs fa-external-link-alt"></i></a> must be solved for registration via XMPP apps
                       {{ end }}
                   </td>
               </tr>
             {{ end }}
             <tr>
                 <td class="text-center">
-                    <i class="fa-solid fa-key px-2 text-body-secondary"></i>
+                    <i class="fa-solid fa-key text-body-secondary"></i>
                 </td>
                 <td>
                     {{ if .passwordReset }}
@@ -314,7 +314,7 @@
                         {{ $len := (len .passwordReset) }}
                         {{ $count := 0 }}
                         {{ range $lang, $address := .passwordReset }}
-                            <a href="{{ $address }}" target="_blank">{{ upper $lang }} <i class="fas fa-xs fa-external-link-alt"></i></a>
+                            <a href="{{ $address }}" target="_blank">{{ upper $lang }} <i class="fa-solid fa-xs fa-external-link-alt"></i></a>
                             {{ $count = add $count 1 }}
                             {{ if ne $count $len }}
                                 <span class="text-body-secondary">|</span>
@@ -327,7 +327,7 @@
             </tr>
             <tr>
                 <td class="text-center">
-                    <i class="fa-solid fa-clock-rotate-left px-2 text-body-secondary"></i>
+                    <i class="fa-solid fa-clock-rotate-left text-body-secondary"></i>
                 </td>
                 <td>
                     {{ if eq (string .maximumMessageArchiveManagementStorageTime) "-1" }}
@@ -344,7 +344,7 @@
         <table>
             <tr>
                 <td class="text-center">
-                    <i class="fa-solid fa-cloud-arrow-up px-2 text-body-secondary"></i>
+                    <i class="fa-solid fa-cloud-arrow-up text-body-secondary"></i>
                 </td>
                 <td>
                     Allows to share files up to
@@ -365,7 +365,7 @@
             </tr>
             <tr>
                 <td class="text-center">
-                    <i class="fa-solid fa-cloud-arrow-down px-2 text-body-secondary"></i>
+                    <i class="fa-solid fa-cloud-arrow-down text-body-secondary"></i>
                 </td>
                 <td>
                     Shared files are <a href="/faq/#storage" class="abbr">stored</a> up to
@@ -386,7 +386,7 @@
             </tr>
             <tr>
                 <td class="text-center">
-                    <i class="fa-solid fa-clock-rotate-left px-2 text-body-secondary"></i>
+                    <i class="fa-solid fa-clock-rotate-left text-body-secondary"></i>
                 </td>
                 <td>
                     Shared files are <a href="/faq/#storage" class="abbr">stored</a> for
@@ -661,7 +661,7 @@
 <div class="row pt-3">
     <div class="col-auto text-center mx-auto border rounded px-3 py-2 small">
         <i class="fa-solid fa-globe me-2"></i>
-        <a href="https://xmppnetwork.goodbytes.im/webgl.html?focus={{- $provider_name -}}" target="_blank">Show this provider in the global XMPP network&nbsp;<i class="fas fa-xs fa-external-link-alt"></i></a>
+        <a href="https://xmppnetwork.goodbytes.im/webgl.html?focus={{- $provider_name -}}" target="_blank">Show this provider in the global XMPP network&nbsp;<i class="fa-solid fa-xs fa-external-link-alt"></i></a>
     </div>
 </div>
 <div class="row pt-5">
