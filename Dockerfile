@@ -4,7 +4,7 @@
 
 # Dockerfile to build a docker image for xmpp-providers
 
-FROM python:3.13-slim-trixie
+FROM python:3.14-slim-trixie
 
 # Set environment variables
 ENV DEBIAN_FRONTEND=noninteractive

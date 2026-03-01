@@ -19,7 +19,7 @@ This is due to some delay in building and deploying.
 ## Software Requirements
 
 * [hugo](https://gohugo.io/)
-* [Python](https://www.python.org/) >=3.13
+* [Python](https://www.python.org/) >=3.14
 
 ## Development
 
