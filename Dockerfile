@@ -15,7 +15,7 @@ RUN apt-get update && apt-get dist-upgrade -y && apt-get autoremove -y && apt-ge
 # Install dependencies
 # Hugo
 RUN apt-get install -y make curl git
-RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.145.0/hugo_0.145.0_linux-amd64.deb -o hugo.deb
+RUN curl -L https://github.com/gohugoio/hugo/releases/download/v0.155.3/hugo_0.155.3_linux-amd64.deb -o hugo.deb
 RUN apt-get install ./hugo.deb
 
 # uv
