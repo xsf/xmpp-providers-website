@@ -6,17 +6,13 @@ default_language_version:
     python: python3.14
 
 repos:
-  - repo: https://github.com/pycqa/isort
-    rev: 6.0.1
-    hooks:
-      - id: isort
-
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.12.4
+    rev: v0.15.9
     hooks:
-      - id: ruff
       - id: ruff-format
-
+      - id: ruff-check
+        args: [--select, I, --fix]
+  
   - repo: https://github.com/RobertCraigie/pyright-python
     rev: v1.1.403
     hooks:
