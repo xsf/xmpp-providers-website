@@ -163,7 +163,7 @@ function _add_address_entry(property_name) {
   );
   container.insertBefore(input_row, add_entry_row);
 
-  initialize_bootstrap_tooltips();
+  initBootstrapTooltips();
   return address_input_id
 }
 
@@ -222,7 +222,7 @@ function _add_country_entry(property_name) {
   );
   container.insertBefore(input_row, add_entry_row);
 
-  initialize_bootstrap_tooltips();
+  initBootstrapTooltips();
   return country_select_id
 }
 
@@ -302,7 +302,7 @@ function _add_language_entry(property_name) {
   );
   container.insertBefore(input_row, add_entry_row);
 
-  initialize_bootstrap_tooltips();
+  initBootstrapTooltips();
   return [language_select_id, website_input_id]
 }
 
