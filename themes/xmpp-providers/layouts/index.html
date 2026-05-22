@@ -49,7 +49,7 @@
                             <div class="d-flex flex-wrap gap-5 pb-2">
                                 <div>
                                     {{ $allServerLocations := slice }}
-                                    {{ range .Site.Data.filtered_providers }}
+                                    {{ range hugo.Data.filtered_providers }}
                                         {{ range .serverLocations }}
                                             {{ if not (in $allServerLocations .) }}
                                                 {{ $allServerLocations = append . $allServerLocations }}
@@ -60,7 +60,7 @@
                                     <select id="filter_server_locations" class="form-select form-select-sm" aria-label="Server Location">
                                         <option selected value="all">All Locations</option>
                                         <option value="european_union_only">European Union (EU) only</option>
-                                        {{ range $country, $country_code := $.Site.Data.country_codes }}
+                                        {{ range $country, $country_code := hugo.Data.country_codes }}
                                             {{ range $allServerLocations }}
                                                 {{ if eq . (lower $country_code) }}
                                                     <option value="{{ lower . }}">{{ $country }}</option>
@@ -89,7 +89,7 @@
             </h3>
             <p>Providers in this category have the best properties, allow you to register via an app and are free of charge.</p>
             <div class="accordion accordion-shadow" id="providers-accordion-a">
-                {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "A") }}
+                {{ partial "provider-list-items.html" (where hugo.Data.filtered_providers ".category" "==" "A") }}
             </div>
             <div class="pb-5"></div>
             <h3 id="category-b">
@@ -99,7 +99,7 @@
             </h3>
             <p>Providers in this category have the best properties but may only allow you to register via a web page or are <i>not</i> free of charge.</p>
             <div class="accordion accordion-shadow" id="providers-accordion-b">
-                {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "B") }}
+                {{ partial "provider-list-items.html" (where hugo.Data.filtered_providers ".category" "==" "B") }}
             </div>
             <div class="pb-5"></div>
             <h3 id="category-c">
@@ -109,7 +109,7 @@
             </h3>
             <p>Providers in this category have average properties and should only be used if there is a certain reason for it.</p>
             <div class="accordion accordion-shadow" id="providers-accordion-c">
-                {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "C") }}
+                {{ partial "provider-list-items.html" (where hugo.Data.filtered_providers ".category" "==" "C") }}
             </div>
             <div class="pb-5"></div>
             <h3 id="category-d">
@@ -123,7 +123,7 @@
             </button>
             <div class="collapse" id="category-d-collapse">
                 <div class="accordion accordion-shadow" id="providers-accordion-d">
-                    {{ partial "provider-list-items.html" (where .Site.Data.filtered_providers ".category" "==" "D") }}
+                    {{ partial "provider-list-items.html" (where hugo.Data.filtered_providers ".category" "==" "D") }}
                 </div>
             </div>
             <div class="pb-5"></div>

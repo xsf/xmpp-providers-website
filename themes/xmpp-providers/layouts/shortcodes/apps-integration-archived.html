@@ -1,4 +1,4 @@
-{{ $clients_data := .Site.Data.implementing_clients }}
+{{ $clients_data := hugo.Data.implementing_clients }}
 
 <ul>
 {{ range sort $clients_data ".name" }}

@@ -1,6 +1,6 @@
 <script>
-  var filteredPoviders = JSON.parse({{ .Site.Data.filtered_providers | jsonify }});
-  var providersData = JSON.parse({{ .Site.Data.providers | jsonify }});
+  var filteredPoviders = JSON.parse({{ hugo.Data.filtered_providers | jsonify }});
+  var providersData = JSON.parse({{ hugo.Data.providers | jsonify }});
 </script>
 
 <table id="provider-overview-table" class="table table-sm small table-striped table-hover nowrap"></table>

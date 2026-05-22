@@ -1,5 +1,5 @@
 {{ $providers := slice }}
-{{ range $k, $_ := .Site.Data.providers }}
+{{ range $k, $_ := hugo.Data.providers }}
   {{ $providers = $providers | append $k }}
 {{ end }}
 

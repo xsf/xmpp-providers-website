@@ -29,7 +29,7 @@
                 {{ with .GitInfo }}
                     &nbsp;&middot;&nbsp;Last change: <a href="https://github.com/xsf/xmpp-providers-website/commit/{{ .AbbreviatedHash }}" target="_blank" class="small">{{ .AbbreviatedHash }}</a>
                 {{ end }}
-                &nbsp;&middot;&nbsp;API Version:&nbsp;<code>{{- .Site.Data.api_version.api_version -}}</code>
+                &nbsp;&middot;&nbsp;API Version:&nbsp;<code>{{- hugo.Data.api_version.api_version -}}</code>
             </span>
         </div>
     </div>

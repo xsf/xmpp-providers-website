@@ -1,15 +1,15 @@
 {{ $provider_name := .Get "provider" }}
-{{ $filtered_providers_data := .Site.Data.filtered_providers }}
+{{ $filtered_providers_data := hugo.Data.filtered_providers }}
 {{ $provider := where $filtered_providers_data ".jid" "==" $provider_name }}
 
-{{ $providers_data := index .Site.Data.providers $provider_name }}
+{{ $providers_data := index hugo.Data.providers $provider_name }}
 
 {{ $permalink := .Page.Permalink }}
 
-{{ $api_version := .Site.Data.api_version.api_version }}
+{{ $api_version := hugo.Data.api_version.api_version }}
 
 {{ $category_criteria := "" }}
-{{ range $index, $data := .Site.Data.results }}
+{{ range $index, $data := hugo.Data.results }}
     {{ if eq $index $provider_name }}
         {{ $category_criteria = . }}
     {{ end }}
