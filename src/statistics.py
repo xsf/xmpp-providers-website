@@ -158,7 +158,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             "value": 0,
             "providers": [],
             "color": "rgb(217, 16, 30)",
-        }
+        },
     }
 
     for provider_jid, provider_data in providers_data.items():
@@ -212,7 +212,10 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             registration_type["App"]["providers"].append(provider_jid)
 
         registration_website_data = provider_data.get("registrationWebPage")
-        if registration_website_data and len(registration_website_data["content"].keys()) > 0:
+        if (
+            registration_website_data
+            and len(registration_website_data["content"].keys()) > 0
+        ):
             any_registration_method_offered = True
             registration_type["Website"]["value"] += 1
             registration_type["Website"]["providers"].append(provider_jid)
@@ -262,7 +265,7 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             since_date = datetime.strptime(since_data["content"], "%Y-%m-%d").replace(
                 tzinfo=UTC
             )
-            if not since_data["source"]:
+            if not since_data.get("source"):
                 if statistics_data["since_bar_chart_data"].get("unknown") is None:
                     statistics_data["since_bar_chart_data"]["unknown"] = {}
                     statistics_data["since_bar_chart_data"]["unknown"]["itemStyle"] = {
