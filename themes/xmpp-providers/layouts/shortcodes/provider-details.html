@@ -77,7 +77,7 @@
                                 Cost: Free of charge
                             {{ else }}
                                 {{ $freeOfCharge_source := $providers_data.freeOfCharge.source }}
-                                {{ if eq $freeOfCharge_source "" }}
+                                {{ if (not (isset $providers_data.freeOfCharge "source" )) | or (eq $freeOfCharge_source "") }}
                                     Cost: <a href="/faq/#unknown" class="abbr">unknown</a>
                                 {{ else }}
                                     Cost: Paid
