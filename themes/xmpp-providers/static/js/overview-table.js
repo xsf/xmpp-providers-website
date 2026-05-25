@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
           title: "<b>Free of Charge</b>",
           render: (data, type, row) => {
             const providerData = providersData[row.jid];
-            if (providerData.freeOfCharge.source === "") {
+            if (providerData.freeOfCharge.source === "" || providerData.freeOfCharge.source === undefined) {
               return unknownString;
             }
 
