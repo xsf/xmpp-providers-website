@@ -35,4 +35,4 @@ Feel free to [reach out to us](/contact/) if you have any questions!
 If you like to support XMPP Providers, please consider [making a donation](https://liberapay.com/xmpp_providers).
 [Follow us and spread the word](https://fosstodon.org/@xmpp_providers)!
 
-{{< figure src="/images/category-A-eu-server.png" caption="The location-based filter allows to select the server location." >}}
+{{< figure src="/images/xmpp-providers-adaptive.svg" caption="XMPP Providers Logo" class="text-center w-100 pt-5" height="300" link="/" >}}
