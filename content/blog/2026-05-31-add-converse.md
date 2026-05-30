@@ -9,7 +9,7 @@ The web app is hosted by many XMPP operators to provide their users a decent web
 We are very happy about this development and further distrubtion.
 Using XMPP Providers will enhance the onboarding experience for many people across the entire XMPP universe.
 
-TODO: {{< figure src="/images/converse-integration.png" caption="Screenshot of the integration of XMPP Provider in converse.js." class="text-center w-100 pt-5" height="500" link="/" >}}
+{{< figure src="/images/converse-integration.png" caption="Screenshot of the integration of XMPP Provider in converse.js." class="text-center w-100 pt-5" height="500" link="/" >}}
 
 ## More Automation
 
