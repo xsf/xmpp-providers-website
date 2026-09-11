@@ -1,7 +1,8 @@
 ---
-title: Overview
+title: Compare All
 layout: matrix
 overview_table: true
+aliases: ["/overview"]
 ---
 
 This table allows filtering providers by their properties.

@@ -10,7 +10,7 @@ Automating this process reduces manual work significantly (for example, checking
 Automation also enables the project to be up to date - every day!
 
 At the beginning of this year, work on automating the collection of several provider 'properties' (for example, available size for file uploads) started.
-An overview of all these provider properties gathered for each XMPP provider can be found on the [overview page](/overview/).
+An overview of all these provider properties gathered for each XMPP provider can be found on the [overview page](/compare-all/).
 Some of these properties were already available in a machine-readable format, making it easy to be collected.
 
 A [suite of tools](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/TOOLS.md#automation) has been developed since, providing the ability to query properties via XMPP and through the web.

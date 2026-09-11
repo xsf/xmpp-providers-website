@@ -14,7 +14,7 @@ Click the *Filter list* drop-down menu on the [main page](/).
 {{< figure src="/images/category-A-eu-server.png" caption="The location-based filter allows to select the server location." >}}
 
 There are many other properties you can filter for, too.
-In addition, there is an [overview table](/overview/) of providers with column filters and sorting options.
+In addition, there is an [overview table](/compare-all/) of providers with column filters and sorting options.
 
 Looking forward to more European Union XMPP chat providers and beyond!
 
@@ -22,7 +22,7 @@ Info: Meet us this week at [FOSDEM](https://xmpp.org/2026/01/xmpp-at-fosdem-2026
 
 ## Improve the XMPP experience
 
-For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the [providers](/overview/) themselves.
+For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the [providers](/compare-all/) themselves.
 If you are an XMPP developer, please consider [adding XMPP Providers support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
 If you are an operator of a public XMPP service, [add your service to the list](https://providers.xmpp.net/add-provider/).
 

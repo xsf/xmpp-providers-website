@@ -16,8 +16,8 @@
             "weight": 3
         },
         {
-            "name": "Overview",
-            "url": "/overview/",
+            "name": "Compare All",
+            "url": "/compare-all/",
             "weight": 4
         },
         {

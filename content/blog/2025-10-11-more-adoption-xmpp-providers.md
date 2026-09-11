@@ -26,7 +26,7 @@ It makes use of Ansible to set up a Debian-based server and contains playbooks f
 
 ## Help the Project, Improve XMPP
 
-For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the [providers](/overview/) themselves.
+For a good user experience, [apps integrating XMPP Providers](/apps/) are as important as the [providers](/compare-all/) themselves.
 If you are an XMPP developer, please consider [adding XMPP Providers support](https://invent.kde.org/melvo/xmpp-providers#usage) to your app.
 If you are an operator of a public XMPP service, provide the [information XMPP Providers needs](/faq/#where-do-we-have-the-providers-properties-from) and [add your service to the list](https://invent.kde.org/melvo/xmpp-providers/-/blob/master/CONTRIBUTING.md#providers).
 You can also consider to run our (automated) [XMPP Providers Server setup](https://invent.kde.org/melvo/xmpp-providers-server) yourself.
