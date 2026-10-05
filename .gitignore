@@ -26,6 +26,7 @@ build/
 content/provider/
 data/results/
 data/filtered_providers.json
+data/git.json
 data/implementing_clients.json
 data/providers.json
 data/statistics.json

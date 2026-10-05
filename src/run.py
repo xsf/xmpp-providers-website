@@ -8,6 +8,7 @@ from argparse import ArgumentParser
 
 from src.common import LOG_FORMAT
 from src.prepare import create_provider_pages
+from src.prepare import get_git_revision
 from src.prepare import prepare_client_data_file
 from src.prepare import prepare_provider_data_files
 from src.statistics import prepare_statistics
@@ -63,4 +64,5 @@ if __name__ == "__main__":
         create_provider_pages()
         prepare_client_data_file()
         prepare_statistics()
+        get_git_revision()
         log.info("Website data prepared")

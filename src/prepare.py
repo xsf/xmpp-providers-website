@@ -6,6 +6,7 @@ import json
 import logging
 import os
 import shutil
+import subprocess
 import sys
 import zipfile
 from datetime import datetime
@@ -62,6 +63,24 @@ MD_FRONTMATTER = """---\ntitle: %s\ndate: %s\n---\n
 """
 
 log = logging.getLogger()
+
+
+def get_git_revision() -> None:
+    """Get last commit hash for the website's repository"""
+    res = subprocess.check_output(  # noqa: S603
+        [  # noqa: S607
+            "git",
+            "-C",
+            f"{Path(__file__).parent}",
+            "rev-parse",
+            "--short=12",
+            "HEAD",
+        ],
+        stderr=subprocess.DEVNULL,
+    )
+    git_infos = {"last_commit_hash": res.decode().strip()}
+    with open(DATA_PATH / "git.json", "w", encoding="utf-8") as git_data_file:
+        json.dump(git_infos, git_data_file, indent=4)
 
 
 def prepare_provider_data_files() -> None:
@@ -217,7 +236,7 @@ def _parse_doap_infos(doap_file: str) -> dict[str, list[str]] | None:
     """Parse DOAP file and return infos"""
     try:
         doap = parse(DOWNLOAD_PATH / f"clients_data/doap_files/{doap_file}.doap")
-    except (FileNotFoundError, ParseError):
+    except FileNotFoundError, ParseError:
         return None
 
     info = {}
@@ -356,7 +375,7 @@ def check_image_file(file_path: Path, extension: str) -> bool:
                 file_path,
                 f"{file_size / (1 << 10):,.0f}",
             )
-    except (ValueError, OSError, UnidentifiedImageError):
+    except ValueError, OSError, UnidentifiedImageError:
         log.exception("An error occurred while trying to resize logo")
         return False
 

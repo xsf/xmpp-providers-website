@@ -26,6 +26,9 @@
         <div class="row justify-content-center m-3">
             <span class="text-center text-body-tertiary small">
                 Last website build:&nbsp;{{- time.Now | time.Format ":date_medium" -}}&nbsp;({{- time.Now.UTC | time.Format "15:04" -}}&nbsp;UTC)
+                {{ with hugo.Data.git }}
+                    &nbsp;&middot;&nbsp;Last change: <a href="https://github.com/xsf/xmpp-providers-website/commit/{{ .last_commit_hash }}" target="_blank" class="small">{{ .last_commit_hash }}</a>
+                {{ end }}
                 &nbsp;&middot;&nbsp;API Version:&nbsp;<code>{{- hugo.Data.api_version.api_version -}}</code>
             </span>
         </div>
