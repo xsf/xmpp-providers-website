@@ -1,5 +1,5 @@
 ---
-title: Converse.js integrates XMPP Providers and find more Service Automation!
+title: XMPP Providers Support in Converse.js  & More Automation
 date: 2026-05-31
 ---
 
