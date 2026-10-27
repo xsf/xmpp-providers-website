@@ -7,7 +7,7 @@ date: 2026-05-31
 
 Another [XMPP app](https://xmpp.org/software/?category=clients) has added XMPP Providers support to its onboarding.
 [Converse.js](https://conversejs.org/) suggests an XMPP provider and allows to select one during account registration.
-The web app is hosted by many XMPP operators to provide their users a decent web experience.
+That web app is hosted by many XMPP operators to provide their users a decent web experience.
 We are very happy about this development and further distrubtion.
 Using XMPP Providers will enhance the onboarding experience for many people across the entire XMPP universe.
 
