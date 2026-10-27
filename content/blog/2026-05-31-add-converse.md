@@ -3,6 +3,8 @@ title: XMPP Providers Support in Converse.js  & More Automation
 date: 2026-05-31
 ---
 
+## Converse.js Integrates XMPP Providers
+
 Another [XMPP app](https://xmpp.org/software/?category=clients) has added XMPP Providers support to its onboarding.
 [Converse.js](https://conversejs.org/), an XMPP web client, allows to select a choice of XMPP providers during account registration.
 The web app is hosted by many XMPP operators to provide their users a decent web experience.
