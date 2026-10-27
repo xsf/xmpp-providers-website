@@ -1,11 +1,11 @@
 ---
-title: XMPP Providers Support in Converse.js  & More Automation
-date: 2026-05-31
+title: XMPP Providers Support in Converse.js & More Automation
+date: 2026-10-28
 ---
 
 ## Converse.js Integrates XMPP Providers
 
-Another [XMPP app](https://xmpp.org/software/?category=clients) has added XMPP Providers support to its onboarding.
+Earlier this year another [XMPP app](https://xmpp.org/software/?category=clients) has added XMPP Providers support to its onboarding.
 [Converse.js](https://conversejs.org/) suggests an XMPP provider and allows to select one during account registration.
 That web app is hosted by many XMPP operators to provide their users a decent web experience.
 We are very happy about this development and further distribution.
@@ -17,8 +17,8 @@ Using XMPP Providers will enhance the onboarding experience for many people.
 
 To continue enabling true federation and reduce manual work, the creation of merge requests to add new providers has been automated.
 One simply needs to follow the steps to [add a missing provider](/add-provider/).
-Once an issue has been created, our bot will create a merge request including an inital check to update the provider's properties.
-Considering the growing demand of providers that want to be listed, the automation will accelerate the whole process from the first request to the final inclusion.
+Once an issue has been created, our bot, will create a merge request including an initial check to update the provider's properties.
+Considering the growing demand of providers that want to be listed, the new automation (as you may have recognised already) will accelerate the whole process from the first request to the final inclusion.
 Furthermore, it allows us to focus on developing more features.
 
 Thanks to everyone for being patient with us!
