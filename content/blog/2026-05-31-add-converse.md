@@ -18,7 +18,8 @@ Using XMPP Providers will enhance the onboarding experience for many people.
 To continue enabling true federation and reduce manual work, the creation of merge requests to add new providers has been automated.
 One simply needs to follow the steps to [add a missing provider](/add-provider/).
 Once an issue has been created, our bot will create a merge request including an inital check to update the provider's properties.
-This will allow us to not just focus on ensuring the quality but also process more of the growing demand of operators to be listed.
+Considering the growing demand of providers that want to be listed, the automation will accelerate the whole process from the first request to the final inclusion.
+Furthermore, it allows us to focus on developing more features.
 
 Thanks to everyone for being patient with us but also running their service.
 Moreover, many thanks to the [XMPP apps](/apps/) for supporting this service as well as using it for their onboarding.
