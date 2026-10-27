@@ -24,7 +24,7 @@ Furthermore, it allows us to focus on developing more features.
 Thanks to everyone for being patient with us!
 It is great to see so many old XMPP services still being run and new ones constantly being established.
 Moreover, many thanks to the [XMPP apps](/apps/) for supporting this service as well as using it for their onboarding.
-That is the best way of using the XMPP Provider service!
+That is the best way of using XMPP Providers!
 
 ### Improve the XMPP Onboarding Experience
 
