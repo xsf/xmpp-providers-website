@@ -100,6 +100,10 @@ ejabberd has an [XMPP Providers module](https://docs.ejabberd.im/admin/configura
 It provides the properties that would otherwise be served via a [provider file](#provider-file).
 But note that it may not be available for all versions of the API.
 
+### How can my XMPP provider be added to the XMPP Providers list?
+
+Adding your provider to the XMPP Providers is is described in the menu section: [Add Provider](/add-provider/).
+
 ### Account Creation via XMPP Apps
 
 For determining whether a server supports the creation of accounts via XMPP apps, [XEP-0077: In-Band Registration](https://xmpp.org/extensions/xep-0077.html) is used.
@@ -152,6 +156,11 @@ Please set those limits as high as possible to enable users to share large files
 
 Our web bot requests several properties via HTTP from the providers' servers.
 For that purpose, a [provider file](#provider-file) is used.
+
+## How can I run my own XMPP provider?
+
+Besides other [XMPP server software](https://xmpp.org/software/?category=servers), we have published our own automated all-in-one setup setup to run your own XMPP server with focus on simplicity for hosting your own XMPP server.
+Find our [XMPP Providers Server](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/README.md?ref_type=heads).
 
 {{< spacer size="middle" >}}
 
