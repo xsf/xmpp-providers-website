@@ -100,9 +100,9 @@ ejabberd has an [XMPP Providers module](https://docs.ejabberd.im/admin/configura
 It provides the properties that would otherwise be served via a [provider file](#provider-file).
 But note that it may not be available for all versions of the API.
 
-### How can my XMPP provider be added to the XMPP Providers list?
+### How can my XMPP service be added to the XMPP Providers list?
 
-Adding your provider to the XMPP Providers is is described in the menu section: [Add Provider](/add-provider/).
+Everybody can [request to add their service](/add-provider/) to the XMPP Providers list.
 
 ### Account Creation via XMPP Apps
 
