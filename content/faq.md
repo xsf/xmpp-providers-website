@@ -157,11 +157,9 @@ Please set those limits as high as possible to enable users to share large files
 Our web bot requests several properties via HTTP from the providers' servers.
 For that purpose, a [provider file](#provider-file) is used.
 
-## How can I run my own XMPP provider?
+## How can I run my own XMPP server?
 
-Besides other [XMPP server software](https://xmpp.org/software/?category=servers), we have published our own automated all-in-one setup setup to run your own XMPP server with focus on simplicity for hosting your own XMPP server.
-Find our [XMPP Providers Server](https://invent.kde.org/melvo/xmpp-providers-server/-/blob/master/README.md?ref_type=heads).
-
+Besides other [XMPP server software](https://xmpp.org/software/?category=servers), we have published our own [automated all-in-one setup to run an own XMPP server](https://invent.kde.org/melvo/xmpp-providers-server) with focus on simplicity and maintainability.
 {{< spacer size="middle" >}}
 
 ## Glossary
