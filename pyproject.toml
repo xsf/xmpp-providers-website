@@ -2,6 +2,11 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
+[build-system]
+requires = [
+  "setuptools >= 65.0.0",
+]
+
 [project]
 name = "xmpp-providers-website"
 version = "1.0.0"
@@ -13,13 +18,18 @@ dependencies = [
   "requests",
 ]
 
-[project.optional-dependencies]
-
 [dependency-groups]
 dev = [
-  "ruff==0.15.9",
-  "pyright==1.1.403",
+  "pre-commit==4.7.0",
+  "ruff==0.17.3",
+  "ty==0.0.97",
 ]
+
+[project.scripts]
+xmpp_providers_website = "xmpp_providers_website.main:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.ruff]
 target-version = "py314"
@@ -30,6 +40,7 @@ select = ["ALL"]
 ignore = [
   "A005",   # stdlib-module-shadowing
   "COM812", # missing-trailing-comma
+  "CPY",    # missing-copyright
   "D100",   # undocumented-public-module
   "D104",   # undocumented-public-package
   "D203",   # one-blank-line-before-class
@@ -47,7 +58,6 @@ ignore = [
 inline-quotes = "double"
 docstring-quotes = "double"
 multiline-quotes = "double"
-
 
 [tool.ruff.lint.isort]
 case-sensitive = false

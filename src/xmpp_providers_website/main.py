@@ -6,12 +6,12 @@ import logging
 import sys
 from argparse import ArgumentParser
 
-from src.common import LOG_FORMAT
-from src.prepare import create_provider_pages
-from src.prepare import get_git_revision
-from src.prepare import prepare_client_data_file
-from src.prepare import prepare_provider_data_files
-from src.statistics import prepare_statistics
+from xmpp_providers_website.common import LOG_FORMAT
+from xmpp_providers_website.prepare import create_provider_pages
+from xmpp_providers_website.prepare import get_git_revision
+from xmpp_providers_website.prepare import prepare_client_data_file
+from xmpp_providers_website.prepare import prepare_provider_data_files
+from xmpp_providers_website.statistics import prepare_statistics
 
 
 class ToolsArgumentParser(ArgumentParser):
@@ -51,7 +51,8 @@ class ToolsArgumentParser(ArgumentParser):
         )
 
 
-if __name__ == "__main__":
+def run() -> None:
+    """Main entry point for xmpp_providers package."""
     arguments = ToolsArgumentParser().parse_args(
         args=None if sys.argv[1:] else ["--help"]
     )

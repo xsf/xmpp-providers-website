@@ -39,25 +39,13 @@ Running the server in development mode (reloads whenever a file is changed):
 make serve
 ```
 
-or, to use installed dependencies instead of using pip:
-
-```bash
-make serve-no-pip
-```
-
 View at `http://localhost:1313`
 
 ### Run via Docker
 
 ```bash
-docker build -t xmpp-providers -f ./Dockerfile .
+docker build -t xmpp-providers --build-arg BASEURL=http://localhost/ .
 docker run -p 80:80 -t -i xmpp-providers
-```
-
-If you want to change Hugo’s baseURL for the generated website, build the image with `--build-arg BASEURL=http://yoururl/` set, for example with `http://localhost/`:
-
-```bash
-docker build -t xmpp-providers --build-arg BASEURL=http://localhost/ -f ./Dockerfile .
 ```
 
 ### Hugo Static Site Generator
@@ -75,4 +63,4 @@ This website makes use of:
 
 Currently, this website is based on the [v2 version](https://invent.kde.org/melvo/xmpp-providers/-/tree/stable/v2) of the Providers API.
 
-When moving to another API version, URLs have to be changed in both `Dockerfile` and `tools/prepare.py`.
+When moving to another API version, URLs have to be changed in both `Dockerfile` and `src/xmpp_provicders_website/prepare.py`.

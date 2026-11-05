@@ -32,7 +32,7 @@ ADD https://data.xmpp.net/providers/$API_VERSION/provider-badges.zip /var/tmp/sr
 ADD https://data.xmpp.net/providers/$API_VERSION/providers.json /var/tmp/src/xmpp-providers/downloads-docker/providers.json
 
 ARG BASEURL=https://providers.xmpp.net/
-RUN cd /var/tmp/src/xmpp-providers && make publish BASEURL=$BASEURL UV_SYSTEM=--system
+RUN cd /var/tmp/src/xmpp-providers && make publish BASEURL=$BASEURL
 
 FROM nginx
 COPY deploy/xmpp-providers.conf /etc/nginx/conf.d/default.conf

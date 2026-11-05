@@ -36,7 +36,7 @@ def download_file(url: str, path: Path) -> bool:
     """
     try:
         file_response = requests.get(url, timeout=5)
-    except (ConnectTimeout, ReadTimeout):
+    except ConnectTimeout, ReadTimeout:
         log.exception("Error while trying to download from %s", url)
         return False
 

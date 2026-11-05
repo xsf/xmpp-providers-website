@@ -2,6 +2,8 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+from typing import cast
+
 import json
 import logging
 import os
@@ -21,16 +23,16 @@ from PIL import UnidentifiedImageError
 from PIL.Image import Resampling
 from slugify import slugify
 
-from src.common import API_VERSION
-from src.common import BADGES_PATH
-from src.common import DATA_PATH
-from src.common import DOCKER_DOWNLOAD_PATH
-from src.common import download_file
-from src.common import DOWNLOAD_PATH
-from src.common import initialize_directory
-from src.common import PROVIDERS_JSON_PATH
-from src.common import PROVIDERS_PAGES_PATH
-from src.common import STATIC_PATH
+from xmpp_providers_website.common import API_VERSION
+from xmpp_providers_website.common import BADGES_PATH
+from xmpp_providers_website.common import DATA_PATH
+from xmpp_providers_website.common import DOCKER_DOWNLOAD_PATH
+from xmpp_providers_website.common import download_file
+from xmpp_providers_website.common import DOWNLOAD_PATH
+from xmpp_providers_website.common import initialize_directory
+from xmpp_providers_website.common import PROVIDERS_JSON_PATH
+from xmpp_providers_website.common import PROVIDERS_PAGES_PATH
+from xmpp_providers_website.common import STATIC_PATH
 
 FILTERED_PROVIDERS_LIST_URL = (
     f"https://data.xmpp.net/providers/{API_VERSION}/providers-D.json"
@@ -232,7 +234,7 @@ def create_provider_pages() -> None:
             )
 
 
-def _parse_doap_infos(doap_file: str) -> dict[str, list[str]] | None:
+def _parse_doap_infos(doap_file: str) -> dict[str, str | list[str] | None] | None:
     """Parse DOAP file and return infos"""
     try:
         doap = parse(DOWNLOAD_PATH / f"clients_data/doap_files/{doap_file}.doap")
@@ -242,26 +244,27 @@ def _parse_doap_infos(doap_file: str) -> dict[str, list[str]] | None:
     info = {}
     doap_name = doap.find(DOAP_NAME)
     if doap_name is not None:
-        info["name"] = doap_name.text
+        info["name"] = cast("str", doap_name.text)
 
     info["shortdesc"] = None
     doap_shortdesc = doap.find(DOAP_SHORTDESC)
     if doap_shortdesc is not None:
-        info["shortdesc"] = doap_shortdesc.text
+        info["shortdesc"] = cast("str", doap_shortdesc.text)
 
     info["homepage"] = None
     doap_homepage = doap.find(DOAP_HOMEPAGE)
     if doap_homepage is not None:
-        info["homepage"] = doap_homepage.attrib.get(RDF_RESOURCE)
+        info["homepage"] = cast("str", doap_homepage.attrib.get(RDF_RESOURCE))
 
-    info["os"] = []
+    os_info = []
     for entry in doap.findall(DOAP_OS):
-        info["os"].append(entry.text)
+        os_info.append(cast("str", entry.text))  # noqa: PERF401
+    info["os"] = os_info
 
     info["logo"] = None
     doap_logo = doap.find(DOAP_LOGO)
     if doap_logo is not None:
-        info["logo"] = doap_logo.attrib.get(RDF_RESOURCE)
+        info["logo"] = cast("str", doap_logo.attrib.get(RDF_RESOURCE))
 
     return info
 

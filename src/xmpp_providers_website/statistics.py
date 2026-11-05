@@ -5,12 +5,26 @@
 import json
 import logging
 from collections import defaultdict
+from dataclasses import dataclass
 from datetime import datetime
 from datetime import UTC
 
-from src.common import DATA_PATH
+from xmpp_providers_website.common import DATA_PATH
 
 log = logging.getLogger()
+
+
+@dataclass
+class ProviderAggregationData:
+    """Data storage for provider aggregation.
+
+    When aggregating data for multiple providers, this dataclass
+    simplifies type checking.
+    """
+
+    providers: list[str]
+    color: str
+    value: int
 
 
 def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
@@ -53,112 +67,88 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             "≥ 1 GB": {"value": 0, "providers": {}},
             "no limit": {"value": 0, "providers": {}},
         },
-        "server_locations": defaultdict(lambda: defaultdict()),
+        "server_locations": defaultdict(lambda: defaultdict()),  # noqa: PLW0108
     }
 
     # Category data
     provider_categories = {
-        "A": {"count": 0, "providers": [], "color": "rgb(67, 150, 57)"},
-        "B": {"count": 0, "providers": [], "color": "rgb(160, 206, 103)"},
-        "C": {"count": 0, "providers": [], "color": "rgb(233, 109, 31)"},
-        "D": {"count": 0, "providers": [], "color": "rgb(217, 16, 30)"},
+        "A": ProviderAggregationData(value=0, providers=[], color="rgb(67, 150, 57)"),
+        "B": ProviderAggregationData(value=0, providers=[], color="rgb(160, 206, 103)"),
+        "C": ProviderAggregationData(value=0, providers=[], color="rgb(233, 109, 31)"),
+        "D": ProviderAggregationData(value=0, providers=[], color="rgb(217, 16, 30)"),
     }
     for filtered_provider_data in filtered_providers_data:
-        provider_categories[filtered_provider_data["category"]]["count"] += 1
-        provider_categories[filtered_provider_data["category"]]["providers"].append(
+        provider_categories[filtered_provider_data["category"]].value += 1
+        provider_categories[filtered_provider_data["category"]].providers.append(
             filtered_provider_data["jid"]
         )
 
     for category, data in provider_categories.items():
         statistics_data["categories_pie_chart_data"].append(
             {
-                "value": data["count"],
+                "value": data.value,
                 "name": category,
-                "itemStyle": {"color": data["color"]},
-                "providers": data["providers"],
+                "itemStyle": {"color": data.color},
+                "providers": data.providers,
             }
         )
 
     green_web_check = {
-        "Hosted green": {"value": 0, "providers": [], "color": "rgb(120, 190, 70)"},
-        "Not hosted green": {"value": 0, "providers": [], "color": "rgb(240, 220, 0)"},
+        "Hosted green": ProviderAggregationData(
+            value=0, providers=[], color="rgb(120, 190, 70)"
+        ),
+        "Not hosted green": ProviderAggregationData(
+            value=0, providers=[], color="rgb(240, 220, 0)"
+        ),
     }
 
     provider_file = {
-        "Provider File (v2)": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(120, 190, 70)",
-        },
-        "No Provider File": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(220, 220, 220)",
-        },
+        "Provider File (v2)": ProviderAggregationData(
+            value=0, providers=[], color="rgb(120, 190, 70)"
+        ),
+        "No Provider File": ProviderAggregationData(
+            value=0, providers=[], color="rgb(220, 220, 220)"
+        ),
     }
 
     server_testing = {
-        "Providers allowing server testing": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(120, 190, 70)",
-        },
-        "Providers not allowing server testing": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(240, 220, 0)",
-        },
-        "No provider file": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(220, 220, 220)",
-        },
+        "Providers allowing server testing": ProviderAggregationData(
+            value=0, providers=[], color="rgb(120, 190, 70)"
+        ),
+        "Providers not allowing server testing": ProviderAggregationData(
+            value=0, providers=[], color="rgb(240, 220, 0)"
+        ),
+        "No provider file": ProviderAggregationData(
+            value=0, providers=[], color="rgb(220, 220, 220)"
+        ),
     }
 
     bus_factor = {
-        "1 person": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(160, 206, 103)",
-        },
-        "2 persons": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(120, 190, 70)",
-        },
-        "3 persons": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(90, 170, 60)",
-        },
-        "> 3 persons": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(60, 140, 70)",
-        },
-        "unknown": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(220, 220, 220)",
-        },
+        "1 person": ProviderAggregationData(
+            value=0, providers=[], color="rgb(160, 206, 103)"
+        ),
+        "2 persons": ProviderAggregationData(
+            value=0, providers=[], color="rgb(120, 190, 70)"
+        ),
+        "3 persons": ProviderAggregationData(
+            value=0, providers=[], color="rgb(90, 170, 60)"
+        ),
+        "> 3 persons": ProviderAggregationData(
+            value=0, providers=[], color="rgb(60, 140, 70)"
+        ),
+        "unknown": ProviderAggregationData(
+            value=0, providers=[], color="rgb(220, 220, 220)"
+        ),
     }
 
     registration_type = {
-        "App": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(67, 150, 57)",
-        },
-        "Website": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(160, 206, 103)",
-        },
-        "Registration closed": {
-            "value": 0,
-            "providers": [],
-            "color": "rgb(217, 16, 30)",
-        },
+        "App": ProviderAggregationData(value=0, providers=[], color="rgb(67, 150, 57)"),
+        "Website": ProviderAggregationData(
+            value=0, providers=[], color="rgb(160, 206, 103)"
+        ),
+        "Registration closed": ProviderAggregationData(
+            value=0, providers=[], color="rgb(217, 16, 30)"
+        ),
     }
 
     for provider_jid, provider_data in providers_data.items():
@@ -171,8 +161,8 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             else:
                 provider_file_key = "No Provider File"
 
-            provider_file[provider_file_key]["value"] += 1
-            provider_file[provider_file_key]["providers"].append(provider_jid)
+            provider_file[provider_file_key].value += 1
+            provider_file[provider_file_key].providers.append(provider_jid)
 
         if server_testing_data := provider_data.get("serverTesting"):
             server_testing_allowed = server_testing_data["content"]
@@ -185,8 +175,8 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             else:
                 server_testing_key = "Providers not allowing server testing"
 
-            server_testing[server_testing_key]["value"] += 1
-            server_testing[server_testing_key]["providers"].append(provider_jid)
+            server_testing[server_testing_key].value += 1
+            server_testing[server_testing_key].providers.append(provider_jid)
 
         if bus_factor_data := provider_data.get("busFactor"):
             bus_factor_number = bus_factor_data["content"]
@@ -201,15 +191,15 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             else:
                 bus_factor_key = "unknown"
 
-            bus_factor[bus_factor_key]["value"] += 1
-            bus_factor[bus_factor_key]["providers"].append(provider_jid)
+            bus_factor[bus_factor_key].value += 1
+            bus_factor[bus_factor_key].providers.append(provider_jid)
 
         any_registration_method_offered = False
         registration_app_data = provider_data.get("inBandRegistration")
         if registration_app_data and registration_app_data["content"]:
             any_registration_method_offered = True
-            registration_type["App"]["value"] += 1
-            registration_type["App"]["providers"].append(provider_jid)
+            registration_type["App"].value += 1
+            registration_type["App"].providers.append(provider_jid)
 
         registration_website_data = provider_data.get("registrationWebPage")
         if (
@@ -217,12 +207,12 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             and len(registration_website_data["content"].keys()) > 0
         ):
             any_registration_method_offered = True
-            registration_type["Website"]["value"] += 1
-            registration_type["Website"]["providers"].append(provider_jid)
+            registration_type["Website"].value += 1
+            registration_type["Website"].providers.append(provider_jid)
 
         if not any_registration_method_offered:
-            registration_type["Registration closed"]["value"] += 1
-            registration_type["Registration closed"]["providers"].append(provider_jid)
+            registration_type["Registration closed"].value += 1
+            registration_type["Registration closed"].providers.append(provider_jid)
 
         if green_web_check_data := provider_data.get("ratingGreenWebCheck"):
             green_web_check_key = (
@@ -230,8 +220,8 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
                 if green_web_check_data["content"]
                 else "Not hosted green"
             )
-            green_web_check[green_web_check_key]["value"] += 1
-            green_web_check[green_web_check_key]["providers"].append(provider_jid)
+            green_web_check[green_web_check_key].value += 1
+            green_web_check[green_web_check_key].providers.append(provider_jid)
 
         if file_size_data := provider_data.get("maximumHttpFileUploadFileSize"):
             file_size = file_size_data["content"]
@@ -256,10 +246,10 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
             else:
                 file_size_key = "≥ 1 GB"
 
-            statistics_data["file_size_bar_chart_data"][file_size_key]["value"] += 1
+            statistics_data["file_size_bar_chart_data"][file_size_key]["value"] += 1  # ty: ignore[unsupported-operator]
             statistics_data["file_size_bar_chart_data"][file_size_key]["providers"][
                 provider_jid
-            ] = file_size
+            ] = file_size  # ty: ignore[invalid-assignment]
 
         if since_data := provider_data.get("since"):
             since_date = datetime.strptime(since_data["content"], "%Y-%m-%d").replace(
@@ -313,20 +303,20 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
     for key, data in bus_factor.items():
         statistics_data["bus_factor_pie_chart_data"].append(
             {
-                "value": data["value"],
+                "value": data.value,
                 "name": key,
-                "itemStyle": {"color": data["color"]},
-                "providers": data["providers"],
+                "itemStyle": {"color": data.color},
+                "providers": data.providers,
             }
         )
 
     for key, data in registration_type.items():
         statistics_data["registration_type_pie_chart_data"].append(
             {
-                "value": data["value"],
+                "value": data.value,
                 "name": key,
-                "itemStyle": {"color": data["color"]},
-                "providers": data["providers"],
+                "itemStyle": {"color": data.color},
+                "providers": data.providers,
             }
         )
 
@@ -358,10 +348,10 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
     for key, data in green_web_check.items():
         statistics_data["green_web_check_pie_chart_data"].append(
             {
-                "value": data["value"],
+                "value": data.value,
                 "name": key,
-                "itemStyle": {"color": data["color"]},
-                "providers": data["providers"],
+                "itemStyle": {"color": data.color},
+                "providers": data.providers,
             },
         )
 
@@ -369,10 +359,10 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
     for key, data in provider_file.items():
         statistics_data["provider_file_pie_chart_data"].append(
             {
-                "value": data["value"],
+                "value": data.value,
                 "name": key,
-                "itemStyle": {"color": data["color"]},
-                "providers": data["providers"],
+                "itemStyle": {"color": data.color},
+                "providers": data.providers,
             },
         )
 
@@ -380,10 +370,10 @@ def prepare_statistics() -> None:  # noqa: C901, PLR0912, PLR0915
     for key, data in server_testing.items():
         statistics_data["server_testing_pie_chart_data"].append(
             {
-                "value": data["value"],
+                "value": data.value,
                 "name": key,
-                "itemStyle": {"color": data["color"]},
-                "providers": data["providers"],
+                "itemStyle": {"color": data.color},
+                "providers": data.providers,
             },
         )
 
