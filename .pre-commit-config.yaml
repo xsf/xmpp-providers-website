@@ -20,6 +20,6 @@ repos:
       - id: ty
 
   - repo: https://github.com/fsfe/reuse-tool
-    rev: v5.0.2
+    rev: v6.3.0
     hooks:
       - id: reuse
