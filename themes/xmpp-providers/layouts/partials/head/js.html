@@ -1,0 +1,40 @@
+{{- with resources.Get "js/bootstrap.bundle.min.js" | minify |fingerprint -}}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end -}}
+{{- with resources.Get "js/bootstrap-theme-switcher.js" | minify | fingerprint -}}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end -}}
+
+{{- if ( .Params.overview_table ) -}}
+  {{- with resources.Get "js/datatables.min.js" | minify |fingerprint -}}
+  <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+  {{- end -}}
+  {{- with resources.Get "js/overview-table.js" | minify | fingerprint -}}
+  <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+  {{- end -}}
+{{- end -}}
+{{- if ( .Params.provider_file_generator ) -}}
+  {{- with resources.Get "js/language-country-codes.js" | minify | fingerprint -}}
+  <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+  {{- end -}}
+  {{- with resources.Get "js/provider-file-generator.js" | minify | fingerprint -}}
+  <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+  {{- end -}}
+{{- end -}}
+{{- if ( .Params.statistics ) -}}
+  {{- with resources.Get "js/echarts.min.js" | minify |fingerprint -}}
+  <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+  {{- end -}}
+  {{- with resources.Get "js/world.geojson.min.js" | minify | fingerprint -}}
+  <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+  {{- end -}}
+  {{- with resources.Get "js/leaflet.js" | minify | fingerprint -}}
+  <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+  {{- end -}}
+  {{- with resources.Get "js/statistics.js" | minify | fingerprint -}}
+  <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+  {{- end -}}
+{{- end -}}
+{{- with resources.Get "js/scripts.js" | minify | fingerprint -}}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end -}}

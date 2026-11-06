@@ -1,114 +1,13 @@
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="{{ .Permalink }}">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
 
-    <meta name="description" content="{{ .Site.Params.Description }}">
-    <meta property="og:url" content="{{ .Site.BaseURL }}">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="{{ .Site.Title }}">
-    <meta property="og:description" content="{{ .Site.Params.Description }}">
-    <meta property="og:image" content="{{ .Site.Params.SiteLogoUrl | absURL }}">
-    <meta property="og:image:alt" content="{{ .Site.Params.SiteLogoAlt }}" />
-    <meta property="og:image:width" content="{{ .Site.Params.SiteLogoWidth }}" />
-    <meta property="og:image:height" content="{{ .Site.Params.SiteLogoHeight }}" />
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="providers.xmpp.net">
-    <meta property="twitter:url" content="{{ .Site.BaseURL }}">
-    <meta name="twitter:title" content="{{ .Site.Title }}">
-    <meta name="twitter:description" content="{{ .Site.Params.Description }}">
-    <meta name="twitter:image" content="{{ .Site.Params.SiteLogoUrl | absURL }}">
-
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333">
-
-    {{- with resources.Get "css/bootstrap.min.css" | minify | fingerprint }}
-        <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
-    {{- with resources.Get "fontawesome/css/all.min.css" | minify | fingerprint }}
-        <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
-
-    {{- if ( .Params.statistics ) -}}
-        {{- with resources.Get "css/leaflet.css" | minify | fingerprint }}
-            <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-        {{- end }}
-    {{- end -}}
-
-    {{- if ( .Params.overview_table ) -}}
-        {{- with resources.Get "css/datatables.min.css" | minify | fingerprint }}
-            <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-        {{- end }}
-    {{- end -}}
-
-    {{- with resources.Get "css/style.css" | minify | fingerprint }}
-        <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
-
-    <link rel="alternate" type="application/atom" href="/blog/index.xml" title="XMPP Providers" />
-    <link rel="canonical" href="{{ .Permalink }}">
-    <link rel="me" href="https://fosstodon.org/@xmpp_providers">
-    <!--  Make website accessible without JavaScript. -->
-    <noscript>
-        <style>
-            /* Expand all (usually collapsed) elements. */
-            .collapse:not(.show) {
-                display: block;
-            }
-            /* Arrange the navigation entries in a row. */
-            .navbar-nav {
-                flex-direction: row;
-                justify-content: space-around;
-            }
-            /* Remove the navigation button. */
-            .navbar-toggler {
-                display: none;
-            }
-            /* Remove the provider filter button. */
-            #filter-button {
-                display: none;
-            }
-            /* Remove the provider filter options. */
-            #filters-collapse {
-                display: none;
-            }
-            /* Display accordion buttons (such as the collapsible provider entry headers) as open. */
-            .accordion-button {
-                background-color: #e7f1ff;
-                box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
-                cursor: unset !important;
-            }
-            /* Remove the accordion buttons. */
-            .accordion-button::after {
-                display: none;
-            }
-            /* Remove the button for opening registration language alternatives. */
-            #register-dropdown-button {
-                display: none;
-            }
-            /* Display the registration language alternatives. */
-            #register-dropdown-menu {
-                display: contents;
-                padding: 0;
-                border-radius: 0;
-            }
-            /* Remove the button for copying a provider badge. */
-            #badge_link_copy {
-                display: none;
-            }
-        </style>
-    </noscript>
-    <title>
-      {{- if .IsHome }}
-      {{- printf "%s" .Site.Title }}
-      {{- else }}
-      {{- printf "%s | %s" .Site.Title .Title }}
-      {{- end }}
-    </title>
+  {{ partialCached "head/opengraph.html" . }}
+  {{ partial "head/rss.html" . }}
+  {{ partialCached "head/mastodon.html" . }}
+  {{ partialCached "head/favicon.html" . }}
+  {{ partial "head/css.html" . }}
+  {{ partial "head/js.html" . }}
 </head>
