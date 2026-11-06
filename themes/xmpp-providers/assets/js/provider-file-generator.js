@@ -1,15 +1,15 @@
 // SPDX-FileCopyrightText: 2023 XMPP Providers Team
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
-
+let providers = []
 document.addEventListener("DOMContentLoaded", () => {
+  providers = document.getElementById("provider_file_form_container").dataset.providers.split(",");
   _initialize_provider_api_version_select();
   _initialize_provider_file_import_button();
   _initialize_provider_data_form();
 });
 
 const api_versions = ["v2"];
-const providers = document.getElementById("provider_file_form_container").dataset.providers.split(",");
 
 const providers_data_form_properties_v2 = [
   {
