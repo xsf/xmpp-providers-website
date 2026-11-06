@@ -28,33 +28,29 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#333">
 
-    {{- with $style := resources.Get "css/bootstrap.min.css" }}
-        {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
-            <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink}}" integrity="{{$secureStyle.Data.Integrity}}">
-        {{- end }}
+    {{- with resources.Get "css/bootstrap.min.css" | minify | fingerprint }}
+        <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
     {{- end }}
-    {{- with $style := resources.Get "fontawesome/css/all.min.css" }}
-        {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
-            <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
-        {{- end }}
+    {{- with resources.Get "fontawesome/css/all.min.css" | minify | fingerprint }}
+        <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
     {{- end }}
-    {{- with $style := resources.Get "css/leaflet.css" }}
-        {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
-            <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
-        {{- end }}
-    {{- end }}
-    {{- if ( .Params.overview_table ) -}}
-        {{- with $style := resources.Get "css/datatables.min.css" }}
-            {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
-                <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
-            {{- end }}
+
+    {{- if ( .Params.statistics ) -}}
+        {{- with resources.Get "css/leaflet.css" | minify | fingerprint }}
+            <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
         {{- end }}
     {{- end -}}
-    {{- with $style := resources.Get "css/style.css" | resources.Minify }}
-        {{- with $secureStyle := $style | resources.Fingerprint "sha256" }}
-            <link rel="stylesheet" type="text/css" href="{{ $style.RelPermalink }}" integrity="{{$secureStyle.Data.Integrity}}">
+
+    {{- if ( .Params.overview_table ) -}}
+        {{- with resources.Get "css/datatables.min.css" | minify | fingerprint }}
+            <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
         {{- end }}
+    {{- end -}}
+
+    {{- with resources.Get "css/style.css" | minify | fingerprint }}
+        <link rel="stylesheet" type="text/css" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
     {{- end }}
+
     <link rel="alternate" type="application/atom" href="/blog/index.xml" title="XMPP Providers" />
     <link rel="canonical" href="{{ .Permalink }}">
     <link rel="me" href="https://fosstodon.org/@xmpp_providers">

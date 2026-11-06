@@ -34,20 +34,43 @@
         </div>
     </div>
 </footer>
-<script src="{{- "js/bootstrap.bundle.min.js" | relURL -}}"></script>
-<script src="{{- "js/bootstrap-theme-switcher.js" | relURL -}}"></script>
+{{- with resources.Get "js/bootstrap.bundle.min.js" | minify |fingerprint -}}
+    <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end -}}
+{{- with resources.Get "js/bootstrap-theme-switcher.js" | minify | fingerprint -}}
+    <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end -}}
+
 {{- if ( .Params.overview_table ) -}}
-    <script src="{{- "js/datatables.min.js" | relURL -}}"></script>
-    <script src="{{- "js/overview-table.js" | relURL -}}"></script>
+    {{- with resources.Get "js/datatables.min.js" | minify |fingerprint -}}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- end -}}
+    {{- with resources.Get "js/overview-table.js" | minify | fingerprint -}}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- end -}}
 {{- end -}}
 {{- if ( .Params.provider_file_generator ) -}}
-    <script src="{{- "js/language-country-codes.js" | relURL -}}"></script>
-    <script src="{{- "js/provider-file-generator.js" | relURL -}}"></script>
+    {{- with resources.Get "js/language-country-codes.js" | minify | fingerprint -}}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- end -}}
+    {{- with resources.Get "js/provider-file-generator.js" | minify | fingerprint -}}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- end -}}
 {{- end -}}
 {{- if ( .Params.statistics ) -}}
-    <script src="{{- "js/statistics.js" | relURL -}}"></script>
-    <script src="{{- "js/echarts.min.js" | relURL -}}"></script>
-    <script src="{{- "js/leaflet.js" | relURL -}}"></script>
-    <script src="{{- "js/world.geojson.min.js" | relURL -}}"></script>
+    {{- with resources.Get "js/echarts.min.js" | minify |fingerprint -}}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- end -}}
+    {{- with resources.Get "js/world.geojson.min.js" | minify | fingerprint -}}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- end -}}
+    {{- with resources.Get "js/leaflet.js" | minify | fingerprint -}}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- end -}}
+    {{- with resources.Get "js/statistics.js" | minify | fingerprint -}}
+        <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+    {{- end -}}
 {{- end -}}
-<script src="{{- "js/scripts.js" | relURL -}}"></script>
+{{- with resources.Get "js/scripts.js" | minify | fingerprint -}}
+    <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end -}}
