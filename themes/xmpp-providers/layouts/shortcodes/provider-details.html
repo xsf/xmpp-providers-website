@@ -550,8 +550,10 @@
                                         {{ end }}
                                         {{ if not $registration_web_page_available }}
                                             Registration is not available (at any time)
+                                            <a href="/faq/#account-creation-via-web-page" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                         {{ else }}
                                             Registration via XMPP apps is not supported (at any time)
+                                            <a href="/faq/#account-creation-via-xmpp-apps" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                         {{ end }}
                                     </li>
                                 {{ end }}
@@ -574,6 +576,7 @@
                                     <li>
                                         {{ if eq (string $value) "-1" }}
                                             Sharing files is allowed up to an <a href="/faq/#unknown" class="abbr">unknown</a> size or less than 1 MB
+                                            <a href="/faq/#upload-limits-and-storage-durations" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                         {{ else }}
                                             Sharing files is not allowed up to a size that is large enough
                                         {{ end }}
@@ -583,6 +586,7 @@
                                     <li>
                                         {{ if eq (string $value) "-1" }}
                                             Shared files are <a href="/faq/#storage" class="abbr">stored</a> up to an <a href="/faq/#unknown" class="abbr">unknown</a> size or less than 1 MB
+                                            <a href="/faq/#provider-file" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                         {{ else }}
                                             Shared files are not <a href="/faq/#storage" class="abbr">stored</a> up to a size that is large enough
                                         {{ end }}
@@ -592,6 +596,7 @@
                                     <li>
                                         {{ if eq (string $value) "-1" }}
                                             Shared files are <a href="/faq/#storage" class="abbr">stored</a> for an <a href="/faq/#unknown" class="abbr">unknown</a> time or less than 1 day
+                                            <a href="/faq/#provider-file" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                         {{ else }}
                                             Shared files are not <a href="/faq/#storage" class="abbr">stored</a> long enough
                                         {{ end }}
@@ -601,6 +606,7 @@
                                     <li>
                                         {{ if eq (string $value) "-1" }}
                                             Messages are <a href="/faq/#storage" class="abbr">stored</a> for an <a href="/faq/#unknown" class="abbr">unknown</a> time or less than 1 day
+                                            <a href="/faq/#provider-file" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                         {{ else }}
                                             Messages are not <a href="/faq/#storage" class="abbr">stored</a> long enough
                                         {{ end }}
@@ -609,27 +615,32 @@
                                 {{ if eq $key "professionalHosting" }}
                                     <li>
                                         No professional hosting or <a href="/faq/#unknown" class="abbr">unknown</a>
+                                        <a href="/faq/#provider-file" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                     </li>
                                 {{ end }}
                                 {{ if eq $key "freeOfCharge" }}
                                     <li>
                                         Not free of charge or <a href="/faq/#unknown" class="abbr">unknown</a>
+                                        <a href="/faq/#provider-file" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                     </li>
                                 {{ end }}
                                 {{ if eq $key "legalNotice" }}
                                     <li>
                                         Legal notice is missing
+                                        <a href="/faq/#provider-file" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                     </li>
                                 {{ end }}
                                 {{ if eq $key "serverLocations" }}
                                     <li>
                                         Server location is <a href="/faq/#unknown" class="abbr">unknown</a>
+                                        <a href="/faq/#provider-file" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                     </li>
                                 {{ end }}
                                 {{ if or (eq $key "emailSupport") (eq $key "chatSupport") (eq $key "groupChatSupport") }}
                                     {{ if not $support_address_listed }}
                                         <li>
                                             No support via XMPP chat or email
+                                            <a href="/faq/#support-addresses" class="abbr" title="How to improve this?"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                                         </li>
                                         {{ $support_address_listed = true }}
                                     {{ end }}
